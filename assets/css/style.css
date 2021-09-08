@@ -185,7 +185,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
-  right: 15px;
+  right: 5px;
   top: 15px;
   z-index: 9998;
   border: 0;
@@ -990,21 +990,68 @@ section {
   }
 }
 button:hover{
-  background-color: transparent ;
-  color: white;
   border: none;
-}
-.darkmode button:hover{
-  background-color: transparent ;
-  color: black;
-  border: none;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 9998;
+    border: 0;
+    font-size: 24px;
+    transition: all 0.4s;
+    outline: none !important;
+    background-color: #149ddd;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border-radius: 50px;
+    cursor: pointer;
 }
 #bdark {
- background-color: transparent ; 
- color: white;
  border: none;
+     position: fixed;
+    right: 55px;
+    top: 15px;
+    z-index: 9998;
+    border: 0;
+    font-size: 24px;
+    transition: all 0.4s;
+    outline: none !important;
+    background-color: #149ddd;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border-radius: 50px;
+    cursor: pointer;
 }
-
+.darkmode #bdark {
+ border: none;
+     position: fixed;
+    right: 55px;
+    top: 15px;
+    z-index: 9998;
+    border: 0;
+    font-size: 24px;
+    transition: all 0.4s;
+    outline: none !important;
+    background-color: #149ddd;
+    color: #040b14;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border-radius: 50px;
+    cursor: pointer;
+}
 body.darkmode{
   background-color: #040b14;
   color: white;
@@ -1036,18 +1083,18 @@ body.darkmode{
   color: white;
 }
 .darkmode .services .title a {
-  color: #173b6c;
+  color: #149ddd;
 }
 .darkmode .mobile-nav-toggle {
   background-color: #149ddd;
-  color: #173b6c;
+  color: #040b14;
 }
 .darkmode .services .icon i {
   color: #173b6c;
 }
 .darkmode .back-to-top i {
   background-color: #149ddd;
-  color: #173b6c;
+  color: #040b14;
 }
 .darkmode .contact .info {
   background: #149ddd;

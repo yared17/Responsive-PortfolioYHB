@@ -1,6 +1,4 @@
-Thanks for downloading this template!
-
-Template Name: iPortfolio
-Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+Template Name: DevYHB
+Template URL: https://github.com/yared17/Responsive-PortfolioYHB
+Author: Yared Henriquez
+License: Todos los derechos reservados.
