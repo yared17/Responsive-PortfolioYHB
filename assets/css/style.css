@@ -722,8 +722,6 @@ section {
   line-height: 24px;
   font-size: 14px;
 }
-# Contact
---------------------------------------------------------------*/
 .contact {
   padding-bottom: 130px;
 }
@@ -989,27 +987,11 @@ section {
     padding-right: 20px 15px;
   }
 }
-button:hover{
-  border: none;
-    position: fixed;
-    right: 15px;
-    top: 15px;
-    z-index: 9998;
-    border: 0;
-    font-size: 24px;
-    transition: all 0.4s;
-    outline: none !important;
-    background-color: #149ddd;
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 0;
-    border-radius: 50px;
-    cursor: pointer;
+.mobile-nav-toggle:hover {
+  background-color: #149ddd;
+  color: #fff;
 }
+
 #bdark {
  border: none;
      position: fixed;
@@ -1128,5 +1110,205 @@ body.darkmode{
 }
 .darkmode .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
   color: #040b14;
+}
+/* --- Fix texto del modal en modo oscuro --- */
+.darkmode #whatsappModal .modal-content {
+  /* si quieres, deja el fondo claro del modal; si prefieres oscuro, dime y lo cambio */
+  color: #0f172a; /* texto base oscuro dentro del modal */
+}
+
+.darkmode #whatsappModal .bg-light {
+  background-color: #f1f5f9 !important; /* bloque claro */
+  color: #0f172a !important;            /* texto visible en ese bloque */
+}
+.darkmode #whatsappModal .bg-light * {
+  color: #0f172a !important;            /* fuerza también títulos y el mensaje */
+}
+
+/* Grises legibles en dark mode dentro del modal */
+.darkmode #whatsappModal .text-muted {
+  color: #64748b !important;            /* gris medio (legible) */
+}
+
+/* Botones en dark mode (opcional, por claridad) */
+.darkmode #whatsappModal .btn-outline-success {
+  color: #16a34a;
+  border-color: #22c55e;
+}
+.darkmode #whatsappModal .btn-outline-success:hover {
+  background-color: #22c55e;
+  color: #0f172a;
+}
+/* Contacto: texto blanco en modo oscuro */
+.darkmode .contact .info {
+  /* si mantienes el fondo azul, deja esto como está */
+  background: #149ddd;
+  color: #fff; /* color base dentro del bloque */
+}
+
+.darkmode .contact .info h4,
+.darkmode .contact .info p {
+  color: #fff !important;   /* títulos y valores */
+}
+
+/* Iconos redondos a blanco en dark */
+.darkmode .contact .info i {
+  color: #fff !important;
+  background: rgba(255,255,255,0.2) !important; /* halo sutil para contraste */
+}
+
+/* Si hay enlaces dentro del bloque, que también sean blancos */
+.darkmode .contact .info a {
+  color: #fff !important;
+}
+
+
+/* Logo inline visible en claro/oscuro */
+#brandLogo { color: #0f172a; }               /* color del logo en modo claro */
+.darkmode #brandLogo { color: #ffffff; }     /* color del logo en modo oscuro */
+
+#brandLogo svg {
+  display: block;
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+}
+
+/* Fuerza que todo lo que tenga fill/stroke herede el color actual */
+#brandLogo svg [fill]:not([fill="none"])   { fill: currentColor !important; }
+#brandLogo svg [stroke]:not([stroke="none"]) { stroke: currentColor !important; }
+.purecounter {
+  font-size: 32px;   /* tamaño grande */
+  font-weight: 700;  /* negrita */
+  color: #000;       /* asegura contraste */
+  display: block;    /* para que quede arriba del texto */
+  margin-bottom: 5px;
+}
+
+/* Números grandes y con contraste en Facts */
+.facts .count-box .purecounter {
+  font-size: 48px;       /* más grande que 32px */
+  font-weight: 800;      /* más grueso */
+  line-height: 1.1;
+  display: block;
+  margin: 6px 0 8px;
+  color: #173b6c;        /* como en el template original */
+}
+
+/* Etiquetas debajo del número también claras */
+.facts .count-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #122f57;
+}
+
+/* Modo oscuro: asegura contraste del número y etiqueta */
+.darkmode .facts .count-box .purecounter { color: #ffffff; }
+.darkmode .facts .count-box p { color: #cfd8e3; }
+
+/* Iconos un poco más grandes para equilibrio visual */
+.facts .count-box i {
+  font-size: 40px;
+  color: #149ddd;
+}
+/* ---- Animaciones por icono (click) ---- */
+.services .icon i {
+  cursor: pointer;
+  user-select: none;
+  will-change: transform, opacity;
+  transition: transform .15s ease;
+}
+
+/* Rocket: subir y volver */
+@keyframes takeoff-return {
+  0% { transform: translateY(0) rotate(0); }
+  30% { transform: translateY(-80px) rotate(-8deg); }
+  60% { transform: translateY(-120px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+.ani-rocket { animation: takeoff-return 900ms cubic-bezier(.2,.8,.2,1); }
+
+/* Checklist: rebote/aprobación */
+@keyframes checklist-bounce {
+  0% { transform: scale(1) }
+  30% { transform: scale(1.25) rotate(-6deg) }
+  60% { transform: scale(1.15) rotate(4deg) }
+  100% { transform: scale(1) rotate(0) }
+}
+.ani-checklist { animation: checklist-bounce 700ms ease-out; }
+
+/* Code-slash: balanceo tipo "<>" */
+@keyframes code-swing {
+  0% { transform: rotate(0) }
+  20% { transform: rotate(-12deg) }
+  40% { transform: rotate(10deg) }
+  60% { transform: rotate(-8deg) }
+  80% { transform: rotate(6deg) }
+  100% { transform: rotate(0) }
+}
+.ani-code { animation: code-swing 700ms ease-out; }
+
+/* Binoculars: zoom in/out */
+@keyframes binoculars-zoom {
+  0% { transform: scale(1) }
+  35% { transform: scale(1.3) }
+  65% { transform: scale(1.18) }
+  100% { transform: scale(1) }
+}
+.ani-bino { animation: binoculars-zoom 600ms ease-out; }
+
+/* Brightness (sol): spin corto */
+@keyframes sun-spin {
+  from { transform: rotate(0) }
+  to { transform: rotate(360deg) }
+}
+.ani-sun { animation: sun-spin 600ms ease-out; }
+
+/* Calendar: shake horizontal */
+@keyframes cal-shake {
+  0% { transform: translateX(0) }
+  20% { transform: translateX(-8px) }
+  40% { transform: translateX(8px) }
+  60% { transform: translateX(-6px) }
+  80% { transform: translateX(6px) }
+  100% { transform: translateX(0) }
+}
+.ani-cal { animation: cal-shake 500ms ease-out; }
+
+/* Respeto a personas con reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ani-rocket, .ani-checklist, .ani-code, .ani-bino, .ani-sun, .ani-cal {
+    animation: none !important;
+  }
+}
+.tech-wrap { background: rgba(0,0,0,.03); border-radius: 16px; }
+.tech-grid{
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0,1fr));
+  gap: 20px;
+}
+@media (max-width:1200px){ .tech-grid{ grid-template-columns: repeat(6,1fr);} }
+@media (max-width:992px){  .tech-grid{ grid-template-columns: repeat(5,1fr);} }
+@media (max-width:768px){  .tech-grid{ grid-template-columns: repeat(4,1fr);} }
+@media (max-width:576px){  .tech-grid{ grid-template-columns: repeat(3,1fr);} }
+
+.tech-grid li{
+  display:flex; align-items:center; justify-content:center;
+  min-height:88px; background:#fff; border-radius:14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.tech-grid li:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.10); }
+
+.tech-grid i{
+  font-size: 44px; line-height: 1;
+  filter: saturate(.9);
+  transition: transform .2s ease, filter .2s ease, opacity .2s ease;
+}
+.tech-grid li:hover i{ transform: scale(1.12); filter: none; opacity:1; }
+
+@media (prefers-color-scheme: dark){
+  .tech-wrap{ background: rgba(255,255,255,.05); }
+  .tech-grid li{ background: rgba(255,255,255,.06); }
 }
 
