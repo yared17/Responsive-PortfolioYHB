@@ -1,0 +1,1666 @@
+/**
+* Template Name: iPortfolio - v3.1.0
+* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #272829;
+  transition: all 0.5s;
+}
+
+a {
+  color: #149ddd;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #37b3ed;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #149ddd;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
+}
+.oscuro{ 
+    background-color: #1f1f1f; 
+    color: #f1eded; 
+}
+
+.back-to-top:hover {
+  background: #2eafec;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  transition: all ease-in-out 0.5s;
+  z-index: 9997;
+  transition: all 0.5s;
+  padding: 0 15px;
+  background: #040b14;
+  overflow-y: auto;
+}
+
+#header .profile img {
+  margin: 15px auto;
+  display: block;
+  width: 220px;
+  border: 8px solid #2c2f3f;
+}
+
+#header .profile h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  -moz-text-align-last: center;
+  text-align-last: center;
+  font-family: "Poppins", sans-serif;
+}
+
+#header .profile h1 a, #header .profile h1 a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+#header .profile .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #212431;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#header .profile .social-links a:hover {
+  background: #149ddd;
+  color: #fff;
+  text-decoration: none;
+}
+
+#main {
+  margin-left: 300px;
+}
+
+@media (max-width: 1199px) {
+  #header {
+    left: -300px;
+  }
+  #main {
+    margin-left: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+.nav-menu {
+  padding: 30px 0 0 0;
+}
+
+.nav-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-menu > ul > li {
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  color: #a8a9b4;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.nav-menu a i {
+  font-size: 24px;
+  padding-right: 8px;
+  color: #6f7180;
+}
+
+.nav-menu a:hover, .nav-menu .active, .nav-menu li:hover > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-menu a:hover i, .nav-menu .active i, .nav-menu li:hover > a i {
+  color: #149ddd;
+}
+
+/* Mobile Navigation */
+.mobile-nav-toggle {
+  position: fixed;
+  right: 5px;
+  top: 15px;
+  z-index: 9998;
+  border: 0;
+  font-size: 24px;
+  transition: all 0.4s;
+  outline: none !important;
+  background-color: #149ddd;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.mobile-nav-active {
+  overflow: hidden;
+}
+
+.mobile-nav-active #header {
+  left: 0;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+
+
+#hero:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#hero .hero-container {
+  position: relative;
+  z-index: 2;
+  min-width: 300px;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #173b6c;
+}
+
+#hero p {
+  color: #173b6c;
+  margin-bottom: 50px;
+  font-size: 26px;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero p span {
+  color: #173b6c;
+  padding-bottom: 4px;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #149ddd;
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background: #f5f8fd;
+}
+
+.section-title {
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #173b6c;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #149ddd;
+  bottom: 0;
+  left: 0;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+.about .content h3 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #173b6c;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.about .content ul strong {
+  margin-right: 10px;
+}
+
+.about .content ul i {
+  font-size: 16px;
+  margin-right: 5px;
+  color: #149ddd;
+  line-height: 0;
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Facts
+--------------------------------------------------------------*/
+.facts {
+  padding-bottom: 30px;
+}
+
+.facts .count-box {
+  padding: 30px;
+  width: 100%;
+}
+
+.facts .count-box i {
+  display: block;
+  font-size: 44px;
+  color: #149ddd;
+  float: left;
+  line-height: 0;
+}
+
+.facts .count-box span {
+  font-size: 48px;
+  line-height: 40px;
+  display: block;
+  font-weight: 700;
+  color: #050d18;
+  margin-left: 60px;
+}
+
+.facts .count-box p {
+  padding: 15px 0 0 0;
+  margin: 0 0 0 60px;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  color: #122f57;
+}
+
+.facts .count-box a {
+  font-weight: 600;
+  display: block;
+  margin-top: 20px;
+  color: #122f57;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  transition: ease-in-out 0.3s;
+}
+
+.facts .count-box a:hover {
+  color: #1f5297;
+}
+
+/*--------------------------------------------------------------
+# Akills
+--------------------------------------------------------------*/
+.skills .progress {
+  height: 60px;
+  display: block;
+  background: none;
+  border-radius: 0;
+}
+
+.skills .progress .skill {
+  padding: 0;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #050d18;
+}
+
+.skills .progress .skill .val {
+  float: right;
+  font-style: normal;
+}
+
+.skills .progress-bar-wrap {
+  background: #dce8f8;
+  height: 10px;
+}
+
+.skills .progress-bar {
+  width: 1px;
+  height: 10px;
+  transition: .9s;
+  background-color: #149ddd;
+}
+
+/*--------------------------------------------------------------
+# Resume
+--------------------------------------------------------------*/
+.resume .resume-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #050d18;
+}
+
+.resume .resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid #1f5297;
+  position: relative;
+}
+
+.resume .resume-item h4 {
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #050d18;
+  margin-bottom: 10px;
+}
+
+.resume .resume-item h5 {
+  font-size: 16px;
+  background: #e4edf9;
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.resume .resume-item ul {
+  padding-left: 20px;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+}
+
+.resume .resume-item:last-child {
+  padding-bottom: 0;
+}
+
+.resume .resume-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: #fff;
+  border: 2px solid #1f5297;
+}
+
+/*--------------------------------------------------------------
+# Portfolio
+--------------------------------------------------------------*/
+.portfolio .portfolio-item {
+  margin-bottom: 30px;
+}
+
+.portfolio #portfolio-flters {
+  padding: 0;
+  margin: 0 auto 35px auto;
+  list-style: none;
+  text-align: center;
+  background: #fff;
+  border-radius: 50px;
+  padding: 2px 15px;
+}
+
+.portfolio #portfolio-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px 8px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #272829;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+  color: #149ddd;
+}
+
+.portfolio #portfolio-flters li:last-child {
+  margin-right: 0;
+}
+
+.portfolio .portfolio-wrap {
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.portfolio .portfolio-wrap::before {
+  content: "";
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all ease-in-out 0.3s;
+  z-index: 2;
+  opacity: 0;
+}
+
+.portfolio .portfolio-wrap .portfolio-links {
+  opacity: 1;
+  left: 0;
+  right: 0;
+  bottom: -60px;
+  z-index: 3;
+  position: absolute;
+  transition: all ease-in-out 0.3s;
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a {
+  color: #fff;
+  font-size: 28px;
+  text-align: center;
+  background: rgba(20, 157, 221, 0.75);
+  transition: 0.3s;
+  width: 50%;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a:hover {
+  background: rgba(20, 157, 221, 0.95);
+}
+
+.portfolio .portfolio-wrap .portfolio-links a + a {
+  border-left: 1px solid #37b3ed;
+}
+
+.portfolio .portfolio-wrap:hover::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap:hover .portfolio-links {
+  opacity: 1;
+  bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details
+--------------------------------------------------------------*/
+.portfolio-details {
+  padding-top: 40px;
+}
+
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #149ddd;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #149ddd;
+}
+
+.portfolio-details .portfolio-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(5, 13, 24, 0.08);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.portfolio-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .portfolio-info ul li + li {
+  margin-top: 10px;
+}
+
+.portfolio-details .portfolio-description {
+  padding-top: 30px;
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
+# Services
+--------------------------------------------------------------*/
+.services .icon-box {
+  margin-bottom: 20px;
+}
+
+.services .icon {
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  background: #149ddd;
+  border-radius: 50%;
+  transition: 0.5s;
+  border: 1px solid #149ddd;
+}
+
+.services .icon i {
+  color: #fff;
+  font-size: 24px;
+  line-height: 0;
+}
+
+.services .icon-box:hover .icon {
+  background: #fff;
+}
+
+.services .icon-box:hover .icon i {
+  color: #149ddd;
+}
+
+.services .title {
+  margin-left: 80px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.services .title a {
+  color: #343a40;
+}
+
+.services .title a:hover {
+  color: #149ddd;
+}
+
+.services .description {
+  margin-left: 80px;
+  line-height: 24px;
+  font-size: 14px;
+}
+.contact {
+  padding-bottom: 130px;
+}
+
+.contact .info {
+  padding: 30px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+}
+
+.contact .info i {
+  font-size: 20px;
+  color: #149ddd;
+  float: left;
+  width: 44px;
+  height: 44px;
+  background: #dff3fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact .info h4 {
+  padding: 0 0 0 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #050d18;
+}
+
+.contact .info p {
+  padding: 0 0 10px 60px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #173b6c;
+}
+
+.contact .info .email p {
+  padding-top: 5px;
+}
+
+.contact .info .social-links {
+  padding-left: 60px;
+}
+
+.contact .info .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+  margin-right: 10px;
+}
+
+.contact .info .social-links a:hover {
+  background: #149ddd;
+  color: #fff;
+}
+
+.contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
+  background: #149ddd;
+  color: #fff;
+}
+
+.contact .php-email-form {
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+}
+
+.contact .php-email-form .form-group {
+  padding-bottom: 8px;
+}
+
+.contact .php-email-form .validate {
+  display: none;
+  color: red;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.contact .php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .error-message br + br {
+  margin-top: 25px;
+}
+
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact .php-email-form label {
+  padding-bottom: 8px;
+}
+
+.contact .php-email-form input, .contact .php-email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.contact .php-email-form input {
+  height: 44px;
+}
+
+.contact .php-email-form textarea {
+  padding: 10px 15px;
+}
+
+.contact .php-email-form button[type="submit"] {
+  background: #149ddd;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.contact .php-email-form button[type="submit"]:hover {
+  background: #37b3ed;
+}
+
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+  padding: 20px 0;
+  background: #f9f9f9;
+}
+
+.breadcrumbs h2 {
+  font-size: 26px;
+  font-weight: 300;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+.breadcrumbs ol li + li {
+  padding-left: 10px;
+}
+
+.breadcrumbs ol li + li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #0e2442;
+  content: "/";
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs .d-flex {
+    display: block !important;
+  }
+  .breadcrumbs ol {
+    display: block;
+  }
+  .breadcrumbs ol li {
+    display: inline-block;
+  }
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  padding: 15px;
+  color: #f4f6fd;
+  font-size: 14px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 9999;
+  background: #040b14;
+}
+
+#footer .copyright {
+  text-align: center;
+}
+
+#footer .credits {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 13px;
+  color: #eaebf0;
+}
+
+@media (max-width: 1199px) {
+  #footer {
+    position: static;
+    width: auto;
+    padding-right: 20px 15px;
+  }
+}
+.mobile-nav-toggle:hover {
+  background-color: #149ddd;
+  color: #fff;
+}
+
+#bdark {
+ border: none;
+     position: fixed;
+    right: 55px;
+    top: 15px;
+    z-index: 9998;
+    border: 0;
+    font-size: 24px;
+    transition: all 0.4s;
+    outline: none !important;
+    background-color: #149ddd;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.darkmode #bdark {
+ border: none;
+     position: fixed;
+    right: 55px;
+    top: 15px;
+    z-index: 9998;
+    border: 0;
+    font-size: 24px;
+    transition: all 0.4s;
+    outline: none !important;
+    background-color: #149ddd;
+    color: #040b14;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border-radius: 50px;
+    cursor: pointer;
+}
+body.darkmode{
+  background-color: #040b14;
+  color: white;
+}
+
+.darkmode .section-bg {
+  background: #040b14;
+}
+.darkmode .resume .resume-item h5 {
+  color: #173b6c;
+}
+.darkmode .about .content h3{
+  color: #149ddd;
+}
+.darkmode .section-title h2{
+  color: #149ddd;
+}
+
+.darkmode .resume .resume-title{
+  color: #149ddd;
+}
+.darkmode .resume .resume-item h4 {
+  color: white;
+}
+.darkmode .facts .count-box span {
+  color: white;
+}
+.darkmode .skills .progress .skill {
+  color: white;
+}
+.darkmode .services .title a {
+  color: #149ddd;
+}
+.darkmode .mobile-nav-toggle {
+  background-color: #149ddd;
+  color: #040b14;
+}
+.darkmode .services .icon i {
+  color: #173b6c;
+}
+.darkmode .back-to-top i {
+  background-color: #149ddd;
+  color: #040b14;
+}
+.darkmode .contact .info {
+  background: #149ddd;
+}
+.darkmode .contact .php-email-form {
+  background: #149ddd;
+  color: #173b6c;
+}
+.darkmode .contact .php-email-form button[type="submit"] {
+  background: #fff;
+  color: #173b6c;
+}
+.darkmode .contact .info h4 {
+  color: #173b6c;
+}
+.darkmode .contact .info p {
+  color: #173b6c;
+}
+.darkmode .contact .info i {
+  color: #173b6c;
+}
+.darkmode .facts .count-box p {
+  color: #149ddd;
+}
+.darkmode .portfolio #portfolio-flters{
+  background: #149ddd;
+  color: #fff;
+}
+.darkmode .portfolio #portfolio-flters li{
+  color: #fff;
+}
+.darkmode .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+  color: #040b14;
+}
+/* --- Fix texto del modal en modo oscuro --- */
+.darkmode #whatsappModal .modal-content {
+  /* si quieres, deja el fondo claro del modal; si prefieres oscuro, dime y lo cambio */
+  color: #0f172a; /* texto base oscuro dentro del modal */
+}
+
+.darkmode #whatsappModal .bg-light {
+  background-color: #f1f5f9 !important; /* bloque claro */
+  color: #0f172a !important;            /* texto visible en ese bloque */
+}
+.darkmode #whatsappModal .bg-light * {
+  color: #0f172a !important;            /* fuerza también títulos y el mensaje */
+}
+
+/* Grises legibles en dark mode dentro del modal */
+.darkmode #whatsappModal .text-muted {
+  color: #64748b !important;            /* gris medio (legible) */
+}
+
+/* Botones en dark mode (opcional, por claridad) */
+.darkmode #whatsappModal .btn-outline-success {
+  color: #16a34a;
+  border-color: #22c55e;
+}
+.darkmode #whatsappModal .btn-outline-success:hover {
+  background-color: #22c55e;
+  color: #0f172a;
+}
+/* Contacto: texto blanco en modo oscuro */
+.darkmode .contact .info {
+  /* si mantienes el fondo azul, deja esto como está */
+  background: #149ddd;
+  color: #fff; /* color base dentro del bloque */
+}
+
+.darkmode .contact .info h4,
+.darkmode .contact .info p {
+  color: #fff !important;   /* títulos y valores */
+}
+
+/* Iconos redondos a blanco en dark */
+.darkmode .contact .info i {
+  color: #fff !important;
+  background: rgba(255,255,255,0.2) !important; /* halo sutil para contraste */
+}
+
+/* Si hay enlaces dentro del bloque, que también sean blancos */
+.darkmode .contact .info a {
+  color: #fff !important;
+}
+
+
+/* Logo inline visible en claro/oscuro */
+#brandLogo { color: #0f172a; }               /* color del logo en modo claro */
+.darkmode #brandLogo { color: #ffffff; }     /* color del logo en modo oscuro */
+
+#brandLogo svg {
+  display: block;
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+}
+
+/* Fuerza que todo lo que tenga fill/stroke herede el color actual */
+#brandLogo svg [fill]:not([fill="none"])   { fill: currentColor !important; }
+#brandLogo svg [stroke]:not([stroke="none"]) { stroke: currentColor !important; }
+.purecounter {
+  font-size: 32px;   /* tamaño grande */
+  font-weight: 700;  /* negrita */
+  color: #000;       /* asegura contraste */
+  display: block;    /* para que quede arriba del texto */
+  margin-bottom: 5px;
+}
+
+/* Números grandes y con contraste en Facts */
+.facts .count-box .purecounter {
+  font-size: 48px;       /* más grande que 32px */
+  font-weight: 800;      /* más grueso */
+  line-height: 1.1;
+  display: block;
+  margin: 6px 0 8px;
+  color: #173b6c;        /* como en el template original */
+}
+
+/* Etiquetas debajo del número también claras */
+.facts .count-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #122f57;
+}
+
+/* Modo oscuro: asegura contraste del número y etiqueta */
+.darkmode .facts .count-box .purecounter { color: #ffffff; }
+.darkmode .facts .count-box p { color: #cfd8e3; }
+
+/* Iconos un poco más grandes para equilibrio visual */
+.facts .count-box i {
+  font-size: 40px;
+  color: #149ddd;
+}
+/* ---- Animaciones por icono (click) ---- */
+.services .icon i {
+  cursor: pointer;
+  user-select: none;
+  will-change: transform, opacity;
+  transition: transform .15s ease;
+}
+
+/* Rocket: subir y volver */
+@keyframes takeoff-return {
+  0% { transform: translateY(0) rotate(0); }
+  30% { transform: translateY(-80px) rotate(-8deg); }
+  60% { transform: translateY(-120px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+.ani-rocket { animation: takeoff-return 900ms cubic-bezier(.2,.8,.2,1); }
+
+/* Checklist: rebote/aprobación */
+@keyframes checklist-bounce {
+  0% { transform: scale(1) }
+  30% { transform: scale(1.25) rotate(-6deg) }
+  60% { transform: scale(1.15) rotate(4deg) }
+  100% { transform: scale(1) rotate(0) }
+}
+.ani-checklist { animation: checklist-bounce 700ms ease-out; }
+
+/* Code-slash: balanceo tipo "<>" */
+@keyframes code-swing {
+  0% { transform: rotate(0) }
+  20% { transform: rotate(-12deg) }
+  40% { transform: rotate(10deg) }
+  60% { transform: rotate(-8deg) }
+  80% { transform: rotate(6deg) }
+  100% { transform: rotate(0) }
+}
+.ani-code { animation: code-swing 700ms ease-out; }
+
+/* Binoculars: zoom in/out */
+@keyframes binoculars-zoom {
+  0% { transform: scale(1) }
+  35% { transform: scale(1.3) }
+  65% { transform: scale(1.18) }
+  100% { transform: scale(1) }
+}
+.ani-bino { animation: binoculars-zoom 600ms ease-out; }
+
+/* Brightness (sol): spin corto */
+@keyframes sun-spin {
+  from { transform: rotate(0) }
+  to { transform: rotate(360deg) }
+}
+.ani-sun { animation: sun-spin 600ms ease-out; }
+
+/* Calendar: shake horizontal */
+@keyframes cal-shake {
+  0% { transform: translateX(0) }
+  20% { transform: translateX(-8px) }
+  40% { transform: translateX(8px) }
+  60% { transform: translateX(-6px) }
+  80% { transform: translateX(6px) }
+  100% { transform: translateX(0) }
+}
+.ani-cal { animation: cal-shake 500ms ease-out; }
+
+/* Respeto a personas con reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ani-rocket, .ani-checklist, .ani-code, .ani-bino, .ani-sun, .ani-cal {
+    animation: none !important;
+  }
+}
+.tech-wrap { background: rgba(0,0,0,.03); border-radius: 16px; }
+.tech-grid{
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0,1fr));
+  gap: 20px;
+}
+@media (max-width:1200px){ .tech-grid{ grid-template-columns: repeat(6,1fr);} }
+@media (max-width:992px){  .tech-grid{ grid-template-columns: repeat(5,1fr);} }
+@media (max-width:768px){  .tech-grid{ grid-template-columns: repeat(4,1fr);} }
+@media (max-width:576px){  .tech-grid{ grid-template-columns: repeat(3,1fr);} }
+
+.tech-grid li{
+  display:flex; align-items:center; justify-content:center;
+  min-height:88px; background:#fff; border-radius:14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.tech-grid li:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.10); }
+
+.tech-grid i{
+  font-size: 44px; line-height: 1;
+  filter: saturate(.9);
+  transition: transform .2s ease, filter .2s ease, opacity .2s ease;
+}
+.tech-grid li:hover i{ transform: scale(1.12); filter: none; opacity:1; }
+
+@media (prefers-color-scheme: dark){
+  .tech-wrap{ background: rgba(255,255,255,.05); }
+  .tech-grid li{ background: rgba(255,255,255,.06); }
+}
+
+/* Layout: columna fija izquierda + contenido */
+.about-grid{
+  display: grid;
+  grid-template-columns: 340px 1fr;  /* <- ocupa el espacio que antes era col-lg-4 */
+  gap: 28px;
+  align-items: start;
+  position: relative;
+}
+@media (max-width: 991.98px){
+  .about-grid{ grid-template-columns: 1fr; }
+}
+
+/* ================= RAIL IZQUIERDO — VERSION FINAL ================= */
+
+/* Layout del bloque */
+.about-grid{
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 36px;
+  align-items: start;
+  position: relative;
+}
+
+/* Aside (evita el hueco cuando alguien deja d-lg-flex) */
+.left-rail{
+  display: block !important;         /* fuerza bloque aunque tenga d-lg-flex */
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  height: auto;                       /* sin alturas forzadas */
+  overflow: hidden;                   /* recorta cualquier desborde interno */
+  border-radius: 28px;                /* 4 esquinas redondeadas */
+}
+
+/* Fondo decorativo (no interfiere con los clics) */
+.rail-layer.glow{
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;               /* nunca bloquea el mouse */
+  background:
+    radial-gradient(800px 300px at -10% -10%, rgba(0,123,255,.14), transparent 60%),
+    linear-gradient(145deg, rgba(20,22,30,.9), rgba(16,17,24,.85));
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 18px 50px rgba(0,0,0,.35);
+}
+
+/* Contenedor interno */
+.rail-grid{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 16px;
+  padding: 16px;
+  height: auto;
+  align-content: start;
+}
+
+/* Tarjetas */
+.rail-card{
+  position: relative;
+  overflow: hidden;                   /* recorte seguro para la “escalera” */
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.rail-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(99,179,255,.55);
+  box-shadow: 0 12px 28px rgba(0,140,255,.18), inset 0 0 24px rgba(0,140,255,.07);
+}
+.rail-card h5{
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #e8f0ff;
+}
+
+/* ================= ÍCONOS ================= */
+.rail-card .icons{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.rail-card .icons i{
+  font-size: 42px;
+  color: #cfe4ff;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+
+  /* base para componer “escalera” + hover sin romper layout */
+  --y: 0px;
+  transform: translateY(var(--y));
+  transition: transform .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.rail-card .icons i:hover{
+  transform: translateY(calc(var(--y) - 4px)) scale(1.05);
+  color: #fff;
+  border-color: rgba(99,179,255,.7);
+  box-shadow: 0 10px 26px rgba(0,140,255,.25), inset 0 0 22px rgba(0,140,255,.10);
+}
+
+/* ================= ESCALERA DIAGONAL ================= */
+/* Aplica solo cuando el contenedor tenga .stairs */
+.rail-card .icons.stairs{
+  --step: 12px;                                   /* inclinación de la escalera */
+  padding-bottom: calc(var(--step) * 3);          /* reserva espacio para el último escalón */
+}
+
+/* desactiva animaciones verticales conflictivas */
+.rail-card .icons.stairs i{ animation: none; }
+
+/* columna derecha (pares) se baja en escalones */
+.rail-card .icons.stairs i:nth-child(2){ --y: calc(var(--step) * 1); }
+.rail-card .icons.stairs i:nth-child(4){ --y: calc(var(--step) * 2); }
+.rail-card .icons.stairs i:nth-child(6){ --y: calc(var(--step) * 3); }
+
+/* ================= CONTENIDO DERECHO ================= */
+.about-grid .content{
+  position: relative;
+  z-index: 5;
+  min-width: 0;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 1200px){
+  .about-grid{ grid-template-columns: 380px 1fr; gap: 28px; }
+  .rail-card .icons i{ font-size: 38px; padding: 16px; }
+}
+@media (max-width: 991.98px){
+  .about-grid{ grid-template-columns: 1fr; gap: 22px; }
+  .left-rail{ position: static; }                 /* sin sticky en móvil */
+  .rail-card .icons{ grid-template-columns: repeat(3, 1fr); }
+  .rail-card .icons i{ font-size: 34px; padding: 14px; }
+  .rail-card .icons.stairs i{ --y: 0px; }         /* sin escalera en móvil */
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce){
+  .rail-card .icons i{ animation: none; }
+}
+
+/* Base = MODO CLARO (light) */
+.rail-layer.glow{
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  /* fondo claro, sin “dark overlay” */
+  background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 12px 24px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.4);
+}
+
+/* Solo en MODO OSCURO aplica el fondo oscuro anterior */
+@media (prefers-color-scheme: dark){
+  .rail-layer.glow{
+    background:
+      radial-gradient(800px 300px at -10% -10%, rgba(0,123,255,.14), transparent 60%),
+      linear-gradient(145deg, rgba(20,22,30,.9), rgba(16,17,24,.85));
+    border: 1px solid rgba(255,255,255,.06);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 18px 50px rgba(0,0,0,.35);
+  }
+}
+
+/* Si usas clase de tema en el body, también soporta:
+   body.dark | .dark | [data-theme="dark"] */
+body.dark .rail-layer.glow,
+.dark .rail-layer.glow,
+[data-theme="dark"] .rail-layer.glow{
+  background:
+    radial-gradient(800px 300px at -10% -10%, rgba(0,123,255,.14), transparent 60%),
+    linear-gradient(145deg, rgba(20,22,30,.9), rgba(16,17,24,.85));
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 18px 50px rgba(0,0,0,.35);
+}
+/* ========== MOBILE FIX: gutters y comportamiento ========== */
+@media (max-width: 991.98px){
+  .about-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-inline: 16px;        /* ← agrega márgenes laterales en móvil */
+    box-sizing: border-box;
+  }
+  .left-rail{
+    position: relative;   /* <- NO static */
+    width: 100%;
+    border-radius: 18px;
+    box-sizing: border-box;
+  }
+  .rail-grid{ padding: 14px; }
+  .rail-card{ border-radius: 16px; padding: 16px; }
+  .rail-card .icons{ gap: 12px; }
+  .rail-card .icons i{ font-size: 34px; padding: 14px; }
+}
+
+/* ========== LIGHT MODE: legibilidad del bloque derecho ========== */
+@media (prefers-color-scheme: light){
+  /* Texto principal y listas del bloque derecho más oscuros */
+  .about-grid .content,
+  .about-grid .content p,
+  .about-grid .content li{
+    color: #243147;              /* gris azulado legible en claro */
+  }
+  .about-grid .content h2,
+  .about-grid .content h3{
+    color: #133060;              /* título con buen contraste */
+  }
+  .about-grid .content a{
+    color: #0d6efd;
+  }
+
+  /* Ajuste suave del rail en modo claro para que no compita con el texto */
+  .rail-layer.glow{
+    background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,255,255,.80));
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.35);
+  }
+  .rail-card{
+    background: rgba(0,0,0,.03);
+    border-color: rgba(0,0,0,.08);
+  }
+  .rail-card h5{ color:#1f2d45; }
+  .rail-card .icons i{
+    color: #3a4a5f;
+    background: rgba(0,0,0,.03);
+    border-color: rgba(0,0,0,.08);
+  }
+}
+
+/* Asegura que el fondo del rail nunca tape clics ni texto */
+.rail-layer.glow{ pointer-events: none; }
+/* ====== Mobile: gutters y orden de capas ====== */
+@media (max-width: 991.98px){
+  .about-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-inline: 16px;        /* margen lateral para que no se pegue a los bordes */
+    box-sizing: border-box;
+  }
+  .rail-grid{ padding: 14px; }
+  .rail-card{ border-radius: 16px; padding: 16px; }
+  .rail-card .icons{ gap: 12px; }
+  .rail-card .icons i{ font-size: 34px; padding: 14px; }
+}
+
+/* ====== Asegura capas: el contenido siempre por encima ====== */
+.left-rail{ z-index: 1; }
+.about-grid .content{ position: relative; z-index: 5; }
+
+/* ====== Modo CLARO: colores legibles ====== */
+@media (prefers-color-scheme: light){
+  /* Fondo del rail suave en claro */
+  .rail-layer.glow{
+    background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.35);
+    pointer-events: none; /* nunca tapa clics */
+  }
+
+  /* Texto del bloque derecho con buen contraste */
+  .about-grid .content,
+  .about-grid .content p,
+  .about-grid .content li,
+  .about-grid .content span{
+    color: #1e293b !important;   /* gris-azul oscuro legible */
+    opacity: 1 !important;       /* elimina opacidades heredadas */
+  }
+  .about-grid .content .fst-italic{
+    color: #475569 !important;   /* subtítulo legible */
+    opacity: 1 !important;
+  }
+  .about-grid .content h2,
+  .about-grid .content h3{
+    color: #0f3b82 !important;   /* títulos */
+  }
+  .about-grid .content a{
+    color: #0d6efd;              /* enlaces */
+    text-decoration-color: rgba(13,110,253,.35);
+  }
+
+  /* Tarjetas del rail un poco más claras para no competir */
+  .rail-card{
+    background: rgba(0,0,0,.035);
+    border-color: rgba(0,0,0,.08);
+  }
+  .rail-card h5{ color:#1f2d45; }
+  .rail-card .icons i{
+    color: #3a4a5f;
+    background: rgba(0,0,0,.03);
+    border-color: rgba(0,0,0,.08);
+  }
+}
+
+/* Si tu sitio usa clase de tema, soporta también: */
+body.light .rail-layer.glow,
+[data-theme="light"] .rail-layer.glow{ 
+  background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.35);
+}
+body.light .about-grid .content,
+[data-theme="light"] .about-grid .content{ color:#1e293b; }
+/* --- FIX definitivo: la capa de fondo del rail nunca debe salir de su aside --- */
+@media (max-width: 991.98px){
+  .left-rail{ position: relative !important; }   /* contenedor del absolute */
+}
+/* Asegura el orden de capas del rail */
+.rail-layer.glow{ z-index: 0; }
+.rail-grid{ position: relative; z-index: 1; }    /* tarjetas siempre encima del fondo */
+/* separa el contenido del rail en móvil con puro padding */
+@media (max-width: 991.98px){
+  .left-rail{
+    position: relative;           /* para que su fondo no se salga */
+    margin-bottom: 20px;          /* espacio bajo el rail */
+  }
+  .about-grid .content{
+    padding-top: 30px;            /* aire arriba del título */
+  }
+}
+/* misma guía derecha para moon y back-to-top */
+:root{ --ui-edge-right: 55px; }        /* cambia 55px si quieres otro offset */
+
+/* toggle dark mode */
+#bdark{ right: var(--ui-edge-right) !important; }
+
+/* back-to-top alineado con el moon */
+.back-to-top{ right: var(--ui-edge-right) !important; }
+
+/* mantener alineado también en móvil */
+@media (max-width: 576px){
+  .back-to-top{ right: var(--ui-edge-right) !important; }
+}
+/* Hero en modo oscuro: color #149ddd */
+body.darkmode #hero h1,
+body.darkmode #hero p,
+body.darkmode #hero p span,
+body.darkmode #hero .typed,
+body.darkmode #hero .typed-cursor{
+  color: #149ddd;
+}
+
+/* La línea inferior del span también en #149ddd */
+body.darkmode #hero p span{
+  border-bottom-color: #149ddd;
+}
