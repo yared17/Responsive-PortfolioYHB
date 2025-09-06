@@ -1,13 +1,3 @@
-/**
-* Template Name: iPortfolio - v3.1.0
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
   color: #272829;
@@ -789,119 +779,7 @@ section {
   color: #fff;
 }
 
-.contact .php-email-form {
-  width: 100%;
-  padding: 30px;
-  background: #fff;
-  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
-}
 
-.contact .php-email-form .form-group {
-  padding-bottom: 8px;
-}
-
-.contact .php-email-form .validate {
-  display: none;
-  color: red;
-  margin: 0 0 15px 0;
-  font-weight: 400;
-  font-size: 13px;
-}
-
-.contact .php-email-form .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: left;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .error-message br + br {
-  margin-top: 25px;
-}
-
-.contact .php-email-form .sent-message {
-  display: none;
-  color: #fff;
-  background: #18d26e;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .loading {
-  display: none;
-  background: #fff;
-  text-align: center;
-  padding: 15px;
-}
-
-.contact .php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
-  border-top-color: #eee;
-  -webkit-animation: animate-loading 1s linear infinite;
-  animation: animate-loading 1s linear infinite;
-}
-
-.contact .php-email-form .form-group {
-  margin-bottom: 15px;
-}
-
-.contact .php-email-form label {
-  padding-bottom: 8px;
-}
-
-.contact .php-email-form input, .contact .php-email-form textarea {
-  border-radius: 0;
-  box-shadow: none;
-  font-size: 14px;
-}
-
-.contact .php-email-form input {
-  height: 44px;
-}
-
-.contact .php-email-form textarea {
-  padding: 10px 15px;
-}
-
-.contact .php-email-form button[type="submit"] {
-  background: #149ddd;
-  border: 0;
-  padding: 10px 24px;
-  color: #fff;
-  transition: 0.4s;
-  border-radius: 4px;
-}
-
-.contact .php-email-form button[type="submit"]:hover {
-  background: #37b3ed;
-}
-
-@-webkit-keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 /*--------------------------------------------------------------
 # Breadcrumbs
@@ -974,11 +852,11 @@ section {
   color: #eaebf0;
 }
 
-@media (max-width: 1199px) {
-  #footer {
+@media (max-width: 1199px){
+  #footer{
     position: static;
     width: auto;
-    padding-right: 20px 15px;
+    padding: 20px 15px; /* <- válido */
   }
 }
 .mobile-nav-toggle:hover {
@@ -1306,21 +1184,11 @@ body.darkmode{
   .tech-grid li{ background: rgba(255,255,255,.06); }
 }
 
-/* Layout: columna fija izquierda + contenido */
-.about-grid{
-  display: grid;
-  grid-template-columns: 340px 1fr;  /* <- ocupa el espacio que antes era col-lg-4 */
-  gap: 28px;
-  align-items: start;
-  position: relative;
-}
-@media (max-width: 991.98px){
-  .about-grid{ grid-template-columns: 1fr; }
-}
+/* =========================
+   ABOUT: Rail izquierdo + contenido (UNICO)
+   ========================= */
 
-/* ================= RAIL IZQUIERDO — VERSION FINAL ================= */
-
-/* Layout del bloque */
+/* Layout base */
 .about-grid{
   display: grid;
   grid-template-columns: 420px 1fr;
@@ -1329,34 +1197,34 @@ body.darkmode{
   position: relative;
 }
 
-/* Aside (evita el hueco cuando alguien deja d-lg-flex) */
+/* Rail */
 .left-rail{
-  display: block !important;         /* fuerza bloque aunque tenga d-lg-flex */
+  display: block !important;     /* por si alguien deja d-lg-... */
   position: sticky;
   top: 96px;
   align-self: start;
-  height: auto;                       /* sin alturas forzadas */
-  overflow: hidden;                   /* recorta cualquier desborde interno */
-  border-radius: 28px;                /* 4 esquinas redondeadas */
+  height: auto;
+  overflow: hidden;
+  border-radius: 28px;
+  z-index: 1;
 }
 
-/* Fondo decorativo (no interfiere con los clics) */
+/* Fondo decorativo del rail (modo claro por defecto) */
 .rail-layer.glow{
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  pointer-events: none;               /* nunca bloquea el mouse */
-  background:
-    radial-gradient(800px 300px at -10% -10%, rgba(0,123,255,.14), transparent 60%),
-    linear-gradient(145deg, rgba(20,22,30,.9), rgba(16,17,24,.85));
-  border: 1px solid rgba(255,255,255,.06);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 18px 50px rgba(0,0,0,.35);
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.35);
 }
 
-/* Contenedor interno */
+/* Rail contenido */
 .rail-grid{
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
   display: grid;
   grid-auto-rows: auto;
@@ -1369,7 +1237,7 @@ body.darkmode{
 /* Tarjetas */
 .rail-card{
   position: relative;
-  overflow: hidden;                   /* recorte seguro para la “escalera” */
+  overflow: hidden;
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.09);
   border-radius: 18px;
@@ -1389,13 +1257,12 @@ body.darkmode{
   color: #e8f0ff;
 }
 
-/* ================= ÍCONOS ================= */
+/* Íconos */
 .rail-card .icons{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
-
 .rail-card .icons i{
   font-size: 42px;
   color: #cfe4ff;
@@ -1405,13 +1272,10 @@ body.darkmode{
   display: grid;
   place-items: center;
   padding: 18px;
-
-  /* base para componer “escalera” + hover sin romper layout */
   --y: 0px;
   transform: translateY(var(--y));
   transition: transform .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
-
 .rail-card .icons i:hover{
   transform: translateY(calc(var(--y) - 4px)) scale(1.05);
   color: #fff;
@@ -1419,72 +1283,53 @@ body.darkmode{
   box-shadow: 0 10px 26px rgba(0,140,255,.25), inset 0 0 22px rgba(0,140,255,.10);
 }
 
-/* ================= ESCALERA DIAGONAL ================= */
-/* Aplica solo cuando el contenedor tenga .stairs */
-.rail-card .icons.stairs{
-  --step: 12px;                                   /* inclinación de la escalera */
-  padding-bottom: calc(var(--step) * 3);          /* reserva espacio para el último escalón */
-}
-
-/* desactiva animaciones verticales conflictivas */
-.rail-card .icons.stairs i{ animation: none; }
-
-/* columna derecha (pares) se baja en escalones */
-.rail-card .icons.stairs i:nth-child(2){ --y: calc(var(--step) * 1); }
+/* Escalera diagonal (2 columnas x 3 filas) */
+.rail-card .icons.stairs{ --step: 12px; padding-bottom: calc(var(--step) *3 ); }
+.rail-card .icons.stairs i{ animation: none; } /* evita flotado vertical extra */
+.rail-card .icons.stairs i:nth-child(2){ --y: calc(var(--step) * 0.5); }
 .rail-card .icons.stairs i:nth-child(4){ --y: calc(var(--step) * 2); }
 .rail-card .icons.stairs i:nth-child(6){ --y: calc(var(--step) * 3); }
 
-/* ================= CONTENIDO DERECHO ================= */
+/* Contenido (columna derecha) encima del fondo */
 .about-grid .content{
   position: relative;
   z-index: 5;
   min-width: 0;
 }
 
-/* ================= RESPONSIVO ================= */
+/* --------- Responsivo --------- */
 @media (max-width: 1200px){
   .about-grid{ grid-template-columns: 380px 1fr; gap: 28px; }
   .rail-card .icons i{ font-size: 38px; padding: 16px; }
 }
 @media (max-width: 991.98px){
-  .about-grid{ grid-template-columns: 1fr; gap: 22px; }
-  .left-rail{ position: static; }                 /* sin sticky en móvil */
-  .rail-card .icons{ grid-template-columns: repeat(3, 1fr); }
+  .about-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-inline: 16px;
+    box-sizing: border-box;
+  }
+  .left-rail{
+    position: relative;  /* el fondo se queda dentro */
+    width: 100%;
+    border-radius: 18px;
+    margin-bottom: 16px;
+  }
+  .rail-grid{ padding: 14px; }
+  .rail-card{ border-radius: 16px; padding: 16px; }
+  .rail-card .icons{ grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .rail-card .icons i{ font-size: 34px; padding: 14px; }
-  .rail-card .icons.stairs i{ --y: 0px; }         /* sin escalera en móvil */
+  .rail-card .icons.stairs i{ --y: 0px; } /* sin escalera en móvil */
+  .about-grid .content{ padding-top: 8px; }
 }
 
 /* Accesibilidad */
 @media (prefers-reduced-motion: reduce){
-  .rail-card .icons i{ animation: none; }
+  .rail-card .icons i{ animation: none !important; }
 }
 
-/* Base = MODO CLARO (light) */
-.rail-layer.glow{
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-
-  /* fondo claro, sin “dark overlay” */
-  background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
-  border: 1px solid rgba(0,0,0,.06);
-  box-shadow: 0 12px 24px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.4);
-}
-
-/* Solo en MODO OSCURO aplica el fondo oscuro anterior */
-@media (prefers-color-scheme: dark){
-  .rail-layer.glow{
-    background:
-      radial-gradient(800px 300px at -10% -10%, rgba(0,123,255,.14), transparent 60%),
-      linear-gradient(145deg, rgba(20,22,30,.9), rgba(16,17,24,.85));
-    border: 1px solid rgba(255,255,255,.06);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 18px 50px rgba(0,0,0,.35);
-  }
-}
-
-/* Si usas clase de tema en el body, también soporta:
-   body.dark | .dark | [data-theme="dark"] */
+/* --------- Modo oscuro del rail --------- */
+.darkmode .rail-layer.glow,
 body.dark .rail-layer.glow,
 .dark .rail-layer.glow,
 [data-theme="dark"] .rail-layer.glow{
@@ -1494,173 +1339,146 @@ body.dark .rail-layer.glow,
   border: 1px solid rgba(255,255,255,.06);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 18px 50px rgba(0,0,0,.35);
 }
-/* ========== MOBILE FIX: gutters y comportamiento ========== */
-@media (max-width: 991.98px){
-  .about-grid{
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding-inline: 16px;        /* ← agrega márgenes laterales en móvil */
-    box-sizing: border-box;
-  }
-  .left-rail{
-    position: relative;   /* <- NO static */
-    width: 100%;
-    border-radius: 18px;
-    box-sizing: border-box;
-  }
-  .rail-grid{ padding: 14px; }
-  .rail-card{ border-radius: 16px; padding: 16px; }
-  .rail-card .icons{ gap: 12px; }
-  .rail-card .icons i{ font-size: 34px; padding: 14px; }
-}
 
-/* ========== LIGHT MODE: legibilidad del bloque derecho ========== */
+/* --------- Modo claro: legibilidad del contenido derecho --------- */
 @media (prefers-color-scheme: light){
-  /* Texto principal y listas del bloque derecho más oscuros */
-  .about-grid .content,
-  .about-grid .content p,
-  .about-grid .content li{
-    color: #243147;              /* gris azulado legible en claro */
-  }
-  .about-grid .content h2,
-  .about-grid .content h3{
-    color: #133060;              /* título con buen contraste */
-  }
-  .about-grid .content a{
-    color: #0d6efd;
-  }
-
-  /* Ajuste suave del rail en modo claro para que no compita con el texto */
-  .rail-layer.glow{
-    background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,255,255,.80));
-    border: 1px solid rgba(0,0,0,.06);
-    box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.35);
-  }
-  .rail-card{
-    background: rgba(0,0,0,.03);
-    border-color: rgba(0,0,0,.08);
-  }
-  .rail-card h5{ color:#1f2d45; }
-  .rail-card .icons i{
-    color: #3a4a5f;
-    background: rgba(0,0,0,.03);
-    border-color: rgba(0,0,0,.08);
-  }
-}
-
-/* Asegura que el fondo del rail nunca tape clics ni texto */
-.rail-layer.glow{ pointer-events: none; }
-/* ====== Mobile: gutters y orden de capas ====== */
-@media (max-width: 991.98px){
-  .about-grid{
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding-inline: 16px;        /* margen lateral para que no se pegue a los bordes */
-    box-sizing: border-box;
-  }
-  .rail-grid{ padding: 14px; }
-  .rail-card{ border-radius: 16px; padding: 16px; }
-  .rail-card .icons{ gap: 12px; }
-  .rail-card .icons i{ font-size: 34px; padding: 14px; }
-}
-
-/* ====== Asegura capas: el contenido siempre por encima ====== */
-.left-rail{ z-index: 1; }
-.about-grid .content{ position: relative; z-index: 5; }
-
-/* ====== Modo CLARO: colores legibles ====== */
-@media (prefers-color-scheme: light){
-  /* Fondo del rail suave en claro */
-  .rail-layer.glow{
-    background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
-    border: 1px solid rgba(0,0,0,.06);
-    box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.35);
-    pointer-events: none; /* nunca tapa clics */
-  }
-
-  /* Texto del bloque derecho con buen contraste */
   .about-grid .content,
   .about-grid .content p,
   .about-grid .content li,
-  .about-grid .content span{
-    color: #1e293b !important;   /* gris-azul oscuro legible */
-    opacity: 1 !important;       /* elimina opacidades heredadas */
-  }
-  .about-grid .content .fst-italic{
-    color: #475569 !important;   /* subtítulo legible */
-    opacity: 1 !important;
-  }
+  .about-grid .content span{ color: #1e293b !important; opacity: 1 !important; }
+  .about-grid .content .fst-italic{ color: #475569 !important; opacity: 1 !important; }
   .about-grid .content h2,
-  .about-grid .content h3{
-    color: #0f3b82 !important;   /* títulos */
-  }
-  .about-grid .content a{
-    color: #0d6efd;              /* enlaces */
-    text-decoration-color: rgba(13,110,253,.35);
-  }
+  .about-grid .content h3{ color: #0f3b82 !important; }
+  .about-grid .content a{ color: #0d6efd; text-decoration-color: rgba(13,110,253,.35); }
 
-  /* Tarjetas del rail un poco más claras para no competir */
-  .rail-card{
-    background: rgba(0,0,0,.035);
-    border-color: rgba(0,0,0,.08);
-  }
+  .rail-card{ background: rgba(0,0,0,.035); border-color: rgba(0,0,0,.08); }
   .rail-card h5{ color:#1f2d45; }
-  .rail-card .icons i{
-    color: #3a4a5f;
-    background: rgba(0,0,0,.03);
-    border-color: rgba(0,0,0,.08);
-  }
+  .rail-card .icons i{ color:#3a4a5f; background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.08); }
 }
 
-/* Si tu sitio usa clase de tema, soporta también: */
-body.light .rail-layer.glow,
-[data-theme="light"] .rail-layer.glow{ 
-  background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,255,255,.82));
-  border: 1px solid rgba(0,0,0,.06);
-  box-shadow: 0 10px 22px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.35);
-}
-body.light .about-grid .content,
-[data-theme="light"] .about-grid .content{ color:#1e293b; }
-/* --- FIX definitivo: la capa de fondo del rail nunca debe salir de su aside --- */
-@media (max-width: 991.98px){
-  .left-rail{ position: relative !important; }   /* contenedor del absolute */
-}
-/* Asegura el orden de capas del rail */
-.rail-layer.glow{ z-index: 0; }
-.rail-grid{ position: relative; z-index: 1; }    /* tarjetas siempre encima del fondo */
-/* separa el contenido del rail en móvil con puro padding */
-@media (max-width: 991.98px){
-  .left-rail{
-    position: relative;           /* para que su fondo no se salga */
-    margin-bottom: 20px;          /* espacio bajo el rail */
-  }
-  .about-grid .content{
-    padding-top: 30px;            /* aire arriba del título */
-  }
-}
-/* misma guía derecha para moon y back-to-top */
-:root{ --ui-edge-right: 55px; }        /* cambia 55px si quieres otro offset */
+/* --------- Compactar SOLO la sección #about --------- */
+#about{ padding-top: 20px; padding-bottom: 40px; }  /* antes 60/60 */
+#about .section-title{ padding-bottom: 10px; margin-bottom: 4px; }
+#about .section-title h2{ margin-bottom: 8px; padding-bottom: 8px; }
+#about .section-title p{ margin-bottom: 0; }
+#about .about-grid{ margin-top: 8px; }
 
-/* toggle dark mode */
+/* --------- Alinear el botón back-to-top con el toggle de dark --------- */
+:root{ --ui-edge-right: 55px; }
 #bdark{ right: var(--ui-edge-right) !important; }
-
-/* back-to-top alineado con el moon */
 .back-to-top{ right: var(--ui-edge-right) !important; }
-
-/* mantener alineado también en móvil */
 @media (max-width: 576px){
   .back-to-top{ right: var(--ui-edge-right) !important; }
 }
-/* Hero en modo oscuro: color #149ddd */
+
+/* --------- Hero en modo oscuro: color #149ddd --------- */
 body.darkmode #hero h1,
 body.darkmode #hero p,
 body.darkmode #hero p span,
 body.darkmode #hero .typed,
-body.darkmode #hero .typed-cursor{
-  color: #149ddd;
+body.darkmode #hero .typed-cursor{ color: #149ddd; }
+body.darkmode #hero p span{ border-bottom-color: #149ddd; }
+/* ====== MOBILE FIX: quita el hueco bajo el HERO ====== */
+@media (max-width: 991.98px){
+  /* el hero no ocupa más alto de lo que necesita */
+  #hero{
+    position: relative;
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 8px !important;
+    padding-bottom: 0 !important;  /* <- clave */
+  }
+
+  #hero .hero-container{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #hero h1{
+    margin-bottom: 4px !important;
+    line-height: 1.15 !important;
+  }
+
+  #hero p,
+  #hero .typed,
+  #hero .typed-cursor{
+    margin: 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  /* acerca la sección siguiente */
+  #about{
+    padding-top: 14px !important;
+  }
 }
 
-/* La línea inferior del span también en #149ddd */
-body.darkmode #hero p span{
-  border-bottom-color: #149ddd;
+/* si aún quedara aire por el padding global de section, fuerza sólo el hero */
+#hero{ padding-bottom: 0 !important; }
+/* Compacta hero + arrima #about en móvil */
+@media (max-width: 991.98px){
+  #hero{ padding-bottom: 0 !important; }
+  #about{ padding-top: 14px !important; }
+}
+@media (max-width: 991.98px){
+  #hero{
+    display: flow-root;          /* evita colapso de márgenes */
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 8px !important;
+    padding-bottom: 0 !important;
+  }
+  #hero p{ margin: 0 !important; }
+  #about{ padding-top: 14px !important; }
+}
+/* ===== FIX HUECO EN MÓVIL (left-rail sin desplazamiento) ===== */
+@media (max-width: 991.98px){
+  .left-rail{
+    display: block !important;   /* sigues forzando que se vea en móvil */
+    position: static !important;  /* sin sticky */
+    top: auto !important;         /* <-- quita el empuje de 96px */
+    margin-top: 0 !important;
+  }
+
+  /* opcional: compactar un poco más el arranque del about */
+  #about{ padding-top: 14px !important; }
+  #hero p{ margin-bottom: 6px !important; }
+}
+:root{
+  --rail-accent: rgb(23, 59, 108);
+}
+
+/* Títulos y logos (íconos) del rail izquierdo */
+.left-rail .rail-card h5{
+  color: var(--rail-accent) !important;
+}
+
+.left-rail .rail-card .icons i{
+  color: var(--rail-accent) !important;
+  background: rgba(23, 59, 108, .04) !important;
+  border-color: rgba(23, 59, 108, .25) !important;
+}
+
+/* Hover a juego */
+.left-rail .rail-card .icons i:hover{
+  color: var(--rail-accent) !important;
+  border-color: rgba(23, 59, 108, .45) !important;
+  box-shadow: 0 10px 24px rgba(23, 59, 108, .20),
+              inset 0 0 18px rgba(23, 59, 108, .10);
+}
+/* Rail en dark mode con el mismo acento #149ddd del hero */
+.darkmode .rail-card h5{
+  color: #149ddd !important;
+}
+
+.darkmode .rail-card .icons i{
+  color: #149ddd !important;
+  border-color: rgba(20,157,221,.45) !important;
+  background: rgba(20,157,221,.08) !important;
+}
+
+.darkmode .rail-card .icons i:hover{
+  color: #ffffff !important;
+  border-color: #149ddd !important;
+  background: rgba(20,157,221,.18) !important;
+  box-shadow: 0 10px 26px rgba(20,157,221,.25), inset 0 0 22px rgba(20,157,221,.10) !important;
 }
