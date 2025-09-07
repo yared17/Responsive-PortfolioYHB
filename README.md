@@ -1,4 +1,4 @@
-# Responsive-PortfolioYHB
+# Responsive-( Portfolio Retomado)
 
 **Portafolio personal responsive** de **Yared Henríquez (DevYHB)** para presentar información profesional, servicios, certificaciones y un bloque de **tecnologías** con íconos (via **Devicon**). Incluye animaciones al hacer scroll, contadores, texto tipeado en el héroe, galería con lightbox, botón flotante de **WhatsApp** con modal y **despliegue en GitHub Pages**.
 

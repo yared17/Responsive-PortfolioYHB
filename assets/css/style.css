@@ -1482,3 +1482,46 @@ body.darkmode #hero p span{ border-bottom-color: #149ddd; }
   background: rgba(20,157,221,.18) !important;
   box-shadow: 0 10px 26px rgba(20,157,221,.25), inset 0 0 22px rgba(20,157,221,.10) !important;
 }
+/* Card Trailhead compacto */
+.trailhead-card{
+  border:1px solid #e6e9ef; border-radius:8px; padding:12px 14px;
+  background:#f8fafc; box-shadow:0 1px 0 rgba(16,24,40,.02);
+  max-width:680px
+}
+.trailhead-top{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+.trailhead-top img{height:50px; width:auto; display:block}
+.trailhead-stats{display:flex; gap:16px; flex-wrap:wrap; font-size:14px; color:#2b2f36; margin-bottom:6px}
+.trailhead-rank{font-size:13px; color:#475569; margin-bottom:4px}
+.trailhead-link a{color:#149ddd; text-decoration:none; font-weight:600}
+.trailhead-link a:hover{text-decoration:underline}
+
+/* Ajuste al <li> */
+.wh-item{display:flex; align-items:flex-start; gap:10px; margin-bottom:12px}
+.wh-item > i{margin-top:4px; color:#149ddd; font-size:18px}
+
+/* Dark mode */
+body.darkmode .trailhead-card{background:#0f172a; border-color:#1f2937}
+body.darkmode .trailhead-stats{color:#e5e7eb}
+body.darkmode .trailhead-rank{color:#cbd5e1}
+body.darkmode .trailhead-link a{color:#149ddd}
+
+/* Responsive fino */
+@media (max-width:520px){
+  .trailhead-top img{height:40px}
+  .trailhead-stats{gap:12px; font-size:13px}
+}
+/* CSS */
+.trailhead-rank-animate {
+  font-weight: 700;
+  display: inline-block;
+  animation: rankPulse 2s infinite ease-in-out;
+}
+
+@keyframes rankPulse {
+  0%   { transform: scale(1);   color:#475569; }
+  40%  { transform: scale(1.3); color:#149ddd; }
+  60%  { transform: scale(1.2); color:#37b3ed; }
+  100% { transform: scale(1);   color:#475569; }
+}
+
+
