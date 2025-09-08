@@ -119,7 +119,9 @@
 <body>
 
   <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+<button class="mobile-nav-toggle pixel-toggle d-xl-none" id="menuToggle" aria-label="Abrir menú"></button>
+
+
 
   <!-- ======= Header ======= -->
   <header id="header">
@@ -968,6 +970,35 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+<script>
+(function(){
+  const btn = document.getElementById('menuToggle');
+  if(!btn) return;
+
+  // accesibilidad
+  btn.setAttribute('role','button');
+
+  let t;
+  btn.addEventListener('click', ()=>{
+    // enciende la animación visual del botón
+    btn.classList.remove('ignite');
+    void btn.offsetWidth; // reflow para reiniciar
+    btn.classList.add('ignite');
+    clearTimeout(t);
+    t = setTimeout(()=> btn.classList.remove('ignite'), 700);
+  });
+
+  // pausa la “respiración” si el menú está abierto
+  const obs = new MutationObserver(()=>{
+    const open = document.body.classList.contains('mobile-nav-active');
+    btn.style.animationPlayState = open ? 'paused' : 'running';
+  });
+  obs.observe(document.body, { attributes:true, attributeFilter:['class'] });
+})();
+</script>
+
+
+
 </body>
 </html>
 

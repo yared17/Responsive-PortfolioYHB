@@ -172,27 +172,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #149ddd;
 }
 
-/* Mobile Navigation */
-.mobile-nav-toggle {
-  position: fixed;
-  right: 5px;
-  top: 15px;
-  z-index: 9998;
-  border: 0;
-  font-size: 24px;
-  transition: all 0.4s;
-  outline: none !important;
-  background-color: #149ddd;
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 0;
-  border-radius: 50px;
-  cursor: pointer;
-}
+
 
 .mobile-nav-active {
   overflow: hidden;
@@ -859,10 +839,7 @@ section {
     padding: 20px 15px; /* <- válido */
   }
 }
-.mobile-nav-toggle:hover {
-  background-color: #149ddd;
-  color: #fff;
-}
+
 
 #bdark {
  border: none;
@@ -1524,4 +1501,148 @@ body.darkmode .trailhead-link a{color:#149ddd}
   100% { transform: scale(1);   color:#475569; }
 }
 
+.mobile-nav-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(20,157,221,.35);
+}
 
+/* Pulso solo cuando el menú NO está abierto (en móvil) */
+@keyframes navPulse {
+  0%, 70%, 100% { box-shadow: 0 6px 16px rgba(20,157,221,.28); transform: translateY(0) scale(1); }
+  20%          { box-shadow: 0 14px 36px rgba(20,157,221,.45); transform: translateY(-1px) scale(1.06); }
+  40%          { box-shadow: 0 10px 28px rgba(20,157,221,.35); transform: translateY(0) scale(1.02); }
+}
+@media (max-width: 1199px) {
+  body:not(.mobile-nav-active) .mobile-nav-toggle {
+    animation: navPulse 6s ease-in-out infinite 1.8s;
+  }
+}
+
+/* Respeto a usuarios con reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body:not(.mobile-nav-active) .mobile-nav-toggle {
+    animation: none !important;
+  }
+}
+
+
+/* Chispa/bloom (debajo) */
+@keyframes sparkBloom {
+  0%   { transform: translate(-50%, -10%) scale(.4); opacity: .0; }
+  10%  { opacity: .8; }
+  60%  { transform: translate(-50%, -120%) scale(1.05); opacity: .9; }
+  100% { transform: translate(-50%, -180%) scale(1.1); opacity: 0; }
+}
+
+/* Llama principal */
+@keyframes flameBurst {
+  0%   { transform: translate(-50%, 0) scale(.6); opacity: 0; }
+  10%  { opacity: 1; }
+  60%  { transform: translate(-50%, -28px) scale(1.05); opacity: 1; }
+  100% { transform: translate(-50%, -40px) scale(1.1); opacity: 0; }
+}
+
+/* Chispitas pequeñas (tres puntitos) */
+@keyframes sparksUp {
+  0%   { transform: translate(-50%, -6px) scale(.6); opacity: 0; }
+  20%  { opacity: .9; }
+  60%  { transform: translate(-50%, -36px) scale(.9); opacity: .9; }
+  100% { transform: translate(-50%, -54px) scale(1); opacity: 0; }
+}
+
+/* ---------- Atención base (rebote suave y brillo) ---------- */
+@keyframes btnBounce {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-2px) }
+}
+@media (max-width:1199px){
+  body:not(.mobile-nav-active) .mobile-nav-toggle{
+    animation: btnBounce 2.2s ease-in-out infinite;
+    box-shadow: 0 10px 26px rgba(20,157,221,.38);
+  }
+}
+/* Botón llama (mismo tamaño y alineación que #bdark y .mobile-nav-toggle) */
+.pixel-toggle{
+  position: fixed;
+  top: 15px;
+  right: 5px;
+  z-index: 9998;
+  width: 40px;               /* igual que la luna */
+  height: 40px;              /* igual que la luna */
+  border: 0;
+  padding: 0;
+  border-radius: 50px;       /* círculo */
+  background-color: #149ddd; /* respeta transparencia del PNG */
+  cursor: pointer;
+  display: inline-block;
+  isolation: isolate;
+  box-shadow: 0 6px 18px rgba(20,157,221,.28);
+  transition: box-shadow .25s ease, transform .2s ease;
+}
+
+/* Sprite centrado + animación de llama */
+.pixel-toggle::before{
+  content:"";
+  position:absolute;
+  inset: 6px; /* margen interior */
+  background: url("../img/toggle.png") center center / 100% 100% no-repeat;
+  image-rendering: pixelated;               
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.25));
+  animation: flameFlicker 1.2s infinite ease-in-out; /* 👈 animación continua */
+}
+
+/* Feedback */
+.pixel-toggle:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(20,157,221,.45);
+}
+
+/* Click (halo + wiggle) */
+.pixel-toggle.ignite::after{
+  content:"";
+  position:absolute; inset:0; margin:auto;
+  width:42px; height:42px; border-radius:50%;
+  background: radial-gradient(closest-side, rgba(20,157,221,.45), rgba(20,157,221,0) 70%);
+  animation: rippleMenu .7s ease-out forwards;
+  z-index: -1;
+}
+.pixel-toggle::before{
+  content:"";
+  position:absolute;
+  inset: 0; /* 👈 más grande: menos margen interno */
+  background: url("../img/toggle.png") center center / 100% 100% no-repeat;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.25));
+  animation: flameFlicker 1.2s infinite ease-in-out;
+}
+
+
+@keyframes rippleMenu{
+  from { transform: scale(1);   opacity:.8; }
+  to   { transform: scale(2.1); opacity:0; }
+}
+@keyframes wiggle{
+  0%   { transform: rotate(0) scale(1) }
+  25%  { transform: rotate(-10deg) scale(1.04) }
+  50%  { transform: rotate(7deg)  scale(1.04) }
+  75%  { transform: rotate(-6deg) scale(1.02) }
+  100% { transform: rotate(0) scale(1) }
+}
+
+/* Efecto de llama viva */
+@keyframes flameFlicker {
+  0%, 100% { transform: scale(1) translateY(0); filter: brightness(1) drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+  20%      { transform: scale(1.02) translateY(-1px); filter: brightness(1.1) drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
+  40%      { transform: scale(0.98) translateY(1px);  filter: brightness(0.95) drop-shadow(0 0px 1px rgba(0,0,0,.2)); }
+  60%      { transform: scale(1.03) translateY(-1px); filter: brightness(1.15) drop-shadow(0 2px 4px rgba(0,0,0,.4)); }
+  80%      { transform: scale(0.99) translateY(1px);  filter: brightness(0.9) drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+}
+
+/* Respeta dark mode */
+.darkmode .pixel-toggle {
+  background-color: #149ddd;   /* mismo color azul que la luna */
+  border-radius: 50px;         /* círculo perfecto */
+}
+.darkmode .pixel-toggle::before {
+  filter: none; /* para que se vea la transparencia limpia */
+}
