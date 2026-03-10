@@ -7,256 +7,374 @@
 <link rel="icon" href="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
 <style>
 :root {
-  --ink:   #0c0c0c;
-  --ink2:  #141414;
-  --ink3:  #1e1e1e;
-  --cream: #f0ebe2;
-  --cream2:#d9d0c1;
-  --gold:  #c4a265;
-  --gold2: #e8c98a;
-  --muted: #6b6355;
-  --line:  rgba(196,162,101,0.18);
-  --fh:    'Cormorant Garamond', Georgia, serif;
-  --fb:    'Outfit', sans-serif;
+  --bg:      #f5f4f0;
+  --bg2:     #eceae4;
+  --surface: #ffffff;
+  --ink:     #16181c;
+  --ink2:    #3a3d44;
+  --muted:   #878a93;
+  --accent:  #0e7a5f;
+  --accent2: #0a5c47;
+  --line:    #e0ddd6;
+  --fh: 'Bricolage Grotesque', sans-serif;
+  --fm: 'DM Mono', monospace;
 }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--fb);background:var(--ink);color:var(--cream);overflow-x:hidden;cursor:none;}
+body{font-family:var(--fh);background:var(--bg);color:var(--ink);overflow-x:hidden;font-size:16px;line-height:1.6;}
 img{display:block;max-width:100%;}
 a{text-decoration:none;color:inherit;}
 ::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-track{background:var(--ink);}
-::-webkit-scrollbar-thumb{background:var(--gold);}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);}
 
-/* GRAIN */
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;}
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 5vw;
+  background:rgba(245,244,240,0.9);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s;
+}
+nav.scrolled{border-color:var(--line);}
+.nlogo{
+  font-family:var(--fh);font-size:1rem;font-weight:800;
+  letter-spacing:-.02em;color:var(--ink);
+}
+.nlogo em{color:var(--accent);font-style:normal;}
+.nlinks{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+.nlinks a{
+  font-size:.8rem;font-weight:500;color:var(--ink2);
+  transition:color .2s;
+}
+.nlinks a:hover{color:var(--accent);}
+.ncta{
+  background:var(--ink) !important;color:#fff !important;
+  padding:.5rem 1.3rem;font-size:.78rem;font-weight:600;
+  transition:background .2s !important;
+}
+.ncta:hover{background:var(--accent) !important;}
 
-/* CURSOR */
-#cur-dot{position:fixed;z-index:9999;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s;}
-#cur-ring{position:fixed;z-index:9998;width:36px;height:36px;border:1px solid rgba(196,162,101,.5);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:left .12s ease-out,top .12s ease-out,width .3s,height .3s;}
-body.chov #cur-dot{width:12px;height:12px;background:var(--gold2);}
-body.chov #cur-ring{width:54px;height:54px;border-color:var(--gold);}
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 420px;
+  align-items:center;gap:4rem;
+  padding:8rem 5vw 5rem;
+  max-width:1200px;margin:0 auto;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--fm);font-size:.72rem;color:var(--accent);
+  background:rgba(14,122,95,.08);
+  border:1px solid rgba(14,122,95,.2);
+  padding:.35rem .9rem;margin-bottom:2rem;
+}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
 
-/* LOADER */
-#loader{position:fixed;inset:0;background:var(--ink);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .6s,visibility .6s;}
-#loader.hidden{opacity:0;visibility:hidden;}
-.lname{font-family:var(--fh);font-size:2.5rem;font-weight:300;letter-spacing:.3em;color:var(--cream);text-transform:uppercase;}
-.lname span{display:inline-block;animation:lrev .8s cubic-bezier(.77,0,.18,1) both;}
-.lbar-w{width:180px;height:1px;background:rgba(196,162,101,.2);}
-.lbar{height:100%;background:var(--gold);width:0;animation:lfill 1.4s cubic-bezier(.77,0,.18,1) .3s forwards;}
-@keyframes lfill{to{width:100%;}}
-@keyframes lrev{from{transform:translateY(100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+h1.hname{
+  font-size:clamp(3.2rem,6vw,6.5rem);
+  font-weight:800;line-height:1;
+  letter-spacing:-.04em;
+  color:var(--ink);margin-bottom:.3em;
+}
+h1.hname em{
+  font-style:normal;color:var(--accent);
+  display:block;
+}
+.hrole{
+  font-family:var(--fm);font-size:.8rem;
+  color:var(--muted);margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+}
+.hrole span{color:var(--ink2);}
+.hrole-sep{color:var(--line);}
+.hbtns{display:flex;gap:.8rem;flex-wrap:wrap;}
+.btn-solid{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--ink);color:#fff;
+  padding:.75rem 1.8rem;font-size:.82rem;font-weight:600;
+  font-family:var(--fh);transition:background .2s;
+}
+.btn-solid:hover{background:var(--accent);}
+.btn-line{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;border:1.5px solid var(--ink);color:var(--ink);
+  padding:.75rem 1.8rem;font-size:.82rem;font-weight:500;
+  font-family:var(--fh);transition:border-color .2s,color .2s;
+}
+.btn-line:hover{border-color:var(--accent);color:var(--accent);}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.8rem 5vw;transition:background .4s,padding .4s,border-bottom .4s;}
-nav.scrolled{background:rgba(12,12,12,.93);backdrop-filter:blur(24px);padding:1.1rem 5vw;border-bottom:1px solid var(--line);}
-.nlogo{font-family:var(--fh);font-size:1.4rem;font-weight:600;letter-spacing:.12em;color:var(--cream);text-transform:uppercase;}
-.nlogo em{color:var(--gold);font-style:normal;}
-.nlinks{display:flex;gap:3rem;list-style:none;align-items:center;}
-.nlinks a{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cream2);position:relative;transition:color .25s;}
-.nlinks a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
-.nlinks a:hover{color:var(--cream);}
-.nlinks a:hover::after{width:100%;}
-.ncta{border:1px solid rgba(196,162,101,.4) !important;color:var(--gold) !important;padding:.55rem 1.4rem;transition:background .3s,border-color .3s !important;}
-.ncta:hover{background:var(--gold) !important;color:var(--ink) !important;border-color:var(--gold) !important;}
-.ncta::after{display:none !important;}
+.hphoto{
+  position:relative;
+}
+.hphoto img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;
+  border-radius:4px;
+  box-shadow:0 24px 60px rgba(22,24,28,.12);
+}
+.hphoto-badge{
+  position:absolute;bottom:-1.5rem;left:-1.5rem;
+  background:var(--surface);border:1px solid var(--line);
+  padding:1rem 1.3rem;
+  box-shadow:0 8px 24px rgba(22,24,28,.08);
+}
+.hphoto-badge-num{font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1;}
+.hphoto-badge-txt{font-size:.68rem;color:var(--muted);margin-top:.15rem;font-family:var(--fm);}
 
-/* HERO */
-#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 5vw;position:relative;overflow:hidden;}
-.hbg{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(196,162,101,.04) 80px);pointer-events:none;}
-.hnum{position:absolute;top:12vh;right:5vw;font-family:var(--fh);font-size:clamp(14rem,20vw,26rem);font-weight:700;line-height:1;color:rgba(196,162,101,.04);user-select:none;pointer-events:none;letter-spacing:-.05em;}
-.hleft{padding-top:10vh;padding-bottom:8vh;position:relative;}
-.heyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;opacity:0;animation:fup .9s 1.6s cubic-bezier(.25,.8,.25,1) forwards;}
-.heline{width:48px;height:1px;background:var(--gold);}
-.hetext{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:500;}
-.hname{font-family:var(--fh);font-size:clamp(4.5rem,8vw,9rem);font-weight:300;line-height:.95;letter-spacing:-.02em;color:var(--cream);margin-bottom:.15em;overflow:hidden;}
-.hname-line{display:block;transform:translateY(110%);animation:clrev 1s cubic-bezier(.77,0,.18,1) forwards;}
-.hname-line:nth-child(1){animation-delay:1.7s;}
-.hname-line:nth-child(2){animation-delay:1.85s;font-style:italic;color:var(--gold);}
-.hrole{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:2rem;margin-bottom:3rem;opacity:0;animation:fup .9s 2.1s cubic-bezier(.25,.8,.25,1) forwards;}
-.hrole span{color:var(--cream2);border-left:1px solid var(--line);padding-left:1rem;margin-left:1rem;}
-.hactions{display:flex;gap:1.2rem;flex-wrap:wrap;opacity:0;animation:fup .9s 2.3s cubic-bezier(.25,.8,.25,1) forwards;}
-.btn-gold{display:inline-flex;align-items:center;gap:.7rem;background:var(--gold);color:var(--ink);padding:.9rem 2.2rem;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:background .3s,transform .3s;font-family:var(--fb);}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
-.btn-ghost{display:inline-flex;align-items:center;gap:.7rem;background:transparent;border:1px solid rgba(196,162,101,.3);color:var(--cream2);padding:.9rem 2.2rem;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;transition:border-color .3s,color .3s,transform .3s;font-family:var(--fb);}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
-.hright{position:relative;display:flex;align-items:center;justify-content:center;height:100vh;padding-top:10vh;opacity:0;animation:fin 1.2s 2s ease forwards;}
-.hframe{position:relative;width:72%;max-width:420px;}
-.hframe::before{content:'';position:absolute;top:-18px;left:-18px;right:18px;bottom:18px;border:1px solid var(--line);z-index:0;pointer-events:none;}
-.hframe::after{content:'';position:absolute;top:18px;right:-18px;bottom:-18px;left:18px;background:linear-gradient(135deg,rgba(196,162,101,.08),transparent);z-index:0;}
-.hphoto{width:100%;aspect-ratio:3/4;object-fit:cover;position:relative;z-index:1;filter:grayscale(15%) contrast(1.05);}
-.hphoto-ph{width:100%;aspect-ratio:3/4;background:var(--ink3);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;color:var(--muted);font-size:4rem;}
-.hscroll{position:absolute;bottom:4vh;left:5vw;display:flex;align-items:center;gap:1rem;opacity:0;animation:fup .9s 2.6s ease forwards;}
-.sline{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold));}
-.stxt{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;}
+.hstats{
+  display:flex;gap:2.5rem;
+  margin-top:3.5rem;padding-top:2.5rem;
+  border-top:1px solid var(--line);
+}
+.hstat-n{font-size:2rem;font-weight:800;color:var(--ink);letter-spacing:-.04em;line-height:1;}
+.hstat-l{font-size:.7rem;color:var(--muted);margin-top:.2rem;font-family:var(--fm);}
 
-@keyframes fup{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-@keyframes fin{from{opacity:0;}to{opacity:1;}}
-@keyframes clrev{from{transform:translateY(110%);}to{transform:translateY(0);}}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.25,.8,.25,1),transform .85s cubic-bezier(.25,.8,.25,1);}
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
-.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.18s;}.d3{transition-delay:.26s;}.d4{transition-delay:.34s;}
 
-/* SECTION */
-.section{padding:10rem 5vw;max-width:1280px;margin:0 auto;}
-.divider{width:calc(100% - 10vw);height:1px;background:var(--line);margin:0 5vw;}
-.slabel{display:flex;align-items:center;gap:1.2rem;margin-bottom:5rem;}
-.slnum{font-family:var(--fh);font-size:.8rem;color:var(--gold);font-style:italic;}
-.sltxt{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);font-weight:500;}
-.slline{flex:1;height:1px;background:var(--line);}
-h2.stit{font-family:var(--fh);font-size:clamp(3rem,5.5vw,6rem);font-weight:300;line-height:1.05;letter-spacing:-.02em;color:var(--cream);}
-h2.stit em{font-style:italic;color:var(--gold);}
+/* ── SECTION ── */
+.section{padding:7rem 5vw;max-width:1200px;margin:0 auto;}
+.sec-label{
+  display:flex;align-items:center;gap:1rem;margin-bottom:3rem;
+}
+.sec-label-tag{
+  font-family:var(--fm);font-size:.68rem;color:var(--accent);
+  background:rgba(14,122,95,.08);border:1px solid rgba(14,122,95,.2);
+  padding:.25rem .75rem;
+}
+.sec-label-line{flex:1;height:1px;background:var(--line);}
 
-/* ABOUT */
-.about-lay{display:grid;grid-template-columns:1fr 1.4fr;gap:8rem;align-items:start;}
-.aphwrap{position:relative;}
-.aphwrap::before{content:'';position:absolute;inset:-12px 12px 12px -12px;border:1px solid var(--line);pointer-events:none;}
-.aphimg{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(10%) contrast(1.05) brightness(.95);}
-.aphcap{position:absolute;bottom:-2rem;right:0;font-family:var(--fh);font-size:.75rem;font-style:italic;color:var(--muted);letter-spacing:.05em;}
-.abody{font-size:1.05rem;color:var(--cream2);line-height:1.95;font-weight:300;margin-bottom:3rem;}
-.abody strong{color:var(--cream);font-weight:500;}
-.ameta{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);margin-bottom:3rem;}
-.amitem{padding:1.4rem 0;border-bottom:1px solid var(--line);}
-.amitem:nth-child(odd){padding-right:2rem;border-right:1px solid var(--line);}
-.amitem:nth-child(even){padding-left:2rem;}
-.amk{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
-.amv{font-size:.9rem;color:var(--cream);font-weight:400;}
-.amv.av{color:var(--gold);}
-.astats{display:flex;gap:0;border:1px solid var(--line);margin-top:3rem;}
-.astat{flex:1;padding:1.8rem 1.5rem;border-right:1px solid var(--line);text-align:center;}
-.astat:last-child{border-right:none;}
-.astn{font-family:var(--fh);font-size:2.8rem;font-weight:600;color:var(--gold);line-height:1;display:block;}
-.astl{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;display:block;}
+h2.stit{
+  font-size:clamp(2rem,4vw,3.5rem);font-weight:800;
+  letter-spacing:-.03em;color:var(--ink);
+  line-height:1.1;margin-bottom:1rem;
+}
+h2.stit em{font-style:normal;color:var(--accent);}
+.stit-sub{font-size:1rem;color:var(--muted);font-weight:400;margin-bottom:3.5rem;max-width:500px;}
 
-/* SKILLS */
-.ski-lay{display:grid;grid-template-columns:1fr 1.6fr;gap:8rem;align-items:start;}
-.ski-intro{position:sticky;top:120px;}
-.ski-intro p{font-size:1rem;color:var(--cream2);line-height:1.85;font-weight:300;margin-top:2.5rem;}
-.skigroups{display:flex;flex-direction:column;gap:2.5rem;}
-.skigroup-label{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
-.skigroup-label::after{content:'';flex:1;height:1px;background:var(--line);}
-.skitags{display:flex;flex-wrap:wrap;gap:.6rem;}
-.skitag{display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1.1rem;border:1px solid var(--line);font-size:.8rem;color:var(--cream2);font-weight:400;transition:border-color .25s,color .25s,background .25s;}
-.skitag i{font-size:1.1rem;}
-.skitag:hover{border-color:var(--gold);color:var(--cream);background:rgba(196,162,101,.05);}
+.sdivider{height:1px;background:var(--line);margin:0 5vw;}
 
-/* RESUME */
-.res-lay{display:grid;grid-template-columns:1fr 1fr;gap:6rem;}
-.rct{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;display:flex;align-items:center;gap:1rem;}
-.rct::after{content:'';flex:1;height:1px;background:var(--line);}
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:340px 1fr;gap:6rem;align-items:start;}
+.about-img{
+  position:sticky;top:7rem;
+  border-radius:4px;overflow:hidden;
+  box-shadow:0 16px 48px rgba(22,24,28,.1);
+}
+.about-img img{width:100%;aspect-ratio:3/4;object-fit:cover;}
+.about-img-cap{
+  background:var(--surface);border-top:1px solid var(--line);
+  padding:.8rem 1rem;
+  font-family:var(--fm);font-size:.68rem;color:var(--muted);
+}
+.about-text p{font-size:1rem;color:var(--ink2);line-height:1.85;margin-bottom:1.5rem;font-weight:400;}
+.about-text p strong{color:var(--ink);font-weight:700;}
+.about-meta{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1px solid var(--line);
+  margin-top:2.5rem;
+}
+.am{padding:1rem 1.2rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+.am:nth-child(even){border-right:none;}
+.am:nth-last-child(-n+2){border-bottom:none;}
+.am-k{font-family:var(--fm);font-size:.62rem;color:var(--muted);margin-bottom:.3rem;}
+.am-v{font-size:.88rem;font-weight:600;color:var(--ink);}
+.am-v.av{color:var(--accent);}
+
+/* ── SKILLS ── */
+.ski-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.ski-left{position:sticky;top:7rem;}
+.ski-left p{font-size:1rem;color:var(--ink2);line-height:1.8;margin-top:1.5rem;}
+.skigroups{display:flex;flex-direction:column;gap:2rem;}
+.skig-title{
+  font-family:var(--fm);font-size:.65rem;color:var(--muted);
+  letter-spacing:.1em;text-transform:uppercase;
+  padding-bottom:.7rem;border-bottom:1px solid var(--line);
+  margin-bottom:.9rem;
+}
+.skitags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.skitag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.42rem .9rem;
+  background:var(--surface);border:1px solid var(--line);
+  font-size:.78rem;font-weight:500;color:var(--ink2);
+  border-radius:2px;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.skitag i{font-size:1rem;}
+.skitag:hover{border-color:var(--accent);color:var(--accent);background:rgba(14,122,95,.04);}
+
+/* ── RESUME ── */
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.res-col-title{
+  font-family:var(--fm);font-size:.68rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.1em;
+  display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
+}
+.res-col-title i{color:var(--accent);font-size:.9rem;}
+.res-col-title::after{content:'';flex:1;height:1px;background:var(--line);}
 .tl{display:flex;flex-direction:column;}
-.tli{display:grid;grid-template-columns:100px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--line);position:relative;}
+.tli{
+  display:grid;grid-template-columns:88px 1fr;
+  gap:1.5rem;padding:1.8rem 0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
 .tli:first-child{padding-top:0;}
-.tly{font-family:var(--fh);font-size:.78rem;font-style:italic;color:var(--muted);padding-top:.2rem;line-height:1.5;}
-.tldo{position:absolute;left:99px;top:2.5rem;width:7px;height:7px;border-radius:50%;border:1px solid var(--gold);background:var(--ink);}
+.tly{font-family:var(--fm);font-size:.68rem;color:var(--muted);line-height:1.6;padding-top:.15rem;}
+.tldo{
+  position:absolute;left:87px;top:1.9rem;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+}
 .tli:first-child .tldo{top:0;}
-.tltit{font-family:var(--fh);font-size:1.35rem;font-weight:400;color:var(--cream);margin-bottom:.25rem;line-height:1.3;}
-.tlorg{font-size:.75rem;color:var(--gold);letter-spacing:.08em;margin-bottom:.8rem;}
-.tldesc{font-size:.88rem;color:var(--muted);line-height:1.8;font-weight:300;}
+.tltit{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.2rem;}
+.tlorg{font-family:var(--fm);font-size:.7rem;color:var(--accent);margin-bottom:.5rem;}
+.tldesc{font-size:.85rem;color:var(--muted);line-height:1.75;}
 
-/* PORTFOLIO */
-.pfilt{display:flex;align-items:center;gap:0;margin-bottom:4rem;border-bottom:1px solid var(--line);}
-.pfbtn{background:none;border:none;font-family:var(--fb);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:1rem 2rem 1rem 0;margin-right:2rem;cursor:none;position:relative;transition:color .25s;}
-.pfbtn::after{content:'';position:absolute;bottom:-1px;left:0;width:0;height:2px;background:var(--gold);transition:width .3s;}
-.pfbtn.active{color:var(--cream);}
-.pfbtn.active::after,.pfbtn:hover::after{width:calc(100% - 2rem);}
-.pfbtn:hover{color:var(--cream2);}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;}
-.pitem{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--ink3);cursor:none;}
-.pitem img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.8,.25,1),filter .4s;filter:grayscale(20%);}
-.pitem:hover img{transform:scale(1.06);filter:grayscale(0%);}
-.pov{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.85) 0%,transparent 60%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1.5rem;}
+/* ── PORTFOLIO ── */
+.pfilt{display:flex;gap:.4rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+.pfbtn{
+  background:transparent;border:1px solid var(--line);
+  font-family:var(--fh);font-size:.78rem;font-weight:500;
+  color:var(--muted);padding:.45rem 1.1rem;cursor:pointer;
+  transition:all .2s;
+}
+.pfbtn.active,.pfbtn:hover{background:var(--ink);border-color:var(--ink);color:#fff;}
+.pfbtn.active{background:var(--accent);border-color:var(--accent);}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
+.pitem{
+  position:relative;overflow:hidden;aspect-ratio:4/3;
+  background:var(--bg2);cursor:pointer;
+}
+.pitem img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.pitem:hover img{transform:scale(1.05);}
+.pov{
+  position:absolute;inset:0;
+  background:rgba(14,122,95,.88);
+  opacity:0;transition:opacity .3s;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:.4rem;
+}
 .pitem:hover .pov{opacity:1;}
-.potag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
-.potit{font-family:var(--fh);font-size:1.1rem;color:var(--cream);}
-.tgrid{display:none;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:1.5px;}
+.pov-tag{font-family:var(--fm);font-size:.65rem;color:rgba(255,255,255,.7);}
+.pov-tit{font-size:1rem;font-weight:700;color:#fff;}
+.tgrid{display:none;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:1px;background:var(--line);}
 .tgrid.vis{display:grid;}
-.tcell{background:var(--ink3);border:1px solid var(--line);padding:1.8rem 1rem;text-align:center;transition:background .3s,border-color .3s;}
-.tcell:hover{background:rgba(196,162,101,.06);border-color:rgba(196,162,101,.3);}
-.tcell i{font-size:2rem;display:block;margin-bottom:.7rem;}
-.tcell span{font-size:.67rem;color:var(--muted);letter-spacing:.08em;}
+.tcell{
+  background:var(--surface);padding:1.5rem .8rem;
+  text-align:center;transition:background .2s;
+}
+.tcell:hover{background:rgba(14,122,95,.05);}
+.tcell i{font-size:2rem;display:block;margin-bottom:.5rem;}
+.tcell span{font-family:var(--fm);font-size:.65rem;color:var(--muted);}
 
-/* SERVICES */
-.svc-lay{display:grid;grid-template-columns:1fr 2fr;gap:8rem;align-items:start;}
-.svc-intr{position:sticky;top:120px;}
-.svc-intr p{font-size:.95rem;color:var(--cream2);line-height:1.85;font-weight:300;margin-top:2.5rem;}
-.svclist{display:flex;flex-direction:column;}
-.svcit{display:grid;grid-template-columns:48px 1fr;gap:2rem;align-items:start;padding:2.5rem 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
-.svcit::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(196,162,101,.04);transition:width .4s;}
-.svcit:hover::before{width:100%;}
-.svcnum{font-family:var(--fh);font-size:.85rem;font-style:italic;color:var(--gold);padding-top:.15rem;}
-.svcicontit{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem;}
-.svcico{color:var(--gold);font-size:1.1rem;}
-.svctit{font-family:var(--fh);font-size:1.35rem;font-weight:400;color:var(--cream);}
-.svcdesc{font-size:.88rem;color:var(--muted);line-height:1.8;font-weight:300;}
+/* ── SERVICES ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
+.svc-card{
+  background:var(--surface);padding:2.2rem 2rem;
+  transition:background .25s;position:relative;overflow:hidden;
+}
+.svc-card:hover{background:var(--ink);}
+.svc-card:hover .svc-title,.svc-card:hover .svc-desc{color:#fff;}
+.svc-card:hover .svc-ico{color:var(--accent);}
+.svc-n{
+  font-family:var(--fm);font-size:.65rem;color:var(--muted);
+  margin-bottom:1.5rem;
+}
+.svc-card:hover .svc-n{color:rgba(255,255,255,.4);}
+.svc-ico{font-size:1.4rem;color:var(--accent);margin-bottom:1rem;display:block;transition:color .25s;}
+.svc-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.6rem;transition:color .25s;}
+.svc-desc{font-size:.85rem;color:var(--muted);line-height:1.75;transition:color .25s;}
 
-/* CONTACT */
-.con-lay{display:grid;grid-template-columns:1.1fr 1fr;gap:8rem;align-items:start;}
-.concta{font-family:var(--fh);font-size:clamp(2.2rem,4vw,4.5rem);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:3rem;}
-.concta em{font-style:italic;color:var(--gold);display:block;}
-.conbody{font-size:.95rem;color:var(--cream2);line-height:1.85;font-weight:300;margin-bottom:3rem;}
-.conlinks{display:flex;flex-direction:column;}
-.clink{display:flex;align-items:center;gap:1.5rem;padding:1.4rem 0;border-bottom:1px solid var(--line);color:var(--cream2);font-size:.88rem;transition:color .25s,padding-left .3s;position:relative;overflow:hidden;}
-.clink::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(196,162,101,.04);transition:width .3s;}
-.clink:hover{color:var(--gold);padding-left:.5rem;}
-.clink:hover::before{width:100%;}
-.cico{width:36px;height:36px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.9rem;flex-shrink:0;transition:border-color .25s,background .25s;}
-.clink:hover .cico{border-color:var(--gold);background:rgba(196,162,101,.1);}
-.mapwrap{border:1px solid var(--line);overflow:hidden;height:280px;margin-bottom:2rem;}
-.mapwrap iframe{width:100%;height:100%;border:none;filter:invert(92%) hue-rotate(180deg) saturate(.3) brightness(.85);}
-.loclbl{display:flex;align-items:center;gap:1rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
-.loclbl i{color:var(--gold);}
+/* ── CONTACT ── */
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.con-cta{font-size:clamp(2rem,4vw,3.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--ink);margin-bottom:1.5rem;}
+.con-cta em{font-style:normal;color:var(--accent);}
+.con-body{font-size:.95rem;color:var(--muted);line-height:1.8;margin-bottom:2.5rem;}
+.conlinks{display:flex;flex-direction:column;gap:.5rem;}
+.clink{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.2rem;background:var(--surface);
+  border:1px solid var(--line);font-size:.85rem;color:var(--ink2);
+  font-weight:500;transition:all .2s;
+}
+.clink:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
+.clink:hover .cico{background:var(--accent);border-color:var(--accent);color:#fff;}
+.cico{
+  width:32px;height:32px;
+  background:rgba(14,122,95,.08);border:1px solid rgba(14,122,95,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);font-size:.85rem;flex-shrink:0;transition:all .2s;
+}
+.mapwrap{border:1px solid var(--line);overflow:hidden;height:300px;margin-top:2.5rem;}
+.mapwrap iframe{width:100%;height:100%;border:none;}
+.maplbl{
+  font-family:var(--fm);font-size:.68rem;color:var(--muted);
+  display:flex;align-items:center;gap:.5rem;
+  margin-top:.8rem;
+}
+.maplbl i{color:var(--accent);}
 
-/* FOOTER */
-footer{border-top:1px solid var(--line);padding:3rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.fcopy{font-size:.72rem;color:var(--muted);letter-spacing:.08em;}
-.fcopy strong{color:var(--gold);font-weight:500;}
-.fsoc{display:flex;gap:1.5rem;}
-.fsoc a{color:var(--muted);font-size:1rem;transition:color .25s,transform .25s;}
-.fsoc a:hover{color:var(--gold);transform:translateY(-2px);}
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--line);padding:2rem 5vw;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;background:var(--surface);
+}
+.fcopy{font-family:var(--fm);font-size:.7rem;color:var(--muted);}
+.fcopy strong{color:var(--ink);}
+.fsoc{display:flex;gap:1.2rem;}
+.fsoc a{font-size:1rem;color:var(--muted);transition:color .2s;}
+.fsoc a:hover{color:var(--accent);}
 
-/* WHATSAPP */
-.waf{position:fixed;bottom:2.5rem;right:2.5rem;z-index:400;width:52px;height:52px;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;box-shadow:0 6px 24px rgba(37,211,102,.35);transition:transform .3s,box-shadow .3s;}
-.waf:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(37,211,102,.45);}
+/* ── WHATSAPP ── */
+.waf{
+  position:fixed;bottom:2rem;right:2rem;z-index:200;
+  width:50px;height:50px;background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1.3rem;border-radius:50%;
+  box-shadow:0 4px 16px rgba(37,211,102,.35);
+  transition:transform .25s,box-shadow .25s;
+}
+.waf:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,211,102,.45);}
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  #hero{grid-template-columns:1fr;}
-  .hright{display:none;}
-  .about-lay,.ski-lay,.res-lay,.svc-lay,.con-lay{grid-template-columns:1fr;gap:4rem;}
-  .ski-intro,.svc-intr{position:static;}
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr;padding-top:7rem;}
+  .hphoto{display:none;}
+  .about-grid{grid-template-columns:1fr;gap:3rem;}
+  .about-img{position:static;}
+  .ski-grid,.res-grid,.con-grid{grid-template-columns:1fr;gap:3rem;}
+  .ski-left{position:static;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
   .pgrid{grid-template-columns:1fr 1fr;}
   .nlinks{display:none;}
-  .section{padding:6rem 5vw;}
+  .section{padding:5rem 5vw;}
 }
 @media(max-width:560px){
-  .pgrid{grid-template-columns:1fr;}
-  .astats{flex-direction:column;}
-  .astat{border-right:none;border-bottom:1px solid var(--line);}
+  .svc-grid,.pgrid{grid-template-columns:1fr;}
+  .about-meta{grid-template-columns:1fr;}
+  .am{border-right:none;}
+  .hstats{gap:1.5rem;flex-wrap:wrap;}
   footer{flex-direction:column;align-items:flex-start;}
 }
 </style>
 </head>
 <body>
-
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="lname">
-    <span style="animation-delay:.10s">D</span><span style="animation-delay:.15s">e</span><span style="animation-delay:.20s">v</span><span style="animation-delay:.25s">Y</span><span style="animation-delay:.30s">H</span><span style="animation-delay:.35s">B</span>
-  </div>
-  <div class="lbar-w"><div class="lbar"></div></div>
-</div>
 
 <!-- NAV -->
 <nav id="mnav">
@@ -271,74 +389,103 @@ footer{border-top:1px solid var(--line);padding:3rem 5vw;display:flex;justify-co
 </nav>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="hbg"></div>
-  <div class="hnum">01</div>
-  <div class="hleft">
-    <div class="heyebrow"><div class="heline"></div><span class="hetext">Ingeniero · Developer · Freelance</span></div>
+<div id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Disponible para proyectos freelance</div>
     <h1 class="hname">
-      <span class="hname-line">Yared</span>
-      <span class="hname-line">Henriquez</span>
+      Yared<br><em>Henriquez</em>
     </h1>
-    <p class="hrole">Director TI · Full-Stack Dev <span>Cartagena, Colombia</span></p>
-    <div class="hactions">
-      <a href="#portfolio" class="btn-gold"><i class="bi bi-grid-3x3-gap"></i> Ver portafolio</a>
-      <a href="#contact" class="btn-ghost"><i class="bi bi-send"></i> Hablemos</a>
+    <p class="hrole">
+      <span>Director TI</span>
+      <span class="hrole-sep">·</span>
+      <span>Full-Stack Dev</span>
+      <span class="hrole-sep">·</span>
+      <span>Salesforce</span>
+      <span class="hrole-sep">·</span>
+      Cartagena, CO
+    </p>
+    <div class="hbtns">
+      <a href="#portfolio" class="btn-solid"><i class="bi bi-grid-3x3-gap-fill"></i> Portafolio</a>
+      <a href="#contact" class="btn-line"><i class="bi bi-send-fill"></i> Contacto</a>
+    </div>
+    <div class="hstats">
+      <div>
+        <div class="hstat-n">5+</div>
+        <div class="hstat-l">años en Python</div>
+      </div>
+      <div>
+        <div class="hstat-n">4</div>
+        <div class="hstat-l">años liderando TI</div>
+      </div>
+      <div>
+        <div class="hstat-n">195</div>
+        <div class="hstat-l">insignias Trailhead</div>
+      </div>
     </div>
   </div>
-  <div class="hright">
-    <div class="hframe">
-      <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/profile-img.jpg" alt="Yared Henriquez" class="hphoto" onerror="this.outerHTML='<div class=hphoto-ph><i class=bi-bi-person-fill></i></div>'">
-    </div>
-  </div>
-  <div class="hscroll"><div class="sline"></div><span class="stxt">Scroll</span></div>
-</section>
 
-<div class="divider"></div>
+  <div class="hphoto">
+    <img
+      src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/profile-img.jpg"
+      alt="Yared Henriquez"
+      onerror="this.style.display='none'"
+    >
+    <div class="hphoto-badge">
+      <div class="hphoto-badge-num">Ranger</div>
+      <div class="hphoto-badge-txt">Trailhead · Salesforce</div>
+    </div>
+  </div>
+</div>
+
+<div class="sdivider"></div>
 
 <!-- ABOUT -->
 <section class="section" id="about">
-  <div class="slabel reveal"><span class="slnum">01</span><span class="sltxt">Sobre mí</span><div class="slline"></div></div>
-  <div class="about-lay">
-    <div class="reveal">
-      <div class="aphwrap">
-        <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/profile-img.jpg" alt="Yared Henriquez" class="aphimg" onerror="this.style.display='none'">
-        <span class="aphcap">Cartagena de Indias, CO</span>
-      </div>
+  <div class="sec-label reveal">
+    <span class="sec-label-tag">01 — Sobre mí</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <img
+        src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/profile-img.jpg"
+        alt="Yared Henriquez"
+        onerror="this.style.display='none'"
+      >
+      <div class="about-img-cap"><i class="bi bi-geo-alt-fill"></i> Cartagena de Indias, Colombia</div>
     </div>
     <div>
-      <h2 class="stit reveal" style="margin-bottom:2.5rem">Híbrido entre<br><em>ingeniería y código</em></h2>
-      <p class="abody reveal d1">Ingeniero en Sistemas con experiencia en desarrollo web, automatización de procesos e integración tecnológica. Fui <strong>Director de Tecnología en EXIA S.A.S</strong>, empresa de sistemas solares fotovoltaicos, donde lideré la transformación digital desde cero.</p>
-      <p class="abody reveal d2">Actualmente combino consultoría freelance en <strong>Salesforce</strong>, desarrollo de herramientas a medida con Python y Flask, y formación en <strong>Inteligencia Artificial</strong> con Máster en la Universitat de Barcelona.</p>
-      <div class="ameta reveal d3">
-        <div class="amitem"><div class="amk">Email</div><div class="amv">yared.henriquezb@gmail.com</div></div>
-        <div class="amitem"><div class="amk">Disponibilidad</div><div class="amv av">Disponible ✦</div></div>
-        <div class="amitem"><div class="amk">Ciudad</div><div class="amv">Cartagena, Colombia</div></div>
-        <div class="amitem"><div class="amk">Grado</div><div class="amv">Profesional + Máster</div></div>
+      <h2 class="stit reveal">Ingeniero que construye<br><em>soluciones reales</em></h2>
+      <div class="about-text">
+        <p class="reveal d1">Ingeniero en Sistemas con experiencia en desarrollo web, automatización de procesos e integración tecnológica. Fui <strong>Director de Tecnología en EXIA S.A.S</strong>, empresa de sistemas solares fotovoltaicos, donde lideré la transformación digital desde cero.</p>
+        <p class="reveal d2">Actualmente trabajo como <strong>freelance</strong> construyendo herramientas digitales a medida — simuladores bancarios, apps de firma y gestión de PDFs, integraciones Salesforce — y me especializo en IA con Máster en la <strong>Universitat de Barcelona</strong>.</p>
       </div>
-      <div class="astats reveal d4">
-        <div class="astat"><span class="astn">5+</span><span class="astl">Años Python</span></div>
-        <div class="astat"><span class="astn">4</span><span class="astl">Años liderando TI</span></div>
-        <div class="astat"><span class="astn">195</span><span class="astl">Insignias Trailhead</span></div>
+      <div class="about-meta reveal d3">
+        <div class="am"><div class="am-k">Email</div><div class="am-v">yared.henriquezb@gmail.com</div></div>
+        <div class="am"><div class="am-k">Disponibilidad</div><div class="am-v av"><i class="bi bi-circle-fill" style="font-size:.5rem;vertical-align:middle"></i> Disponible</div></div>
+        <div class="am"><div class="am-k">Ciudad</div><div class="am-v">Cartagena, Colombia</div></div>
+        <div class="am"><div class="am-k">Formación</div><div class="am-v">Ingeniería + Máster IA</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="sdivider"></div>
 
 <!-- SKILLS -->
 <section class="section" id="skills">
-  <div class="slabel reveal"><span class="slnum">02</span><span class="sltxt">Habilidades</span><div class="slline"></div></div>
-  <div class="ski-lay">
-    <div class="ski-intro">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag">02 — Habilidades</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <div class="ski-grid">
+    <div class="ski-left">
       <h2 class="stit reveal">Stack<br><em>técnico</em></h2>
-      <p class="reveal d1">Soluciones fullstack desde el frontend hasta la automatización de procesos. Cada tecnología aplicada en proyectos reales con resultados medibles.</p>
+      <p class="reveal d1">Tecnologías aplicadas en proyectos reales. Desde interfaces hasta automatización backend e integraciones empresariales.</p>
     </div>
     <div class="skigroups reveal d1">
-
       <div>
-        <div class="skigroup-label">Frontend</div>
+        <div class="skig-title">Frontend</div>
         <div class="skitags">
           <span class="skitag"><i class="devicon-html5-plain" style="color:#e34f26"></i> HTML5</span>
           <span class="skitag"><i class="devicon-css3-plain" style="color:#1572b6"></i> CSS3</span>
@@ -346,89 +493,121 @@ footer{border-top:1px solid var(--line);padding:3rem 5vw;display:flex;justify-co
           <span class="skitag"><i class="devicon-javascript-plain" style="color:#f7df1e"></i> JavaScript</span>
         </div>
       </div>
-
       <div>
-        <div class="skigroup-label">Backend & Automatización</div>
+        <div class="skig-title">Backend & Automatización</div>
         <div class="skitags">
           <span class="skitag"><i class="devicon-python-plain" style="color:#3776ab"></i> Python</span>
-          <span class="skitag"><i class="devicon-flask-original" style="color:var(--cream2)"></i> Flask</span>
+          <span class="skitag"><i class="devicon-flask-original"></i> Flask</span>
           <span class="skitag"><i class="devicon-django-plain" style="color:#44b78b"></i> Django</span>
           <span class="skitag"><i class="devicon-mysql-plain" style="color:#4479a1"></i> MySQL</span>
         </div>
       </div>
-
       <div>
-        <div class="skigroup-label">Plataformas & Herramientas</div>
+        <div class="skig-title">Plataformas & Herramientas</div>
         <div class="skitags">
           <span class="skitag"><i class="devicon-salesforce-plain" style="color:#00a1e0"></i> Salesforce</span>
           <span class="skitag"><i class="devicon-git-plain" style="color:#f05032"></i> Git</span>
-          <span class="skitag"><i class="devicon-github-original" style="color:var(--cream2)"></i> GitHub</span>
+          <span class="skitag"><i class="devicon-github-original"></i> GitHub</span>
           <span class="skitag"><i class="devicon-vscode-plain" style="color:#007acc"></i> VS Code</span>
         </div>
       </div>
-
       <div>
-        <div class="skigroup-label">Otras áreas</div>
+        <div class="skig-title">Otras áreas</div>
         <div class="skitags">
-          <span class="skitag"><i class="bi bi-vector-pen" style="color:var(--gold)"></i> UI/UX</span>
-          <span class="skitag"><i class="bx bxs-sun" style="color:#fbbf24"></i> Energía Solar</span>
-          <span class="skitag"><i class="bi bi-kanban-fill" style="color:var(--gold)"></i> Scrum / Agile</span>
-          <span class="skitag"><i class="bi bi-brain" style="color:var(--gold)"></i> Inteligencia Artificial</span>
+          <span class="skitag"><i class="bi bi-vector-pen" style="color:var(--accent)"></i> UI/UX</span>
+          <span class="skitag"><i class="bx bxs-sun" style="color:#f59e0b"></i> Energía Solar</span>
+          <span class="skitag"><i class="bi bi-kanban-fill" style="color:var(--accent)"></i> Scrum / Agile</span>
+          <span class="skitag"><i class="bi bi-cpu-fill" style="color:var(--accent)"></i> Inteligencia Artificial</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="sdivider"></div>
 
 <!-- RESUME -->
 <section class="section" id="resume">
-  <div class="slabel reveal"><span class="slnum">03</span><span class="sltxt">Trayectoria</span><div class="slline"></div></div>
-  <h2 class="stit reveal" style="margin-bottom:5rem">Recorrido<br><em>académico y profesional</em></h2>
-  <div class="res-lay">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag">03 — Trayectoria</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <h2 class="stit reveal">Recorrido<br><em>académico & profesional</em></h2>
+  <p class="stit-sub reveal d1">Más de 5 años construyendo soluciones en múltiples industrias.</p>
+  <div class="res-grid">
     <div class="reveal">
-      <div class="rct"><i class="bi bi-book-half" style="margin-right:.5rem"></i> Educación</div>
+      <div class="res-col-title"><i class="bi bi-book-half"></i> Educación</div>
       <div class="tl">
-        <div class="tli"><div class="tly">2023<br>Presente</div><div class="tldo"></div><div><div class="tltit">Máster en Inteligencia Artificial</div><div class="tlorg">Universitat de Barcelona</div><div class="tldesc">ML, NLP, robótica y sistemas inteligentes. Impartido en inglés. En espera de grado.</div></div></div>
-        <div class="tli"><div class="tly">2017<br>2021</div><div class="tldo"></div><div><div class="tltit">Ingeniería en Sistemas & Computación</div><div class="tlorg">Universidad Tecnológica de Bolívar</div><div class="tldesc">Diseño de ingeniería, desarrollo de software y resolución de sistemas complejos.</div></div></div>
-        <div class="tli"><div class="tly">2013<br>2017</div><div class="tldo"></div><div><div class="tltit">Tecnología en Sistemas & Computación</div><div class="tlorg">Universidad Tecnológica de Bolívar</div><div class="tldesc">Desarrollo web, móvil y administración de sistemas de información.</div></div></div>
+        <div class="tli">
+          <div class="tly">2023<br>Presente</div>
+          <div class="tldo"></div>
+          <div><div class="tltit">Máster en Inteligencia Artificial</div><div class="tlorg">Universitat de Barcelona</div><div class="tldesc">ML, NLP, robótica y sistemas inteligentes. Impartido en inglés. En espera de grado.</div></div>
+        </div>
+        <div class="tli">
+          <div class="tly">2017<br>2021</div>
+          <div class="tldo"></div>
+          <div><div class="tltit">Ingeniería en Sistemas & Computación</div><div class="tlorg">Universidad Tecnológica de Bolívar</div><div class="tldesc">Diseño de ingeniería, desarrollo de software y sistemas complejos.</div></div>
+        </div>
+        <div class="tli">
+          <div class="tly">2013<br>2017</div>
+          <div class="tldo"></div>
+          <div><div class="tltit">Tecnología en Sistemas & Computación</div><div class="tlorg">Universidad Tecnológica de Bolívar</div><div class="tldesc">Desarrollo web, móvil y administración de sistemas de información.</div></div>
+        </div>
       </div>
     </div>
     <div class="reveal d2">
-      <div class="rct"><i class="bi bi-briefcase-fill" style="margin-right:.5rem"></i> Experiencia</div>
+      <div class="res-col-title"><i class="bi bi-briefcase-fill"></i> Experiencia</div>
       <div class="tl">
-        <div class="tli"><div class="tly">2022<br>2025</div><div class="tldo"></div><div><div class="tltit">Director de Tecnología</div><div class="tlorg">EXIA S.A.S — Cartagena, CO</div><div class="tldesc">Integración tecnológica en proyectos solares, automatización de procesos internos y dashboards de monitoreo.</div></div></div>
-        <div class="tli"><div class="tly">2021<br>2024</div><div class="tldo"></div><div><div class="tltit">Developer Semi Senior (Tester)</div><div class="tlorg">Google</div><div class="tldesc">Pruebas funcionales y automatizadas de apps web y móviles en equipos ágiles.</div></div></div>
-        <div class="tli"><div class="tly">2020<br>Hoy</div><div class="tldo"></div><div><div class="tltit">Freelance · Salesforce & Dev</div><div class="tlorg">Cartagena, CO</div><div class="tldesc">Desarrollo web, automatización e integraciones Salesforce para clientes locales e internacionales.</div></div></div>
-        <div class="tli"><div class="tly">2015<br>2016</div><div class="tldo"></div><div><div class="tltit">Auxiliar Administrativo · Investigación</div><div class="tlorg">Cartagena, CO</div><div class="tldesc">Capacitación en TI, digitalización y soporte en proyecto CIER NORTE.</div></div></div>
+        <div class="tli">
+          <div class="tly">2022<br>2025</div>
+          <div class="tldo"></div>
+          <div><div class="tltit">Director de Tecnología</div><div class="tlorg">EXIA S.A.S — Cartagena, CO</div><div class="tldesc">Integración tecnológica en proyectos solares, automatización y dashboards de monitoreo.</div></div>
+        </div>
+        <div class="tli">
+          <div class="tly">2021<br>2024</div>
+          <div class="tldo"></div>
+          <div><div class="tltit">Developer Semi Senior (Tester)</div><div class="tlorg">Google</div><div class="tldesc">Pruebas funcionales y automatizadas de apps web y móviles en equipos ágiles.</div></div>
+        </div>
+        <div class="tli">
+          <div class="tly">2020<br>Hoy</div>
+          <div class="tldo"></div>
+          <div><div class="tltit">Freelance · Salesforce & Dev</div><div class="tlorg">Cartagena, CO</div><div class="tldesc">Desarrollo web, automatización e integraciones Salesforce para clientes locales e internacionales.</div></div>
+        </div>
+        <div class="tli">
+          <div class="tly">2015<br>2016</div>
+          <div class="tldo"></div>
+          <div><div class="tltit">Auxiliar Administrativo · Investigación</div><div class="tlorg">Cartagena, CO</div><div class="tldesc">Capacitación TI, digitalización y soporte en proyecto CIER NORTE.</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="sdivider"></div>
 
 <!-- PORTFOLIO -->
 <section class="section" id="portfolio">
-  <div class="slabel reveal"><span class="slnum">04</span><span class="sltxt">Portafolio</span><div class="slline"></div></div>
-  <h2 class="stit reveal" style="margin-bottom:3rem">Certificaciones<br><em>&amp; Tecnologías</em></h2>
+  <div class="sec-label reveal">
+    <span class="sec-label-tag">04 — Portafolio</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <h2 class="stit reveal">Certificaciones<br><em>&amp; Tecnologías</em></h2>
+  <p class="stit-sub reveal d1">Constante aprendizaje y aplicación práctica.</p>
   <div class="pfilt reveal">
     <button class="pfbtn active" data-f="all">Todo</button>
     <button class="pfbtn" data-f="cert">Certificaciones</button>
     <button class="pfbtn" data-f="tech">Tecnologías</button>
   </div>
   <div class="pgrid reveal" id="cgrid">
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-1.jpg" alt="Certificado 1"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 1</div></div></div></div>
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-2.jpg" alt="Certificado 2"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 2</div></div></div></div>
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-3.jpg" alt="Certificado 3"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 3</div></div></div></div>
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-4.jpg" alt="Certificado 4"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 4</div></div></div></div>
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-5.jpg" alt="Certificado 5"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 5</div></div></div></div>
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-6.jpg" alt="Certificado 6"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 6</div></div></div></div>
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-7.jpg" alt="Certificado 7"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 7</div></div></div></div>
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-8.jpg" alt="Certificado 8"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 8</div></div></div></div>
-    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-9.jpg" alt="Certificado 9"><div class="pov"><div><div class="potag">Certificación</div><div class="potit">Certificado 9</div></div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-1.jpg" alt="Certificado 1"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 1</div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-2.jpg" alt="Certificado 2"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 2</div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-3.jpg" alt="Certificado 3"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 3</div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-4.jpg" alt="Certificado 4"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 4</div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-5.jpg" alt="Certificado 5"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 5</div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-6.jpg" alt="Certificado 6"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 6</div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-7.jpg" alt="Certificado 7"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 7</div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-8.jpg" alt="Certificado 8"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 8</div></div></div>
+    <div class="pitem"><img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-9.jpg" alt="Certificado 9"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Certificado 9</div></div></div>
   </div>
   <div class="tgrid" id="tgrid">
     <div class="tcell"><i class="devicon-python-plain" style="color:#3776ab"></i><span>Python</span></div>
@@ -436,46 +615,78 @@ footer{border-top:1px solid var(--line);padding:3rem 5vw;display:flex;justify-co
     <div class="tcell"><i class="devicon-html5-plain" style="color:#e34f26"></i><span>HTML5</span></div>
     <div class="tcell"><i class="devicon-css3-plain" style="color:#1572b6"></i><span>CSS3</span></div>
     <div class="tcell"><i class="devicon-bootstrap-plain" style="color:#7952b3"></i><span>Bootstrap</span></div>
-    <div class="tcell"><i class="devicon-flask-original" style="color:var(--cream2)"></i><span>Flask</span></div>
+    <div class="tcell"><i class="devicon-flask-original"></i><span>Flask</span></div>
     <div class="tcell"><i class="devicon-django-plain" style="color:#44b78b"></i><span>Django</span></div>
     <div class="tcell"><i class="devicon-git-plain" style="color:#f05032"></i><span>Git</span></div>
-    <div class="tcell"><i class="devicon-github-original" style="color:var(--cream2)"></i><span>GitHub</span></div>
+    <div class="tcell"><i class="devicon-github-original"></i><span>GitHub</span></div>
     <div class="tcell"><i class="devicon-salesforce-plain" style="color:#00a1e0"></i><span>Salesforce</span></div>
     <div class="tcell"><i class="devicon-mysql-plain" style="color:#4479a1"></i><span>MySQL</span></div>
     <div class="tcell"><i class="devicon-vscode-plain" style="color:#007acc"></i><span>VS Code</span></div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="sdivider"></div>
 
 <!-- SERVICES -->
 <section class="section" id="services">
-  <div class="slabel reveal"><span class="slnum">05</span><span class="sltxt">Servicios</span><div class="slline"></div></div>
-  <div class="svc-lay">
-    <div class="svc-intr">
-      <h2 class="stit reveal">Lo que<br><em>ofrezco</em></h2>
-      <p class="reveal d1">Soluciones digitales a medida, pensadas para generar valor real. Desde soporte técnico hasta capacitación y desarrollo a medida.</p>
+  <div class="sec-label reveal">
+    <span class="sec-label-tag">05 — Servicios</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <h2 class="stit reveal">Lo que<br><em>ofrezco</em></h2>
+  <p class="stit-sub reveal d1">Soluciones digitales a medida, enfocadas en valor real.</p>
+  <div class="svc-grid reveal d1">
+    <div class="svc-card">
+      <div class="svc-n">01</div>
+      <i class="bi bi-rocket-takeoff-fill svc-ico"></i>
+      <div class="svc-title">Transformación Digital</div>
+      <div class="svc-desc">Acompañamiento en adopción de herramientas digitales para mejorar productividad y eficiencia operativa.</div>
     </div>
-    <div class="svclist">
-      <div class="svcit reveal"><div class="svcnum">01</div><div><div class="svcicontit"><i class="bi bi-rocket-takeoff-fill svcico"></i><div class="svctit">Transformación Digital</div></div><div class="svcdesc">Acompañamiento en adopción de herramientas digitales para mejorar productividad y eficiencia operativa.</div></div></div>
-      <div class="svcit reveal d1"><div class="svcnum">02</div><div><div class="svcicontit"><i class="bi bi-palette-fill svcico"></i><div class="svctit">Diseño UI/UX</div></div><div class="svcdesc">Interfaces intuitivas, atractivas y centradas en el usuario. Estética y funcionalidad en armonía.</div></div></div>
-      <div class="svcit reveal d2"><div class="svcnum">03</div><div><div class="svcicontit"><i class="bi bi-braces svcico"></i><div class="svctit">Desarrollo en Python</div></div><div class="svcdesc">Automatización de procesos, APIs, Flask/Django y scripts que optimizan tareas empresariales.</div></div></div>
-      <div class="svcit reveal"><div class="svcnum">04</div><div><div class="svcicontit"><i class="bi bi-broadcast-pin svcico"></i><div class="svctit">Asesoría TIC</div></div><div class="svcdesc">Integración de informática y telecomunicaciones para optimizar procesos y toma de decisiones.</div></div></div>
-      <div class="svcit reveal d1"><div class="svcnum">05</div><div><div class="svcicontit"><i class="bi bi-kanban-fill svcico"></i><div class="svctit">Gestión de Proyectos</div></div><div class="svcdesc">Scrum y metodologías tradicionales. Objetivos claros, recursos estratégicos y resultados medibles.</div></div></div>
-      <div class="svcit reveal d2"><div class="svcnum">06</div><div><div class="svcicontit"><i class="bi bi-mortarboard-fill svcico"></i><div class="svctit">Capacitación Digital</div></div><div class="svcdesc">Formación en herramientas digitales, Python y tecnologías emergentes para equipos y profesionales.</div></div></div>
+    <div class="svc-card">
+      <div class="svc-n">02</div>
+      <i class="bi bi-palette-fill svc-ico"></i>
+      <div class="svc-title">Diseño UI/UX</div>
+      <div class="svc-desc">Interfaces intuitivas, atractivas y centradas en el usuario. Estética y funcionalidad en armonía.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">03</div>
+      <i class="bi bi-braces svc-ico"></i>
+      <div class="svc-title">Desarrollo en Python</div>
+      <div class="svc-desc">Automatización, APIs, Flask/Django y scripts que optimizan tareas empresariales a medida.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">04</div>
+      <i class="bi bi-broadcast-pin svc-ico"></i>
+      <div class="svc-title">Asesoría TIC</div>
+      <div class="svc-desc">Integración de informática y telecomunicaciones para optimizar procesos y toma de decisiones.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">05</div>
+      <i class="bi bi-kanban-fill svc-ico"></i>
+      <div class="svc-title">Gestión de Proyectos</div>
+      <div class="svc-desc">Metodologías Scrum y tradicionales. Objetivos claros, recursos estratégicos y resultados medibles.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">06</div>
+      <i class="bi bi-mortarboard-fill svc-ico"></i>
+      <div class="svc-title">Capacitación Digital</div>
+      <div class="svc-desc">Formación en Python, herramientas digitales y tecnologías emergentes para equipos y profesionales.</div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="sdivider"></div>
 
 <!-- CONTACT -->
 <section class="section" id="contact">
-  <div class="slabel reveal"><span class="slnum">06</span><span class="sltxt">Contacto</span><div class="slline"></div></div>
-  <div class="con-lay">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag">06 — Contacto</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <div class="con-grid">
     <div class="reveal">
-      <h2 class="concta">Construyamos<br>algo<br><em>juntos.</em></h2>
-      <p class="conbody">Disponible para proyectos freelance, consultoría y colaboraciones. Respondo rápido y siempre abierto a nuevos desafíos técnicos.</p>
+      <h2 class="con-cta">Construyamos<br>algo <em>juntos.</em></h2>
+      <p class="con-body">Disponible para proyectos freelance, consultoría y colaboraciones. Respondo rápido y siempre abierto a nuevos desafíos.</p>
       <div class="conlinks">
         <a href="mailto:yared.henriquezb@gmail.com" class="clink"><div class="cico"><i class="bi bi-envelope-fill"></i></div>yared.henriquezb@gmail.com</a>
         <a href="https://wa.me/573015185270" target="_blank" class="clink"><div class="cico"><i class="bi bi-whatsapp"></i></div>+57 301 518 5270</a>
@@ -487,7 +698,7 @@ footer{border-top:1px solid var(--line);padding:3rem 5vw;display:flex;justify-co
       <div class="mapwrap">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125568.22!2d-75.5636!3d10.3916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef625b37e82dc45%3A0x7fabe100d2fb1e43!2sCartagena%20de%20Indias!5e0!3m2!1ses!2sco!4v1234567890" allowfullscreen loading="lazy"></iframe>
       </div>
-      <div class="loclbl"><i class="bi bi-geo-alt-fill"></i>Cartagena de Indias, Bolívar, Colombia</div>
+      <div class="maplbl"><i class="bi bi-geo-alt-fill"></i> Cartagena de Indias, Bolívar, Colombia</div>
     </div>
   </div>
 </section>
@@ -505,43 +716,24 @@ footer{border-top:1px solid var(--line);padding:3rem 5vw;display:flex;justify-co
 <a href="https://wa.me/573015185270" class="waf" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
 <script>
-/* LOADER */
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1700);
-});
-
-/* CURSOR */
-const dot = document.getElementById('cur-dot');
-const ring = document.getElementById('cur-ring');
-document.addEventListener('mousemove', e => {
-  dot.style.left = ring.style.left = e.clientX + 'px';
-  dot.style.top  = ring.style.top  = e.clientY + 'px';
-});
-document.querySelectorAll('a,button,.pitem,.skirow,.svcit').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('chov'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('chov'));
-});
-
 /* NAV */
 window.addEventListener('scroll', () => {
-  document.getElementById('mnav').classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('mnav').classList.toggle('scrolled', window.scrollY > 50);
 });
 
 /* REVEAL */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add('in');
-    io.unobserve(e.target);
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* PORTFOLIO FILTER */
 const cg = document.getElementById('cgrid');
 const tg = document.getElementById('tgrid');
 document.querySelectorAll('.pfbtn').forEach(btn => {
-  btn.addEventListener('click', function () {
+  btn.addEventListener('click', function() {
     document.querySelectorAll('.pfbtn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     if (this.dataset.f === 'tech') {
