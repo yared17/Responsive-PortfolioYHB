@@ -177,8 +177,16 @@ h2.stit em{font-style:normal;color:var(--accent);}
 .gh-lang{font-family:var(--fm);font-size:.62rem;color:var(--ink2);background:var(--bg2);border:1px solid var(--line);padding:.2rem .6rem;}
 .gh-link{display:flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.72rem;color:var(--accent);font-weight:500;transition:color .2s;}
 .gh-link:hover{color:var(--accent2);}
-.gh-img-strip{width:100%;border-top:1px solid var(--line);}
-.gh-img-strip img{width:100%;display:block;}
+.gh-repos-strip{border-top:1px solid var(--line);padding:1rem 1.4rem;display:flex;flex-direction:column;gap:.6rem;}
+.gh-repo-item{display:flex;align-items:center;justify-content:space-between;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--line);transition:border-color .2s;}
+.gh-repo-item:hover{border-color:var(--accent);}
+.gh-repo-name{font-family:var(--fm);font-size:.75rem;font-weight:600;color:var(--accent);}
+.gh-repo-desc{font-size:.72rem;color:var(--muted);margin-top:.1rem;}
+.gh-repo-meta{display:flex;align-items:center;gap:.8rem;flex-shrink:0;margin-left:1rem;}
+.gh-repo-lang{font-family:var(--fm);font-size:.62rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;}
+.gh-repo-stars{font-family:var(--fm);font-size:.62rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;}
+.gh-strip-label{font-family:var(--fm);font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem;padding:0 0 .4rem;border-bottom:1px solid var(--line);}
+.lang-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
 
 /* MAP */
 .mapwrap{border:1px solid var(--line);overflow:hidden;height:220px;margin-top:1rem;}
@@ -284,7 +292,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
         <p class="reveal d2">Como <strong>Director de Tecnología en EXIA S.A.S</strong> lideré la infraestructura digital de una empresa de energía solar: integración de sensores, dashboards de supervisión y automatización de reportes operativos. Hoy trabajo como <strong>freelance</strong> desarrollando soluciones con Python, Salesforce y tecnologías web, mientras profundizo en <strong>Inteligencia Artificial</strong> con Máster en la Universitat de Barcelona.</p>
       </div>
       <div class="about-meta reveal d3">
-        <div class="am"><div class="am-k">Email</div><div class="am-v">yared.henriquezb@gmail.com</div></div>
+        <div class="am"><div class="am-k">Email</div><div class="am-v"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ceb7afbcabaae0a6aba0bca7bfbbabb4ac8ea9a3afa7a2e0ada1a3">[email&#160;protected]</a></div></div>
         <div class="am"><div class="am-k">Disponibilidad</div><div class="am-v av"><i class="bi bi-circle-fill" style="font-size:.5rem;vertical-align:middle"></i> Disponible</div></div>
         <div class="am"><div class="am-k">Ciudad</div><div class="am-v">Cartagena, Colombia</div></div>
         <div class="am"><div class="am-k">Formación</div><div class="am-v">Ingeniería + Máster IA</div></div>
@@ -438,7 +446,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
       <h2 class="con-cta">Construyamos<br>algo <em>juntos.</em></h2>
       <p class="con-body">Disponible para proyectos freelance, consultoría y colaboraciones. Respondo rápido y siempre abierto a nuevos desafíos.</p>
       <div class="conlinks">
-        <a href="mailto:yared.henriquezb@gmail.com" class="clink"><div class="cico"><i class="bi bi-envelope-fill"></i></div>yared.henriquezb@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#740d150611105a1c111a061d0501110e16341319151d185a171b19" class="clink"><div class="cico"><i class="bi bi-envelope-fill"></i></div><span class="__cf_email__" data-cfemail="d7aeb6a5b2b3f9bfb2b9a5bea6a2b2adb597b0bab6bebbf9b4b8ba">[email&#160;protected]</span></a>
         <a href="https://wa.me/573015185270" target="_blank" class="clink"><div class="cico"><i class="bi bi-whatsapp"></i></div>+57 301 518 5270</a>
         <a href="https://github.com/DevCop95" target="_blank" class="clink"><div class="cico"><i class="bi bi-github"></i></div>github.com/DevCop95</a>
         <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" class="clink"><div class="cico"><i class="bi bi-cloud-fill"></i></div>Trailhead — Ranger · 195 insignias</a>
@@ -465,9 +473,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
             <i class="bi bi-box-arrow-up-right"></i> Ver perfil completo en GitHub
           </a>
         </div>
-        <div class="gh-img-strip">
-          <img src="https://github-readme-stats.vercel.app/api?username=DevCop95&show_icons=true&theme=default&hide_border=true&bg_color=ffffff&title_color=0e7a5f&icon_color=0e7a5f&text_color=3a3d44&rank_icon=github" alt="GitHub Stats" loading="lazy">
-        </div>
+        <div class="gh-repos-strip" id="gh-repos-strip"></div>
       </div>
       <div class="mapwrap" style="margin-top:1.5rem;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125568.22!2d-75.5636!3d10.3916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef625b37e82dc45%3A0x7fabe100d2fb1e43!2sCartagena%20de%20Indias!5e0!3m2!1ses!2sco!4v1234567890" allowfullscreen loading="lazy"></iframe>
@@ -482,14 +488,14 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
   <div class="fsoc">
     <a href="https://github.com/DevCop95" target="_blank"><i class="bi bi-github"></i></a>
     <a href="https://wa.me/573015185270" target="_blank"><i class="bi bi-whatsapp"></i></a>
-    <a href="mailto:yared.henriquezb@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+    <a href="/cdn-cgi/l/email-protection#1b627a697e7f35737e7569726a6e7e61795b7c767a727735787476"><i class="bi bi-envelope-fill"></i></a>
     <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank"><i class="bi bi-cloud-fill"></i></a>
   </div>
 </footer>
 
 <a href="https://wa.me/573015185270" class="waf" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* NAV */
 window.addEventListener('scroll', () => {
   document.getElementById('mnav').classList.toggle('scrolled', window.scrollY > 50);
@@ -521,18 +527,41 @@ document.querySelectorAll('.pfbtn').forEach(btn => {
 });
 
 /* GITHUB API */
+const langColors = {JavaScript:'#f1e05a',Python:'#3572A5',HTML:'#e34c26',CSS:'#563d7c',TypeScript:'#2b7489',Shell:'#89e051'};
 fetch('https://api.github.com/users/DevCop95')
   .then(r => r.json())
   .then(d => {
     if (d.name) document.getElementById('gh-name').textContent = d.name;
     document.getElementById('gh-bio').textContent = d.bio || 'Ingeniero de Sistemas · Developer · Cartagena, CO';
-    document.getElementById('gh-repos').textContent = d.public_repos || '—';
-    document.getElementById('gh-followers').textContent = d.followers || '—';
-    document.getElementById('gh-following').textContent = d.following || '—';
+    document.getElementById('gh-repos').textContent = d.public_repos ?? '—';
+    document.getElementById('gh-followers').textContent = d.followers ?? '—';
+    document.getElementById('gh-following').textContent = d.following ?? '—';
   })
-  .catch(() => {
-    document.getElementById('gh-bio').textContent = 'Ingeniero de Sistemas · Developer · Cartagena, CO';
-  });
+  .catch(() => { document.getElementById('gh-bio').textContent = 'Ingeniero de Sistemas · Developer · Cartagena, CO'; });
+
+fetch('https://api.github.com/users/DevCop95/repos?sort=updated&per_page=4')
+  .then(r => r.json())
+  .then(repos => {
+    if (!Array.isArray(repos) || !repos.length) return;
+    const strip = document.getElementById('gh-repos-strip');
+    strip.innerHTML = '<div class="gh-strip-label">Repositorios recientes</div>' +
+      repos.map(r => {
+        const lang = r.language || '';
+        const dot = lang ? `<span class="lang-dot" style="background:${langColors[lang]||'#8b949e'}"></span>` : '';
+        const desc = r.description ? r.description.substring(0,60) + (r.description.length>60?'…':'') : '';
+        return `<div class="gh-repo-item">
+          <div>
+            <div class="gh-repo-name"><i class="bi bi-folder2-open" style="margin-right:.3rem"></i>${r.name}</div>
+            ${desc ? `<div class="gh-repo-desc">${desc}</div>` : ''}
+          </div>
+          <div class="gh-repo-meta">
+            ${lang ? `<span class="gh-repo-lang">${dot}${lang}</span>` : ''}
+            <span class="gh-repo-stars"><i class="bi bi-star"></i>${r.stargazers_count}</span>
+          </div>
+        </div>`;
+      }).join('');
+  })
+  .catch(() => {});
 </script>
 </body>
 </html>
