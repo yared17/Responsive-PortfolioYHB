@@ -1,1004 +1,1285 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yared Henriquez — DevYHB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+<style>
+  :root {
+    --bg: #080c10;
+    --bg2: #0d1117;
+    --surface: #111820;
+    --surface2: #161e28;
+    --border: rgba(0,200,255,0.1);
+    --accent: #00c8ff;
+    --accent2: #0066ff;
+    --text: #e8f0fe;
+    --muted: #7a8fa6;
+    --heading: #f0f6ff;
+    --glow: 0 0 30px rgba(0,200,255,0.15);
+  }
 
-  <title>Portafolio DevYHB</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  html { scroll-behavior: smooth; }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-  <!-- Vendor CSS (CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/swiper@11.1.4/swiper-bundle.min.css" rel="stylesheet">
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
 
-  <!-- CSS principal (una sola vez, con versión) -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2025">
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-  <style>
-/* === FIX 1: botón flotante estable, sin saltos === */
-.whatsapp-float {
-  position: fixed;
-  right: 18px;
-  bottom: 88px;              
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25D366;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,.20);
-  z-index: 9999;
-  text-decoration: none;
-  transition: box-shadow .15s ease, opacity .15s ease; /* SIN transform */
-  transform: none !important;            /* anula cualquier regla global */
-  -webkit-transform: none !important;
-  will-change: box-shadow, opacity;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-/* Ampliar zona de hover para evitar “salidas/entradas” al borde */
-.whatsapp-float::after {
-  content: "";
-  position: absolute;
-  inset: -8px;               /* zona fantasma 8px alrededor */
-  border-radius: 50%;
-}
-.whatsapp-float:hover,
-.whatsapp-float:focus {
-  transform: none !important; /* por si algún global vuelve a ponerlo */
-  box-shadow: 0 12px 24px rgba(0,0,0,.25);
-  opacity: .95;
-}
-.whatsapp-float i {
-  font-size: 28px;
-  line-height: 1;
-  pointer-events: none;       /* evita cortes cuando el puntero pasa por el ícono */
-}
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
 
-/* === FIX 2: back-to-top también sin “bailes” === */
-.back-to-top {
-  bottom: 18px;
-  right: 90px;                /* a la izquierda del WhatsApp */
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: opacity .15s ease, box-shadow .15s ease;
-  transform: none !important;
-}
-.back-to-top:hover,
-.back-to-top:focus {
-  transform: none !important;
-  box-shadow: 0 8px 20px rgba(0,0,0,.18);
-}
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
 
-/* === FIX 3: botones dentro del modal (por si hay reglas globales de transform) === */
-#whatsappModal .btn,
-#whatsappModal .btn:hover,
-#whatsappModal .btn:focus,
-#whatsappModal .btn:active {
-  transform: none !important;           /* quita cualquier translate/scale global */
-  -webkit-transform: none !important;
-  transition: box-shadow .15s ease, opacity .15s ease, background-color .15s ease, border-color .15s ease;
-}
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
 
-/* === Responsive: separación extra en móvil === */
-@media (max-width: 576px) {
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent) !important;
+    padding: 0.45rem 1.2rem;
+    border-radius: 4px;
+    transition: all 0.2s !important;
+  }
+  .nav-cta:hover {
+    background: var(--accent) !important;
+    color: var(--bg) !important;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-orb {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,102,255,0.12) 0%, transparent 70%);
+    top: 50%; left: 60%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+  .hero-orb2 {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,200,255,0.08) 0%, transparent 70%);
+    top: 20%; left: 20%;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,200,255,0.08);
+    border: 1px solid rgba(0,200,255,0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  h1.hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--heading);
+    letter-spacing: -2px;
+    animation: fadeUp 0.6s 0.1s ease both;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-accent-line {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeUp 0.6s 0.2s ease both;
+    margin-bottom: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.8;
+    animation: fadeUp 0.6s 0.3s ease both;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(0,200,255,0.2);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(0,200,255,0.35);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--text);
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    animation: fadeUp 0.6s 0.5s ease both;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--heading);
+    letter-spacing: -1px;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.3rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 7rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  h2.section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--heading);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 500px;
+    margin-bottom: 4rem;
+  }
+
+  /* ─── REVEAL ANIMATION ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-photo-wrap {
+    position: relative;
+  }
+
+  .about-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2), transparent);
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 14px;
+    position: relative;
+    z-index: 1;
+    display: block;
+    filter: grayscale(20%) contrast(1.05);
+  }
+
+  .about-photo-fallback {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 14px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: var(--accent);
+    border: 1px solid var(--border);
+  }
+
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.9;
+  }
+
+  .about-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .about-info-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+  }
+
+  .info-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .info-value {
+    font-size: 0.9rem;
+    color: var(--heading);
+    font-weight: 500;
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,200,255,0.3);
+    box-shadow: var(--glow);
+  }
+
+  .skill-card:hover::before { transform: scaleX(1); }
+
+  .skill-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.7rem;
+    display: block;
+    color: var(--accent);
+  }
+
+  .skill-name {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .skill-level {
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-top: 0.3rem;
+    font-weight: 600;
+  }
+
+  /* ─── RESUME TIMELINE ─── */
+  .resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+
+  .resume-section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .resume-section-title span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .timeline-item {
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.55rem;
+    top: 0.45rem;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(0,200,255,0.5);
+  }
+
+  .timeline-period {
+    font-size: 0.72rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-org {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+    font-style: italic;
+  }
+
+  .timeline-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ─── PORTFOLIO ─── */
+  .portfolio-filters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.5rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: rgba(0,200,255,0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .portfolio-item {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    background: var(--surface);
+    cursor: pointer;
+  }
+
+  .portfolio-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), var(--glow);
+    border-color: rgba(0,200,255,0.3);
+  }
+
+  .portfolio-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+    background: var(--surface2);
+  }
+
+  .portfolio-item:hover .portfolio-img { transform: scale(1.04); }
+
+  .portfolio-info {
+    padding: 1.2rem;
+  }
+
+  .portfolio-tag {
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .portfolio-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--heading);
+  }
+
+  /* ─── TECH GRID ─── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 1rem;
+  }
+
+  .tech-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+    transition: all 0.25s;
+  }
+
+  .tech-item:hover {
+    border-color: rgba(0,200,255,0.4);
+    background: rgba(0,200,255,0.05);
+    transform: translateY(-3px);
+  }
+
+  .tech-item i {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+  }
+
+  .tech-item span {
+    font-size: 0.68rem;
+    color: var(--muted);
+    display: block;
+  }
+
+  /* ─── SERVICES ─── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover::after { opacity: 1; }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glow), 0 20px 40px rgba(0,0,0,0.3);
+    border-color: rgba(0,200,255,0.25);
+  }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    background: rgba(0,200,255,0.1);
+    border: 1px solid rgba(0,200,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: var(--accent);
+  }
+
+  .service-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 0.7rem;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 1rem;
+  }
+
+  .contact-info p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.3rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.25s;
+    font-size: 0.9rem;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(0,200,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .map-container {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    height: 320px;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: invert(90%) hue-rotate(180deg);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 3rem 4rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  footer strong { color: var(--accent); }
+
+  /* ─── WHATSAPP FLOAT ─── */
   .whatsapp-float {
-    bottom: 100px;
-    right: 14px;
-    width: 52px;
-    height: 52px;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 200;
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: all 0.3s;
   }
-  .whatsapp-float i { font-size: 26px; }
 
-  .back-to-top {
-    right: 14px;
-    bottom: 18px;
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.5);
   }
-}
-  </style>
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 4rem; }
+    .about-grid, .resume-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    h1.hero-name, .hero-accent-line { font-size: clamp(2.5rem, 10vw, 4rem); }
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- ======= Mobile nav toggle button ======= -->
-<button class="mobile-nav-toggle pixel-toggle d-xl-none" id="menuToggle" aria-label="Abrir menú"></button>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">DevYHB</a>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#resume">Resumen</a></li>
+    <li><a href="#portfolio">Portafolio</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#contact" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
 
-
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-      <button id="bdark"><i class="bx bx-moon"></i></button>
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Disponible para proyectos freelance</div>
+    <h1 class="hero-name">Yared</h1>
+    <div class="hero-accent-line">Henriquez</div>
+    <p class="hero-desc">
+      Ingeniero en Sistemas · Director TI · Developer Full-Stack.<br>
+      Construyo soluciones digitales a medida desde Cartagena, Colombia.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">Ver portafolio →</a>
+      <a href="#contact" class="btn-outline">Hablemos</a>
     </div>
-
-    <div class="d-flex flex-column">
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Yared Henriquez </a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://www.instagram.com/yaredhb/" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/yared-henriquez-blanquicett/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://github.com/yared17" class="github"><i class="bx bxl-github"></i></a>
-        </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Años en Python</div>
       </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Sobre mi</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resumen</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portafolio</span></a></li>
-          <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Servicios</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contacto</span></a></li>
-          <li>
-           <!-- <a href="assets/docs/cv_yared_henriquez.pdf" download>-->
-            <!-- <i class="bx bx-download"></i> <span>Descargar CV</span>-->
-            <!--</a>-->
-          </li>
-        </ul>
-      </nav><!-- .nav-menu -->
-
-
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Yared Henriquez</h1>
-      <p>Soy <span class="typed" data-typed-items="Desarrollador, Automatizador, Integrador"></span></p>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-<!-- ======= About Section ======= -->
-<section id="about" class="about">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Sobre mí</h2>
-      <p>
-        Ingeniero en Sistemas con experiencia en TI, desarrollo web, automatización y proyectos de energía solar.
-        Fui Director de Tecnología en <strong>EXIA S.A.S</strong>, empresa dedicada a sistemas solares fotovoltaicos,
-        donde lideré la integración tecnológica y el soporte digital. En paralelo, trabajo como <strong>freelance</strong>
-        construyendo soluciones digitales a medida.
-      </p>
-    </div>
-
-    <section class="about-grid">
-      <!-- LEFT RAIL -->
-      <aside class="left-rail d-none d-lg-block">
-        <div class="rail-layer glow"></div>
-        <div class="rail-grid">
-
-          <div class="rail-card">
-            <div class="icons stairs">
-              <i class="bi bi-cpu"></i>
-              <i class="bi bi-cloud-arrow-up"></i>
-              <i class="bi bi-shield-lock"></i>
-              <i class="bi bi-diagram-3"></i>
-              <i class="bi bi-bar-chart-line"></i>
-              <i class="bi bi-lightning-charge"></i>
-            </div>
-          </div>
-
-          <div class="rail-card">
-            <div class="icons stairs">
-              <i class="bi bi-code-slash"></i>
-              <i class="bi bi-gear-wide-connected"></i>
-              <i class="bi bi-cloud-check"></i>
-              <i class="bi bi-ui-checks-grid"></i>
-              <i class="bi bi-file-earmark-richtext"></i>
-              <i class="bi bi-speedometer2"></i>
-            </div>
-          </div>
-
-        </div>
-      </aside>
-
-      <!-- CONTENIDO (columna derecha) -->
-      <div class="content">
-        <div class="section-title mt-4">
-          <h2>Director de Tecnología (EXIA S.A.S)</h2>
-        </div>
-
-        <p class="fst-italic">
-          Enfoque en resultados, soluciones prácticas y escalables para empresas y clientes individuales.
-        </p>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <strong>Cumpleaños:</strong> <span id="birthday">Junio 17 de 1995</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Sitio web:</strong> <a href="https://github.com/yared17/Responsive-PortfolioYHB" target="_blank" rel="noopener"><span>Responsive Portfolio</span></a></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Ciudad:</strong> <span>Cartagena, COLOMBIA</span></li>
-            </ul>
-          </div>
-          <div class="col-lg-6">
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span id="age"></span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Professional</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>yared2017@gmail.com</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="section-title mt-4">
-          <h2>Qué hago</h2>
-        </div>
-        <ul>
-          <li><i class="bi bi-chevron-right"></i> Desarrollo de aplicaciones web (simulador bancarios, interfaces modernas, app de firma y gestión de PDFs).</li>
-          <li><i class="bi bi-chevron-right"></i> Automatización de procesos administrativos y comerciales.</li>
-            <li><i class="bi bi-chevron-right"></i> Integraciones con Salesforce (experiencia práctica).</li>
-            <li class="wh-item">
-              <i class="bi bi-chevron-right"></i>
-              <div class="trailhead-card">
-                <div class="trailhead-top">
-                  <img src="https://res.cloudinary.com/trailhead/image/upload/public-trailhead/assets/images/ranks/ranger.png" alt="Ranger Rank">
-                  <img src="https://trailhead.salesforce.com/agentblazer/banner-level-1.png" alt="Agentblazer Champion">
-                </div>
-
-                <div class="trailhead-stats">
-                  <span>195&nbsp;insignias</span>
-                  <span>73&nbsp;025&nbsp;puntos</span>
-                  <span>44&nbsp;rutas</span>
-                </div>
-                <div>
-                  <small>Rango: <span class="trailhead-rank-animate">RANGER</span></small>
-                </div>
-                <div class="trailhead-link">
-                  <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank">
-                    Ver mi perfil Trailhead
-                  </a>
-                </div>
-              </div>
-            </li>
-                        </li>
-
-          <li><i class="bi bi-chevron-right"></i> Diseño de dashboards y herramientas de monitoreo.</li>
-        </ul>
-
-        <div class="section-title mt-4">
-          <h2>Diferenciales</h2>
-        </div>
-        <ul>
-          <li><i class="bi bi-chevron-right"></i> Experiencia híbrida: TI corporativa + proyectos de energía solar.</li>
-          <li><i class="bi bi-chevron-right"></i> Soluciones a medida, enfocadas en valor práctico.</li>
-          <li><i class="bi bi-chevron-right"></i> Trabajo en entornos multidisciplinarios (ingeniería + tecnología).</li>
-        </ul>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Años liderando TI</div>
       </div>
-    </section>
-
+      <div class="stat">
+        <div class="stat-num">195</div>
+        <div class="stat-label">Insignias Trailhead</div>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
-
-
-
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-tag">Sobre mí</div>
+    <h2 class="section-title">Ingeniero, desarrollador<br>y apasionado por la tecnología</h2>
+    <p class="section-subtitle">Una mezcla poco común de TI corporativa, desarrollo web y energía solar.</p>
   </div>
-</section>
-
-    <!-- ======= Facts Section ======= -->
-<section id="facts" class="facts">
-  <div class="container">
-    <div class="section-title">
-      <h2>Resultados</h2>
-      <p>Me destaco por el contacto directo y la atención al cliente; realizando un vínculo de mutuo respeto con aquellos que solicitan mi servicio.</p>
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="about-photo-wrap">
+        <div class="about-photo-fallback"><i class="bi bi-person-fill" style="font-size:5rem; color:var(--accent)"></i></div>
+      </div>
     </div>
-
-    <div class="row no-gutters">
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-        <div class="count-box">
-          <i class="bi bi-emoji-smile"></i>
-          <span data-purecounter-start="0" data-purecounter-end="60" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Clientes satisfechos</strong></p>
+    <div class="reveal reveal-delay-1">
+      <p>Ingeniero en Sistemas con experiencia en desarrollo web, automatización de procesos e integración tecnológica. Fui Director de Tecnología en <strong style="color:var(--heading)">EXIA S.A.S</strong>, empresa de sistemas solares fotovoltaicos, donde lideré la transformación digital.</p>
+      <p>Actualmente combino mi trabajo en proyectos de energía con desarrollo freelance, construyendo herramientas como simuladores bancarios, apps de gestión de PDFs e integraciones con Salesforce.</p>
+      <p>Máster en Inteligencia Artificial por la Universitat de Barcelona (en espera de grado).</p>
+      <div class="about-info">
+        <div class="about-info-item">
+          <div class="info-label">Ciudad</div>
+          <div class="info-value">Cartagena, Colombia</div>
         </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="count-box">
-          <i class="bi bi-journal-richtext"></i>
-          <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Proyectos</strong></p>
+        <div class="about-info-item">
+          <div class="info-label">Estado</div>
+          <div class="info-value" style="color:var(--accent)">Disponible ✓</div>
         </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-        <div class="count-box">
-          <i class="bi bi-headset"></i>
-          <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Horas de soporte</strong></p>
+        <div class="about-info-item">
+          <div class="info-label">Email</div>
+          <div class="info-value">yared.henriquezb@gmail.com</div>
         </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
-        <div class="count-box">
-          <i class="bi bi-people"></i>
-          <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Colaboradores</strong></p>
+        <div class="about-info-item">
+          <div class="info-label">Grado</div>
+          <div class="info-value">Profesional</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-    <!-- ======= Skills Section ======= -->
-<section id="skills" class="skills section-bg">
-  <div class="container">
-    <div class="section-title">
-      <h2>Habilidades</h2>
-      <p>Fullstack, automatización con Python e integración tecnológica para operaciones y monitoreo.</p>
+<!-- SKILLS -->
+<section id="skills" style="padding-top:0">
+  <div class="reveal">
+    <div class="section-tag">Habilidades</div>
+    <h2 class="section-title">Stack tecnológico</h2>
+    <p class="section-subtitle">Fullstack, automatización y más.</p>
+  </div>
+  <div class="skills-container">
+    <div class="skill-card reveal">
+      <i class="devicon-html5-plain skill-icon" style="color:#e34f26"></i>
+      <div class="skill-name">HTML / CSS</div>
+      <div class="skill-level">100%</div>
     </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <i class="devicon-javascript-plain skill-icon" style="color:#f7df1e"></i>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-level">80%</div>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <i class="devicon-python-plain skill-icon" style="color:#3776ab"></i>
+      <div class="skill-name">Python</div>
+      <div class="skill-level">85%</div>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <i class="devicon-bootstrap-plain skill-icon" style="color:#7952b3"></i>
+      <div class="skill-name">Bootstrap</div>
+      <div class="skill-level">100%</div>
+    </div>
+    <div class="skill-card reveal">
+      <i class="devicon-flask-original skill-icon"></i>
+      <div class="skill-name">Flask / Django</div>
+      <div class="skill-level">75%</div>
+    </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <i class="devicon-salesforce-plain skill-icon" style="color:#00a1e0"></i>
+      <div class="skill-name">Salesforce</div>
+      <div class="skill-level">70%</div>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <i class="devicon-git-plain skill-icon" style="color:#f05032"></i>
+      <div class="skill-name">Git / GitHub</div>
+      <div class="skill-level">85%</div>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <i class="bx bxs-sun skill-icon" style="color:#fbbf24; font-size:2.5rem;"></i>
+      <div class="skill-name">Energía Solar</div>
+      <div class="skill-level">75%</div>
+    </div>
+  </div>
+</section>
 
-    <div class="row skills-content">
-      <div class="col-lg-6" data-aos="fade-up">
-        <div class="progress">
-          <span class="skill">HTML / CSS / Bootstrap <i class="val">100%</i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+<!-- RESUME -->
+<section id="resume">
+  <div class="reveal">
+    <div class="section-tag">Resumen</div>
+    <h2 class="section-title">Trayectoria profesional</h2>
+    <p class="section-subtitle">Más de 5 años construyendo soluciones reales.</p>
+  </div>
+  <div class="resume-grid">
+    <!-- Educación -->
+    <div class="reveal">
+      <div class="resume-section-title"><i class="bi bi-book-half" style="color:var(--accent)"></i> <span>Educación</span></div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-period">2023 – Presente</div>
+          <div class="timeline-title">Máster en Inteligencia Artificial</div>
+          <div class="timeline-org">Universitat de Barcelona</div>
+          <div class="timeline-desc">ML, NLP, robótica y sistemas inteligentes. Impartido en inglés.</div>
         </div>
-
-        <div class="progress">
-          <span class="skill">JavaScript <i class="val">80%</i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-period">2017 – 2021</div>
+          <div class="timeline-title">Ingeniería en Sistemas & Computación</div>
+          <div class="timeline-org">Universidad Tecnológica de Bolívar</div>
+          <div class="timeline-desc">Diseño de ingeniería, desarrollo de software y sistemas complejos.</div>
         </div>
-
-        <div class="progress">
-          <span class="skill">Python (Automatización / Backend) <i class="val">85%</i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-period">2013 – 2017</div>
+          <div class="timeline-title">Tecnología en Sistemas & Computación</div>
+          <div class="timeline-org">Universidad Tecnológica de Bolívar</div>
+          <div class="timeline-desc">Desarrollo web, móvil y administración de sistemas de información.</div>
         </div>
       </div>
-
-      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="progress">
-          <span class="skill">Salesforce (práctico) <i class="val">70%</i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+    </div>
+    <!-- Experiencia -->
+    <div class="reveal reveal-delay-1">
+      <div class="resume-section-title"><i class="bi bi-briefcase-fill" style="color:var(--accent)"></i> <span>Experiencia</span></div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-period">Ene 2022 – Ago 2025</div>
+          <div class="timeline-title">Director de Tecnología</div>
+          <div class="timeline-org">EXIA S.A.S — Cartagena, CO</div>
+          <div class="timeline-desc">Integración tecnológica en proyectos solares, automatización de procesos y dashboards de monitoreo.</div>
         </div>
-
-        <div class="progress">
-          <span class="skill">UI/UX (interfaces modernas y usables) <i class="val">80%</i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-period">2021 – 2024</div>
+          <div class="timeline-title">Developer Semi Senior (Tester)</div>
+          <div class="timeline-org">Google</div>
+          <div class="timeline-desc">Pruebas funcionales y automatizadas de aplicaciones web y móviles en entornos ágiles.</div>
         </div>
-
-        <div class="progress">
-          <span class="skill">Energía Solar Fotovoltaica (modelado / gestión) <i class="val">75%</i></span>
-          <div class="progress-bar-wrap">
-            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-period">2020 – Presente</div>
+          <div class="timeline-title">Freelance · Salesforce Developer</div>
+          <div class="timeline-org">Cartagena, CO</div>
+          <div class="timeline-desc">Desarrollo web, automatización de procesos e integraciones con Salesforce.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Feb 2015 – Dic 2016</div>
+          <div class="timeline-title">Auxiliar Administrativo · Investigación</div>
+          <div class="timeline-org">Cartagena, CO</div>
+          <div class="timeline-desc">Capacitación en TI, digitalización y soporte en proyecto CIER NORTE.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-    <!-- ======= Resume Section ======= -->
-<section id="resume" class="resume">
-  <div class="container">
-    <div class="section-title">
-      <h2>Resumen</h2>
-      <p>En esta sección muestro mi recorrido académico y mi experiencia en el desarrollo web.</p>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="reveal">
+    <div class="section-tag">Portafolio</div>
+    <h2 class="section-title">Certificaciones & Tecnologías</h2>
+    <p class="section-subtitle">En constante aprendizaje y evolución.</p>
+  </div>
+  <div class="portfolio-filters reveal">
+    <button class="filter-btn active" data-filter="all">Todo</button>
+    <button class="filter-btn" data-filter="cert">Certificaciones</button>
+    <button class="filter-btn" data-filter="tech">Tecnologías</button>
+  </div>
+
+  <!-- Certificaciones -->
+  <div id="certs-grid" class="portfolio-grid reveal">
+    <div class="portfolio-item" data-cat="cert">
+      <img src="https://yared17.github.io/assets/img/portfolio/portfolio-1.jpg" class="portfolio-img" alt="Cert 1" onerror="this.style.background='var(--surface2)';this.removeAttribute('src')">
+      <div class="portfolio-info">
+        <div class="portfolio-tag">Certificación</div>
+        <div class="portfolio-name">Certificado 1</div>
+      </div>
     </div>
+    <div class="portfolio-item" data-cat="cert">
+      <img src="https://yared17.github.io/assets/img/portfolio/portfolio-2.jpg" class="portfolio-img" alt="Cert 2" onerror="this.style.background='var(--surface2)';this.removeAttribute('src')">
+      <div class="portfolio-info">
+        <div class="portfolio-tag">Certificación</div>
+        <div class="portfolio-name">Certificado 2</div>
+      </div>
+    </div>
+    <div class="portfolio-item" data-cat="cert">
+      <img src="https://yared17.github.io/assets/img/portfolio/portfolio-3.jpg" class="portfolio-img" alt="Cert 3" onerror="this.style.background='var(--surface2)';this.removeAttribute('src')">
+      <div class="portfolio-info">
+        <div class="portfolio-tag">Certificación</div>
+        <div class="portfolio-name">Certificado 3</div>
+      </div>
+    </div>
+    <div class="portfolio-item" data-cat="cert">
+      <img src="https://yared17.github.io/assets/img/portfolio/portfolio-4.jpg" class="portfolio-img" alt="Cert 4" onerror="this.style.background='var(--surface2)';this.removeAttribute('src')">
+      <div class="portfolio-info">
+        <div class="portfolio-tag">Certificación</div>
+        <div class="portfolio-name">Certificado 4</div>
+      </div>
+    </div>
+    <div class="portfolio-item" data-cat="cert">
+      <img src="https://yared17.github.io/assets/img/portfolio/portfolio-5.jpg" class="portfolio-img" alt="Cert 5" onerror="this.style.background='var(--surface2)';this.removeAttribute('src')">
+      <div class="portfolio-info">
+        <div class="portfolio-tag">Certificación</div>
+        <div class="portfolio-name">Certificado 5</div>
+      </div>
+    </div>
+    <div class="portfolio-item" data-cat="cert">
+      <img src="https://yared17.github.io/assets/img/portfolio/portfolio-6.jpg" class="portfolio-img" alt="Cert 6" onerror="this.style.background='var(--surface2)';this.removeAttribute('src')">
+      <div class="portfolio-info">
+        <div class="portfolio-tag">Certificación</div>
+        <div class="portfolio-name">Certificado 6</div>
+      </div>
+    </div>
+  </div>
 
-    <div class="row">
-      <div class="col-lg-6" data-aos="fade-up">
-        <div class="resume-item pb-0">
-          <h4>Yared Henriquez Blanquicett</h4>
-          <p><em>Cuento con más de 5 años de experiencia en Python, desarrollando soluciones de automatización, aplicaciones web y procesos de integración con APIs que optimizan la gestión de datos y tareas empresariales. He liderado durante 4 años proyectos tecnológicos en EXIA S.A.S., gestionando sistemas de energía solar, monitoreo en tiempo real y cumplimiento normativo. Además, tengo un sólido recorrido en Salesforce, trabajando en automatizaciones, flujos y el uso de Einstein AI para impulsar la transformación digital en organizaciones.</em></p>
-          <ul></ul>
-        </div>
+  <!-- Tecnologías -->
+  <div id="tech-section" class="reveal" style="margin-top: 3rem; display:none">
+    <div class="tech-grid">
+      <div class="tech-item"><i class="devicon-python-plain" style="color:#3776ab"></i><span>Python</span></div>
+      <div class="tech-item"><i class="devicon-javascript-plain" style="color:#f7df1e"></i><span>JavaScript</span></div>
+      <div class="tech-item"><i class="devicon-html5-plain" style="color:#e34f26"></i><span>HTML5</span></div>
+      <div class="tech-item"><i class="devicon-css3-plain" style="color:#1572b6"></i><span>CSS3</span></div>
+      <div class="tech-item"><i class="devicon-bootstrap-plain" style="color:#7952b3"></i><span>Bootstrap</span></div>
+      <div class="tech-item"><i class="devicon-flask-original"></i><span>Flask</span></div>
+      <div class="tech-item"><i class="devicon-django-plain" style="color:#092e20"></i><span>Django</span></div>
+      <div class="tech-item"><i class="devicon-git-plain" style="color:#f05032"></i><span>Git</span></div>
+      <div class="tech-item"><i class="devicon-github-original"></i><span>GitHub</span></div>
+      <div class="tech-item"><i class="devicon-salesforce-plain" style="color:#00a1e0"></i><span>Salesforce</span></div>
+      <div class="tech-item"><i class="devicon-mysql-plain" style="color:#4479a1"></i><span>MySQL</span></div>
+      <div class="tech-item"><i class="devicon-vscode-plain" style="color:#007acc"></i><span>VS Code</span></div>
+    </div>
+  </div>
+</section>
 
-        <h3 class="resume-title">Educación</h3>
-        <div class="resume-item">
-          <h4>Máster Universitario en Inteligencia Artificial</h4>
-          <h5>2023 – Presente (en espera de grado)</h5>
-          <p><em>Universitat de Barcelona</em></p>
-          <p>Impartido en inglés. Formación en aprendizaje automático, procesamiento del lenguaje natural, robótica y sistemas inteligentes, con orientación investigadora y profesional.</p>
-        </div>
+<!-- SERVICES -->
+<section id="services" style="padding-top:0">
+  <div class="reveal">
+    <div class="section-tag">Servicios</div>
+    <h2 class="section-title">¿En qué puedo ayudarte?</h2>
+    <p class="section-subtitle">Soluciones digitales a medida, enfocadas en valor real.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+      <div class="service-title">Transformación Digital</div>
+      <div class="service-desc">Acompaño empresas y personas en la adopción de herramientas digitales que mejoran la productividad y eficiencia operativa.</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon"><i class="bi bi-palette-fill"></i></div>
+      <div class="service-title">Diseño UI/UX</div>
+      <div class="service-desc">Interfaces intuitivas, atractivas y centradas en el usuario. Estética y funcionalidad en perfecta armonía.</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon"><i class="bi bi-braces"></i></div>
+      <div class="service-title">Desarrollo en Python</div>
+      <div class="service-desc">Automatización de procesos, APIs, Flask/Django y scripts personalizados que optimizan tareas empresariales.</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="bi bi-broadcast-pin"></i></div>
+      <div class="service-title">Asesoría TIC</div>
+      <div class="service-desc">Integración de informática y telecomunicaciones para optimizar procesos de información y toma de decisiones.</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon"><i class="bi bi-kanban-fill"></i></div>
+      <div class="service-title">Gestión de Proyectos</div>
+      <div class="service-desc">Metodologías ágiles (Scrum) y tradicionales. Objetivos claros, recursos estratégicos y resultados medibles.</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon"><i class="bi bi-mortarboard-fill"></i></div>
+      <div class="service-title">Capacitación Digital</div>
+      <div class="service-desc">Formación en herramientas digitales, Python y tecnologías emergentes para equipos y profesionales.</div>
+    </div>
+  </div>
+</section>
 
-        <div class="resume-item">
-          <h4>Ingenieria en Sistemas &amp; Computación</h4>
-          <h5>2017 - 2021</h5>
-          <p><em>Universidad Tecnologica de Bolivar</em></p>
-          <p>Desarrolle capacidades para identificar, formular y resolver problemas complejos de ingeniería, aplicando principios de ingeniería, ciencias y matemáticas. Puedo aplicar el diseño de ingeniería para producir soluciones que satisfagan necesidades específicas con consideración de salud pública, seguridad y bienestar, así como factores globales, culturales, sociales, ambientales y económicos.</p>
-        </div>
-        <div class="resume-item">
-          <h4>Tecnologia en Sistemas &amp; Computación</h4>
-          <h5>2013 - 2017</h5>
-          <p><em>Universidad Tecnologica de Bolivar</em></p>
-          <p>Estoy capacitado para utilizar mis conocimientos y competencias para construir, administrar, evaluar y mantener sistemas de información. Tengo fortalezas en Desarrollo de software con énfasis en aplicaciones web y móviles.</p>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-tag">Contacto</div>
+    <h2 class="section-title">Hablemos</h2>
+    <p class="section-subtitle">Disponible para proyectos freelance y colaboraciones.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="contact-info">
+        <h3>¿Tienes un proyecto en mente?</h3>
+        <p>Escríbeme por cualquier canal, respondo rápido. Siempre abierto a nuevas ideas y desafíos técnicos.</p>
+        <div class="contact-links">
+          <a href="mailto:yared.henriquezb@gmail.com" class="contact-link">
+            <div class="contact-link-icon"><i class="bi bi-envelope-fill"></i></div>
+            yared.henriquezb@gmail.com
+          </a>
+          <a href="https://wa.me/573015185270" target="_blank" class="contact-link">
+            <div class="contact-link-icon"><i class="bi bi-whatsapp"></i></div>
+            +57 301 518 5270
+          </a>
+          <a href="https://github.com/yared17" target="_blank" class="contact-link">
+            <div class="contact-link-icon"><i class="bi bi-github"></i></div>
+            github.com/yared17
+          </a>
+          <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" class="contact-link">
+            <div class="contact-link-icon"><i class="bi bi-cloud-fill"></i></div>
+            Trailhead — Ranger (195 insignias)
+          </a>
         </div>
       </div>
-
-      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="resume-title">Experiencia profesional</h3>
-
-        <div class="resume-item">
-          <h4>Director de Tecnología</h4>
-          <h5>Ene. 2022 – Ago. 2025</h5>
-          <p><em>EXIA S.A.S — Cartagena, CO</em></p>
-          <ul>
-            <li>Gestión de integración tecnológica en proyectos solares fotovoltaicos.</li>
-            <li>Automatización de procesos internos y desarrollo de dashboards.</li>
-          </ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>Developer Semi Senior (Tester)</h4>
-          <h5>2021 – 2024</h5>
-          <p><em>Google</em></p>
-          <ul>
-            <li>Pruebas funcionales y automatizadas de aplicaciones web y móviles.</li>
-            <li>Colaboración ágil con equipos de desarrollo y QA.</li>
-          </ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>Freelance | Salesforce</h4>
-          <h5>2020 – Presente</h5>
-          <p><em>Cartagena, CO</em></p>
-          <ul>
-            <li>Desarrollo web y automatización de procesos.</li>
-            <li>Integraciones con Salesforce y creación de dashboards.</li>
-          </ul>
-        </div>
-
-        <div class="resume-item">
-          <h4>Auxiliar Administrativo | Investigación</h4>
-          <h5>Feb. 2015 – Dic. 2016</h5>
-          <p><em>Cartagena, CO</em></p>
-          <ul>
-            <li>Capacitación de personal en TI y digitalización de procesos.</li>
-            <li>Soporte en proyecto CIER NORTE.</li>
-          </ul>
-        </div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125568.22390012427!2d-75.56359!3d10.39157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef625b37e82dc45%3A0x7fabe100d2fb1e43!2sCartagena%20de%20Indias!5e0!3m2!1ses!2sco!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio section-bg">
-  <div class="container">
-    <div class="section-title">
-      <h2>Certificaciones y Portafolio</h2>
-      <p>Me gusta estar en constante aprendizaje y aquí está una pequeña muestra.</p>
-    </div>
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>DevYHB</strong> · Diseñado y desarrollado por <strong>Yared Henriquez</strong> · Cartagena, Colombia</p>
+</footer>
 
-    <div class="row" data-aos="fade-up">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="portfolio-flters">
-          <li data-filter="*" class="filter-active">Todo</li>
-          <li data-filter=".filter-cert">Certificaciones</li>
-          <li data-filter=".filter-tech">Tecnologías</li>
-        </ul>
-      </div>
-    </div>
+<!-- WHATSAPP -->
+<a href="https://wa.me/573015185270" class="whatsapp-float" target="_blank" title="WhatsApp">
+  <i class="bi bi-whatsapp" style="font-size:1.5rem"></i>
+</a>
 
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-      <!-- ===== Certificaciones ===== -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="Certificado 1">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 1"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="Certificado 2">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 2"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="Certificado 3">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 3"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="Certificado 4">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 4"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="Certificado 5">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 5"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="Certificado 6">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 6"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="Certificado 7">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 7"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="Certificado 8">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 8"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-cert">
-        <div class="portfolio-wrap">
-          <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="Certificado 9">
-          <div class="portfolio-links">
-            <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Certificado 9"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== Tecnologías (logos con Devicon) ===== -->
-      <div class="col-12 portfolio-item filter-tech">
-        <div class="portfolio-wrap p-4 tech-wrap">
-          <ul class="tech-grid list-unstyled m-0">
-            <li><i class="devicon-html5-plain colored" title="HTML5" aria-label="HTML5"></i></li>
-            <li><i class="devicon-css3-plain colored" title="CSS3" aria-label="CSS3"></i></li>
-            <li><i class="devicon-javascript-plain colored" title="JavaScript" aria-label="JavaScript"></i></li>
-            <li><i class="devicon-bootstrap-plain colored" title="Bootstrap" aria-label="Bootstrap"></i></li>
-            <li><i class="devicon-python-plain colored" title="Python" aria-label="Python"></i></li>
-            <li><i class="devicon-flask-original colored" title="Flask" aria-label="Flask"></i></li>
-            <li><i class="devicon-salesforce-plain colored" title="Salesforce" aria-label="Salesforce"></i></li>
-            <li><i class="devicon-git-plain colored" title="Git" aria-label="Git"></i></li>
-            <li><i class="devicon-github-original" title="GitHub" aria-label="GitHub"></i></li>
-            <li><i class="devicon-linux-plain colored" title="Linux" aria-label="Linux"></i></li>
-            <li><i class="devicon-mysql-plain colored" title="MySQL" aria-label="MySQL"></i></li>
-            <li><i class="devicon-postgresql-plain colored" title="PostgreSQL" aria-label="PostgreSQL"></i></li>
-            <li><i class="devicon-heroku-original colored" title="Heroku" aria-label="Heroku"></i></li>
-            <li><i class="devicon-vscode-plain colored" title="VS Code" aria-label="VS Code"></i></li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-    <!-- ======= Services Section ======= -->
-<section id="services" class="services">
-  <div class="container">
-    <div class="section-title">
-      <h2>Services</h2>
-      <p>Ofrezco un servicio variado desde soporte técnico a nivel de software, hasta capacitación en el internet de las cosas; pienso que es algo que la sociedad asume que debemos saber, pero no todas las personas tienen el mismo nivel de aprendizaje. </p>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-        <div class="icon"><i class="bi bi-rocket"></i></div>
-        <h4 class="title"><a href="">Transformación Digital & Soporte Tecnológico</a></h4>
-        <p class="description">Acompaño a empresas y personas en la adopción de soluciones digitales: desde soporte técnico especializado en software, hasta la implementación de herramientas innovadoras que mejoran la productividad y la eficiencia.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-        <div class="icon"><i class="bi bi-card-checklist"></i></div>
-        <h4 class="title"><a href="">Diseño de Experiencias Digitales (UI/UX)</a></h4>
-        <p class="description">Creo interfaces fáciles, intuitivas y atractivas, priorizando la usabilidad y la satisfacción del usuario. Mi enfoque combina estética y funcionalidad para mejorar la experiencia de clientes en productos y servicios digitales.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-        <div class="icon"><i class="bi bi-code-slash"></i></div>
-        <h4 class="title"><a href="">Desarrollo en Python</a></h4>
-        <p class="description">Capacitación y proyectos aplicados en Python: automatización de procesos, análisis de datos, conexión con APIs, desarrollo de aplicaciones web con Flask/Django y creación de scripts personalizados que optimizan tareas en entornos empresariales y académicos.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-        <div class="icon"><i class="bi bi-binoculars"></i></div>
-        <h4 class="title"><a href="">Tecnologías de la Información y Comunicación (TIC)</a></h4>
-        <p class="description">Asesoría en el uso de tecnologías que integran informática, telecomunicaciones y comunicación digital, con el fin de optimizar procesos de información, colaboración y toma de decisiones.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-        <div class="icon"><i class="bi bi-brightness-high"></i></div>
-        <h4 class="title"><a href="">Gestión de proyectos</a></h4>
-        <p class="description">Planificación, coordinación y dirección de proyectos con metodologías tradicionales y ágiles (Scrum). Experiencia en estructurar objetivos claros, asignar recursos estratégicamente y entregar resultados medibles.</p>
-      </div>
-      <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-        <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-        <h4 class="title"><a href="">Capacitación en Software y Herramientas Digitales</a></h4>
-        <p class="description">Planificación, coordinación y dirección de proyectos con metodologías tradicionales y ágiles (Scrum). Experiencia en estructurar objetivos claros, asignar recursos estratégicamente y entregar resultados medibles.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- ======= Contact Section ======= -->
-<section id="contact" class="contact">
-  <div class="container">
-    <div class="section-title">
-      <h2>Contact</h2>
-    </div>
-
-    <div class="row" data-aos="fade-in">
-      <div class="col-lg-5 d-flex align-items-stretch">
-        <div class="info">
-          <div class="email">
-            <i class="bi bi-envelope"></i>
-            <h4>Email:</h4>
-            <p>yared2017@gmail.com</p>
-          </div>
-
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32314.57570147287!2d-75.48388363497102!3d10.39531651864611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef625b4fdf916d7%3A0x6a2fd57777172a8f!2sLos%20Alpes%2C%20Cartagena%2C%20Provincia%20de%20Cartagena%2C%20Bol%C3%ADvar!5e0!3m2!1ses!2sco!4v1631030199530!5m2!1ses!2sco" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>DevYHB</span></strong>
-      </div>
-      <div class="credits">
-        Designed by <a href="#">DevYHB</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-
-  <!-- Botón flotante de WhatsApp (abre modal) -->
-  <a class="whatsapp-float" id="whatsappBtn" href="javascript:void(0)" role="button" aria-label="Chatear por WhatsApp">
-    <i class="bx bxl-whatsapp"></i>
-  </a>
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Volver arriba"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS (CDN, todos con defer) -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3/dist/isotope.pkgd.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs@1.5.0/dist/purecounter_vanilla.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.4/swiper-bundle.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/waypoints/lib/noframework.waypoints.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/gh/bootstrapmade/php-email-form/validate.js" defer></script>
-
-  <!-- JS principal (una sola vez, versionado) -->
-  <script src="assets/js/main.js?v=2025" defer></script>
-
-  <!-- Modal WhatsApp -->
-  <div class="modal fade" id="whatsappModal" tabindex="-1" aria-labelledby="whatsappModalLabel" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content border-0 rounded-4 shadow-lg">
-        <div class="modal-body p-0">
-          <div class="p-4 p-md-5">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <img src="assets/img/profile-img.jpg" alt="Yared Henríquez" class="rounded-circle" style="width:64px;height:64px;object-fit:cover;">
-              <div>
-                <h5 id="whatsappModalLabel" class="mb-0">Chatea con Yared en WhatsApp</h5>
-                <small class="text-muted">+57 301 518 5270</small>
-              </div>
-            </div>
-
-            <div class="bg-light rounded-3 p-3 mb-3">
-              <small class="text-muted d-block mb-1">Mensaje de inicio</small>
-              <div class="fw-medium">“Hola Yared, vi tu portafolio y quiero más información.”</div>
-            </div>
-
-            <div class="d-grid gap-2">
-              <button id="openWhatsapp" type="button" class="btn btn-success btn-lg">
-                <i class="bi bi-whatsapp me-2"></i>Abrir en WhatsApp
-              </button>
-              <button id="openWhatsappWeb" type="button" class="btn btn-outline-success">
-                <i class="bi bi-browser-chrome me-2"></i>Abrir en WhatsApp Web
-              </button>
-            </div>
-
-            <div class="text-center my-3">
-              <small class="text-muted">¿No puedes abrir WhatsApp? Escanea el QR:</small>
-              <div class="mt-2">
-                <img id="waQR" alt="QR WhatsApp" width="160" height="160" class="rounded-3 border" loading="lazy" />
-              </div>
-            </div>
-
-            <div class="d-flex justify-content-between align-items-center">
-              <button id="copyNumber" type="button" class="btn btn-link px-0">
-                <i class="bi bi-clipboard me-1"></i>Copiar número
-              </button>
-              <button type="button" class="btn btn-link text-muted" data-bs-dismiss="modal" aria-label="Cerrar">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dark mode + Edad -->
-  <script>
-    const bdark = document.querySelector('#bdark');
-    const body = document.querySelector('body');
-
-    function load (){
-      const darkmode = localStorage.getItem('darkmode');
-      if(!darkmode){
-        store('false');
-      }else if(darkmode === 'true'){
-        body.classList.add('darkmode');
+<script>
+  // ─── REVEAL ON SCROLL ───
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
       }
-    }
-    function store(value){
-      localStorage.setItem('darkmode', value);
-    }
-
-    load();
-
-    if (bdark) {
-      bdark.addEventListener('click', () =>{
-        body.classList.toggle('darkmode');
-        store(body.classList.contains('darkmode'));
-      });
-    }
-
-    // Edad dinámica
-    const birthDate = new Date(1995, 5, 17); // Junio = 5 (enero=0)
-    function calcularEdad(fechaNacimiento) {
-      const hoy = new Date();
-      let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
-      const mes = hoy.getMonth() - fechaNacimiento.getMonth();
-      if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) { edad--; }
-      return edad;
-    }
-    const ageNode = document.getElementById("age");
-    if (ageNode) ageNode.textContent = calcularEdad(birthDate);
-  </script>
-
-  <!-- WhatsApp modal logic (sin parpadeo + reactivación de botones) -->
-  <script>
-  (function () {
-    const phone = '573015185270';
-    const text  = encodeURIComponent('Hola Yared, vi tu portafolio y quiero más información.');
-    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
-
-    const $btn     = document.getElementById('whatsappBtn');
-    const $open    = document.getElementById('openWhatsapp');
-    const $openWeb = document.getElementById('openWhatsappWeb');
-    const $copy    = document.getElementById('copyNumber');
-    const $qr      = document.getElementById('waQR');
-    const modalEl  = document.getElementById('whatsappModal');
-
-    const waURL = `https://wa.me/${phone}?text=${text}`;
-    if ($qr) {
-      $qr.setAttribute('loading','lazy');
-      $qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(waURL)}`;
-    }
-
-    const getModal = () => (window.bootstrap ? bootstrap.Modal.getOrCreateInstance(modalEl) : null);
-
-    let nextAction = null;
-    let clickLock = false;
-
-    function lockButtons(lock) {
-      clickLock = lock;
-      [$open, $openWeb, $copy].forEach(el => {
-        if (!el) return;
-        el.disabled = lock;
-        el.setAttribute('aria-disabled', lock ? 'true' : 'false');
-        el.classList.toggle('disabled', lock);
-      });
-      if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
-    }
-
-    if (modalEl) {
-      modalEl.addEventListener('shown.bs.modal', () => { lockButtons(false); });
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        lockButtons(false);
-        if (typeof nextAction === 'function') {
-          const action = nextAction;
-          nextAction = null;
-          requestAnimationFrame(() => action());
-        }
-      });
-    }
-
-    if ($btn) {
-      $btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const modal = getModal();
-        if (modal) modal.show();
-      });
-    }
-
-    if ($open) {
-      $open.addEventListener('click', () => {
-        if (clickLock) return;
-        lockButtons(true);
-        nextAction = () => {
-          if (isMobile) {
-            window.location.href = `whatsapp://send?phone=${phone}&text=${text}`;
-            setTimeout(() => { window.open(waURL, '_blank', 'noopener'); }, 800);
-          } else {
-            window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank', 'noopener');
-          }
-        };
-        const modal = getModal();
-        if (modal) modal.hide();
-      });
-    }
-
-    if ($openWeb) {
-      $openWeb.addEventListener('click', () => {
-        if (clickLock) return;
-        lockButtons(true);
-        nextAction = () => {
-          window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${text}`, '_blank', 'noopener');
-        };
-        const modal = getModal();
-        if (modal) modal.hide();
-      });
-    }
-
-    if ($copy) {
-      $copy.addEventListener('click', async () => {
-        if (clickLock) return;
-        try {
-          await navigator.clipboard.writeText(`+57 301 518 5270`);
-          $copy.innerHTML = '<i class="bi bi-clipboard-check me-1"></i>¡Copiado!';
-          setTimeout(() => $copy.innerHTML = '<i class="bi bi-clipboard me-1"></i>Copiar número', 1500);
-        } catch {
-          alert('No se pudo copiar. Copia manual: +57 301 518 5270');
-        }
-      });
-    }
-  })();
-  </script>
-
-  <script>
-  (async () => {
-    const target = document.getElementById('brandLogo');
-    if (!target) return; // evita error si no existe
-    try {
-      const res = await fetch('./assets/img/logo.svg', { cache: 'no-store' });
-      if (!res.ok) throw new Error('SVG not found');
-      const svg = await res.text();
-      target.innerHTML = svg;  // inyecta SVG inline
-    } catch (e) {
-      target.innerHTML = '<img src="./assets/img/devlogo.png" alt="Logo Yared" class="img-fluid" style="max-width:260px;width:100%;height:auto;">';
-    }
-  })();
-  </script>
-
-  <script>
-  // Inicializa PureCounter explícitamente (por si el auto-init no corre)
-  window.addEventListener('DOMContentLoaded', () => {
-    try { new PureCounter(); } catch(e) { /* noop */ }
-  });
-  </script>
-
-  <script>
-  (function() {
-    // Mapa: clase del icono -> animación
-    const animMap = [
-      { match: 'bi-rocket',         anim: 'ani-rocket'   },
-      { match: 'bi-card-checklist', anim: 'ani-checklist'},
-      { match: 'bi-code-slash',     anim: 'ani-code'     },
-      { match: 'bi-binoculars',     anim: 'ani-bino'     },
-      { match: 'bi-brightness-high',anim: 'ani-sun'      },
-      { match: 'bi-calendar4-week', anim: 'ani-cal'      },
-    ];
-
-    const icons = document.querySelectorAll('.services .icon i');
-    icons.forEach(el => {
-      el.addEventListener('click', () => {
-        if (el.classList.contains('animating')) return; // evita spam
-        const cls = el.className;
-        const found = animMap.find(m => cls.includes(m.match));
-        if (!found) return;
-
-        el.classList.add('animating', found.anim);
-        const onEnd = () => {
-          el.classList.remove(found.anim, 'animating');
-          el.removeEventListener('animationend', onEnd);
-        };
-        el.addEventListener('animationend', onEnd);
-      });
     });
-  })();
-  </script>
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.rail-card .icons i').forEach(el=>{
-    el.style.setProperty('--delay', (3 + Math.random()*1.6)+'s');
-    el.style.animationDelay = (Math.random()*1.1).toFixed(2)+'s';
-  });
-});
-</script>
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  if (window.AOS) {
-    AOS.init({
-      duration: 600,
-      once: true,
-      // Deshabilitar en pantallas chicas para evitar solapes
-      disable: () => window.matchMedia('(max-width: 991.98px)').matches
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // ─── PORTFOLIO FILTER ───
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.dataset.filter;
+      const certsGrid = document.getElementById('certs-grid');
+      const techSection = document.getElementById('tech-section');
+
+      if (filter === 'all') {
+        certsGrid.style.display = 'grid';
+        techSection.style.display = 'none';
+        document.querySelectorAll('.portfolio-item').forEach(i => i.style.display = '');
+      } else if (filter === 'cert') {
+        certsGrid.style.display = 'grid';
+        techSection.style.display = 'none';
+        document.querySelectorAll('.portfolio-item').forEach(i => {
+          i.style.display = i.dataset.cat === 'cert' ? '' : 'none';
+        });
+      } else if (filter === 'tech') {
+        certsGrid.style.display = 'none';
+        techSection.style.display = 'block';
+      }
     });
-  }
-});
-</script>
-<script>
-(function(){
-  const btn = document.getElementById('menuToggle');
-  if(!btn) return;
-
-  // accesibilidad
-  btn.setAttribute('role','button');
-
-  let t;
-  btn.addEventListener('click', ()=>{
-    // enciende la animación visual del botón
-    btn.classList.remove('ignite');
-    void btn.offsetWidth; // reflow para reiniciar
-    btn.classList.add('ignite');
-    clearTimeout(t);
-    t = setTimeout(()=> btn.classList.remove('ignite'), 700);
   });
 
-  // pausa la “respiración” si el menú está abierto
-  const obs = new MutationObserver(()=>{
-    const open = document.body.classList.contains('mobile-nav-active');
-    btn.style.animationPlayState = open ? 'paused' : 'running';
+  // ─── NAV SCROLL STYLE ───
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.background =
+      window.scrollY > 50 ? 'rgba(8,12,16,0.97)' : 'rgba(8,12,16,0.85)';
   });
-  obs.observe(document.body, { attributes:true, attributeFilter:['class'] });
-})();
 </script>
-
-
-
 </body>
 </html>
-
