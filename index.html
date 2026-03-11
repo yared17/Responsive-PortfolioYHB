@@ -156,6 +156,21 @@ h2.stit em{font-style:normal;color:var(--accent);}
 .clink:hover .cico{background:var(--accent);border-color:var(--accent);color:#fff;}
 .cico{width:32px;height:32px;background:rgba(14,122,95,.08);border:1px solid rgba(14,122,95,.2);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:.85rem;flex-shrink:0;transition:all .2s;}
 
+/* GITHUB CARD */
+.gh-card{border:1px solid var(--line);background:var(--surface);overflow:hidden;}
+.gh-card-header{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.4rem;border-bottom:1px solid var(--line);background:var(--bg2);}
+.gh-avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);}
+.gh-card-name{font-weight:700;font-size:.95rem;color:var(--ink);}
+.gh-card-user{font-family:var(--fm);font-size:.7rem;color:var(--muted);}
+.gh-card-body{padding:1.2rem 1.4rem;}
+.gh-card-bio{font-size:.85rem;color:var(--ink2);margin-bottom:1.2rem;line-height:1.6;}
+.gh-stats{display:flex;gap:1.5rem;margin-bottom:1.2rem;}
+.gh-stat{text-align:center;}
+.gh-stat-n{font-weight:800;font-size:1.1rem;color:var(--ink);display:block;}
+.gh-stat-l{font-family:var(--fm);font-size:.6rem;color:var(--muted);}
+.gh-link{display:flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.72rem;color:var(--accent);font-weight:500;transition:color .2s;}
+.gh-link:hover{color:var(--accent2);}
+
 /* TRAILHEAD WIDGET WRAPPER */
 .trailhead-wrap{
   border:1px solid var(--line);
@@ -244,7 +259,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
     <div class="hstats">
       <div><div class="hstat-n">5+</div><div class="hstat-l">años en Python</div></div>
       <div><div class="hstat-n">4</div><div class="hstat-l">años liderando TI</div></div>
-      <div><div class="hstat-n">195</div><div class="hstat-l">insignias Trailhead</div></div>
+      <div><div class="hstat-n">Ranger</div><div class="hstat-l">Salesforce Trailhead</div></div>
     </div>
   </div>
 </div>
@@ -440,17 +455,31 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
     </div>
 
     <div class="reveal d2">
-      <!-- TRAILHEAD WIDGET (jitendrazaa.com — API pública de Salesforce) -->
-      <div class="trailhead-wrap">
-        <div class="trailhead-wrap-label">
-          <i class="bi bi-cloud-fill"></i> Perfil Salesforce Trailhead
+
+      <!-- GITHUB CARD (sin repositorios) -->
+      <div class="gh-card">
+        <div class="gh-card-header">
+          <img class="gh-avatar" src="https://avatars.githubusercontent.com/DevCop95" alt="DevCop95" onerror="this.src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'">
+          <div>
+            <div class="gh-card-name" id="gh-name">DevCop95</div>
+            <div class="gh-card-user">github.com/DevCop95</div>
+          </div>
         </div>
-        <div id="trailhead-widget"></div>
-        <script async src="https://jitendrazaa.com/Trailhead.php?profileId=yhenriquezblanquicett" type="text/javascript"></script>
+        <div class="gh-card-body">
+          <div class="gh-card-bio" id="gh-bio">Ingeniero de Sistemas · Developer · Cartagena, CO</div>
+          <div class="gh-stats">
+            <div class="gh-stat"><span class="gh-stat-n" id="gh-repos">—</span><span class="gh-stat-l">Repos</span></div>
+            <div class="gh-stat"><span class="gh-stat-n" id="gh-followers">—</span><span class="gh-stat-l">Seguidores</span></div>
+            <div class="gh-stat"><span class="gh-stat-n" id="gh-following">—</span><span class="gh-stat-l">Siguiendo</span></div>
+          </div>
+          <a href="https://github.com/DevCop95" target="_blank" class="gh-link">
+            <i class="bi bi-box-arrow-up-right"></i> Ver perfil completo en GitHub
+          </a>
+        </div>
       </div>
 
       <!-- MAPA -->
-      <div class="mapwrap">
+      <div class="mapwrap" style="margin-top:1.5rem;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125568.22!2d-75.5636!3d10.3916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef625b37e82dc45%3A0x7fabe100d2fb1e43!2sCartagena%20de%20Indias!5e0!3m2!1ses!2sco!4v1234567890" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="maplbl"><i class="bi bi-geo-alt-fill"></i> Cartagena de Indias, Bolívar, Colombia</div>
@@ -483,6 +512,18 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* GITHUB — solo perfil, sin repos */
+fetch('https://api.github.com/users/DevCop95')
+  .then(r => r.json())
+  .then(d => {
+    if (d.name) document.getElementById('gh-name').textContent = d.name;
+    if (d.bio)  document.getElementById('gh-bio').textContent  = d.bio;
+    document.getElementById('gh-repos').textContent    = d.public_repos ?? '—';
+    document.getElementById('gh-followers').textContent = d.followers    ?? '—';
+    document.getElementById('gh-following').textContent = d.following    ?? '—';
+  })
+  .catch(() => {});
 
 /* PORTFOLIO FILTER */
 const cg = document.getElementById('cgrid');
