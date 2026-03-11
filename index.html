@@ -39,7 +39,7 @@ nav.scrolled{border-color:var(--line);}
 .ncta:hover{background:var(--accent)!important;}
 
 /* HERO */
-#hero{min-height:100vh;display:grid;grid-template-columns:1fr 420px;align-items:center;gap:4rem;padding:8rem 5vw 5rem;max-width:1200px;margin:0 auto;}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr;align-items:center;gap:4rem;padding:8rem 5vw 5rem;max-width:900px;margin:0 auto;}
 .hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fm);font-size:.72rem;color:var(--accent);background:rgba(14,122,95,.08);border:1px solid rgba(14,122,95,.2);padding:.35rem .9rem;margin-bottom:2rem;}
 .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
@@ -53,11 +53,6 @@ h1.hname em{font-style:normal;color:var(--accent);display:block;}
 .btn-solid:hover{background:var(--accent);}
 .btn-line{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:.75rem 1.8rem;font-size:.82rem;font-weight:500;font-family:var(--fh);transition:border-color .2s,color .2s;}
 .btn-line:hover{border-color:var(--accent);color:var(--accent);}
-.hphoto{position:relative;}
-.hphoto img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;box-shadow:0 24px 60px rgba(22,24,28,.12);}
-.hphoto-badge{position:absolute;bottom:-1.5rem;left:-1.5rem;background:var(--surface);border:1px solid var(--line);padding:1rem 1.3rem;box-shadow:0 8px 24px rgba(22,24,28,.08);}
-.hphoto-badge-num{font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1;}
-.hphoto-badge-txt{font-size:.68rem;color:var(--muted);margin-top:.15rem;font-family:var(--fm);}
 .hstats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--line);}
 .hstat-n{font-size:2rem;font-weight:800;color:var(--ink);letter-spacing:-.04em;line-height:1;}
 .hstat-l{font-size:.7rem;color:var(--muted);margin-top:.2rem;font-family:var(--fm);}
@@ -161,32 +156,19 @@ h2.stit em{font-style:normal;color:var(--accent);}
 .clink:hover .cico{background:var(--accent);border-color:var(--accent);color:#fff;}
 .cico{width:32px;height:32px;background:rgba(14,122,95,.08);border:1px solid rgba(14,122,95,.2);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:.85rem;flex-shrink:0;transition:all .2s;}
 
-/* GITHUB CARD */
-.gh-card{border:1px solid var(--line);background:var(--surface);margin-top:2rem;overflow:hidden;}
-.gh-card-header{display:flex;align-items:center;gap:1rem;padding:1.2rem 1.4rem;border-bottom:1px solid var(--line);background:var(--bg2);}
-.gh-avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);}
-.gh-card-name{font-weight:700;font-size:.95rem;color:var(--ink);}
-.gh-card-user{font-family:var(--fm);font-size:.7rem;color:var(--muted);}
-.gh-card-body{padding:1.2rem 1.4rem;}
-.gh-card-bio{font-size:.85rem;color:var(--ink2);margin-bottom:1.2rem;line-height:1.6;}
-.gh-stats{display:flex;gap:1.5rem;margin-bottom:1.2rem;}
-.gh-stat{text-align:center;}
-.gh-stat-n{font-weight:800;font-size:1.1rem;color:var(--ink);display:block;}
-.gh-stat-l{font-family:var(--fm);font-size:.6rem;color:var(--muted);}
-.gh-langs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.2rem;}
-.gh-lang{font-family:var(--fm);font-size:.62rem;color:var(--ink2);background:var(--bg2);border:1px solid var(--line);padding:.2rem .6rem;}
-.gh-link{display:flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.72rem;color:var(--accent);font-weight:500;transition:color .2s;}
-.gh-link:hover{color:var(--accent2);}
-.gh-repos-strip{border-top:1px solid var(--line);padding:1rem 1.4rem;display:flex;flex-direction:column;gap:.6rem;}
-.gh-repo-item{display:flex;align-items:center;justify-content:space-between;padding:.6rem .8rem;background:var(--bg);border:1px solid var(--line);transition:border-color .2s;}
-.gh-repo-item:hover{border-color:var(--accent);}
-.gh-repo-name{font-family:var(--fm);font-size:.75rem;font-weight:600;color:var(--accent);}
-.gh-repo-desc{font-size:.72rem;color:var(--muted);margin-top:.1rem;}
-.gh-repo-meta{display:flex;align-items:center;gap:.8rem;flex-shrink:0;margin-left:1rem;}
-.gh-repo-lang{font-family:var(--fm);font-size:.62rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;}
-.gh-repo-stars{font-family:var(--fm);font-size:.62rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;}
-.gh-strip-label{font-family:var(--fm);font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem;padding:0 0 .4rem;border-bottom:1px solid var(--line);}
-.lang-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+/* TRAILHEAD WIDGET WRAPPER */
+.trailhead-wrap{
+  border:1px solid var(--line);
+  background:var(--surface);
+  padding:1.5rem;
+  margin-bottom:1.5rem;
+}
+.trailhead-wrap-label{
+  font-family:var(--fm);font-size:.65rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;
+}
+.trailhead-wrap-label i{color:var(--accent);}
 
 /* MAP */
 .mapwrap{border:1px solid var(--line);overflow:hidden;height:220px;margin-top:1rem;}
@@ -209,7 +191,6 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
 /* RESPONSIVE */
 @media(max-width:960px){
   #hero{grid-template-columns:1fr;padding-top:7rem;}
-  .hphoto{display:none;}
   .about-grid{grid-template-columns:1fr;gap:3rem;}
   .about-img{position:static;}
   .ski-grid,.res-grid,.con-grid{grid-template-columns:1fr;gap:3rem;}
@@ -242,7 +223,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — sin foto (aparece en Sobre mí) -->
 <div id="hero">
   <div class="hero-left">
     <div class="hero-tag">Disponible para proyectos freelance</div>
@@ -266,13 +247,6 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
       <div><div class="hstat-n">195</div><div class="hstat-l">insignias Trailhead</div></div>
     </div>
   </div>
-  <div class="hphoto">
-    <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/profile-img.jpg" alt="Yared Henriquez" onerror="this.style.display='none'">
-    <div class="hphoto-badge">
-      <div class="hphoto-badge-num">Ranger</div>
-      <div class="hphoto-badge-txt">Trailhead · Salesforce</div>
-    </div>
-  </div>
 </div>
 
 <div class="sdivider"></div>
@@ -292,7 +266,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
         <p class="reveal d2">Como <strong>Director de Tecnología en EXIA S.A.S</strong> lideré la infraestructura digital de una empresa de energía solar: integración de sensores, dashboards de supervisión y automatización de reportes operativos. Hoy trabajo como <strong>freelance</strong> desarrollando soluciones con Python, Salesforce y tecnologías web, mientras profundizo en <strong>Inteligencia Artificial</strong> con Máster en la Universitat de Barcelona.</p>
       </div>
       <div class="about-meta reveal d3">
-        <div class="am"><div class="am-k">Email</div><div class="am-v"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ceb7afbcabaae0a6aba0bca7bfbbabb4ac8ea9a3afa7a2e0ada1a3">[email&#160;protected]</a></div></div>
+        <div class="am"><div class="am-k">Email</div><div class="am-v"><a href="mailto:yared.henriquezhb@gmail.com">yared.henriquezhb@gmail.com</a></div></div>
         <div class="am"><div class="am-k">Disponibilidad</div><div class="am-v av"><i class="bi bi-circle-fill" style="font-size:.5rem;vertical-align:middle"></i> Disponible</div></div>
         <div class="am"><div class="am-k">Ciudad</div><div class="am-v">Cartagena, Colombia</div></div>
         <div class="am"><div class="am-k">Formación</div><div class="am-v">Ingeniería + Máster IA</div></div>
@@ -446,36 +420,37 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
       <h2 class="con-cta">Construyamos<br>algo <em>juntos.</em></h2>
       <p class="con-body">Disponible para proyectos freelance, consultoría y colaboraciones. Respondo rápido y siempre abierto a nuevos desafíos.</p>
       <div class="conlinks">
-        <a href="/cdn-cgi/l/email-protection#740d150611105a1c111a061d0501110e16341319151d185a171b19" class="clink"><div class="cico"><i class="bi bi-envelope-fill"></i></div><span class="__cf_email__" data-cfemail="d7aeb6a5b2b3f9bfb2b9a5bea6a2b2adb597b0bab6bebbf9b4b8ba">[email&#160;protected]</span></a>
-        <a href="https://wa.me/573015185270" target="_blank" class="clink"><div class="cico"><i class="bi bi-whatsapp"></i></div>+57 301 518 5270</a>
-        <a href="https://github.com/DevCop95" target="_blank" class="clink"><div class="cico"><i class="bi bi-github"></i></div>github.com/DevCop95</a>
-        <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" class="clink"><div class="cico"><i class="bi bi-cloud-fill"></i></div>Trailhead — Ranger · 195 insignias</a>
+        <a href="mailto:yared.henriquezhb@gmail.com" class="clink">
+          <div class="cico"><i class="bi bi-envelope-fill"></i></div>
+          yared.henriquezhb@gmail.com
+        </a>
+        <a href="https://wa.me/573015185270" target="_blank" class="clink">
+          <div class="cico"><i class="bi bi-whatsapp"></i></div>
+          +57 301 518 5270
+        </a>
+        <a href="https://github.com/DevCop95" target="_blank" class="clink">
+          <div class="cico"><i class="bi bi-github"></i></div>
+          github.com/DevCop95
+        </a>
+        <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" class="clink">
+          <div class="cico"><i class="bi bi-cloud-fill"></i></div>
+          Trailhead — Ranger · 195 insignias
+        </a>
       </div>
     </div>
+
     <div class="reveal d2">
-      <!-- GITHUB CARD -->
-      <div class="gh-card">
-        <div class="gh-card-header">
-          <img class="gh-avatar" src="https://avatars.githubusercontent.com/DevCop95" alt="DevCop95" onerror="this.src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'">
-          <div>
-            <div class="gh-card-name" id="gh-name">DevCop95</div>
-            <div class="gh-card-user">github.com/DevCop95</div>
-          </div>
+      <!-- TRAILHEAD WIDGET (jitendrazaa.com — API pública de Salesforce) -->
+      <div class="trailhead-wrap">
+        <div class="trailhead-wrap-label">
+          <i class="bi bi-cloud-fill"></i> Perfil Salesforce Trailhead
         </div>
-        <div class="gh-card-body">
-          <div class="gh-card-bio" id="gh-bio">Cargando perfil...</div>
-          <div class="gh-stats">
-            <div class="gh-stat"><span class="gh-stat-n" id="gh-repos">—</span><span class="gh-stat-l">Repos</span></div>
-            <div class="gh-stat"><span class="gh-stat-n" id="gh-followers">—</span><span class="gh-stat-l">Seguidores</span></div>
-            <div class="gh-stat"><span class="gh-stat-n" id="gh-following">—</span><span class="gh-stat-l">Siguiendo</span></div>
-          </div>
-          <a href="https://github.com/DevCop95" target="_blank" class="gh-link">
-            <i class="bi bi-box-arrow-up-right"></i> Ver perfil completo en GitHub
-          </a>
-        </div>
-        <div class="gh-repos-strip" id="gh-repos-strip"></div>
+        <div id="trailhead-widget"></div>
+        <script async src="https://jitendrazaa.com/Trailhead.php?profileId=yhenriquezblanquicett" type="text/javascript"></script>
       </div>
-      <div class="mapwrap" style="margin-top:1.5rem;">
+
+      <!-- MAPA -->
+      <div class="mapwrap">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125568.22!2d-75.5636!3d10.3916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef625b37e82dc45%3A0x7fabe100d2fb1e43!2sCartagena%20de%20Indias!5e0!3m2!1ses!2sco!4v1234567890" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="maplbl"><i class="bi bi-geo-alt-fill"></i> Cartagena de Indias, Bolívar, Colombia</div>
@@ -488,14 +463,14 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
   <div class="fsoc">
     <a href="https://github.com/DevCop95" target="_blank"><i class="bi bi-github"></i></a>
     <a href="https://wa.me/573015185270" target="_blank"><i class="bi bi-whatsapp"></i></a>
-    <a href="/cdn-cgi/l/email-protection#1b627a697e7f35737e7569726a6e7e61795b7c767a727735787476"><i class="bi bi-envelope-fill"></i></a>
+    <a href="mailto:yared.henriquezhb@gmail.com"><i class="bi bi-envelope-fill"></i></a>
     <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank"><i class="bi bi-cloud-fill"></i></a>
   </div>
 </footer>
 
 <a href="https://wa.me/573015185270" class="waf" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* NAV */
 window.addEventListener('scroll', () => {
   document.getElementById('mnav').classList.toggle('scrolled', window.scrollY > 50);
@@ -525,43 +500,6 @@ document.querySelectorAll('.pfbtn').forEach(btn => {
     }
   });
 });
-
-/* GITHUB API */
-const langColors = {JavaScript:'#f1e05a',Python:'#3572A5',HTML:'#e34c26',CSS:'#563d7c',TypeScript:'#2b7489',Shell:'#89e051'};
-fetch('https://api.github.com/users/DevCop95')
-  .then(r => r.json())
-  .then(d => {
-    if (d.name) document.getElementById('gh-name').textContent = d.name;
-    document.getElementById('gh-bio').textContent = d.bio || 'Ingeniero de Sistemas · Developer · Cartagena, CO';
-    document.getElementById('gh-repos').textContent = d.public_repos ?? '—';
-    document.getElementById('gh-followers').textContent = d.followers ?? '—';
-    document.getElementById('gh-following').textContent = d.following ?? '—';
-  })
-  .catch(() => { document.getElementById('gh-bio').textContent = 'Ingeniero de Sistemas · Developer · Cartagena, CO'; });
-
-fetch('https://api.github.com/users/DevCop95/repos?sort=updated&per_page=4')
-  .then(r => r.json())
-  .then(repos => {
-    if (!Array.isArray(repos) || !repos.length) return;
-    const strip = document.getElementById('gh-repos-strip');
-    strip.innerHTML = '<div class="gh-strip-label">Repositorios recientes</div>' +
-      repos.map(r => {
-        const lang = r.language || '';
-        const dot = lang ? `<span class="lang-dot" style="background:${langColors[lang]||'#8b949e'}"></span>` : '';
-        const desc = r.description ? r.description.substring(0,60) + (r.description.length>60?'…':'') : '';
-        return `<div class="gh-repo-item">
-          <div>
-            <div class="gh-repo-name"><i class="bi bi-folder2-open" style="margin-right:.3rem"></i>${r.name}</div>
-            ${desc ? `<div class="gh-repo-desc">${desc}</div>` : ''}
-          </div>
-          <div class="gh-repo-meta">
-            ${lang ? `<span class="gh-repo-lang">${dot}${lang}</span>` : ''}
-            <span class="gh-repo-stars"><i class="bi bi-star"></i>${r.stargazers_count}</span>
-          </div>
-        </div>`;
-      }).join('');
-  })
-  .catch(() => {});
 </script>
 </body>
 </html>
