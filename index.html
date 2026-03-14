@@ -117,12 +117,14 @@ nav.scrolled{border-color:var(--line);}
 
 /* mobile menu */
 .mobile-menu{
-  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  display:flex;position:fixed;top:0;left:0;right:0;bottom:0;
   background:var(--bg);z-index:199;
   flex-direction:column;align-items:center;justify-content:center;
-  gap:2rem;opacity:0;transition:opacity .3s;
+  gap:2rem;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
 }
-.mobile-menu.open{display:flex;opacity:1;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
 .mobile-menu a{
   font-size:1.5rem;font-weight:700;color:var(--ink);
   transition:color .2s;letter-spacing:-.02em;
@@ -627,7 +629,7 @@ footer{
         <p class="reveal d2">Como <strong>Director de Tecnología en EXIA S.A.S</strong> lideré la infraestructura digital de una empresa de energía solar: integración de sensores, dashboards de supervisión y automatización de reportes operativos. Hoy trabajo como <strong>freelance</strong> desarrollando soluciones con Python, Salesforce y tecnologías web, mientras profundizo en <strong>Inteligencia Artificial</strong> con Máster en la Universitat de Barcelona.</p>
       </div>
       <div class="about-meta reveal d3">
-        <div class="am"><div class="am-k">Email</div><div class="am-v"><a href="mailto:yared.henriquezhb@gmail.com">yared.henriquezhb@gmail.com</a></div></div>
+        <div class="am"><div class="am-k">Email</div><div class="am-v"><a href="/cdn-cgi/l/email-protection#88f1e9faedeca6e0ede6fae1f9fdedf2e0eac8efe5e9e1e4a6ebe7e5"><span class="__cf_email__" data-cfemail="057c647760612b6d606b776c7470607f6d67456268646c692b666a68">[email&#160;protected]</span></a></div></div>
         <div class="am"><div class="am-k">Disponibilidad</div><div class="am-v av"><i class="bi bi-circle-fill" style="font-size:.5rem;vertical-align:middle"></i> Disponible</div></div>
         <div class="am"><div class="am-k">Ciudad</div><div class="am-v">Cartagena, Colombia</div></div>
         <div class="am"><div class="am-k">Formación</div><div class="am-v">Ingeniería + Máster IA</div></div>
@@ -819,9 +821,9 @@ footer{
       <h2 class="con-cta">Construyamos<br>algo <em>juntos.</em></h2>
       <p class="con-body">Disponible para proyectos freelance, consultoría y colaboraciones. Respondo rápido y siempre abierto a nuevos desafíos.</p>
       <div class="conlinks">
-        <a href="mailto:yared.henriquezhb@gmail.com" class="clink" aria-label="Enviar email">
+        <a href="/cdn-cgi/l/email-protection#2158405344450f49444f53485054445b494361464c40484d0f424e4c" class="clink" aria-label="Enviar email">
           <div class="cico"><i class="bi bi-envelope-fill"></i></div>
-          yared.henriquezhb@gmail.com
+          <span class="__cf_email__" data-cfemail="9be2fae9feffb5f3fef5e9f2eaeefee1f3f9dbfcf6faf2f7b5f8f4f6">[email&#160;protected]</span>
         </a>
         <a href="https://wa.me/573015185270" target="_blank" rel="noopener" class="clink" aria-label="Contactar por WhatsApp">
           <div class="cico"><i class="bi bi-whatsapp"></i></div>
@@ -916,7 +918,7 @@ footer{
           <i class="bi bi-cloud-fill"></i> Salesforce Trailhead — Ranger
         </div>
         <div id="trailhead-widget"></div>
-        <script async src="https://jitendrazaa.com/Trailhead.php?profileId=yhenriquezblanquicett" type="text/javascript"></script>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script async src="https://jitendrazaa.com/Trailhead.php?profileId=yhenriquezblanquicett" type="text/javascript"></script>
       </div>
 
       <!-- MAPA -->
@@ -938,7 +940,7 @@ footer{
   <div class="fsoc">
     <a href="https://github.com/DevCop95" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
     <a href="https://wa.me/573015185270" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-    <a href="mailto:yared.henriquezhb@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+    <a href="/cdn-cgi/l/email-protection#9be2fae9feffb5f3fef5e9f2eaeefee1f3f9dbfcf6faf2f7b5f8f4f6" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
     <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" rel="noopener" aria-label="Trailhead"><i class="bi bi-cloud-fill"></i></a>
   </div>
 </footer>
@@ -956,7 +958,7 @@ footer{
 <!-- ============================================================
      SCRIPTS
      ============================================================ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ---- NAV SCROLL + ACTIVE SECTION ---- */
 const mnav = document.getElementById('mnav');
 const navLinks = document.querySelectorAll('.nlinks a');
@@ -993,21 +995,20 @@ hamburgerBtn.addEventListener('click', () => {
   document.body.style.overflow = 'hidden';
 });
 
+// botón X
 mobileClose.addEventListener('click', closeMobile);
 
-// cierra al hacer clic en cualquier link (aunque el clic caiga en el texto)
+// cualquier link dentro del menú
 mobileMenu.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A' || e.target.closest('a')) closeMobile();
-});
-
-// cierra al hacer clic en el fondo oscuro (fuera del contenido)
-mobileMenu.addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+  if (link) closeMobile();
+  // clic en el fondo (fuera del texto)
   if (e.target === mobileMenu) closeMobile();
 });
 
-// cierra con Escape
+// tecla Escape
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobile();
+  if (e.key === 'Escape') closeMobile();
 });
 
 /* ---- DARK MODE ---- */
@@ -1095,23 +1096,4 @@ document.querySelectorAll('.pfbtn').forEach(btn => {
 
 /* ---- GA — track section views ---- */
 const gaObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting && typeof gtag !== 'undefined') {
-      gtag('event', 'section_view', { section_id: e.target.id });
-      gaObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('section[id]').forEach(s => gaObserver.observe(s));
-
-/* ---- GA — track outbound links ---- */
-document.querySelectorAll('a[target="_blank"]').forEach(a => {
-  a.addEventListener('click', () => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'outbound_click', { url: a.href });
-    }
-  });
-});
-</script>
-</body>
-</html>
+  entries.forEach
