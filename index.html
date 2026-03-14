@@ -222,6 +222,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
   .hstats{gap:1.5rem;flex-wrap:wrap;}
   footer{flex-direction:column;align-items:flex-start;}
 }
+@keyframes osint-blink{0%,100%{opacity:1;}50%{opacity:.15;}}
 </style>
 </head>
 <body>
@@ -477,6 +478,74 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
           </a>
         </div>
       </div>
+
+<!-- OSINT TERMINAL — ACHIEVEMENT CARD -->
+<div style="margin-top:1.5rem;background:#0a0a0a;border:1px solid var(--line);border-radius:4px;overflow:hidden;font-family:var(--fm);position:relative;">
+
+  <div style="position:absolute;top:0;right:0;width:160px;height:160px;background:radial-gradient(circle at top right,rgba(14,122,95,0.06),transparent 70%);pointer-events:none;"></div>
+
+  <div style="background:#001a00;border-bottom:1px solid #1a3300;padding:7px 14px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:7px;">
+      <div style="width:6px;height:6px;border-radius:50%;background:#0e7a5f;animation:osint-blink 2s infinite;"></div>
+      <span style="font-size:9px;color:#3a6b3a;letter-spacing:.15em;">PROYECTO OPEN SOURCE</span>
+    </div>
+    <span style="font-size:9px;color:#1a4d1a;border:1px solid #1a3300;padding:2px 7px;">JS · DOM API</span>
+  </div>
+
+  <div style="padding:18px 16px 14px;">
+    <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;">
+      <div style="width:40px;height:40px;background:#001a00;border:1px solid #1a3300;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+          <rect x="1" y="1" width="20" height="20" rx="2" stroke="#0e7a5f" stroke-width="1"/>
+          <line x1="4" y1="6" x2="10" y2="6" stroke="#0e7a5f" stroke-width="1.2"/>
+          <line x1="4" y1="9" x2="14" y2="9" stroke="#1a4d1a" stroke-width="1.2"/>
+          <line x1="4" y1="12" x2="12" y2="12" stroke="#1a4d1a" stroke-width="1.2"/>
+          <polyline points="4,16 7,13 10,15 14,11" stroke="#0e7a5f" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div style="font-size:13px;color:#0e7a5f;font-weight:600;margin-bottom:2px;">OSINT Terminal</div>
+        <div style="font-size:9px;color:#3a6b3a;letter-spacing:.07em;">Herramienta de análisis web · Browser · Vanilla JS</div>
+      </div>
+    </div>
+
+    <p style="font-size:11px;color:#3a6b3a;line-height:1.8;margin:0 0 14px;">
+      Terminal interactiva inyectable en cualquier página web. Extrae información pública del DOM: meta tags, links externos, formularios, tecnologías y emails.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px;">
+      <div style="background:#001a00;border:1px solid #1a3300;padding:7px 9px;">
+        <div style="font-size:15px;color:#0e7a5f;font-weight:700;">10+</div>
+        <div style="font-size:9px;color:#1a4d1a;margin-top:2px;">comandos</div>
+      </div>
+      <div style="background:#001a00;border:1px solid #1a3300;padding:7px 9px;">
+        <div style="font-size:15px;color:#0e7a5f;font-weight:700;">0</div>
+        <div style="font-size:9px;color:#1a4d1a;margin-top:2px;">dependencias</div>
+      </div>
+      <div style="background:#001a00;border:1px solid #1a3300;padding:7px 9px;">
+        <div style="font-size:15px;color:#0e7a5f;font-weight:700;">DOM</div>
+        <div style="font-size:9px;color:#1a4d1a;margin-top:2px;">API nativa</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;">
+      <span style="font-size:9px;color:#0e7a5f;background:#001a00;border:1px solid #1a3300;padding:2px 8px;letter-spacing:.06em;">scan</span>
+      <span style="font-size:9px;color:#0e7a5f;background:#001a00;border:1px solid #1a3300;padding:2px 8px;letter-spacing:.06em;">tech detect</span>
+      <span style="font-size:9px;color:#0e7a5f;background:#001a00;border:1px solid #1a3300;padding:2px 8px;letter-spacing:.06em;">a11y audit</span>
+      <span style="font-size:9px;color:#0e7a5f;background:#001a00;border:1px solid #1a3300;padding:2px 8px;letter-spacing:.06em;">export JSON</span>
+      <span style="font-size:9px;color:#0e7a5f;background:#001a00;border:1px solid #1a3300;padding:2px 8px;letter-spacing:.06em;">draggable UI</span>
+    </div>
+
+    <div style="border-top:1px solid #1a3300;padding-top:10px;display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:9px;color:#1a4d1a;">2025 · Cartagena, CO</span>
+      <a href="https://gist.github.com/DevCop95/2ba71ac75edbd5481ee44b46eafa3c7a" target="_blank"
+        style="font-size:9px;color:#0e7a5f;border:1px solid #1a3300;padding:3px 10px;text-decoration:none;letter-spacing:.08em;transition:background .2s;"
+        onmouseover="this.style.background='#001a00'" onmouseout="this.style.background='transparent'">
+        ver en github →
+      </a>
+    </div>
+  </div>
+</div>
 
       <!-- TRAILHEAD WIDGET -->
       <div class="trailhead-wrap" style="margin-top:1.5rem;">
