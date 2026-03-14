@@ -981,18 +981,34 @@ const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mobileMenu   = document.getElementById('mobileMenu');
 const mobileClose  = document.getElementById('mobileClose');
 
-hamburgerBtn.addEventListener('click', () => {
-  mobileMenu.classList.add('open');
-  hamburgerBtn.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-});
 const closeMobile = () => {
   mobileMenu.classList.remove('open');
   hamburgerBtn.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 };
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileMenu.classList.add('open');
+  hamburgerBtn.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+});
+
 mobileClose.addEventListener('click', closeMobile);
-mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
+
+// cierra al hacer clic en cualquier link (aunque el clic caiga en el texto)
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A' || e.target.closest('a')) closeMobile();
+});
+
+// cierra al hacer clic en el fondo oscuro (fuera del contenido)
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) closeMobile();
+});
+
+// cierra con Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobile();
+});
 
 /* ---- DARK MODE ---- */
 const themeToggle = document.getElementById('themeToggle');
