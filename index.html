@@ -201,7 +201,7 @@ h1.hname em{font-style:normal;color:var(--accent);display:block;}
 @keyframes osint-blink{0%,100%{opacity:1;}50%{opacity:.15;}}
 @keyframes cursor-blink{0%,100%{opacity:1;}50%{opacity:0;}}
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease;}
 .reveal.in{opacity:1;transform:none;}
 .d1{transition-delay:.1s;}.d2{transition-delay:.18s;}
 .d3{transition-delay:.26s;}.d4{transition-delay:.34s;}
@@ -1039,7 +1039,6 @@ document.getElementById('scrollTop').addEventListener('click', () => {
 });
 
 /* ---- REVEAL ON SCROLL ---- */
-const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -1047,19 +1046,8 @@ const io = new IntersectionObserver(entries => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => io.observe(el));
-
-// fallback inmediato: activa los ya visibles en pantalla
-const activateVisible = () => {
-  document.querySelectorAll('.reveal:not(.in)').forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight + 100) el.classList.add('in');
-  });
-};
-activateVisible();
-window.addEventListener('load', activateVisible);
-window.addEventListener('scroll', activateVisible, { passive: true });
+}, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* ---- TYPEWRITER ---- */
 const roles = ['Ing. Sistemas', 'Full-Stack Dev', 'Salesforce Dev', 'Automatización'];
