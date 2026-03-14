@@ -1039,12 +1039,27 @@ document.getElementById('scrollTop').addEventListener('click', () => {
 });
 
 /* ---- REVEAL ON SCROLL ---- */
+const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => io.observe(el));
+
+// fallback inmediato: activa los ya visibles en pantalla
+const activateVisible = () => {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 100) el.classList.add('in');
+  });
+};
+activateVisible();
+window.addEventListener('load', activateVisible);
+window.addEventListener('scroll', activateVisible, { passive: true });
 
 /* ---- TYPEWRITER ---- */
 const roles = ['Ing. Sistemas', 'Full-Stack Dev', 'Salesforce Dev', 'Automatización'];
