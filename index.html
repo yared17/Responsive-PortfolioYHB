@@ -78,6 +78,7 @@ h1.hname em{font-style:normal;color:var(--accent);display:block;}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.in{opacity:1;transform:none;}
 .d1{transition-delay:.1s;}.d2{transition-delay:.18s;}.d3{transition-delay:.26s;}.d4{transition-delay:.34s;}
+.d5{transition-delay:.42s;}.d6{transition-delay:.50s;}.d7{transition-delay:.58s;}.d8{transition-delay:.66s;}
 
 .section{padding:7rem 5vw;max-width:1200px;margin:0 auto;}
 .sec-label{display:flex;align-items:center;gap:1rem;margin-bottom:3rem;}
@@ -146,6 +147,7 @@ h2.stit em{font-style:normal;color:var(--accent);}
 .tcell i{font-size:2rem;display:block;margin-bottom:.5rem;}
 .tcell span{font-family:var(--fm);font-size:.65rem;color:var(--muted);}
 
+
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
 .svc-card{background:var(--surface);padding:2.2rem 2rem;transition:background .25s;}
 .svc-card:hover{background:var(--ink);}
@@ -181,141 +183,6 @@ h2.stit em{font-style:normal;color:var(--accent);}
 .gh-link{display:flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.72rem;color:var(--accent);font-weight:500;transition:color .2s;}
 .gh-link:hover{color:var(--accent2);}
 
-.osint-card{margin-top:1.5rem;background:#0a0a0a;border:1px solid var(--line);border-radius:4px;overflow:hidden;font-family:var(--fm);position:relative;}
-.osint-card-glow{position:absolute;top:0;right:0;width:160px;height:160px;background:radial-gradient(circle at top right,rgba(14,122,95,0.07),transparent 70%);pointer-events:none;}
-.osint-bar{background:#001a00;border-bottom:1px solid #1a3300;padding:7px 14px;display:flex;align-items:center;justify-content:space-between;}
-.osint-bar-left{display:flex;align-items:center;gap:7px;}
-.osint-dot{width:6px;height:6px;border-radius:50%;background:#0e7a5f;animation:osint-blink 2s infinite;}
-.osint-bar-label{font-size:9px;color:#3a6b3a;letter-spacing:.15em;}
-.osint-bar-badge{font-size:9px;color:#1a4d1a;border:1px solid #1a3300;padding:2px 7px;}
-.osint-body{padding:18px 16px 14px;}
-.osint-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
-.osint-icon{width:40px;height:40px;background:#001a00;border:1px solid #1a3300;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.osint-title{font-size:13px;color:#0e7a5f;font-weight:600;margin-bottom:2px;}
-.osint-sub{font-size:9px;color:#3a6b3a;letter-spacing:.07em;}
-.osint-desc{font-size:11px;color:#3a6b3a;line-height:1.8;margin:0 0 14px;}
-.osint-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px;}
-.osint-stat{background:#001a00;border:1px solid #1a3300;padding:7px 9px;}
-.osint-stat-n{font-size:15px;color:#0e7a5f;font-weight:700;}
-.osint-stat-l{font-size:9px;color:#1a4d1a;margin-top:2px;}
-.osint-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;}
-.osint-tag{font-size:9px;color:#0e7a5f;background:#001a00;border:1px solid #1a3300;padding:2px 8px;letter-spacing:.06em;}
-.osint-footer{border-top:1px solid #1a3300;padding-top:10px;display:flex;align-items:center;justify-content:space-between;}
-.osint-date{font-size:9px;color:#1a4d1a;}
-.osint-link{font-size:9px;color:#0e7a5f;border:1px solid #1a3300;padding:3px 10px;text-decoration:none;letter-spacing:.08em;transition:background .2s;}
-.osint-link:hover{background:#001a00;}
-
-.trailhead-wrap{border:1px solid var(--line);background:var(--surface);padding:1.5rem;margin-bottom:1.5rem;}
-.trailhead-wrap-label{font-family:var(--fm);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
-.trailhead-wrap-label i{color:var(--accent);}
-.mapwrap{border:1px solid var(--line);overflow:hidden;height:220px;margin-top:1rem;}
-.mapwrap iframe{width:100%;height:100%;border:none;}
-.maplbl{font-family:var(--fm);font-size:.68rem;color:var(--muted);display:flex;align-items:center;gap:.5rem;margin-top:.6rem;}
-.maplbl i{color:var(--accent);}
-
-footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--surface);}
-.fcopy{font-family:var(--fm);font-size:.7rem;color:var(--muted);}
-.fcopy strong{color:var(--ink);}
-.fsoc{display:flex;gap:1.2rem;}
-.fsoc a{font-size:1rem;color:var(--muted);transition:color .2s;}
-.fsoc a:hover{color:var(--accent);}
-
-.waf{position:fixed;bottom:2rem;right:2rem;z-index:200;width:50px;height:50px;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;border-radius:50%;box-shadow:0 4px 16px rgba(37,211,102,.35);transition:transform .25s,box-shadow .25s;}
-.waf:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,211,102,.45);}
-.scroll-top{position:fixed;bottom:5.5rem;right:2rem;z-index:199;width:36px;height:36px;background:var(--surface);border:1px solid var(--line);color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:.85rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,color .2s,border-color .2s;}
-.scroll-top.vis{opacity:1;pointer-events:all;}
-.scroll-top:hover{color:var(--accent);border-color:var(--accent);}
-
-@media(max-width:960px){
-  #hero{padding-top:7rem;}
-  .about-grid{grid-template-columns:1fr;gap:3rem;}
-  .about-img{position:static;}
-  .ski-grid,.res-grid,.con-grid{grid-template-columns:1fr;gap:3rem;}
-  .ski-left{position:static;}
-  .svc-grid{grid-template-columns:1fr 1fr;}
-  .pgrid{grid-template-columns:1fr 1fr;}
-  .nlinks{display:none;}
-  .hamburger{display:flex;}
-  .section{padding:5rem 5vw;}
-}
-@media(max-width:560px){
-  .svc-grid,.pgrid{grid-template-columns:1fr;}
-  .about-meta{grid-template-columns:1fr;}
-  .am{border-right:none;}
-  .hstats{gap:1.5rem;flex-wrap:wrap;}
-  footer{flex-direction:column;align-items:flex-start;}
-  .res-grid{grid-template-columns:1fr;gap:2.5rem;}
-  .tli{grid-template-columns:70px 1fr;gap:1rem;}
-  .tldo{left:70px;}
-}
-</style>
-</head>
-<body>
-
-<nav id="mnav" role="navigation" aria-label="Navegación principal">
-  <a href="#hero" class="nlogo">Dev<em>YHB</em></a>
-  <ul class="nlinks">
-    <li><a href="#about">Sobre mí</a></li>
-    <li><a href="#resume">Trayectoria</a></li>
-    <li><a href="#portfolio">Portafolio</a></li>
-    <li><a href="#services">Servicios</a></li>
-    <li><a href="#contact" class="ncta">Contacto</a></li>
-  </ul>
-  <div class="nav-controls">
-    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo claro/oscuro"><i class="bi bi-moon-fill" id="themeIcon"></i></button>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú"><i class="bi bi-list"></i></button>
-  </div>
-</nav>
-
-<!-- El onclick inline garantiza que funcione sin importar propagación -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" onclick="closeMobile()" aria-label="Cerrar menú"><i class="bi bi-x-lg"></i></button>
-  <a href="#about"     onclick="closeMobile()">Sobre mí</a>
-  <a href="#resume"    onclick="closeMobile()">Trayectoria</a>
-  <a href="#portfolio" onclick="closeMobile()">Portafolio</a>
-  <a href="#services"  onclick="closeMobile()">Servicios</a>
-  <a href="#contact"   onclick="closeMobile()">Contacto</a>
-</div>
-
-<div id="hero">
-  <div class="hero-left">
-    <div class="hero-tag">Disponible para proyectos freelance</div>
-    <h1 class="hname">Yared<br><em>Henriquez</em></h1>
-    <p class="hrole">
-      <span id="typewriter-text" class="typewriter"></span>
-      <span class="hrole-sep">·</span>
-      <span>Cartagena, CO</span>
-    </p>
-    <div class="hbtns">
-      <a href="#portfolio" class="btn-solid"><i class="bi bi-grid-3x3-gap-fill"></i> Portafolio</a>
-      <a href="#contact" class="btn-line"><i class="bi bi-send-fill"></i> Contacto</a>
-    </div>
-    <div class="hstats">
-      <div><div class="hstat-n">5+</div><div class="hstat-l">años en Python</div></div>
-      <div><div class="hstat-n">4</div><div class="hstat-l">años liderando TI</div></div>
-      <div><div class="hstat-n">Ranger</div><div class="hstat-l">Salesforce Trailhead</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="sdivider"></div>
-
-<section class="section" id="about" aria-label="Sobre mí">
-  <div class="sec-label reveal"><span class="sec-label-tag">01 — Sobre mí</span><div class="sec-label-line"></div></div>
-  <div class="about-grid">
-    <div class="about-img reveal">
-      <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/profile-img.jpg" alt="Yared Henriquez" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <div class="about-img-placeholder">YH</div>
-      <div class="about-img-cap"><i class="bi bi-geo-alt-fill"></i> Cartagena de Indias, Colombia</div>
-    </div>
-    <div>
-      <h2 class="stit reveal">Ingeniero de Sistemas<br><em>orientado a soluciones</em></h2>
-      <div class="about-text">
-        <p class="reveal d1">Ingeniero en Sistemas con sólida experiencia en <strong>arquitectura de software, automatización de procesos y despliegue de aplicaciones</strong>. Me especializo en conectar infraestructura tecnológica con necesidades reales de negocio — desde sistemas de monitoreo en tiempo real hasta pipelines de datos e integraciones empresariales.</p>
-        <p class="reveal d2">Como <strong>Director de Tecnología en EXIA S.A.S</strong> lideré la infraestructura digital de una empresa de energía solar: integración de sensores, dashboards de supervisión y automatización de reportes operativos. Hoy trabajo como <strong>freelance</strong> desarrollando soluciones con Python, Salesforce y tecnologías web, mientras profundizo en <strong>Inteligencia Artificial</strong> con Máster en la Universitat de Barcelona.</p>
-      </div>
-      <div class="about-meta reveal d3">
-        <div class="am"><div class="am-k">Email</div><div class="am-v"><a href="mailto:yared.henriquezhb@gmail.com">yared.henriquezhb@gmail.com</a></div></div>
         <div class="am"><div class="am-k">Disponibilidad</div><div class="am-v av"><i class="bi bi-circle-fill" style="font-size:.5rem;vertical-align:middle"></i> Disponible</div></div>
         <div class="am"><div class="am-k">Ciudad</div><div class="am-v">Cartagena, Colombia</div></div>
         <div class="am"><div class="am-k">Formación</div><div class="am-v">Ingeniería + Máster IA</div></div>
@@ -441,7 +308,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
 
 <div class="sdivider"></div>
 
-<section class="section" id="services" aria-label="Servicios">
+
   <div class="sec-label reveal"><span class="sec-label-tag">05 — Servicios</span><div class="sec-label-line"></div></div>
   <h2 class="stit reveal">Lo que<br><em>ofrezco</em></h2>
   <p class="stit-sub reveal d1">Soluciones digitales a medida, enfocadas en valor real.</p>
@@ -464,10 +331,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
       <h2 class="con-cta">Construyamos<br>algo <em>juntos.</em></h2>
       <p class="con-body">Disponible para proyectos freelance, consultoría y colaboraciones. Respondo rápido y siempre abierto a nuevos desafíos.</p>
       <div class="conlinks">
-        <a href="mailto:yared.henriquezhb@gmail.com" class="clink"><div class="cico"><i class="bi bi-envelope-fill"></i></div>yared.henriquezhb@gmail.com</a>
-        <a href="https://wa.me/573015185270" target="_blank" rel="noopener" class="clink"><div class="cico"><i class="bi bi-whatsapp"></i></div>+57 301 518 5270</a>
-        <a href="https://github.com/DevCop95" target="_blank" rel="noopener" class="clink"><div class="cico"><i class="bi bi-github"></i></div>github.com/DevCop95</a>
-        <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" rel="noopener" class="clink"><div class="cico"><i class="bi bi-cloud-fill"></i></div>Trailhead — Ranger</a>
+
       </div>
     </div>
     <div class="reveal d2">
@@ -520,10 +384,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
 <footer>
   <p class="fcopy">© 2025 <strong>DevYHB</strong> · Diseñado y construido por <strong>Yared Henriquez</strong></p>
   <div class="fsoc">
-    <a href="https://github.com/DevCop95" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
-    <a href="https://wa.me/573015185270" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-    <a href="mailto:yared.henriquezhb@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-    <a href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" rel="noopener" aria-label="Trailhead"><i class="bi bi-cloud-fill"></i></a>
+
   </div>
 </footer>
 
@@ -531,10 +392,7 @@ footer{border-top:1px solid var(--line);padding:2rem 5vw;display:flex;justify-co
 <button class="scroll-top" id="scrollTop" aria-label="Volver arriba"><i class="bi bi-arrow-up"></i></button>
 
 <script>
-/* NAV */
-const mnav = document.getElementById('mnav');
-const navLinks = document.querySelectorAll('.nlinks a');
-const sections = document.querySelectorAll('section[id], div[id="hero"]');
+
 window.addEventListener('scroll', () => {
   mnav.classList.toggle('scrolled', window.scrollY > 50);
   document.getElementById('scrollTop').classList.toggle('vis', window.scrollY > 400);
@@ -552,55 +410,13 @@ hamburgerBtn.addEventListener('click', () => {
   document.body.style.overflow = 'hidden';
 });
 
-function closeMobile() {
-  mobileMenu.classList.remove('open');
-  document.body.style.overflow = '';
-}
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
-
-/* DARK MODE */
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon   = document.getElementById('themeIcon');
-const html        = document.documentElement;
-const applyTheme  = t => { html.setAttribute('data-theme', t); themeIcon.className = t === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-fill'; localStorage.setItem('theme', t); };
-applyTheme(localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-themeToggle.addEventListener('click', () => applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
-
-/* SCROLL TOP */
-document.getElementById('scrollTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-/* REVEAL */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* TYPEWRITER */
-const roles = ['Ing. Sistemas', 'Full-Stack Dev', 'Salesforce Dev', 'Automatización'];
-const tw = document.getElementById('typewriter-text');
-let ri = 0, ci = 0, deleting = false;
-const type = () => {
-  const word = roles[ri];
-  tw.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
-  tw.classList.toggle('done', !deleting && ci > word.length);
-  let delay = deleting ? 60 : 110;
-  if (!deleting && ci > word.length) { delay = 1800; deleting = true; }
-  else if (deleting && ci < 0) { deleting = false; ri = (ri + 1) % roles.length; ci = 0; delay = 300; }
-  setTimeout(type, delay);
-};
-setTimeout(type, 800);
 
-/* GITHUB */
-fetch('https://api.github.com/users/DevCop95').then(r => r.json()).then(d => {
-  if (d.name) document.getElementById('gh-name').textContent = d.name;
-  if (d.bio)  document.getElementById('gh-bio').textContent  = d.bio;
-  document.getElementById('gh-repos').textContent    = d.public_repos ?? '—';
-  document.getElementById('gh-followers').textContent = d.followers    ?? '—';
-  document.getElementById('gh-following').textContent = d.following    ?? '—';
-}).catch(() => {});
-
-/* PORTFOLIO FILTER */
 const cg = document.getElementById('cgrid');
 const tg = document.getElementById('tgrid');
 document.querySelectorAll('.pfbtn').forEach(btn => {
@@ -612,14 +428,7 @@ document.querySelectorAll('.pfbtn').forEach(btn => {
   });
 });
 
-/* GA */
-const gaObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting && typeof gtag !== 'undefined') { gtag('event','section_view',{section_id:e.target.id}); gaObs.unobserve(e.target); } });
-}, { threshold: 0.3 });
-document.querySelectorAll('section[id]').forEach(s => gaObs.observe(s));
-document.querySelectorAll('a[target="_blank"]').forEach(a => {
-  a.addEventListener('click', () => { if (typeof gtag !== 'undefined') gtag('event','outbound_click',{url:a.href}); });
-});
+
 </script>
 </body>
 </html>
