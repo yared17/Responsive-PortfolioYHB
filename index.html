@@ -1397,9 +1397,15 @@ themeToggle.addEventListener('click', () => {
 });
 
 hamburgerBtn.addEventListener('click', () => {
+  if (mobileMenu.classList.contains('open')) {
+    closeMenu();
+    return;
+  }
+
   mobileMenu.classList.add('open');
   body.classList.add('menu-open');
 });
+
 
 mobileClose.addEventListener('click', closeMenu);
 document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
