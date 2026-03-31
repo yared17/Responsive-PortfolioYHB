@@ -294,12 +294,54 @@ h2.stit em { font-style: normal; color: var(--accent); }
 .res-col-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
 .tl { display: grid; gap: 0; }
-.tli { position: relative; display: grid; grid-template-columns: 100px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--line); }
-.tli:first-child { padding-top: 0; }
-.tly { font-family: var(--fm); font-size: .75rem; color: var(--muted); font-weight: 600; line-height: 1.4; }
-.tldo { position: absolute; left: 100px; top: 2.2rem; width: 10px; height: 100%; transform: translateX(-50%); }
-.tldo::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
-.tli:first-child .tldo::before { top: 0.2rem; }
+.tli { 
+  position: relative; 
+  display: grid; 
+  grid-template-columns: 100px 1fr; 
+  gap: 2rem; 
+  padding: 2.5rem 0; /* Padding uniforme */
+  border-bottom: 1px solid var(--line); 
+}
+
+.tli:first-child { padding-top: 0.5rem; } /* Ajuste fino para el primer elemento */
+.tli:last-child { border-bottom: none; }
+
+.tly { 
+  font-family: var(--fm); 
+  font-size: .75rem; 
+  color: var(--muted); 
+  font-weight: 700; 
+  line-height: 1.2; /* Line-height controlado para alineación */
+  padding-top: 0.2rem;
+}
+
+.tldo { 
+  position: absolute; 
+  left: 100px; 
+  top: 0; 
+  bottom: 0; 
+  width: 1px; 
+  background: var(--line); 
+  transform: translateX(-50%); 
+}
+
+.tldo::before { 
+  content: ""; 
+  position: absolute; 
+  top: 3.1rem; /* Posición calculada para el centro de la fecha con padding 2.5rem */
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 10px; 
+  height: 10px; 
+  background: var(--accent); 
+  border-radius: 50%; 
+  border: 2px solid var(--bg); /* Aro de separación para limpieza visual */
+  z-index: 2;
+}
+
+.tli:first-child .tldo::before { 
+  top: 1.1rem; /* Ajuste para el padding reducido del primer hijo */
+}
 
 .tltit { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem; }
 .tlorg { font-family: var(--fm); font-size: .75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.8rem; }
