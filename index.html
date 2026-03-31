@@ -74,18 +74,19 @@
 <nav id="mnav">
   <a href="#hero" class="nlogo">Dev<em>YHB</em></a>
   <ul class="nlinks">
-    <li><a href="#about">Sobre mi</a></li>
-    <li><a href="#skills">Habilidades</a></li>
-    <li><a href="#resume">Trayectoria</a></li>
-    <li><a href="#portfolio">Portafolio</a></li>
-    <li><a href="#services">Servicios</a></li>
-    <li><a href="#contact">Contacto</a></li>
+    <li><a href="#about" data-i18n="nav-about">Sobre mi</a></li>
+    <li><a href="#skills" data-i18n="nav-skills">Habilidades</a></li>
+    <li><a href="#resume" data-i18n="nav-resume">Trayectoria</a></li>
+    <li><a href="#portfolio" data-i18n="nav-portfolio">Portafolio</a></li>
+    <li><a href="#services" data-i18n="nav-services">Servicios</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Contacto</a></li>
   </ul>
   <div class="nav-controls">
+    <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">EN</button>
     <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
       <i class="bi bi-moon-stars-fill"></i>
     </button>
-    <a href="#contact" class="ncta">Hablemos</a>
+    <a href="#contact" class="ncta" data-i18n="nav-cta">Hablemos</a>
     <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
       <i class="bi bi-list"></i>
     </button>
@@ -96,27 +97,27 @@
   <button class="mobile-menu-close" id="mobileClose" aria-label="Cerrar menu">
     <i class="bi bi-x-lg"></i>
   </button>
-  <a href="#about" class="mobile-link">Sobre mi</a>
-  <a href="#skills" class="mobile-link">Habilidades</a>
-  <a href="#resume" class="mobile-link">Trayectoria</a>
-  <a href="#portfolio" class="mobile-link">Portafolio</a>
-  <a href="#services" class="mobile-link">Servicios</a>
-  <a href="#contact" class="mobile-link">Contacto</a>
+  <a href="#about" class="mobile-link" data-i18n="nav-about">Sobre mi</a>
+  <a href="#skills" class="mobile-link" data-i18n="nav-skills">Habilidades</a>
+  <a href="#resume" class="mobile-link" data-i18n="nav-resume">Trayectoria</a>
+  <a href="#portfolio" class="mobile-link" data-i18n="nav-portfolio">Portafolio</a>
+  <a href="#services" class="mobile-link" data-i18n="nav-services">Servicios</a>
+  <a href="#contact" class="mobile-link" data-i18n="nav-contact">Contacto</a>
 </div>
 
 <section id="hero">
   <div class="reveal">
-    <span class="hero-tag">Disponible para proyectos freelance</span>
-    <h1 class="hname">Ingeniero de Sistemas <em>orientado a soluciones</em></h1>
-    <p class="hero-copy">Ingeniero en Sistemas con experiencia en <strong>arquitectura de software, automatización de procesos y despliegue de aplicaciones</strong>. Desarrollo soluciones útiles para negocio, operación y producto con foco en ejecución real.</p>
+    <span class="hero-tag" data-i18n="hero-tag">Disponible para proyectos freelance</span>
+    <h1 class="hname" data-i18n="hero-title">Ingeniero de Sistemas <em>orientado a soluciones</em></h1>
+    <p class="hero-copy" data-i18n="hero-copy">Ingeniero en Sistemas con experiencia en <strong>arquitectura de software, automatización de procesos y despliegue de aplicaciones</strong>. Desarrollo soluciones útiles para negocio, operación y producto con foco en ejecución real.</p>
     <div class="hbtns">
-      <a href="#portfolio" class="btn-solid">Ver portafolio <i class="bi bi-arrow-up-right"></i></a>
+      <a href="#portfolio" class="btn-solid" data-i18n="hero-btn-portfolio">Ver portafolio <i class="bi bi-arrow-up-right"></i></a>
       <a href="mailto:yared.henriquezb@gmail.com" class="btn-line">yared.henriquezb@gmail.com</a>
     </div>
     <div class="hstats">
-      <div><div class="hstat-n">5+</div><div class="hstat-l">años de experiencia</div></div>
-      <div><div class="hstat-n">Python + IA</div><div class="hstat-l">automatización e integraciones</div></div>
-      <div><div class="hstat-n">&lt;24h</div><div class="hstat-l">tiempo de respuesta</div></div>
+      <div><div class="hstat-n">5+</div><div class="hstat-l" data-i18n="hero-stat-exp">años de experiencia</div></div>
+      <div><div class="hstat-n">Python + IA</div><div class="hstat-l" data-i18n="hero-stat-tech">automatización e integraciones</div></div>
+      <div><div class="hstat-n">&lt;24h</div><div class="hstat-l" data-i18n="hero-stat-time">tiempo de respuesta</div></div>
     </div>
   </div>
 </section>
@@ -125,24 +126,26 @@
 
 <section class="section" id="about" aria-label="Sobre mi">
   <div class="sec-label reveal">
-    <span class="sec-label-tag">01 - Sobre mi</span>
+    <span class="sec-label-tag" data-i18n="about-label">01 - Sobre mi</span>
     <div class="sec-label-line"></div>
   </div>
   <div class="about-grid">
     <aside class="about-img reveal">
-      <div class="about-photo-wrap">
-        <img src="assets/img/profile-img.jpg" alt="Yared Henriquez" loading="lazy">
+      <div class="about-photo-wrap card">
+        <div class="wrapper">
+          <img src="assets/img/profile-img.jpg" alt="Yared Henriquez" class="cover-image">
+        </div>
+        <img src="assets/img/profile_img1.png" class="character" alt="Yared Henriquez Character">
       </div>
-      <div class="about-img-cap"><i class="bi bi-geo-alt-fill"></i> Cartagena de Indias, Colombia</div>
     </aside>
     <div class="about-text reveal d1">
-      <h2 class="stit">Tecnología con foco en <em>impacto real</em></h2>
-      <p>He liderado la implementación de soluciones tecnológicas en entornos reales, incluyendo la dirección de infraestructura digital en EXIA S.A.S dentro del sector de energía solar, donde integré sensores, monitoreo en tiempo real y automatización de reportes operativos. Mi experiencia abarca desde desarrollo backend hasta integraciones empresariales y análisis de datos.</p>
+      <h2 class="stit" data-i18n="about-title">Tecnología con foco en <em>impacto real</em></h2>
+      <p data-i18n="about-copy">He liderado la implementación de soluciones tecnológicas en entornos reales, incluyendo la dirección de infraestructura digital en EXIA S.A.S dentro del sector de energía solar, donde integré sensores, monitoreo en tiempo real y automatización de reportes operativos. Mi experiencia abarca desde desarrollo backend hasta integraciones empresariales y análisis de datos.</p>
       <div class="about-meta">
-        <div class="am"><div class="am-k">Email</div><div class="am-v"><a href="mailto:yared.henriquezb@gmail.com">yared.henriquezb@gmail.com</a></div></div>
-        <div class="am"><div class="am-k">Disponibilidad</div><div class="am-v av"><i class="bi bi-circle-fill" style="font-size:.5rem;vertical-align:middle"></i> Disponible</div></div>
-        <div class="am"><div class="am-k">Ciudad</div><div class="am-v">Cartagena, Colombia</div></div>
-        <div class="am"><div class="am-k">Formación</div><div class="am-v">Ingeniería en Sistemas + Master IA</div></div>
+        <div class="am"><div class="am-k" data-i18n="about-meta-email">Email</div><div class="am-v"><a href="mailto:yared.henriquezb@gmail.com">yared.henriquezb@gmail.com</a></div></div>
+        <div class="am"><div class="am-k" data-i18n="about-meta-avail">Disponibilidad</div><div class="am-v av"><i class="bi bi-circle-fill" style="font-size:.5rem;vertical-align:middle"></i> <span data-i18n="about-meta-avail-v">Disponible</span></div></div>
+        <div class="am"><div class="am-k" data-i18n="about-meta-city">Ciudad</div><div class="am-v" data-i18n="about-meta-city-v">Cartagena, Colombia</div></div>
+        <div class="am"><div class="am-k" data-i18n="about-meta-edu">Formación</div><div class="am-v" data-i18n="about-meta-edu-v">Ingeniería en Sistemas + Master IA</div></div>
       </div>
     </div>
   </div>
@@ -152,17 +155,17 @@
 
 <section class="section" id="skills" aria-label="Habilidades">
   <div class="sec-label reveal">
-    <span class="sec-label-tag">02 - Habilidades</span>
+    <span class="sec-label-tag" data-i18n="skills-label">02 - Habilidades</span>
     <div class="sec-label-line"></div>
   </div>
   <div class="ski-grid">
     <div class="ski-left reveal">
-      <h2 class="stit">Stack técnico <em>y herramientas</em></h2>
-      <p>Mi conjunto de herramientas se centra en la eficiencia, escalabilidad y automatización inteligente para resolver problemas operativos reales.</p>
+      <h2 class="stit" data-i18n="skills-title">Stack técnico <em>y herramientas</em></h2>
+      <p data-i18n="skills-copy">Mi conjunto de herramientas se centra en la eficiencia, escalabilidad y automatización inteligente para resolver problemas operativos reales.</p>
     </div>
     <div class="skigroups reveal d1">
       <div class="skigroup">
-        <div class="skig-title">Core & Backend</div>
+        <div class="skig-title" data-i18n="skills-group-1">Core & Backend</div>
         <div class="skitags">
           <span class="skitag"><i class="devicon-python-plain"></i> Python</span>
           <span class="skitag"><i class="devicon-django-plain"></i> Django / Flask</span>
@@ -171,7 +174,7 @@
         </div>
       </div>
       <div class="skigroup">
-        <div class="skig-title">Frontend & Mobile</div>
+        <div class="skig-title" data-i18n="skills-group-2">Frontend & Mobile</div>
         <div class="skitags">
           <span class="skitag"><i class="devicon-javascript-plain"></i> JavaScript / Vue.js</span>
           <span class="skitag"><i class="devicon-flutter-plain"></i> Flutter & Dart</span>
@@ -180,7 +183,7 @@
         </div>
       </div>
       <div class="skigroup">
-        <div class="skig-title">Cloud & Tools</div>
+        <div class="skig-title" data-i18n="skills-group-3">Cloud & Tools</div>
         <div class="skitags">
           <span class="skitag"><i class="devicon-git-plain"></i> Git / GitHub</span>
           <span class="skitag"><i class="devicon-docker-plain" style="color: #2496ED;"></i> Docker</span>
@@ -196,52 +199,52 @@
 
 <section class="section" id="resume" aria-label="Trayectoria">
   <div class="sec-label reveal">
-    <span class="sec-label-tag">03 - Trayectoria</span>
+    <span class="sec-label-tag" data-i18n="resume-label">03 - Trayectoria</span>
     <div class="sec-label-line"></div>
   </div>
   <div class="res-grid">
     <div>
-      <div class="res-col-title"><i class="bi bi-briefcase-fill"></i> Experiencia Laboral</div>
+      <div class="res-col-title"><i class="bi bi-briefcase-fill"></i> <span data-i18n="resume-exp-title">Experiencia Laboral</span></div>
       <div class="tl reveal">
         <div class="tli">
           <div class="tly">2023 - 2024</div>
           <div class="tldo"></div>
           <div>
-            <h3 class="tltit">Dirección de Infraestructura Digital</h3>
-            <div class="tlorg">EXIA S.A.S - Energía Solar</div>
-            <p class="tldesc">Liderazgo técnico en la integración de sensores IoT, monitoreo en tiempo real y automatización de procesos operativos.</p>
+            <h3 class="tltit" data-i18n="resume-exp-1-title">Dirección de Infraestructura Digital</h3>
+            <div class="tlorg" data-i18n="resume-exp-1-org">EXIA S.A.S - Energía Solar</div>
+            <p class="tldesc" data-i18n="resume-exp-1-desc">Liderazgo técnico en la integración de sensores IoT, monitoreo en tiempo real y automatización de procesos operativos.</p>
           </div>
         </div>
         <div class="tli">
           <div class="tly">2021 - Hoy</div>
           <div class="tldo"></div>
           <div>
-            <h3 class="tltit">Consultoría en TI & Automatización</h3>
-            <div class="tlorg">Independiente / Freelance</div>
-            <p class="tldesc">Desarrollo de soluciones personalizadas en Python y arquitecturas web para clientes en diversos sectores.</p>
+            <h3 class="tltit" data-i18n="resume-exp-2-title">Consultoría en TI & Automatización</h3>
+            <div class="tlorg" data-i18n="resume-exp-2-org">Independiente / Freelance</div>
+            <p class="tldesc" data-i18n="resume-exp-2-desc">Desarrollo de soluciones personalizadas en Python y arquitecturas web para clientes en diversos sectores.</p>
           </div>
         </div>
       </div>
     </div>
     <div>
-      <div class="res-col-title"><i class="bi bi-mortarboard-fill"></i> Educación</div>
+      <div class="res-col-title"><i class="bi bi-mortarboard-fill"></i> <span data-i18n="resume-edu-title">Educación</span></div>
       <div class="tl reveal">
         <div class="tli">
           <div class="tly">2024 - Hoy</div>
           <div class="tldo"></div>
           <div>
-            <h3 class="tltit">Máster en Inteligencia Artificial</h3>
-            <div class="tlorg">Universidad Internacional de Valencia</div>
-            <p class="tldesc">Especialización en modelos generativos, agentes autónomos y visión por computadora.</p>
+            <h3 class="tltit" data-i18n="resume-edu-1-title">Máster en Inteligencia Artificial</h3>
+            <div class="tlorg" data-i18n="resume-edu-1-org">Universidad Internacional de Valencia</div>
+            <p class="tldesc" data-i18n="resume-edu-1-desc">Especialización en modelos generativos, agentes autónomos y visión por computadora.</p>
           </div>
         </div>
         <div class="tli">
           <div class="tly">2018 - 2023</div>
           <div class="tldo"></div>
           <div>
-            <h3 class="tltit">Ingeniería en Sistemas</h3>
-            <div class="tlorg">Universidad de San Buenaventura</div>
-            <p class="tldesc">Formación integral en algoritmos, arquitectura de software y gestión de proyectos tecnológicos.</p>
+            <h3 class="tltit" data-i18n="resume-edu-2-title">Ingeniería en Sistemas</h3>
+            <div class="tlorg" data-i18n="resume-edu-2-org">Universidad de San Buenaventura</div>
+            <p class="tldesc" data-i18n="resume-edu-2-desc">Formación integral en algoritmos, arquitectura de software y gestión de proyectos tecnológicos.</p>
           </div>
         </div>
       </div>
@@ -253,29 +256,29 @@
 
 <section class="section" id="portfolio" aria-label="Portafolio">
   <div class="sec-label reveal">
-    <span class="sec-label-tag">04 - Portafolio</span>
+    <span class="sec-label-tag" data-i18n="portfolio-label">04 - Portafolio</span>
     <div class="sec-label-line"></div>
   </div>
-  <h2 class="stit reveal">Proyectos <em>y Certificaciones</em></h2>
+  <h2 class="stit reveal" data-i18n="portfolio-title">Proyectos <em>y Certificaciones</em></h2>
   
   <div class="pfilt reveal">
-    <button class="pfbtn active" data-f="cert">Certificaciones</button>
-    <button class="pfbtn" data-f="tech">Tecnologías</button>
+    <button class="pfbtn active" data-f="cert" data-i18n="portfolio-filter-cert">Certificaciones</button>
+    <button class="pfbtn" data-f="tech" data-i18n="portfolio-filter-tech">Tecnologías</button>
   </div>
 
   <div class="pgrid reveal" id="cgrid">
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-1.jpg" alt="Responsive Web Design" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Responsive Web Design</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-2.jpg" alt="Cloud Computing" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Cloud Computing</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-3.jpg" alt="JavaScript" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">JavaScript Algorithms</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-4.jpg" alt="Marketing Digital" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Marketing Digital</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-5.jpg" alt="Scrum" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Scrum Foundation</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-6.jpg" alt="HTML" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">HTML Fundamentals</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-7.jpg" alt="Ciberseguridad" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Ciberseguridad Educativa</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-8.jpg" alt="JS Pro" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Programación con JS</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-9.png" alt="AI Fundamentals" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">AI Fundamentals</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-10.png" alt="Claude Code in Action" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Claude Code in Action</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-11.png" alt="MCP Advanced Topics" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">MCP Advanced Topics</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-12.jpeg" alt="Foundations of Cybersecurity" loading="lazy"><div class="pov"><div class="pov-tag">Certificación</div><div class="pov-tit">Foundations of Cybersecurity</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-1.jpg" alt="Responsive Web Design" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Responsive Web Design</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-2.jpg" alt="Cloud Computing" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Cloud Computing</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-3.jpg" alt="JavaScript" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">JavaScript Algorithms</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-4.jpg" alt="Marketing Digital" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Marketing Digital</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-5.jpg" alt="Scrum" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Scrum Foundation</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-6.jpg" alt="HTML" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">HTML Fundamentals</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-7.jpg" alt="Ciberseguridad" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Ciberseguridad Educativa</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-8.jpg" alt="JS Pro" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Programación con JS</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-9.png" alt="AI Fundamentals" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">AI Fundamentals</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-10.png" alt="Claude Code in Action" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Claude Code in Action</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-11.png" alt="MCP Advanced Topics" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">MCP Advanced Topics</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-12.jpeg" alt="Foundations of Cybersecurity" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Foundations of Cybersecurity</div></div></div>
   </div>
 
   <div class="tgrid" id="tgrid">
@@ -296,7 +299,7 @@
   </div>
 
   <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
-    <div class="proof-title">
+    <div class="proof-title" data-i18n="portfolio-proof-title">
       Engineering Presence · Social Proof
       <i class="bi bi-shield-check" style="margin-left: 8px; color: var(--accent);"></i>
     </div>
@@ -306,7 +309,7 @@
         <div class="proof-top">
           <img src="https://avatars.githubusercontent.com/u/264654485?v=4" alt="DevCop95" class="proof-avatar">
           <div>
-            <div class="proof-kicker">GitHub Status</div>
+            <div class="proof-kicker" data-i18n="portfolio-github-status">GitHub Status</div>
             <h3 class="proof-name">DevCop</h3>
             <div class="proof-handle">@DevCop95</div>
           </div>
@@ -324,8 +327,29 @@
           <span class="proof-pill">YOLO</span>
         </div>
         <a class="proof-link" href="https://github.com/DevCop95" target="_blank" rel="noopener">
-          Acceder al código <i class="bi bi-arrow-up-right"></i>
+          <span data-i18n="portfolio-github-cta">Acceder al código</span> <i class="bi bi-arrow-up-right"></i>
         </a>
+        <div style="margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem;">
+          <!-- Título explícito de la gráfica -->
+          <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+            <i class="bi bi-graph-up-arrow" style="color: var(--accent);"></i>
+            <span style="font-family: var(--fm); font-size: 0.7rem; font-weight: 800; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em;" data-i18n="github-chart-header">Contribuciones en GitHub</span>
+          </div>
+
+          <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; cursor: grab; padding-bottom: 0.5rem;">
+            <!-- Clase github-chart-img para aplicar filtros en modo oscuro -->
+            <img src="https://github-contributions-api.deno.dev/DevCop95.svg?year=2026" alt="GitHub contributions" loading="lazy" class="github-chart-img" style="min-width: 720px; width: 100%; height: auto; border: none; display: block;">
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem;">
+            <p style="font-size: 0.6rem; color: var(--muted); font-family: var(--fm); letter-spacing: 0.05em; text-transform: uppercase;">
+              <i class="bi bi-calendar3"></i> <span data-i18n="github-chart-range">Enero - Diciembre 2026</span>
+            </p>
+            <p style="font-size: 0.55rem; color: var(--accent); font-family: var(--fm); font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 4px;">
+              <i class="bi bi-arrow-left-right"></i> <span data-i18n="github-scroll-hint">Desliza para ver meses</span>
+            </p>
+          </div>
+        </div>
       </article>
 
       <!-- Salesforce Card Estilo Trailblazer -->
@@ -338,8 +362,12 @@
             <div class="proof-handle">Ranger Rank</div>
           </div>
         </div>
-        <div class="trailhead-status-wrap" style="margin: 1.5rem 0; padding: 1.5rem; background: linear-gradient(135deg, #00A1E0 0%, #005fb2 100%); border-radius: 16px; color: #fff; text-align: center;">
-          <div style="font-family: var(--fm); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.5rem; opacity: 0.9;">Current Rank</div>
+        <div class="trailhead-status-wrap" style="margin: 1.5rem 0; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, #00A1E0 0%, #005fb2 100%); border-radius: 16px; color: #fff; text-align: center; position: relative; overflow: hidden;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <img src="https://res.cloudinary.com/trailhead/image/upload/public-trailhead/assets/images/ranks/ranger.png" alt="Salesforce Ranger Rank" style="width: 110px; height: auto; filter: drop-shadow(0 12px 20px rgba(0,0,0,0.3));">
+            <img src="https://trailhead.salesforce.com/agentblazer/level_1_edition_2025.png" alt="Agentblazer 2025" style="width: 200px; height: auto; filter: drop-shadow(0 12px 20px rgba(0,0,0,0.3));">
+          </div>
+          <div style="font-family: var(--fm); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.2rem; opacity: 0.9;">Current Rank</div>
           <div style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em;">RANGER</div>
           <div style="margin-top: 0.8rem; display: flex; justify-content: center; gap: 1.5rem; font-size: 0.8rem;">
             <div><strong>198</strong><br><span style="opacity: 0.8; font-size: 0.65rem;">Badges</span></div>
@@ -353,14 +381,14 @@
           <span class="proof-pill">Architect</span>
         </div>
         <a class="proof-link" href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" rel="noopener">
-          Ver perfil oficial <i class="bi bi-arrow-up-right"></i>
+          <span data-i18n="portfolio-trailhead-cta">Ver perfil oficial</span> <i class="bi bi-arrow-up-right"></i>
         </a>
       </article>
     </div>
   </div>
 
   <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
-    <div class="proof-title">
+    <div class="proof-title" data-i18n="portfolio-mobile-title">
       Mobile & Multiplatform
       <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Flutter Logo" class="flutter-logo-brand">
     </div>
@@ -375,7 +403,7 @@
   </div>
 
   <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
-    <div class="proof-title">
+    <div class="proof-title" data-i18n="portfolio-ai-title">
       AI Operations & Multi-Agent Systems
       <i class="bi bi-cpu-fill" style="margin-left: 8px; color: var(--accent);"></i>
     </div>
@@ -383,26 +411,26 @@
       <article class="proof-card ai-mega-card">
         <div class="ai-command-grid">
           <header class="ai-header">
-            <div class="ai-kicker">AI Operations Hub · Featured Project</div>
-            <h3 class="proof-name">DevTeams: Multi-Agent 3D Simulation</h3>
+            <div class="ai-kicker" data-i18n="portfolio-ai-project-tag">AI Operations Hub · Featured Project</div>
+            <h3 class="proof-name" data-i18n="portfolio-ai-project-title">DevTeams: Multi-Agent 3D Simulation</h3>
           </header>
           <div class="ai-visual">
             <video src="assets/img/office-iso.mp4" autoplay muted loop playsinline preload="metadata"></video>
-            <div class="ai-badge-live"><span class="status-dot"></span> System Live</div>
+            <div class="ai-badge-live"><span class="status-dot"></span> <span data-i18n="portfolio-ai-project-status">System Live</span></div>
           </div>
           <aside class="ai-sidebar">
-            <div class="ai-feature-mini"><i class="bi bi-cpu"></i><strong>Planner A*</strong><span>Pathfinding en Web Workers.</span></div>
-            <div class="ai-feature-mini"><i class="bi bi-shield-lock"></i><strong>Privacy</strong><span>File System Access API.</span></div>
+            <div class="ai-feature-mini"><i class="bi bi-cpu"></i><strong data-i18n="portfolio-ai-feature-1-title">Planner A*</strong><span data-i18n="portfolio-ai-feature-1-desc">Pathfinding en Web Workers.</span></div>
+            <div class="ai-feature-mini"><i class="bi bi-shield-lock"></i><strong data-i18n="portfolio-ai-feature-2-title">Privacy</strong><span data-i18n="portfolio-ai-feature-2-desc">File System Access API.</span></div>
           </aside>
           <footer class="ai-footer">
-            <p class="proof-copy">Orquestación de 8 agentes especializados en un entorno 3D inmersivo con <strong>Three.js</strong> y <strong>Groq Llama 3.3</strong>.</p>
+            <p class="proof-copy" data-i18n="portfolio-ai-project-copy">Orquestación de 8 agentes especializados en un entorno 3D inmersivo con <strong>Three.js</strong> y <strong>Groq Llama 3.3</strong>.</p>
             <div class="ai-footer-actions">
               <div class="proof-pill-list">
                 <span class="proof-pill">Three.js</span>
                 <span class="proof-pill">Groq Cloud</span>
                 <span class="proof-pill">AI Planner</span>
               </div>
-              <a class="proof-link" href="https://github.com/DevCop95/devteams" target="_blank" rel="noopener">Arquitectura en GitHub <i class="bi bi-github"></i></a>
+              <a class="proof-link" href="https://github.com/DevCop95/devteams" target="_blank" rel="noopener"><span data-i18n="portfolio-ai-project-cta">Arquitectura en GitHub</span> <i class="bi bi-github"></i></a>
             </div>
           </footer>
         </div>
@@ -415,15 +443,15 @@
 
 <section class="section" id="services" aria-label="Servicios">
   <div class="sec-label reveal">
-    <span class="sec-label-tag">05 - Servicios</span>
+    <span class="sec-label-tag" data-i18n="services-label">05 - Servicios</span>
     <div class="sec-label-line"></div>
   </div>
-  <h2 class="stit reveal">Lo que puedo <em>aportar</em></h2>
-  <p class="stit-sub reveal d1">Soluciones pensadas para operar mejor, lanzar más rápido y sostener crecimiento con base técnica sólida.</p>
+  <h2 class="stit reveal" data-i18n="services-title">Lo que puedo <em>aportar</em></h2>
+  <p class="stit-sub reveal d1" data-i18n="services-copy">Soluciones pensadas para operar mejor, lanzar más rápido y sostener crecimiento con base técnica sólida.</p>
   <div class="svc-grid reveal d1">
-    <div class="svc-card"><div class="svc-n">01</div><i class="bi bi-rocket-takeoff-fill svc-ico"></i><div class="svc-title">Transformación Digital</div><div class="svc-desc">Herramientas y flujos que mejoran productividad, control operativo y calidad de entrega.</div></div>
-    <div class="svc-card"><div class="svc-n">02</div><i class="bi bi-braces svc-ico"></i><div class="svc-title">Desarrollo Web & Python</div><div class="svc-desc">Apps, APIs, scripts y soluciones a medida para procesos internos y automatización.</div></div>
-    <div class="svc-card"><div class="svc-n">03</div><i class="bi bi-diagram-3-fill svc-ico"></i><div class="svc-title">Integraciones & Arq.</div><div class="svc-desc">Conexión entre sistemas y decisiones de arquitectura pensadas para escalar.</div></div>
+    <div class="svc-card"><div class="svc-n">01</div><i class="bi bi-rocket-takeoff-fill svc-ico"></i><div class="svc-title" data-i18n="services-1-title">Transformación Digital</div><div class="svc-desc" data-i18n="services-1-desc">Herramientas y flujos que mejoran productividad, control operativo y calidad de entrega.</div></div>
+    <div class="svc-card"><div class="svc-n">02</div><i class="bi bi-braces svc-ico"></i><div class="svc-title" data-i18n="services-2-title">Desarrollo Web & Python</div><div class="svc-desc" data-i18n="services-2-desc">Apps, APIs, scripts y soluciones a medida para procesos internos y automatización.</div></div>
+    <div class="svc-card"><div class="svc-n">03</div><i class="bi bi-diagram-3-fill svc-ico"></i><div class="svc-title" data-i18n="services-3-title">Integraciones & Arq.</div><div class="svc-desc" data-i18n="services-3-desc">Conexión entre sistemas y decisiones de arquitectura pensadas para escalar.</div></div>
   </div>
 </section>
 
@@ -431,37 +459,37 @@
 
 <section class="section" id="contact" aria-label="Contacto">
   <div class="sec-label reveal">
-    <span class="sec-label-tag">06 - Contacto</span>
+    <span class="sec-label-tag" data-i18n="contact-label">06 - Contacto</span>
     <div class="sec-label-line"></div>
   </div>
   <div class="con-grid">
     <div class="reveal">
-      <h2 class="con-cta">¿Listo para <em>ejecutar?</em></h2>
-      <p class="con-body">Si tienes un problema complejo de software o un proceso que necesita IA y automatización, hablemos. Mi enfoque es la entrega de soluciones técnicas reales.</p>
+      <h2 class="con-cta" data-i18n="contact-title">¿Listo para <em>ejecutar?</em></h2>
+      <p class="con-body" data-i18n="contact-copy">Si tienes un problema complejo de software o un proceso que necesita IA y automatización, hablemos. Mi enfoque es la entrega de soluciones técnicas reales.</p>
       <div class="conlinks">
         <a class="clink" href="mailto:yared.henriquezb@gmail.com"><span class="cico"><i class="bi bi-envelope-at"></i></span> yared.henriquezb@gmail.com</a>
-        <a class="clink" href="https://wa.me/573015185270" target="_blank" rel="noopener"><span class="cico"><i class="bi bi-whatsapp"></i></span> WhatsApp Directo</a>
-        <a class="clink" href="assets/docs/CV_yared_Henriquez.pdf" target="_blank" rel="noopener"><span class="cico"><i class="bi bi-file-earmark-pdf"></i></span> Descargar Full Resume</a>
+        <a class="clink" href="https://wa.me/573015185270" target="_blank" rel="noopener"><span class="cico"><i class="bi bi-whatsapp"></i></span> <span data-i18n="contact-cta-whatsapp">WhatsApp Directo</span></a>
+        <a class="clink" href="assets/docs/CV_yared_Henriquez.pdf" target="_blank" rel="noopener"><span class="cico"><i class="bi bi-file-earmark-pdf"></i></span> <span data-i18n="contact-cta-cv">Descargar Full Resume</span></a>
       </div>
     </div>
     <div class="contact-panel reveal d1">
       <div class="panel-tag">Operational Status</div>
-      <h3 class="panel-title">Disponibilidad Técnica</h3>
+      <h3 class="panel-title" data-i18n="contact-status-title">Disponibilidad Técnica</h3>
       <div class="panel-grid">
-        <div class="panel-item"><div class="panel-k">Base</div><div class="panel-v">Cartagena, Colombia</div></div>
-        <div class="panel-item"><div class="panel-k">Respuesta</div><div class="panel-v">&lt; 24 Horas</div></div>
-        <div class="panel-item"><div class="panel-k">Enfoque</div><div class="panel-v">Software & IA</div></div>
-        <div class="panel-item"><div class="panel-k">Modalidad</div><div class="panel-v">Freelance / Consultoría</div></div>
+        <div class="panel-item"><div class="panel-k" data-i18n="contact-status-base">Base</div><div class="panel-v" data-i18n="about-meta-city-v">Cartagena, Colombia</div></div>
+        <div class="panel-item"><div class="panel-k" data-i18n="contact-status-resp">Respuesta</div><div class="panel-v" data-i18n="contact-status-resp-v">&lt; 24 Horas</div></div>
+        <div class="panel-item"><div class="panel-k" data-i18n="contact-status-focus">Enfoque</div><div class="panel-v" data-i18n="contact-status-focus-v">Software & IA</div></div>
+        <div class="panel-item"><div class="panel-k" data-i18n="contact-status-mod">Modalidad</div><div class="panel-v" data-i18n="contact-status-mod-v">Freelance / Consultoría</div></div>
       </div>
-      <div class="panel-signal"><i class="bi bi-broadcast"></i><span>Sistemas listos para nuevas integraciones y despliegues.</span></div>
+      <div class="panel-signal"><i class="bi bi-broadcast"></i><span data-i18n="contact-status-signal">Sistemas listos para nuevas integraciones y despliegues.</span></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>&copy; <span id="year"></span> <strong>DevYHB</strong>. Construido por <strong>Yared Henriquez</strong>.</p>
+  <p>&copy; <span id="year"></span> <strong>DevYHB</strong>. <span data-i18n="footer-copy">Construido por</span> <strong>Yared Henriquez</strong>.</p>
   <div class="fsoc">
-    <a href="#about">Sobre mi</a> · <a href="#portfolio">Portafolio</a> · <a href="#contact">Contacto</a>
+    <a href="#about" data-i18n="nav-about">Sobre mi</a> · <a href="#portfolio" data-i18n="nav-portfolio">Portafolio</a> · <a href="#contact" data-i18n="nav-contact">Contacto</a>
   </div>
 </footer>
 

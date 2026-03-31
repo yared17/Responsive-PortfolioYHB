@@ -143,11 +143,12 @@ nav.scrolled { border-color: var(--line); padding: 0.8rem 5vw; }
 }
 
 .nav-controls { display: flex; align-items: center; gap: .8rem; }
-.theme-toggle, .hamburger {
+.theme-toggle, .lang-toggle, .hamburger {
   width: 38px; height: 38px; display: grid; place-items: center;
   border: 1px solid var(--line); border-radius: 50%; color: var(--ink2);
+  font-family: var(--fm); font-size: 0.75rem; font-weight: 700;
 }
-.theme-toggle:hover, .hamburger:hover { border-color: var(--accent); color: var(--accent); }
+.theme-toggle:hover, .lang-toggle:hover, .hamburger:hover { border-color: var(--accent); color: var(--accent); }
 
 .ncta {
   display: inline-flex; align-items: center; gap: .45rem;
@@ -228,9 +229,95 @@ h2.stit em { font-style: normal; color: var(--accent); }
 
 /* 6. About Section */
 .about-grid { display: grid; grid-template-columns: 380px 1fr; gap: 5rem; align-items: start; }
-.about-img { position: sticky; top: 7rem; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
-.about-photo-wrap { position: relative; }
-.about-img img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+.about-img { position: sticky; top: 7rem; border-radius: 24px; overflow: visible; } /* Cambiado a overflow visible para que el personaje sobresalga */
+
+/* --- Efecto 3D Pop-out --- */
+.card {
+  width: 100%;
+  aspect-ratio: 3/4;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  perspective: 2500px;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.wrapper {
+  transition: all 0.5s var(--ease);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.card:hover .wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.3);
+.wrapper::after {
+  content: "";
+  opacity: 0;
+  width: 100%;
+  height: 80px;
+  transition: all 0.5s;
+  position: absolute;
+  left: 0;
+}
+.wrapper::after {
+  bottom: 0;
+  opacity: 1;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 46%,
+    rgba(0, 0, 0, 0.2) 68%,
+    var(--bg) 97%
+  );
+}
+
+.card:hover .wrapper::after {
+  opacity: 1;
+}
+  background-image: linear-gradient(
+    to bottom,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+
+.card:hover .wrapper::before,
+.wrapper::after {
+  opacity: 1;
+}
+
+.card:hover .wrapper::after {
+  height: 120px;
+}
+
+.character {
+  width: 100%;
+  opacity: 0;
+  transition: all 0.5s var(--ease);
+  position: absolute;
+  z-index: 1; /* Por encima del wrapper */
+  pointer-events: none; /* No interfiere con el hover */
+}
+
+.card:hover .character {
+  opacity: 1;
+  transform: translate3d(0%, -20%, 100px);
+}
+
+.about-photo-wrap { position: relative; border-radius: 24px; overflow: visible; box-shadow: var(--shadow); border: 1px solid var(--line); background: var(--bg2); }
+.about-photo-wrap .cover-image { border-radius: 24px; }
 
 .runner-badge {
   position: absolute; right: 15px; bottom: 15px; width: 160px; aspect-ratio: 1.2/1;
@@ -404,6 +491,11 @@ h2.stit em { font-style: normal; color: var(--accent); }
 .proof-pill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .proof-pill { padding: .4rem .8rem; background: var(--bg2); border-radius: 8px; font-family: var(--fm); font-size: .65rem; font-weight: 700; }
 .proof-link { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.5rem; color: var(--accent); font-weight: 700; }
+
+/* Ajuste para gráfica de GitHub en Modo Oscuro */
+[data-theme="dark"] .github-chart-img {
+  filter: invert(0.9) hue-rotate(180deg) brightness(1.2) contrast(1.2);
+}
 
 .flutter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 2rem; }
 .flutter-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 9/19; border: 1px solid var(--line); cursor: pointer; }
@@ -637,8 +729,17 @@ h2.stit em { font-style: normal; color: var(--accent); }
   background: var(--ink); 
   color: #fff; 
   transform: translateY(-10px); 
-  border-color: var(--ink);
+  border-color: var(--accent);
   box-shadow: var(--shadow);
+}
+
+[data-theme="dark"] .svc-card:hover {
+  background: var(--bg2); /* Un tono más claro que el fondo pero oscuro */
+  color: var(--ink); /* Texto claro */
+}
+
+[data-theme="dark"] .svc-card:hover .svc-desc {
+  color: var(--muted);
 }
 
 .svc-n { 
@@ -670,6 +771,7 @@ h2.stit em { font-style: normal; color: var(--accent); }
 }
 
 .svc-card:hover .svc-desc { color: rgba(255,255,255,0.7); }
+[data-theme="dark"] .svc-card:hover .svc-desc { color: var(--muted); }
 .svc-card:hover .svc-n { color: var(--accent); }
 
 /* 11. Contact Section */
@@ -800,11 +902,20 @@ footer { display: flex; align-items: center; justify-content: space-between; pad
 }
 
 @media (max-width: 600px) {
+  .section { padding: 5rem 8vw; } /* Más aire lateral para todas las secciones */
   .pgrid, .svc-grid, .panel-grid, .about-meta { grid-template-columns: 1fr; }
   .tli { grid-template-columns: 80px 1fr; }
   .tldo { left: 80px; }
   footer { flex-direction: column; gap: 2rem; text-align: center; }
   h1.hname { font-size: 2.8rem; }
+  
+  /* Refinamiento de la sección de contacto */
+  .contact-panel { padding: 2rem; } /* Padding uniforme como en las otras cards */
+  .con-cta { font-size: 2.2rem; margin-bottom: 1rem; }
+  .con-body { margin-bottom: 2rem; font-size: 1rem; }
+  .clink { padding: 1rem 1.2rem; font-size: 0.9rem; gap: 1rem; }
+  .cico { width: 38px; height: 38px; font-size: 1rem; }
+  .conlinks { gap: 0.6rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
