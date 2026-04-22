@@ -1,880 +1,250 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yared Henriquez — Software Engineer & AI Specialist</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#07090f;
-  --bg2:#0c1018;
-  --bg3:#111722;
-  --accent:#00e5bf;
-  --accent2:#e5b000;
-  --text:#dde2f0;
-  --muted:#4a5470;
-  --border:rgba(0,229,191,0.12);
-  --border2:rgba(0,229,191,0.25);
-  --glow:0 0 40px rgba(0,229,191,0.15);
-  --glow2:0 0 20px rgba(0,229,191,0.3);
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;font-weight:400;line-height:1.1}
-.mono{font-family:'JetBrains Mono',monospace}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-img{max-width:100%;display:block}
-section{position:relative;overflow:hidden}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yared Henriquez | Software Engineer & AI Specialist</title>
+    <meta name="description" content="Ingeniero de Sistemas experto en arquitectura de software, automatización con IA y soluciones escalables.">
 
-/* NOISE OVERLAY */
-body::before{
-  content:'';position:fixed;inset:0;z-index:1000;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  opacity:.4;
-}
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devyhb.com/">
+    <meta property="og:title" content="Yared Henriquez | Software Engineer & AI Specialist">
+    <meta property="og:description" content="Ingeniero de Sistemas enfocado en soluciones reales con IA y automatización.">
+    <meta property="og:image" content="assets/img/profile-img.jpg">
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.2rem 4rem;
-  background:rgba(7,9,15,0.85);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  transition:all .3s;
-}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;color:var(--text)}
-.nav-logo span{color:var(--accent)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{
-  font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.1em;
-  color:var(--muted);text-decoration:none;text-transform:uppercase;
-  transition:color .2s;position:relative;
-}
-.nav-links a::after{
-  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
-  background:var(--accent);transition:width .3s;
-}
-.nav-links a:hover{color:var(--accent)}
-.nav-links a:hover::after{width:100%}
-.nav-cta{
-  background:transparent;border:1px solid var(--accent);color:var(--accent);
-  padding:.5rem 1.4rem;font-family:'JetBrains Mono',monospace;font-size:.75rem;
-  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
-  transition:all .2s;text-decoration:none;
-}
-.nav-cta:hover{background:var(--accent);color:var(--bg);text-decoration:none;box-shadow:var(--glow2)}
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://devyhb.com/">
+    <meta property="twitter:title" content="Yared Henriquez | Software Engineer & AI Specialist">
+    <meta property="twitter:description" content="Soluciones tecnológicas con foco en ejecución real e Inteligencia Artificial.">
+    <meta property="twitter:image" content="assets/img/profile-img.jpg">
 
-/* HERO */
-#hero{
-  min-height:100vh;display:flex;align-items:center;
-  padding:0 4rem;
-  background:var(--bg);
-  position:relative;
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(0,229,191,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,191,.03) 1px,transparent 1px);
-  background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);
-}
-.hero-glow{
-  position:absolute;top:20%;left:10%;
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,229,191,.06) 0%,transparent 70%);
-  pointer-events:none;
-}
-.hero-content{position:relative;z-index:2;max-width:1100px;width:100%}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:.6rem;
-  font-family:'JetBrains Mono',monospace;font-size:.72rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
-  margin-bottom:2rem;
-  padding:.4rem .9rem;border:1px solid var(--border2);
-}
-.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,229,191,.5)}50%{opacity:.7;box-shadow:0 0 0 8px rgba(0,229,191,0)}}
-.hero-name{
-  font-size:clamp(5rem,13vw,13rem);
-  color:var(--text);
-  line-height:.9;
-  margin-bottom:.5rem;
-}
-.hero-name .accent{color:var(--accent)}
-.hero-title{
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(.9rem,1.5vw,1.2rem);
-  color:var(--muted);
-  letter-spacing:.05em;
-  margin-bottom:2rem;
-  min-height:1.8em;
-}
-.hero-title .cursor{
-  display:inline-block;width:2px;height:1.1em;
-  background:var(--accent);margin-left:2px;vertical-align:middle;
-  animation:blink .8s step-end infinite;
-}
-@keyframes blink{50%{opacity:0}}
-.hero-desc{
-  max-width:560px;font-size:1rem;color:#7a88a8;line-height:1.8;
-  margin-bottom:3rem;
-}
-.hero-actions{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:4rem}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:var(--accent);color:var(--bg);
-  padding:.9rem 2rem;font-family:'JetBrains Mono',monospace;
-  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
-  font-weight:500;border:none;cursor:pointer;text-decoration:none;
-  transition:all .25s;
-}
-.btn-primary:hover{background:#00c9a7;box-shadow:var(--glow2);text-decoration:none;color:var(--bg)}
-.btn-outline{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:transparent;color:var(--text);
-  padding:.9rem 2rem;font-family:'JetBrains Mono',monospace;
-  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
-  border:1px solid rgba(255,255,255,.15);cursor:pointer;text-decoration:none;
-  transition:all .25s;
-}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
-.hero-stats{
-  display:grid;grid-template-columns:repeat(3,auto);gap:2px;
-  border:1px solid var(--border);width:fit-content;
-}
-.stat-item{
-  padding:1.2rem 2rem;background:var(--bg2);border-right:1px solid var(--border);
-  text-align:center;
-}
-.stat-item:last-child{border-right:none}
-.stat-num{
-  font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.05em;
-  color:var(--accent);display:block;
-}
-.stat-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.hero-scroll{
-  position:absolute;bottom:2rem;right:4rem;
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--muted);
-  display:flex;flex-direction:column;align-items:center;gap:.8rem;
-  writing-mode:vertical-lr;
-}
-.hero-scroll::after{content:'';width:1px;height:60px;background:linear-gradient(var(--accent),transparent)}
+    <!-- SEO Avanzado: JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Yared Henriquez",
+      "url": "https://devyhb.com/",
+      "image": "https://devyhb.com/assets/img/profile-img.jpg",
+      "sameAs": [
+        "https://github.com/DevCop95",
+        "https://www.salesforce.com/trailblazer/yhenriquezblanquicett"
+      ],
+      "jobTitle": "Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      },  
+      "description": "Ingeniero de Sistemas orientado a soluciones, especializado en arquitectura de software, automatización e IA."
+    }
+    </script>
 
-/* SECTION LAYOUT */
-.section-inner{max-width:1100px;margin:0 auto;padding:7rem 4rem}
-.section-label{
-  font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;
-  display:flex;align-items:center;gap:.8rem;
-}
-.section-label::before{content:'';width:30px;height:1px;background:var(--accent)}
-.section-title{font-size:clamp(2.5rem,6vw,5rem);margin-bottom:.5rem;color:var(--text)}
-.section-title em{font-style:normal;color:var(--accent)}
-.section-sub{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.8;margin-bottom:4rem}
-
-/* ABOUT */
-#about{background:var(--bg)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
-.about-img-wrap{position:relative}
-.about-img-frame{
-  position:relative;
-  border:1px solid var(--border2);
-  overflow:hidden;
-}
-.about-img-frame img{width:100%;filter:grayscale(20%) contrast(1.1);transition:filter .4s}
-.about-img-frame:hover img{filter:grayscale(0%) contrast(1.1)}
-.about-img-frame::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(0,229,191,.08) 0%,transparent 60%);
-  z-index:1;pointer-events:none;
-}
-.about-corner{
-  position:absolute;width:20px;height:20px;border-color:var(--accent);border-style:solid;
-}
-.about-corner.tl{top:-6px;left:-6px;border-width:2px 0 0 2px}
-.about-corner.br{bottom:-6px;right:-6px;border-width:0 2px 2px 0}
-.about-card{
-  position:absolute;bottom:-1.5rem;right:-1.5rem;
-  background:var(--bg3);border:1px solid var(--border2);
-  padding:1rem 1.5rem;z-index:2;
-}
-.about-card-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
-.about-card-val{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);letter-spacing:.05em}
-.about-info{}
-.about-text{color:#7a88a8;font-size:.95rem;line-height:1.9;margin-bottom:2rem}
-.about-details{
-  display:grid;grid-template-columns:1fr 1fr;gap:1px;
-  border:1px solid var(--border);margin-bottom:2.5rem;
-  background:var(--border);
-}
-.detail-row{
-  background:var(--bg2);padding:1rem 1.2rem;
-}
-.detail-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
-.detail-val{font-size:.9rem;color:var(--text)}
-.availability-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:rgba(0,229,191,.08);border:1px solid rgba(0,229,191,.2);
-  padding:.5rem 1rem;color:var(--accent);
-  font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-}
-.availability-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-
-/* SKILLS */
-#skills{background:var(--bg2)}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.skill-block{
-  background:var(--bg2);padding:2rem;
-  transition:background .25s;
-}
-.skill-block:hover{background:var(--bg3)}
-.skill-block-label{
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;
-  padding-bottom:.8rem;border-bottom:1px solid var(--border);
-}
-.skill-tags{display:flex;flex-wrap:wrap;gap:.5rem}
-.skill-tag{
-  font-family:'JetBrains Mono',monospace;font-size:.75rem;
-  padding:.35rem .8rem;background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.07);color:var(--muted);
-  transition:all .2s;cursor:default;letter-spacing:.03em;
-}
-.skill-tag:hover{
-  border-color:var(--accent);color:var(--accent);
-  background:rgba(0,229,191,.06);
-}
-.skill-tag.featured{border-color:rgba(0,229,191,.3);color:var(--accent);background:rgba(0,229,191,.06)}
-
-/* EXPERIENCE */
-#resume{background:var(--bg)}
-.timeline{position:relative;padding-left:2rem}
-.timeline::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:1px;
-  background:linear-gradient(var(--accent) 0%,var(--border) 80%,transparent 100%);
-}
-.timeline-item{
-  position:relative;padding-left:2.5rem;padding-bottom:3rem;
-}
-.timeline-item::before{
-  content:'';position:absolute;left:-7px;top:8px;
-  width:14px;height:14px;border-radius:50%;
-  background:var(--bg);border:2px solid var(--accent);
-}
-.timeline-item.edu::before{border-color:var(--accent2)}
-.timeline-date{
-  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;
-}
-.timeline-title{font-size:1.5rem;color:var(--text);margin-bottom:.3rem}
-.timeline-org{
-  font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.05em;
-  color:var(--accent);margin-bottom:.8rem;
-}
-.timeline-org.edu{color:var(--accent2)}
-.timeline-desc{font-size:.9rem;color:var(--muted);line-height:1.8;max-width:500px}
-.resume-cols{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
-
-/* PORTFOLIO */
-#portfolio{background:var(--bg2)}
-.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
-.portfolio-item{
-  background:var(--bg2);position:relative;overflow:hidden;
-  cursor:pointer;group:true;
-}
-.portfolio-item img{
-  width:100%;height:240px;object-fit:cover;
-  filter:grayscale(40%) brightness(.8);
-  transition:filter .4s,transform .4s;display:block;
-}
-.portfolio-item:hover img{filter:grayscale(0%) brightness(.9);transform:scale(1.04)}
-.portfolio-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(7,9,15,.95) 0%,rgba(7,9,15,.4) 60%,transparent 100%);
-  padding:1.2rem;display:flex;flex-direction:column;justify-content:flex-end;
-}
-.portfolio-type{
-  font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;
-}
-.portfolio-name{font-size:1.3rem;color:var(--text)}
-.featured-project{
-  grid-column:1/-1;background:var(--bg3);
-  border:1px solid var(--border2);padding:3rem;
-  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
-}
-.fp-label{
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;
-}
-.fp-title{font-size:clamp(1.8rem,3vw,2.8rem);color:var(--text);margin-bottom:1rem}
-.fp-desc{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
-.fp-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem}
-.fp-tag{
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;
-  padding:.3rem .7rem;border:1px solid var(--border2);color:var(--accent);
-}
-.fp-visual{
-  background:var(--bg2);border:1px solid var(--border);
-  height:260px;display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-}
-.fp-visual canvas{position:absolute;inset:0}
-.fp-visual-label{
-  position:relative;z-index:1;text-align:center;
-  font-family:'JetBrains Mono',monospace;font-size:.8rem;
-  color:var(--accent);letter-spacing:.1em;
-}
-.fp-visual-label span{display:block;font-size:.6rem;color:var(--muted);margin-top:.4rem}
-
-/* SOCIAL PROOF */
-#social{background:var(--bg)}
-.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.social-card{
-  background:var(--bg);padding:2.5rem 2rem;
-  transition:background .25s;
-}
-.social-card:hover{background:var(--bg2)}
-.social-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-.social-avatar{
-  width:44px;height:44px;border-radius:50%;
-  border:1px solid var(--border2);overflow:hidden;flex-shrink:0;
-}
-.social-name{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.05em;color:var(--text)}
-.social-handle{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.05em}
-.social-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.2rem}
-.s-stat{}
-.s-stat-num{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);display:block}
-.s-stat-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-.social-badges{display:flex;flex-wrap:wrap;gap:.4rem}
-.badge{
-  font-family:'JetBrains Mono',monospace;font-size:.6rem;padding:.25rem .6rem;
-  border:1px solid var(--border);color:var(--muted);letter-spacing:.05em;
-}
-
-/* SERVICES */
-#services{background:var(--bg2)}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.service-card{
-  background:var(--bg2);padding:2.5rem 2rem;
-  transition:background .25s;position:relative;overflow:hidden;
-}
-.service-card:hover{background:var(--bg3)}
-.service-card::before{
-  content:'';position:absolute;top:0;left:0;width:2px;height:0;
-  background:var(--accent);transition:height .4s;
-}
-.service-card:hover::before{height:100%}
-.service-num{
-  font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(0,229,191,.06);
-  line-height:1;margin-bottom:1rem;
-}
-.service-title{font-size:1.6rem;color:var(--text);margin-bottom:.8rem}
-.service-desc{font-size:.9rem;color:var(--muted);line-height:1.8}
-
-/* CONTACT */
-#contact{background:var(--bg);position:relative}
-.contact-glow{
-  position:absolute;bottom:0;right:0;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,229,191,.05) 0%,transparent 70%);
-  pointer-events:none;
-}
-.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
-.contact-links{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-bottom:2rem}
-.contact-link{
-  display:flex;align-items:center;gap:1rem;
-  background:var(--bg2);padding:1.2rem 1.5rem;
-  border-left:2px solid transparent;
-  transition:all .25s;text-decoration:none;
-}
-.contact-link:hover{background:var(--bg3);border-left-color:var(--accent);text-decoration:none}
-.cl-icon{
-  width:36px;height:36px;border:1px solid var(--border);display:flex;
-  align-items:center;justify-content:center;flex-shrink:0;
-  font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);
-}
-.cl-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
-.cl-val{font-size:.9rem;color:var(--text)}
-.status-box{
-  background:var(--bg3);border:1px solid var(--border2);padding:2rem;
-}
-.status-title{
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;
-  display:flex;align-items:center;gap:.6rem;
-}
-.status-title::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-.status-rows{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.status-row{
-  display:flex;justify-content:space-between;align-items:center;
-  background:var(--bg2);padding:.9rem 1rem;
-  font-size:.85rem;
-}
-.sr-label{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em}
-.sr-val{color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.75rem}
-.sr-val.green{color:var(--accent)}
-
-/* FOOTER */
-footer{
-  background:var(--bg2);border-top:1px solid var(--border);
-  padding:2rem 4rem;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.1em;color:var(--text)}
-.footer-logo span{color:var(--accent)}
-.footer-copy{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-
-/* LOADER */
-#loader{
-  position:fixed;inset:0;z-index:9999;background:var(--bg);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;
-  transition:opacity .6s,visibility .6s;
-}
-#loader.gone{opacity:0;visibility:hidden}
-.loader-text{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.2em;color:var(--text)}
-.loader-text span{color:var(--accent)}
-.loader-bar{width:200px;height:1px;background:var(--border);position:relative;overflow:hidden}
-.loader-bar::after{
-  content:'';position:absolute;inset:0;background:var(--accent);
-  transform:translateX(-100%);animation:load .8s ease forwards .2s;
-}
-@keyframes load{to{transform:translateX(0)}}
-
-/* REVEAL ANIMATIONS */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease}
-.reveal-left.visible{opacity:1;transform:none}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem}
-  .nav-links{display:none}
-  .section-inner{padding:5rem 1.5rem}
-  #hero{padding:0 1.5rem}
-  .hero-stats{grid-template-columns:1fr;width:100%}
-  .stat-item{border-right:none;border-bottom:1px solid var(--border)}
-  .about-grid,.resume-cols,.contact-inner{grid-template-columns:1fr;gap:3rem}
-  .skills-grid,.services-grid,.social-grid{grid-template-columns:1fr}
-  .portfolio-grid{grid-template-columns:1fr}
-  .featured-project{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:1rem;text-align:center}
-}
-</style>
+    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('devyhb-theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      } catch (e) {}
+    })();
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="is-loading">
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-text">Dev<span>*YHB*</span></div>
-  <div class="loader-bar"></div>
+<div id="scroll-progress"></div>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-box">
+    <div class="loader-logo">Dev<em>YHB</em></div>
+    <div class="loader-bar"></div>
+    <div class="loader-copy">loading portfolio</div>
+  </div>
 </div>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo">Dev<span>*YHB*</span></div>
-  <ul class="nav-links">
-    <li><a href="#about">Sobre mi</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#resume">Trayectoria</a></li>
-    <li><a href="#portfolio">Portafolio</a></li>
-    <li><a href="#services">Servicios</a></li>
+<nav id="mnav">
+  <a href="#hero" class="nlogo">Dev<em>YHB</em></a>
+  <ul class="nlinks">
+    <li><a href="#about" data-i18n="nav-about">Sobre mi</a></li>
+    <li><a href="#skills" data-i18n="nav-skills">Habilidades</a></li>
+    <li><a href="#resume" data-i18n="nav-resume">Trayectoria</a></li>
+    <li><a href="#portfolio" data-i18n="nav-portfolio">Portafolio</a></li>
+    <li><a href="#services" data-i18n="nav-services">Servicios</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Contacto</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Hablemos</a>
+  <div class="nav-controls">
+    <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">EN</button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+      <i class="bi bi-moon-stars-fill"></i>
+    </button>
+    <a href="#contact" class="ncta" data-i18n="nav-cta">Hablemos</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
+      <i class="bi bi-list"></i>
+    </button>
+  </div>
 </nav>
 
-<!-- HERO -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileClose" aria-label="Cerrar menu">
+    <i class="bi bi-x-lg"></i>
+  </button>
+  <a href="#about" class="mobile-link" data-i18n="nav-about">Sobre mi</a>
+  <a href="#skills" class="mobile-link" data-i18n="nav-skills">Habilidades</a>
+  <a href="#resume" class="mobile-link" data-i18n="nav-resume">Trayectoria</a>
+  <a href="#portfolio" class="mobile-link" data-i18n="nav-portfolio">Portafolio</a>
+  <a href="#services" class="mobile-link" data-i18n="nav-services">Servicios</a>
+  <a href="#contact" class="mobile-link" data-i18n="nav-contact">Contacto</a>
+</div>
+
 <section id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Disponible para proyectos freelance</div>
-    <h1 class="hero-name">YARED<br><span class="accent">HENRIQUEZ</span></h1>
-    <div class="hero-title mono" id="typed-text"><span class="cursor"></span></div>
-    <p class="hero-desc">Ingeniero en Sistemas con experiencia en arquitectura de software, automatización de procesos y despliegue de IA. Soluciones con foco en ejecución real.</p>
-    <div class="hero-actions">
-      <a href="#portfolio" class="btn-primary">→ Ver portafolio</a>
-      <a href="mailto:yared.henriquezb@gmail.com" class="btn-outline">yared.henriquezb@gmail.com</a>
+  <div class="reveal">
+    <span class="hero-tag" data-i18n="hero-tag">Disponible para proyectos freelance</span>
+    <h1 class="hname" data-i18n="hero-title">Ingeniero de Sistemas <em>orientado a soluciones</em></h1>
+    <p class="hero-copy" data-i18n="hero-copy">Ingeniero en Sistemas con experiencia en <strong>arquitectura de software, automatización de procesos y despliegue de aplicaciones</strong>. Desarrollo soluciones útiles para negocio, operación y producto con foco en ejecución real.</p>
+    <div class="hbtns">
+      <a href="#portfolio" class="btn-solid" data-i18n="hero-btn-portfolio">Ver portafolio <i class="bi bi-arrow-up-right"></i></a>
+      <a href="mailto:yared.henriquezb@gmail.com" class="btn-line">yared.henriquezb@gmail.com</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-num mono" data-count="5">0</span>
-        <span class="stat-label">años de exp.</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num mono" data-count="198">0</span>
-        <span class="stat-label">Badges Salesforce</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num mono">24h</span>
-        <span class="stat-label">Tiempo de respuesta</span>
-      </div>
+    <div class="hstats">
+      <div><div class="hstat-n">5+</div><div class="hstat-l" data-i18n="hero-stat-exp">años de experiencia</div></div>
+      <div><div class="hstat-n">Python + IA</div><div class="hstat-l" data-i18n="hero-stat-tech">automatización e integraciones</div></div>
+      <div><div class="hstat-n">&lt;24h</div><div class="hstat-l" data-i18n="hero-stat-time">tiempo de respuesta</div></div>
     </div>
   </div>
-  <div class="hero-scroll">Scroll</div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-img-wrap reveal-left">
-        <div class="about-img-frame">
-          <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/profile-img.jpg" alt="Yared Henriquez">
+<div class="sdivider"></div>
+
+<section class="section" id="about" aria-label="Sobre mi">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag" data-i18n="about-label">01 - Sobre mi</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <div class="about-grid">
+    <aside class="about-img reveal">
+      <div class="about-photo-wrap card">
+        <div class="wrapper">
+          <img src="assets/img/profile-img.jpg" alt="Yared Henriquez" class="cover-image">
         </div>
-        <div class="about-corner tl"></div>
-        <div class="about-corner br"></div>
-        <div class="about-card">
-          <div class="about-card-label">Formación</div>
-          <div class="about-card-val">MSc · IA</div>
-        </div>
+        <img src="assets/img/profile_img1.png" class="character" alt="Yared Henriquez Character">
       </div>
-      <div class="about-info reveal">
-        <div class="section-label">01 — Sobre mi</div>
-        <h2 class="section-title">Tecnología<br>con <em>impacto real</em></h2>
-        <p class="about-text">He liderado la implementación de soluciones tecnológicas en entornos reales, incluyendo la dirección de infraestructura digital en EXIA S.A.S dentro del sector de energía solar, donde integré sensores, monitoreo en tiempo real y automatización de reportes operativos.</p>
-        <p class="about-text">Mi experiencia abarca desde desarrollo backend hasta integraciones empresariales y análisis de datos con IA.</p>
-        <div class="about-details">
-          <div class="detail-row">
-            <div class="detail-label">Email</div>
-            <div class="detail-val">yared.henriquezb@gmail.com</div>
-          </div>
-          <div class="detail-row">
-            <div class="detail-label">Ciudad</div>
-            <div class="detail-val">Cartagena, Colombia</div>
-          </div>
-          <div class="detail-row">
-            <div class="detail-label">Formación</div>
-            <div class="detail-val">Ingeniería en Sistemas</div>
-          </div>
-          <div class="detail-row">
-            <div class="detail-label">Posgrado</div>
-            <div class="detail-val">Máster en IA · UB</div>
-          </div>
-        </div>
-        <div class="availability-badge">Disponible para proyectos</div>
+    </aside>
+    <div class="about-text reveal d1">
+      <h2 class="stit" data-i18n="about-title">Tecnología con foco en <em>impacto real</em></h2>
+      <p data-i18n="about-copy">He liderado la implementación de soluciones tecnológicas en entornos reales, incluyendo la dirección de infraestructura digital en EXIA S.A.S dentro del sector de energía solar, donde integré sensores, monitoreo en tiempo real y automatización de reportes operativos. Mi experiencia abarca desde desarrollo backend hasta integraciones empresariales y análisis de datos.</p>
+      <div class="about-meta">
+        <div class="am"><div class="am-k" data-i18n="about-meta-email">Email</div><div class="am-v"><a href="mailto:yared.henriquezb@gmail.com">yared.henriquezb@gmail.com</a></div></div>
+        <div class="am"><div class="am-k" data-i18n="about-meta-avail">Disponibilidad</div><div class="am-v av"><i class="bi bi-circle-fill" style="font-size:.5rem;vertical-align:middle"></i> <span data-i18n="about-meta-avail-v">Disponible</span></div></div>
+        <div class="am"><div class="am-k" data-i18n="about-meta-city">Ciudad</div><div class="am-v" data-i18n="about-meta-city-v">Cartagena, Colombia</div></div>
+        <div class="am"><div class="am-k" data-i18n="about-meta-edu">Formación</div><div class="am-v" data-i18n="about-meta-edu-v">Ingeniería en Sistemas + Master IA</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-label">02 — Stack técnico</div>
-    <h2 class="section-title">Herramientas<br>de <em>alto impacto</em></h2>
-    <p class="section-sub">Mi conjunto de herramientas se centra en la eficiencia, escalabilidad y automatización inteligente.</p>
-    <div class="skills-grid reveal">
-      <div class="skill-block">
-        <div class="skill-block-label">Core & Backend</div>
-        <div class="skill-tags">
-          <span class="skill-tag featured">Python</span>
-          <span class="skill-tag featured">AI Agents</span>
-          <span class="skill-tag">Django</span>
-          <span class="skill-tag">Flask</span>
-          <span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">Automatización</span>
+<div class="sdivider"></div>
+
+<section class="section" id="skills" aria-label="Habilidades">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag" data-i18n="skills-label">02 - Habilidades</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <div class="ski-grid">
+    <div class="ski-left reveal">
+      <h2 class="stit" data-i18n="skills-title">Stack técnico <em>y herramientas</em></h2>
+      <p data-i18n="skills-copy">Mi conjunto de herramientas se centra en la eficiencia, escalabilidad y automatización inteligente para resolver problemas operativos reales.</p>
+    </div>
+    <div class="skigroups reveal d1">
+      <div class="skigroup">
+        <div class="skig-title" data-i18n="skills-group-1">Core & Backend</div>
+        <div class="skitags">
+          <span class="skitag"><i class="devicon-python-plain"></i> Python</span>
+          <span class="skitag"><i class="devicon-django-plain"></i> Django / Flask</span>
+          <span class="skitag"><i class="bi bi-database-fill-gear"></i> MySQL / PostgreSQL</span>
+          <span class="skitag"><i class="bi bi-cpu"></i> AI Agents Orchestration</span>
         </div>
       </div>
-      <div class="skill-block">
-        <div class="skill-block-label">Frontend & Mobile</div>
-        <div class="skill-tags">
-          <span class="skill-tag featured">Flutter</span>
-          <span class="skill-tag featured">Dart</span>
-          <span class="skill-tag">Vue.js</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">HTML5 / CSS3</span>
-          <span class="skill-tag">Bootstrap</span>
-          <span class="skill-tag">Responsive Design</span>
+      <div class="skigroup">
+        <div class="skig-title" data-i18n="skills-group-2">Frontend & Mobile</div>
+        <div class="skitags">
+          <span class="skitag"><i class="devicon-javascript-plain"></i> JavaScript / Vue.js</span>
+          <span class="skitag"><i class="devicon-flutter-plain"></i> Flutter & Dart</span>
+          <span class="skitag"><i class="devicon-html5-plain"></i> HTML5 / CSS3</span>
+          <span class="skitag"><i class="devicon-bootstrap-plain"></i> Bootstrap</span>
         </div>
       </div>
-      <div class="skill-block">
-        <div class="skill-block-label">Cloud, DevOps & Tools</div>
-        <div class="skill-tags">
-          <span class="skill-tag featured">Salesforce</span>
-          <span class="skill-tag featured">Docker</span>
-          <span class="skill-tag">Git / GitHub</span>
-          <span class="skill-tag">Cloud Computing</span>
-          <span class="skill-tag">Linux</span>
-          <span class="skill-tag">CI/CD</span>
-          <span class="skill-tag">IoT / Sensores</span>
+      <div class="skigroup">
+        <div class="skig-title" data-i18n="skills-group-3">Cloud & Tools</div>
+        <div class="skitags">
+          <span class="skitag"><i class="devicon-git-plain"></i> Git / GitHub</span>
+          <span class="skitag"><i class="devicon-docker-plain" style="color: #2496ED;"></i> Docker</span>
+          <span class="skitag"><i class="devicon-salesforce-plain"></i> Salesforce Trailhead</span>
+          <span class="skitag"><i class="bi bi-cloud-check-fill"></i> Cloud Computing</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="resume">
-  <div class="section-inner">
-    <div class="section-label">03 — Trayectoria</div>
-    <h2 class="section-title">Experiencia<br>& <em>educación</em></h2>
-    <p class="section-sub">Trayectoria construida en entornos reales con impacto medible.</p>
-    <div class="resume-cols">
-      <div class="reveal">
-        <div class="section-label" style="margin-bottom:2rem">Experiencia laboral</div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">2023 — 2024</div>
-            <h3 class="timeline-title">Dirección de Infraestructura Digital</h3>
-            <div class="timeline-org">EXIA S.A.S — Energía Solar</div>
-            <p class="timeline-desc">Liderazgo técnico en la integración de sensores IoT, monitoreo en tiempo real y automatización de procesos operativos en el sector de energía solar.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2021 — Hoy</div>
-            <h3 class="timeline-title">Consultoría en TI & Automatización</h3>
-            <div class="timeline-org">Independiente / Freelance</div>
-            <p class="timeline-desc">Desarrollo de soluciones personalizadas en Python y arquitecturas web para clientes en sectores como logística, retail y servicios digitales.</p>
-          </div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="section-label" style="margin-bottom:2rem">Educación</div>
-        <div class="timeline">
-          <div class="timeline-item edu">
-            <div class="timeline-date">2024 — Hoy</div>
-            <h3 class="timeline-title">Máster en Inteligencia Artificial</h3>
-            <div class="timeline-org edu">Universidad de Barcelona</div>
-            <p class="timeline-desc">Especialización en modelos generativos, agentes autónomos y visión por computadora. Proyectos con LLMs y orquestación multi-agente.</p>
-          </div>
-          <div class="timeline-item edu">
-            <div class="timeline-date">2018 — 2023</div>
-            <h3 class="timeline-title">Ingeniería en Sistemas</h3>
-            <div class="timeline-org edu">Universidad Tecnológica de Bolívar</div>
-            <p class="timeline-desc">Formación integral en algoritmos, arquitectura de software y gestión de proyectos tecnológicos. Énfasis en desarrollo backend y bases de datos.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="sdivider"></div>
+
+<section class="section" id="resume" aria-label="Trayectoria">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag" data-i18n="resume-label">03 - Trayectoria</span>
+    <div class="sec-label-line"></div>
   </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="section-inner">
-    <div class="section-label">04 — Portafolio</div>
-    <h2 class="section-title">Proyectos &<br><em>certificaciones</em></h2>
-    <p class="section-sub">De la IA multi-agente al desarrollo mobile — soluciones que funcionan en producción.</p>
-
-    <!-- Featured Project -->
-    <div class="featured-project reveal" style="margin-bottom:1px">
-      <div>
-        <div class="fp-label">✦ Proyecto destacado — AI Operations</div>
-        <h3 class="fp-title">DevTeams: Multi-Agent 3D Simulation</h3>
-        <p class="fp-desc">Orquestación de 8 agentes especializados en un entorno 3D inmersivo con Three.js y Groq Llama 3.3. Pathfinding con A* en Web Workers. Sistema live.</p>
-        <div class="fp-tags">
-          <span class="fp-tag">Three.js</span>
-          <span class="fp-tag">Groq Cloud</span>
-          <span class="fp-tag">AI Planner A*</span>
-          <span class="fp-tag">Web Workers</span>
-          <span class="fp-tag">Multi-Agent</span>
-        </div>
-        <a href="https://github.com/DevCop95/devteams" class="btn-primary" target="_blank">→ Arquitectura en GitHub</a>
-      </div>
-      <div class="fp-visual" id="fp-canvas-wrap">
-        <canvas id="agentCanvas"></canvas>
-        <div class="fp-visual-label">
-          SISTEMA ACTIVO
-          <span>8 agentes · Tiempo real</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cert Grid -->
-    <div class="portfolio-grid reveal">
-      <div class="portfolio-item">
-        <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-10.png" alt="Claude Code in Action">
-        <div class="portfolio-overlay">
-          <div class="portfolio-type">Certificación</div>
-          <div class="portfolio-name">Claude Code in Action</div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-11.png" alt="MCP Advanced Topics">
-        <div class="portfolio-overlay">
-          <div class="portfolio-type">Certificación</div>
-          <div class="portfolio-name">MCP Advanced Topics</div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-9.png" alt="AI Fundamentals">
-        <div class="portfolio-overlay">
-          <div class="portfolio-type">Certificación</div>
-          <div class="portfolio-name">AI Fundamentals</div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-12.jpeg" alt="Foundations of Cybersecurity">
-        <div class="portfolio-overlay">
-          <div class="portfolio-type">Certificación — Google</div>
-          <div class="portfolio-name">Foundations of Cybersecurity</div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-1.jpg" alt="Responsive Web Design">
-        <div class="portfolio-overlay">
-          <div class="portfolio-type">Certificación — freeCodeCamp</div>
-          <div class="portfolio-name">Responsive Web Design</div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/portfolio/portfolio-3.jpg" alt="JavaScript Algorithms">
-        <div class="portfolio-overlay">
-          <div class="portfolio-type">Certificación</div>
-          <div class="portfolio-name">JavaScript Algorithms & DS</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Salesforce Social Proof -->
-    <div class="social-grid reveal" style="margin-top:1px">
-      <div class="social-card">
-        <div class="social-head">
-          <img src="https://avatars.githubusercontent.com/u/264654485?v=4" alt="GitHub" class="social-avatar">
+  <div class="res-grid">
+    <div>
+      <div class="res-col-title"><i class="bi bi-briefcase-fill"></i> <span data-i18n="resume-exp-title">Experiencia Laboral</span></div>
+      <div class="tl reveal">
+        <div class="tli">
+          <div class="tly">2023 - 2024</div>
+          <div class="tldo"></div>
           <div>
-            <div class="social-name">DevCop95</div>
-            <div class="social-handle">github.com/DevCop95</div>
+            <h3 class="tltit" data-i18n="resume-exp-1-title">Dirección de Infraestructura Digital</h3>
+            <div class="tlorg" data-i18n="resume-exp-1-org">EXIA S.A.S - Energía Solar</div>
+            <p class="tldesc" data-i18n="resume-exp-1-desc">Liderazgo técnico en la integración de sensores IoT, monitoreo en tiempo real y automatización de procesos operativos.</p>
           </div>
         </div>
-        <div class="social-badges">
-          <span class="badge">Pull Shark</span>
-          <span class="badge">Pair Extraordinaire</span>
-          <span class="badge">YOLO</span>
-        </div>
-      </div>
-      <div class="social-card">
-        <div class="social-head">
-          <img src="https://profile.digital.salesforce.com/images/p/0051I0000081gGgQAI/1756517526/F" alt="Salesforce" class="social-avatar">
+        <div class="tli">
+          <div class="tly">2021 - Hoy</div>
+          <div class="tldo"></div>
           <div>
-            <div class="social-name">Salesforce Ranger</div>
-            <div class="social-handle">Trailhead · Yared Dev</div>
+            <h3 class="tltit" data-i18n="resume-exp-2-title">Consultoría en TI & Automatización</h3>
+            <div class="tlorg" data-i18n="resume-exp-2-org">Independiente / Freelance</div>
+            <p class="tldesc" data-i18n="resume-exp-2-desc">Desarrollo de soluciones personalizadas en Python y arquitecturas web para clientes en diversos sectores.</p>
           </div>
         </div>
-        <div class="social-stat-row">
-          <div class="s-stat"><span class="s-stat-num">198</span><span class="s-stat-label">Badges</span></div>
-          <div class="s-stat"><span class="s-stat-num">73K</span><span class="s-stat-label">Points</span></div>
-          <div class="s-stat"><span class="s-stat-num">44</span><span class="s-stat-label">Trails</span></div>
-        </div>
-        <div class="social-badges">
-          <span class="badge">Agentblazer</span>
-          <span class="badge">4 Superbadges</span>
-          <span class="badge">Architect</span>
-        </div>
       </div>
-      <div class="social-card">
-        <div class="social-head">
-          <img src="https://yared17.github.io/Responsive-PortfolioYHB/assets/img/flutter/1.jpeg" alt="Flutter" class="social-avatar" style="border-radius:4px">
+    </div>
+    <div>
+      <div class="res-col-title"><i class="bi bi-mortarboard-fill"></i> <span data-i18n="resume-edu-title">Educación</span></div>
+      <div class="tl reveal">
+        <div class="tli">
+          <div class="tly">2024 - Hoy</div>
+          <div class="tldo"></div>
           <div>
-            <div class="social-name">Mobile · Flutter</div>
-            <div class="social-handle">Dart · Multiplatform</div>
+            <h3 class="tltit" data-i18n="resume-edu-1-title">Máster en Inteligencia Artificial</h3>
+            <div class="tlorg" data-i18n="resume-edu-1-org">Universidad de Barcelona</div>
+            <p class="tldesc" data-i18n="resume-edu-1-desc">Especialización en modelos generativos, agentes autónomos y visión por computadora.</p>
           </div>
         </div>
-        <div class="social-badges" style="gap:.3rem">
-          <span class="badge">iOS</span>
-          <span class="badge">Android</span>
-          <span class="badge">Web</span>
-          <span class="badge">6+ apps</span>
-          <span class="badge">State Mgmt</span>
-          <span class="badge">Firebase</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-inner">
-    <div class="section-label">05 — Servicios</div>
-    <h2 class="section-title">Lo que puedo<br><em>aportar</em></h2>
-    <p class="section-sub">Soluciones pensadas para operar mejor, lanzar más rápido y sostener crecimiento con base técnica sólida.</p>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3 class="service-title">Transformación Digital</h3>
-        <p class="service-desc">Herramientas y flujos que mejoran productividad, control operativo y calidad de entrega en empresas de cualquier tamaño.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3 class="service-title">Desarrollo Web & Python</h3>
-        <p class="service-desc">Apps, APIs, scripts y soluciones a medida para procesos internos y automatización. Backend robusto con Django y Flask.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3 class="service-title">IA & Automatización</h3>
-        <p class="service-desc">Agentes inteligentes, integraciones entre sistemas y decisiones de arquitectura pensadas para escalar con IA.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-glow"></div>
-  <div class="section-inner">
-    <div class="contact-inner">
-      <div class="reveal">
-        <div class="section-label">06 — Contacto</div>
-        <h2 class="section-title">¿Listo para<br><em>ejecutar?</em></h2>
-        <p class="about-text" style="margin-bottom:2.5rem">Si tienes un problema complejo de software o un proceso que necesita IA y automatización, hablemos. Mi enfoque es la entrega de soluciones técnicas reales.</p>
-        <div class="contact-links">
-          <a href="mailto:yared.henriquezb@gmail.com" class="contact-link">
-            <div class="cl-icon">@</div>
-            <div>
-              <div class="cl-label">Email</div>
-              <div class="cl-val">yared.henriquezb@gmail.com</div>
-            </div>
-          </a>
-          <a href="https://wa.me/573015185270" class="contact-link" target="_blank">
-            <div class="cl-icon">WA</div>
-            <div>
-              <div class="cl-label">WhatsApp</div>
-              <div class="cl-val">+57 301 518 5270</div>
-            </div>
-          </a>
-          <a href="https://yared17.github.io/Responsive-PortfolioYHB/assets/docs/CV_yared_Henriquez.pdf" class="contact-link" target="_blank">
-            <div class="cl-icon">CV</div>
-            <div>
-              <div class="cl-label">Currículum</div>
-              <div class="cl-val">Descargar Full Resume →</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="status-box">
-          <div class="status-title">Disponibilidad técnica</div>
-          <div class="status-rows">
-            <div class="status-row">
-              <span class="sr-label">Base</span>
-              <span class="sr-val">Cartagena, Colombia</span>
-            </div>
-            <div class="status-row">
-              <span class="sr-label">Respuesta</span>
-              <span class="sr-val green">&lt; 24 Horas</span>
-            </div>
-            <div class="status-row">
-              <span class="sr-label">Enfoque</span>
-              <span class="sr-val">Software & IA</span>
-            </div>
-            <div class="status-row">
-              <span class="sr-label">Modalidad</span>
-              <span class="sr-val">Freelance / Consultoría</span>
-            </div>
-            <div class="status-row">
-              <span class="sr-label">Estado</span>
-              <span class="sr-val green">● Sistemas listos</span>
-            </div>
+        <div class="tli">
+          <div class="tly">2018 - 2023</div>
+          <div class="tldo"></div>
+          <div>
+            <h3 class="tltit" data-i18n="resume-edu-2-title">Ingeniería en Sistemas</h3>
+            <div class="tlorg" data-i18n="resume-edu-2-org">Universidad Tecnológica de Bolívar</div>
+            <p class="tldesc" data-i18n="resume-edu-2-desc">Formación integral en algoritmos, arquitectura de software y gestión de proyectos tecnológicos.</p>
           </div>
         </div>
       </div>
@@ -882,146 +252,259 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER -->
+<div class="sdivider"></div>
+
+<section class="section" id="portfolio" aria-label="Portafolio">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag" data-i18n="portfolio-label">04 - Portafolio</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <h2 class="stit reveal" data-i18n="portfolio-title">Proyectos <em>y Certificaciones</em></h2>
+  
+  <div class="pfilt reveal">
+    <button class="pfbtn active" data-f="cert" data-i18n="portfolio-filter-cert">Certificaciones</button>
+    <button class="pfbtn" data-f="tech" data-i18n="portfolio-filter-tech">Tecnologías</button>
+  </div>
+
+  <div class="pgrid reveal" id="cgrid">
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-1.jpg" alt="Responsive Web Design" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Responsive Web Design</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-2.jpg" alt="Cloud Computing" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Cloud Computing</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-3.jpg" alt="JavaScript" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">JavaScript Algorithms</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-4.jpg" alt="Marketing Digital" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Marketing Digital</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-5.jpg" alt="Scrum" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Scrum Foundation</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-6.jpg" alt="HTML" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">HTML Fundamentals</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-7.jpg" alt="Ciberseguridad" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Ciberseguridad Educativa</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-8.jpg" alt="JS Pro" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Programación con JS</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-9.png" alt="AI Fundamentals" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">AI Fundamentals</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-10.png" alt="Claude Code in Action" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Claude Code in Action</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-11.png" alt="MCP Advanced Topics" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">MCP Advanced Topics</div></div></div>
+    <div class="pitem"><img src="assets/img/portfolio/portfolio-12.jpeg" alt="Foundations of Cybersecurity" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Foundations of Cybersecurity</div></div></div>
+  </div>
+
+  <div class="tgrid" id="tgrid">
+    <div class="tcell"><i class="devicon-python-plain" style="color:#3776ab"></i><span>Python</span></div>
+    <div class="tcell"><i class="devicon-javascript-plain" style="color:#f7df1e"></i><span>JavaScript</span></div>
+    <div class="tcell"><i class="devicon-flutter-plain" style="color:#02569B"></i><span>Flutter</span></div>
+    <div class="tcell"><i class="devicon-dart-plain" style="color:#00C4B3"></i><span>Dart</span></div>
+    <div class="tcell"><i class="devicon-linux-plain" style="color:#333333"></i><span>Linux</span></div>
+    <div class="tcell"><i class="devicon-docker-plain" style="color:#2496ED"></i><span>Docker</span></div>
+    <div class="tcell"><i class="devicon-django-plain" style="color:#44b78b"></i><span>Django</span></div>
+    <div class="tcell"><i class="devicon-flask-original"></i><span>Flask</span></div>
+    <div class="tcell"><i class="devicon-git-plain" style="color:#f05032"></i><span>Git</span></div>
+    <div class="tcell"><i class="devicon-github-original"></i><span>GitHub</span></div>
+    <div class="tcell"><i class="devicon-salesforce-plain" style="color:#00a1e0"></i><span>Salesforce</span></div>
+    <div class="tcell"><i class="devicon-mysql-plain" style="color:#4479a1"></i><span>MySQL</span></div>
+    <div class="tcell"><i class="devicon-vuejs-plain" style="color:#42b883"></i><span>Vue.js</span></div>
+    <div class="tcell"><i class="devicon-html5-plain" style="color:#e34f26"></i><span>HTML5</span></div>
+  </div>
+
+  <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
+    <div class="proof-title" data-i18n="portfolio-proof-title">
+      Engineering Presence · Social Proof
+      <i class="bi bi-shield-check" style="margin-left: 8px; color: var(--accent);"></i>
+    </div>
+    <div class="proof-grid">
+      <!-- GitHub Card Infalible -->
+      <article class="proof-card">
+        <div class="proof-top">
+          <img src="https://avatars.githubusercontent.com/u/264654485?v=4" alt="DevCop95" class="proof-avatar">
+          <div>
+            <div class="proof-kicker" data-i18n="portfolio-github-status">GitHub Status</div>
+            <h3 class="proof-name">DevCop</h3>
+            <div class="proof-handle">@DevCop95</div>
+          </div>
+        </div>
+        
+        <div class="github-badges-wrap" style="margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.8rem; align-items: center;">
+          <img src="https://img.shields.io/github/followers/DevCop95?label=Followers&style=for-the-badge&color=0e7a5f&logo=github" alt="Followers">
+          <img src="https://img.shields.io/github/directory-file-count/DevCop95/devteams?label=Repos%20Activos&style=for-the-badge&color=0e7a5f&logo=github" alt="Repos">
+          <img src="https://img.shields.io/badge/Contributions-Verified-0e7a5f?style=for-the-badge&logo=github" alt="Verified">
+        </div>
+
+        <div class="proof-pill-list">
+          <span class="proof-pill">Pull Shark</span>
+          <span class="proof-pill">Pair Extraordinaire</span>
+          <span class="proof-pill">YOLO</span>
+        </div>
+        <a class="proof-link" href="https://github.com/DevCop95" target="_blank" rel="noopener">
+          <span data-i18n="portfolio-github-cta">Acceder al código</span> <i class="bi bi-arrow-up-right"></i>
+        </a>
+        <div style="margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem;">
+          <!-- Título explícito de la gráfica -->
+          <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+            <i class="bi bi-graph-up-arrow" style="color: var(--accent);"></i>
+            <span style="font-family: var(--fm); font-size: 0.7rem; font-weight: 800; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em;" data-i18n="github-chart-header">Contribuciones en GitHub</span>
+          </div>
+
+          <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; cursor: grab; padding-bottom: 0.5rem;">
+            <!-- Clase github-chart-img para aplicar filtros en modo oscuro -->
+            <img src="https://github-contributions-api.deno.dev/DevCop95.svg?year=2026" alt="GitHub contributions" loading="lazy" class="github-chart-img" style="min-width: 720px; width: 100%; height: auto; border: none; display: block;">
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem;">
+            <p style="font-size: 0.6rem; color: var(--muted); font-family: var(--fm); letter-spacing: 0.05em; text-transform: uppercase;">
+              <i class="bi bi-calendar3"></i> <span data-i18n="github-chart-range">Enero - Diciembre 2026</span>
+            </p>
+            <p style="font-size: 0.55rem; color: var(--accent); font-family: var(--fm); font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 4px;">
+              <i class="bi bi-arrow-left-right"></i> <span data-i18n="github-scroll-hint">Desliza para ver meses</span>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Salesforce Card Estilo Trailblazer -->
+      <article class="proof-card">
+        <div class="proof-top">
+          <img src="https://profile.digital.salesforce.com/images/p/0051I0000081gGgQAI/1756517526/F" alt="Yared Dev" class="proof-avatar">
+          <div>
+            <div class="proof-kicker">Salesforce Trailhead</div>
+            <h3 class="proof-name">Yared Dev</h3>
+            <div class="proof-handle">Ranger Rank</div>
+          </div>
+        </div>
+        <div class="trailhead-status-wrap" style="margin: 1.5rem 0; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, #00A1E0 0%, #005fb2 100%); border-radius: 16px; color: #fff; text-align: center; position: relative; overflow: hidden;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <img src="https://res.cloudinary.com/trailhead/image/upload/public-trailhead/assets/images/ranks/ranger.png" alt="Salesforce Ranger Rank" style="width: 110px; height: auto; filter: drop-shadow(0 12px 20px rgba(0,0,0,0.3));">
+            <img src="https://trailhead.salesforce.com/agentblazer/level_1_edition_2025.png" alt="Agentblazer 2025" style="width: 200px; height: auto; filter: drop-shadow(0 12px 20px rgba(0,0,0,0.3));">
+          </div>
+          <div style="font-family: var(--fm); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.2rem; opacity: 0.9;">Current Rank</div>
+          <div style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em;">RANGER</div>
+          <div style="margin-top: 0.8rem; display: flex; justify-content: center; gap: 1.5rem; font-size: 0.8rem;">
+            <div><strong>198</strong><br><span style="opacity: 0.8; font-size: 0.65rem;">Badges</span></div>
+            <div><strong>73,750</strong><br><span style="opacity: 0.8; font-size: 0.65rem;">Points</span></div>
+            <div><strong>44</strong><br><span style="opacity: 0.8; font-size: 0.65rem;">Trails</span></div>
+          </div>
+        </div>
+        <div class="proof-pill-list">
+          <span class="proof-pill">Agentblazer</span>
+          <span class="proof-pill">4 Superbadges</span>
+          <span class="proof-pill">Architect</span>
+        </div>
+        <a class="proof-link" href="https://www.salesforce.com/trailblazer/yhenriquezblanquicett" target="_blank" rel="noopener">
+          <span data-i18n="portfolio-trailhead-cta">Ver perfil oficial</span> <i class="bi bi-arrow-up-right"></i>
+        </a>
+      </article>
+    </div>
+  </div>
+
+  <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
+    <div class="proof-title" data-i18n="portfolio-mobile-title">
+      Mobile & Multiplatform
+      <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Flutter Logo" class="flutter-logo-brand">
+    </div>
+    <div class="flutter-grid">
+      <div class="flutter-item" onclick="openFlutterModal(0)"><img src="assets/img/flutter/1.jpeg" alt="Preview 1" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="flutter-item" onclick="openFlutterModal(1)"><img src="assets/img/flutter/2.jpeg" alt="Preview 2" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="flutter-item" onclick="openFlutterModal(2)"><img src="assets/img/flutter/3.jpeg" alt="Preview 3" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="flutter-item" onclick="openFlutterModal(3)"><img src="assets/img/flutter/4.jpeg" alt="Preview 4" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="flutter-item" onclick="openFlutterModal(4)"><img src="assets/img/flutter/5.jpeg" alt="Preview 5" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <div class="flutter-item" onclick="openFlutterModal(5)"><img src="assets/img/flutter/6.jpeg" alt="Preview 6" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
+    </div>
+  </div>
+
+  <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
+    <div class="proof-title" data-i18n="portfolio-ai-title">
+      AI Operations & Multi-Agent Systems
+      <i class="bi bi-cpu-fill" style="margin-left: 8px; color: var(--accent);"></i>
+    </div>
+    <div class="proof-grid" style="grid-template-columns: 1fr;">
+      <article class="proof-card ai-mega-card">
+        <div class="ai-command-grid">
+          <header class="ai-header">
+            <div class="ai-kicker" data-i18n="portfolio-ai-project-tag">AI Operations Hub · Featured Project</div>
+            <h3 class="proof-name" data-i18n="portfolio-ai-project-title">DevTeams: Multi-Agent 3D Simulation</h3>
+          </header>
+          <div class="ai-visual">
+            <video src="assets/img/office-iso.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="ai-badge-live"><span class="status-dot"></span> <span data-i18n="portfolio-ai-project-status">System Live</span></div>
+          </div>
+          <aside class="ai-sidebar">
+            <div class="ai-feature-mini"><i class="bi bi-cpu"></i><strong data-i18n="portfolio-ai-feature-1-title">Planner A*</strong><span data-i18n="portfolio-ai-feature-1-desc">Pathfinding en Web Workers.</span></div>
+            <div class="ai-feature-mini"><i class="bi bi-shield-lock"></i><strong data-i18n="portfolio-ai-feature-2-title">Privacy</strong><span data-i18n="portfolio-ai-feature-2-desc">File System Access API.</span></div>
+          </aside>
+          <footer class="ai-footer">
+            <p class="proof-copy" data-i18n="portfolio-ai-project-copy">Orquestación de 8 agentes especializados en un entorno 3D inmersivo con <strong>Three.js</strong> y <strong>Groq Llama 3.3</strong>.</p>
+            <div class="ai-footer-actions">
+              <div class="proof-pill-list">
+                <span class="proof-pill">Three.js</span>
+                <span class="proof-pill">Groq Cloud</span>
+                <span class="proof-pill">AI Planner</span>
+              </div>
+              <a class="proof-link" href="https://github.com/DevCop95/devteams" target="_blank" rel="noopener"><span data-i18n="portfolio-ai-project-cta">Arquitectura en GitHub</span> <i class="bi bi-github"></i></a>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="sdivider"></div>
+
+<section class="section" id="services" aria-label="Servicios">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag" data-i18n="services-label">05 - Servicios</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <h2 class="stit reveal" data-i18n="services-title">Lo que puedo <em>aportar</em></h2>
+  <p class="stit-sub reveal d1" data-i18n="services-copy">Soluciones pensadas para operar mejor, lanzar más rápido y sostener crecimiento con base técnica sólida.</p>
+  <div class="svc-grid reveal d1">
+    <div class="svc-card"><div class="svc-n">01</div><i class="bi bi-rocket-takeoff-fill svc-ico"></i><div class="svc-title" data-i18n="services-1-title">Transformación Digital</div><div class="svc-desc" data-i18n="services-1-desc">Herramientas y flujos que mejoran productividad, control operativo y calidad de entrega.</div></div>
+    <div class="svc-card"><div class="svc-n">02</div><i class="bi bi-braces svc-ico"></i><div class="svc-title" data-i18n="services-2-title">Desarrollo Web & Python</div><div class="svc-desc" data-i18n="services-2-desc">Apps, APIs, scripts y soluciones a medida para procesos internos y automatización.</div></div>
+    <div class="svc-card"><div class="svc-n">03</div><i class="bi bi-diagram-3-fill svc-ico"></i><div class="svc-title" data-i18n="services-3-title">Integraciones & Arq.</div><div class="svc-desc" data-i18n="services-3-desc">Conexión entre sistemas y decisiones de arquitectura pensadas para escalar.</div></div>
+  </div>
+</section>
+
+<div class="sdivider"></div>
+
+<section class="section" id="contact" aria-label="Contacto">
+  <div class="sec-label reveal">
+    <span class="sec-label-tag" data-i18n="contact-label">06 - Contacto</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <div class="con-grid">
+    <div class="reveal">
+      <h2 class="con-cta" data-i18n="contact-title">¿Listo para <em>ejecutar?</em></h2>
+      <p class="con-body" data-i18n="contact-copy">Si tienes un problema complejo de software o un proceso que necesita IA y automatización, hablemos. Mi enfoque es la entrega de soluciones técnicas reales.</p>
+      <div class="conlinks">
+        <a class="clink" href="mailto:yared.henriquezb@gmail.com"><span class="cico"><i class="bi bi-envelope-at"></i></span> yared.henriquezb@gmail.com</a>
+        <a class="clink" href="https://wa.me/573015185270" target="_blank" rel="noopener"><span class="cico"><i class="bi bi-whatsapp"></i></span> <span data-i18n="contact-cta-whatsapp">WhatsApp Directo</span></a>
+        <a class="clink" href="assets/docs/CV_yared_Henriquez.pdf" target="_blank" rel="noopener"><span class="cico"><i class="bi bi-file-earmark-pdf"></i></span> <span data-i18n="contact-cta-cv">Descargar Full Resume</span></a>
+      </div>
+    </div>
+    <div class="contact-panel reveal d1">
+      <div class="panel-tag">Operational Status</div>
+      <h3 class="panel-title" data-i18n="contact-status-title">Disponibilidad Técnica</h3>
+      <div class="panel-grid">
+        <div class="panel-item"><div class="panel-k" data-i18n="contact-status-base">Base</div><div class="panel-v" data-i18n="about-meta-city-v">Cartagena, Colombia</div></div>
+        <div class="panel-item"><div class="panel-k" data-i18n="contact-status-resp">Respuesta</div><div class="panel-v" data-i18n="contact-status-resp-v">&lt; 24 Horas</div></div>
+        <div class="panel-item"><div class="panel-k" data-i18n="contact-status-focus">Enfoque</div><div class="panel-v" data-i18n="contact-status-focus-v">Software & IA</div></div>
+        <div class="panel-item"><div class="panel-k" data-i18n="contact-status-mod">Modalidad</div><div class="panel-v" data-i18n="contact-status-mod-v">Freelance / Consultoría</div></div>
+      </div>
+      <div class="panel-signal"><i class="bi bi-broadcast"></i><span data-i18n="contact-status-signal">Sistemas listos para nuevas integraciones y despliegues.</span></div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-logo">Dev<span>*YHB*</span></div>
-  <div class="footer-copy">© 2025 Yared Henriquez — Construido con precisión</div>
+  <p>&copy; <span id="year"></span> <strong>DevYHB</strong>. <span data-i18n="footer-copy">Construido por</span> <strong>Yared Henriquez</strong>.</p>
+  <div class="fsoc">
+    <a href="#about" data-i18n="nav-about">Sobre mi</a> · <a href="#portfolio" data-i18n="nav-portfolio">Portafolio</a> · <a href="#contact" data-i18n="nav-contact">Contacto</a>
+  </div>
 </footer>
 
-<script>
-// LOADER
-window.addEventListener('load',()=>{
-  setTimeout(()=>{document.getElementById('loader').classList.add('gone')},900)
-})
+<a href="https://wa.me/573015185270" class="waf" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+<button class="scroll-top" id="scrollTop" aria-label="Volver arriba"><i class="bi bi-arrow-up"></i></button>
 
-// TYPEWRITER
-const phrases=['Software Engineer','AI Specialist','Python Developer','Systems Architect','Freelance Consultant']
-let pi=0,ci=0,del=false,timer
-function type(){
-  const phrase=phrases[pi]
-  const el=document.getElementById('typed-text')
-  if(!el)return
-  if(!del){
-    if(ci<phrase.length){
-      el.innerHTML=phrase.slice(0,++ci)+'<span class="cursor"></span>'
-      timer=setTimeout(type,60)
-    }else{
-      del=true;timer=setTimeout(type,1800)
-    }
-  }else{
-    if(ci>0){
-      el.innerHTML=phrase.slice(0,--ci)+'<span class="cursor"></span>'
-      timer=setTimeout(type,30)
-    }else{
-      del=false;pi=(pi+1)%phrases.length;timer=setTimeout(type,200)
-    }
-  }
-}
-type()
+<div id="flutterModal" class="fmodal" aria-hidden="true">
+  <span class="fmodal-close" onclick="closeFlutterModal()" aria-label="Cerrar">&times;</span>
+  <div class="fmodal-content">
+    <button class="fmodal-btn fmodal-prev" onclick="changeFlutterImg(-1)" aria-label="Anterior">&#10094;</button>
+    <img id="fmodal-img" src="" alt="Vista previa Flutter">
+    <button class="fmodal-btn fmodal-next" onclick="changeFlutterImg(1)" aria-label="Siguiente">&#10095;</button>
+  </div>
+</div>
 
-// COUNTER ANIMATION
-function animCount(el,target,duration){
-  let start=null
-  const step=ts=>{
-    if(!start)start=ts
-    const prog=Math.min((ts-start)/duration,1)
-    el.textContent=Math.round(prog*target)+(target===5?'+':'')
-    if(prog<1)requestAnimationFrame(step)
-  }
-  requestAnimationFrame(step)
-}
-let counted=false
-const statsObs=new IntersectionObserver(entries=>{
-  if(entries[0].isIntersecting&&!counted){
-    counted=true
-    document.querySelectorAll('[data-count]').forEach(el=>{
-      animCount(el,parseInt(el.dataset.count),1200)
-    })
-  }
-},{threshold:.5})
-const heroStats=document.querySelector('.hero-stats')
-if(heroStats)statsObs.observe(heroStats)
-
-// REVEAL ON SCROLL
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
-},{threshold:.12})
-document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el))
-
-// AGENT CANVAS
-const canvas=document.getElementById('agentCanvas')
-if(canvas){
-  const ctx=canvas.getContext('2d')
-  function resize(){
-    const w=canvas.parentElement.clientWidth
-    const h=canvas.parentElement.clientHeight
-    canvas.width=w;canvas.height=h
-  }
-  resize()
-  window.addEventListener('resize',resize)
-  const agents=Array.from({length:8},(_,i)=>({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    vx:(Math.random()-.5)*1.2,
-    vy:(Math.random()-.5)*1.2,
-    id:i+1,
-    trail:[],
-  }))
-  function draw(){
-    const w=canvas.width,h=canvas.height
-    ctx.clearRect(0,0,w,h)
-    ctx.fillStyle='rgba(7,9,15,0.92)'
-    ctx.fillRect(0,0,w,h)
-    // grid
-    ctx.strokeStyle='rgba(0,229,191,0.04)'
-    ctx.lineWidth=1
-    for(let x=0;x<w;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}
-    for(let y=0;y<h;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
-    // connections
-    for(let i=0;i<agents.length;i++){
-      for(let j=i+1;j<agents.length;j++){
-        const dx=agents[i].x-agents[j].x
-        const dy=agents[i].y-agents[j].y
-        const d=Math.sqrt(dx*dx+dy*dy)
-        if(d<120){
-          ctx.strokeStyle=`rgba(0,229,191,${0.15*(1-d/120)})`
-          ctx.lineWidth=.5
-          ctx.beginPath();ctx.moveTo(agents[i].x,agents[i].y);ctx.lineTo(agents[j].x,agents[j].y);ctx.stroke()
-        }
-      }
-    }
-    // agents
-    agents.forEach(a=>{
-      a.x+=a.vx;a.y+=a.vy
-      if(a.x<0||a.x>w)a.vx*=-1
-      if(a.y<0||a.y>h)a.vy*=-1
-      // glow
-      const grd=ctx.createRadialGradient(a.x,a.y,0,a.x,a.y,16)
-      grd.addColorStop(0,'rgba(0,229,191,0.25)')
-      grd.addColorStop(1,'rgba(0,229,191,0)')
-      ctx.fillStyle=grd;ctx.beginPath();ctx.arc(a.x,a.y,16,0,Math.PI*2);ctx.fill()
-      // dot
-      ctx.fillStyle='#00e5bf'
-      ctx.beginPath();ctx.arc(a.x,a.y,3.5,0,Math.PI*2);ctx.fill()
-      // label
-      ctx.fillStyle='rgba(0,229,191,0.7)'
-      ctx.font='9px JetBrains Mono,monospace'
-      ctx.fillText(`A${a.id}`,a.x+6,a.y-6)
-    })
-    requestAnimationFrame(draw)
-  }
-  draw()
-}
-
-// NAV SHRINK
-window.addEventListener('scroll',()=>{
-  const nav=document.getElementById('nav')
-  if(window.scrollY>80){
-    nav.style.padding='.8rem 4rem'
-  }else{
-    nav.style.padding='1.2rem 4rem'
-  }
-})
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
