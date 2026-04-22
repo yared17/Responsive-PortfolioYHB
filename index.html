@@ -6,7 +6,7 @@
     <title>Yared Henriquez | Software Engineer & AI Specialist</title>
     <meta name="description" content="Ingeniero de Sistemas experto en arquitectura de software, automatización con IA y soluciones escalables.">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://devyhb.com/">
     <meta property="og:title" content="Yared Henriquez | Software Engineer & AI Specialist">
@@ -20,7 +20,7 @@
     <meta property="twitter:description" content="Soluciones tecnológicas con foco en ejecución real e Inteligencia Artificial.">
     <meta property="twitter:image" content="assets/img/profile-img.jpg">
 
-    <!-- SEO Avanzado: JSON-LD -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
@@ -28,15 +28,9 @@
       "name": "Yared Henriquez",
       "url": "https://devyhb.com/",
       "image": "https://devyhb.com/assets/img/profile-img.jpg",
-      "sameAs": [
-        "https://github.com/DevCop95",
-        "https://www.salesforce.com/trailblazer/yhenriquezblanquicett"
-      ],
+      "sameAs": ["https://github.com/DevCop95","https://www.salesforce.com/trailblazer/yhenriquezblanquicett"],
       "jobTitle": "Software Engineer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Freelance"
-      },  
+      "worksFor": { "@type": "Organization", "name": "Freelance" },
       "description": "Ingeniero de Sistemas orientado a soluciones, especializado en arquitectura de software, automatización e IA."
     }
     </script>
@@ -47,21 +41,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
     <script>
     (function() {
       try {
         const saved = localStorage.getItem('devyhb-theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
-      } catch (e) {}
+      } catch(e) {}
     })();
     </script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="is-loading">
 
-<div id="scroll-progress"></div>
+<!-- Custom Cursor -->
+<div id="cursor-ring" aria-hidden="true"></div>
+<div id="cursor-dot" aria-hidden="true"></div>
+
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-box">
@@ -115,9 +113,18 @@
       <a href="mailto:yared.henriquezb@gmail.com" class="btn-line">yared.henriquezb@gmail.com</a>
     </div>
     <div class="hstats">
-      <div><div class="hstat-n">5+</div><div class="hstat-l" data-i18n="hero-stat-exp">años de experiencia</div></div>
-      <div><div class="hstat-n">Python + IA</div><div class="hstat-l" data-i18n="hero-stat-tech">automatización e integraciones</div></div>
-      <div><div class="hstat-n">&lt;24h</div><div class="hstat-l" data-i18n="hero-stat-time">tiempo de respuesta</div></div>
+      <div>
+        <div class="hstat-n" data-count="5" data-suffix="+">5+</div>
+        <div class="hstat-l" data-i18n="hero-stat-exp">años de experiencia</div>
+      </div>
+      <div>
+        <div class="hstat-n">Python + IA</div>
+        <div class="hstat-l" data-i18n="hero-stat-tech">automatización e integraciones</div>
+      </div>
+      <div>
+        <div class="hstat-n">&lt;24h</div>
+        <div class="hstat-l" data-i18n="hero-stat-time">tiempo de respuesta</div>
+      </div>
     </div>
   </div>
 </section>
@@ -186,7 +193,7 @@
         <div class="skig-title" data-i18n="skills-group-3">Cloud & Tools</div>
         <div class="skitags">
           <span class="skitag"><i class="devicon-git-plain"></i> Git / GitHub</span>
-          <span class="skitag"><i class="devicon-docker-plain" style="color: #2496ED;"></i> Docker</span>
+          <span class="skitag"><i class="devicon-docker-plain" style="color:#2496ED"></i> Docker</span>
           <span class="skitag"><i class="devicon-salesforce-plain"></i> Salesforce Trailhead</span>
           <span class="skitag"><i class="bi bi-cloud-check-fill"></i> Cloud Computing</span>
         </div>
@@ -260,7 +267,7 @@
     <div class="sec-label-line"></div>
   </div>
   <h2 class="stit reveal" data-i18n="portfolio-title">Proyectos <em>y Certificaciones</em></h2>
-  
+
   <div class="pfilt reveal">
     <button class="pfbtn active" data-f="cert" data-i18n="portfolio-filter-cert">Certificaciones</button>
     <button class="pfbtn" data-f="tech" data-i18n="portfolio-filter-tech">Tecnologías</button>
@@ -298,13 +305,13 @@
     <div class="tcell"><i class="devicon-html5-plain" style="color:#e34f26"></i><span>HTML5</span></div>
   </div>
 
-  <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
+  <div class="proof-block reveal d1" style="margin-top:3.5rem">
     <div class="proof-title" data-i18n="portfolio-proof-title">
       Engineering Presence · Social Proof
-      <i class="bi bi-shield-check" style="margin-left: 8px; color: var(--accent);"></i>
+      <i class="bi bi-shield-check" style="margin-left:8px;color:var(--accent)"></i>
     </div>
     <div class="proof-grid">
-      <!-- GitHub Card Infalible -->
+      <!-- GitHub Card -->
       <article class="proof-card">
         <div class="proof-top">
           <img src="https://avatars.githubusercontent.com/u/264654485?v=4" alt="DevCop95" class="proof-avatar">
@@ -314,13 +321,11 @@
             <div class="proof-handle">@DevCop95</div>
           </div>
         </div>
-        
-        <div class="github-badges-wrap" style="margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.8rem; align-items: center;">
+        <div class="github-badges-wrap" style="margin:1.5rem 0;display:flex;flex-direction:column;gap:.8rem;align-items:center">
           <img src="https://img.shields.io/github/followers/DevCop95?label=Followers&style=for-the-badge&color=0e7a5f&logo=github" alt="Followers">
           <img src="https://img.shields.io/github/directory-file-count/DevCop95/devteams?label=Repos%20Activos&style=for-the-badge&color=0e7a5f&logo=github" alt="Repos">
           <img src="https://img.shields.io/badge/Contributions-Verified-0e7a5f?style=for-the-badge&logo=github" alt="Verified">
         </div>
-
         <div class="proof-pill-list">
           <span class="proof-pill">Pull Shark</span>
           <span class="proof-pill">Pair Extraordinaire</span>
@@ -329,30 +334,26 @@
         <a class="proof-link" href="https://github.com/DevCop95" target="_blank" rel="noopener">
           <span data-i18n="portfolio-github-cta">Acceder al código</span> <i class="bi bi-arrow-up-right"></i>
         </a>
-        <div style="margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem;">
-          <!-- Título explícito de la gráfica -->
-          <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
-            <i class="bi bi-graph-up-arrow" style="color: var(--accent);"></i>
-            <span style="font-family: var(--fm); font-size: 0.7rem; font-weight: 800; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em;" data-i18n="github-chart-header">Contribuciones en GitHub</span>
+        <div style="margin-top:1.5rem;border-top:1px solid var(--line);padding-top:1.5rem">
+          <div style="margin-bottom:1rem;display:flex;align-items:center;gap:8px">
+            <i class="bi bi-graph-up-arrow" style="color:var(--accent)"></i>
+            <span style="font-family:var(--fm);font-size:.7rem;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.05em" data-i18n="github-chart-header">Contribuciones en GitHub</span>
           </div>
-
-          <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; cursor: grab; padding-bottom: 0.5rem;">
-            <!-- Clase github-chart-img para aplicar filtros en modo oscuro -->
-            <img src="https://github-contributions-api.deno.dev/DevCop95.svg?year=2026" alt="GitHub contributions" loading="lazy" class="github-chart-img" style="min-width: 720px; width: 100%; height: auto; border: none; display: block;">
+          <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.5rem">
+            <img src="https://github-contributions-api.deno.dev/DevCop95.svg?year=2026" alt="GitHub contributions" loading="lazy" class="github-chart-img" style="min-width:720px;width:100%;height:auto;border:none;display:block">
           </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem;">
-            <p style="font-size: 0.6rem; color: var(--muted); font-family: var(--fm); letter-spacing: 0.05em; text-transform: uppercase;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.8rem">
+            <p style="font-size:.6rem;color:var(--muted);font-family:var(--fm);letter-spacing:.05em;text-transform:uppercase">
               <i class="bi bi-calendar3"></i> <span data-i18n="github-chart-range">Enero - Diciembre 2026</span>
             </p>
-            <p style="font-size: 0.55rem; color: var(--accent); font-family: var(--fm); font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 4px;">
+            <p style="font-size:.55rem;color:var(--accent);font-family:var(--fm);font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:4px">
               <i class="bi bi-arrow-left-right"></i> <span data-i18n="github-scroll-hint">Desliza para ver meses</span>
             </p>
           </div>
         </div>
       </article>
 
-      <!-- Salesforce Card Estilo Trailblazer -->
+      <!-- Salesforce Card -->
       <article class="proof-card">
         <div class="proof-top">
           <img src="https://profile.digital.salesforce.com/images/p/0051I0000081gGgQAI/1756517526/F" alt="Yared Dev" class="proof-avatar">
@@ -362,17 +363,17 @@
             <div class="proof-handle">Ranger Rank</div>
           </div>
         </div>
-        <div class="trailhead-status-wrap" style="margin: 1.5rem 0; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, #00A1E0 0%, #005fb2 100%); border-radius: 16px; color: #fff; text-align: center; position: relative; overflow: hidden;">
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
-            <img src="https://res.cloudinary.com/trailhead/image/upload/public-trailhead/assets/images/ranks/ranger.png" alt="Salesforce Ranger Rank" style="width: 110px; height: auto; filter: drop-shadow(0 12px 20px rgba(0,0,0,0.3));">
-            <img src="https://trailhead.salesforce.com/agentblazer/level_1_edition_2025.png" alt="Agentblazer 2025" style="width: 200px; height: auto; filter: drop-shadow(0 12px 20px rgba(0,0,0,0.3));">
+        <div class="trailhead-status-wrap" style="margin:1.5rem 0;padding:2.5rem 1.5rem;background:linear-gradient(135deg,#00A1E0 0%,#005fb2 100%);border-radius:16px;color:#fff;text-align:center;position:relative;overflow:hidden">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;margin-bottom:1.5rem">
+            <img src="https://res.cloudinary.com/trailhead/image/upload/public-trailhead/assets/images/ranks/ranger.png" alt="Salesforce Ranger Rank" style="width:110px;height:auto;filter:drop-shadow(0 12px 20px rgba(0,0,0,.3))">
+            <img src="https://trailhead.salesforce.com/agentblazer/level_1_edition_2025.png" alt="Agentblazer 2025" style="width:200px;height:auto;filter:drop-shadow(0 12px 20px rgba(0,0,0,.3))">
           </div>
-          <div style="font-family: var(--fm); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.2rem; opacity: 0.9;">Current Rank</div>
-          <div style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em;">RANGER</div>
-          <div style="margin-top: 0.8rem; display: flex; justify-content: center; gap: 1.5rem; font-size: 0.8rem;">
-            <div><strong>198</strong><br><span style="opacity: 0.8; font-size: 0.65rem;">Badges</span></div>
-            <div><strong>73,750</strong><br><span style="opacity: 0.8; font-size: 0.65rem;">Points</span></div>
-            <div><strong>44</strong><br><span style="opacity: 0.8; font-size: 0.65rem;">Trails</span></div>
+          <div style="font-family:var(--fm);font-size:.7rem;text-transform:uppercase;margin-bottom:.2rem;opacity:.9">Current Rank</div>
+          <div style="font-size:1.8rem;font-weight:800;letter-spacing:-.02em">RANGER</div>
+          <div style="margin-top:.8rem;display:flex;justify-content:center;gap:1.5rem;font-size:.8rem">
+            <div><strong>198</strong><br><span style="opacity:.8;font-size:.65rem">Badges</span></div>
+            <div><strong>73,750</strong><br><span style="opacity:.8;font-size:.65rem">Points</span></div>
+            <div><strong>44</strong><br><span style="opacity:.8;font-size:.65rem">Trails</span></div>
           </div>
         </div>
         <div class="proof-pill-list">
@@ -387,7 +388,7 @@
     </div>
   </div>
 
-  <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
+  <div class="proof-block reveal d1" style="margin-top:3.5rem">
     <div class="proof-title" data-i18n="portfolio-mobile-title">
       Mobile & Multiplatform
       <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Flutter Logo" class="flutter-logo-brand">
@@ -402,12 +403,12 @@
     </div>
   </div>
 
-  <div class="proof-block reveal d1" style="margin-top: 3.5rem;">
+  <div class="proof-block reveal d1" style="margin-top:3.5rem">
     <div class="proof-title" data-i18n="portfolio-ai-title">
       AI Operations & Multi-Agent Systems
-      <i class="bi bi-cpu-fill" style="margin-left: 8px; color: var(--accent);"></i>
+      <i class="bi bi-cpu-fill" style="margin-left:8px;color:var(--accent)"></i>
     </div>
-    <div class="proof-grid" style="grid-template-columns: 1fr;">
+    <div class="proof-grid" style="grid-template-columns:1fr">
       <article class="proof-card ai-mega-card">
         <div class="ai-command-grid">
           <header class="ai-header">
@@ -449,9 +450,24 @@
   <h2 class="stit reveal" data-i18n="services-title">Lo que puedo <em>aportar</em></h2>
   <p class="stit-sub reveal d1" data-i18n="services-copy">Soluciones pensadas para operar mejor, lanzar más rápido y sostener crecimiento con base técnica sólida.</p>
   <div class="svc-grid reveal d1">
-    <div class="svc-card"><div class="svc-n">01</div><i class="bi bi-rocket-takeoff-fill svc-ico"></i><div class="svc-title" data-i18n="services-1-title">Transformación Digital</div><div class="svc-desc" data-i18n="services-1-desc">Herramientas y flujos que mejoran productividad, control operativo y calidad de entrega.</div></div>
-    <div class="svc-card"><div class="svc-n">02</div><i class="bi bi-braces svc-ico"></i><div class="svc-title" data-i18n="services-2-title">Desarrollo Web & Python</div><div class="svc-desc" data-i18n="services-2-desc">Apps, APIs, scripts y soluciones a medida para procesos internos y automatización.</div></div>
-    <div class="svc-card"><div class="svc-n">03</div><i class="bi bi-diagram-3-fill svc-ico"></i><div class="svc-title" data-i18n="services-3-title">Integraciones & Arq.</div><div class="svc-desc" data-i18n="services-3-desc">Conexión entre sistemas y decisiones de arquitectura pensadas para escalar.</div></div>
+    <div class="svc-card">
+      <div class="svc-n">01</div>
+      <i class="bi bi-rocket-takeoff-fill svc-ico"></i>
+      <div class="svc-title" data-i18n="services-1-title">Transformación Digital</div>
+      <div class="svc-desc" data-i18n="services-1-desc">Herramientas y flujos que mejoran productividad, control operativo y calidad de entrega.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">02</div>
+      <i class="bi bi-braces svc-ico"></i>
+      <div class="svc-title" data-i18n="services-2-title">Desarrollo Web & Python</div>
+      <div class="svc-desc" data-i18n="services-2-desc">Apps, APIs, scripts y soluciones a medida para procesos internos y automatización.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-n">03</div>
+      <i class="bi bi-diagram-3-fill svc-ico"></i>
+      <div class="svc-title" data-i18n="services-3-title">Integraciones & Arq.</div>
+      <div class="svc-desc" data-i18n="services-3-desc">Conexión entre sistemas y decisiones de arquitectura pensadas para escalar.</div>
+    </div>
   </div>
 </section>
 
