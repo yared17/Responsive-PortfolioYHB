@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileClose = document.getElementById('mobileClose');
     const langToggle = document.getElementById('langToggle');
 
+    // ─── TRANSLATIONS ────────────────────────────────────────────────────────
     const translations = {
         es: {
             "nav-about": "Sobre mi",
@@ -206,9 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateLanguage = (lang) => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
-                el.innerHTML = translations[lang][key];
-            }
+            if (translations[lang][key]) el.innerHTML = translations[lang][key];
         });
         if (langToggle) langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
         root.setAttribute('lang', lang);
@@ -217,29 +216,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     langToggle?.addEventListener('click', () => {
         const currentLang = localStorage.getItem('devyhb-lang') || 'es';
-        const nextLang = currentLang === 'es' ? 'en' : 'es';
-        updateLanguage(nextLang);
+        updateLanguage(currentLang === 'es' ? 'en' : 'es');
     });
 
-    // Inicializar idioma
     const savedLang = localStorage.getItem('devyhb-lang') || 'es';
     updateLanguage(savedLang);
 
+    // ─── CUSTOM CURSOR ────────────────────────────────────────────────────────
+    const cursorRing = document.getElementById('cursor-ring');
+    const cursorDot = document.getElementById('cursor-dot');
+    let ringX = 0, ringY = 0, dotX = 0, dotY = 0;
+    let rafCursor;
+
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+
+    if (!isTouchDevice && cursorRing && cursorDot) {
+        document.addEventListener('mousemove', e => {
+            dotX = e.clientX;
+            dotY = e.clientY;
+            if (!body.classList.contains('cursor-ready')) body.classList.add('cursor-ready');
+        });
+
+        const animateCursor = () => {
+            ringX += (dotX - ringX) * 0.14;
+            ringY += (dotY - ringY) * 0.14;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            cursorDot.style.left = dotX + 'px';
+            cursorDot.style.top = dotY + 'px';
+            rafCursor = requestAnimationFrame(animateCursor);
+        };
+        animateCursor();
+
+        document.addEventListener('mousedown', () => body.classList.add('cursor-click'));
+        document.addEventListener('mouseup', () => body.classList.remove('cursor-click'));
+        document.addEventListener('mouseleave', () => body.classList.remove('cursor-ready'));
+        document.addEventListener('mouseenter', () => body.classList.add('cursor-ready'));
+
+        const hoverTargets = 'a, button, .skitag, .pitem, .proof-card, .svc-card, .clink, .pfbtn, .tcell, .flutter-item';
+        document.querySelectorAll(hoverTargets).forEach(el => {
+            el.addEventListener('mouseenter', () => body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => body.classList.remove('cursor-hover'));
+        });
+    }
+
+    // ─── SCROLL & NAV ────────────────────────────────────────────────────────
     const sections = [...document.querySelectorAll('section[id]')];
     const navLinks = [...document.querySelectorAll('.nlinks a')];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // --- 1. Barra de Progreso de Lectura ---
     const updateScrollProgress = () => {
         const winScroll = body.scrollTop || root.scrollTop;
         const height = root.scrollHeight - root.clientHeight;
         const scrolled = (winScroll / height) * 100;
-        if (scrollProgress) scrollProgress.style.width = scrolled + "%";
-        
+        if (scrollProgress) scrollProgress.style.width = scrolled + '%';
         if (mnav) mnav.classList.toggle('scrolled', window.scrollY > 40);
         if (scrollTopBtn) scrollTopBtn.classList.toggle('vis', window.scrollY > 420);
-
-        // Active Link on Scroll
         let current = '';
         sections.forEach(section => {
             if (window.scrollY >= section.offsetTop - 120) current = section.id;
@@ -249,11 +281,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
-    // --- 2. Gestión de Temas ---
+    // ─── THEME ────────────────────────────────────────────────────────────────
     const syncThemeIcon = () => {
         if (!themeIcon) return;
-        const isDark = root.getAttribute('data-theme') === 'dark';
-        themeIcon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+        themeIcon.className = root.getAttribute('data-theme') === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
     };
 
     themeToggle?.addEventListener('click', () => {
@@ -262,80 +293,67 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('devyhb-theme', next);
         syncThemeIcon();
     });
-
     syncThemeIcon();
 
-    // --- 3. Menú Móvil ---
+    // ─── MOBILE MENU ─────────────────────────────────────────────────────────
     const toggleMenu = () => {
         const isOpen = mobileMenu?.classList.contains('open');
-        if (isOpen) {
-            mobileMenu?.classList.remove('open');
-            body.classList.remove('menu-open');
-        } else {
-            mobileMenu?.classList.add('open');
-            body.classList.add('menu-open');
-        }
+        mobileMenu?.classList.toggle('open', !isOpen);
+        body.classList.toggle('menu-open', !isOpen);
     };
-
     const closeMenu = () => {
         mobileMenu?.classList.remove('open');
         body.classList.remove('menu-open');
     };
 
-    hamburgerBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMenu();
-    });
-
+    hamburgerBtn?.addEventListener('click', e => { e.stopPropagation(); toggleMenu(); });
     mobileClose?.addEventListener('click', closeMenu);
     document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
-    
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', e => {
         if (!mobileMenu?.classList.contains('open')) return;
         if (e.target.closest('.mobile-menu') || e.target.closest('#hamburgerBtn')) return;
         closeMenu();
     });
 
-    // --- 4. Flutter Gallery & Modal ---
+    // ─── FLUTTER MODAL ───────────────────────────────────────────────────────
     const flutterImages = [
-        'assets/img/flutter/1.jpeg', 'assets/img/flutter/2.jpeg',
-        'assets/img/flutter/3.jpeg', 'assets/img/flutter/4.jpeg',
-        'assets/img/flutter/5.jpeg', 'assets/img/flutter/6.jpeg'
+        'assets/img/flutter/1.jpeg','assets/img/flutter/2.jpeg',
+        'assets/img/flutter/3.jpeg','assets/img/flutter/4.jpeg',
+        'assets/img/flutter/5.jpeg','assets/img/flutter/6.jpeg'
     ];
     let currentFlutterIdx = 0;
     const fmodal = document.getElementById('flutterModal');
     const fmodalImg = document.getElementById('fmodal-img');
 
-    window.openFlutterModal = (idx) => {
+    window.openFlutterModal = idx => {
         currentFlutterIdx = idx;
         if (fmodalImg) fmodalImg.src = flutterImages[currentFlutterIdx];
         fmodal?.classList.add('active');
         body.style.overflow = 'hidden';
     };
-
     window.closeFlutterModal = () => {
         fmodal?.classList.remove('active');
         body.style.overflow = '';
     };
-
-    // Cerrar al hacer clic en el fondo (backdrop)
-    fmodal?.addEventListener('click', (e) => {
-        if (e.target === fmodal) closeFlutterModal();
-    });
-
-    window.changeFlutterImg = (dir) => {
+    fmodal?.addEventListener('click', e => { if (e.target === fmodal) closeFlutterModal(); });
+    window.changeFlutterImg = dir => {
         currentFlutterIdx = (currentFlutterIdx + dir + flutterImages.length) % flutterImages.length;
-        if (fmodalImg) fmodalImg.src = flutterImages[currentFlutterIdx];
+        if (fmodalImg) {
+            fmodalImg.style.opacity = '0';
+            setTimeout(() => {
+                fmodalImg.src = flutterImages[currentFlutterIdx];
+                fmodalImg.style.opacity = '1';
+            }, 150);
+        }
     };
-
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
         if (!fmodal?.classList.contains('active')) return;
         if (e.key === 'ArrowLeft') changeFlutterImg(-1);
         if (e.key === 'ArrowRight') changeFlutterImg(1);
         if (e.key === 'Escape') closeFlutterModal();
     });
 
-    // --- 5. Animación Reveal ---
+    // ─── REVEAL OBSERVER ─────────────────────────────────────────────────────
     if (reducedMotion) {
         document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
     } else {
@@ -346,11 +364,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     io.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     }
 
-    // --- 6. Filtro de Portafolio ---
+    // ─── PORTFOLIO FILTER ─────────────────────────────────────────────────────
     const certGrid = document.getElementById('cgrid');
     const techGrid = document.getElementById('tgrid');
     document.querySelectorAll('.pfbtn').forEach(btn => {
@@ -363,7 +381,130 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 7. Inicialización Final ---
+    // ─── STAT COUNTER ANIMATION ───────────────────────────────────────────────
+    const animateCounter = (el, target, suffix = '', duration = 1600) => {
+        const start = performance.now();
+        const update = (now) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+    };
+
+    const statsObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const raw = el.dataset.count;
+            if (!raw) return;
+            const num = parseFloat(raw);
+            const suffix = el.dataset.suffix || '';
+            animateCounter(el, num, suffix);
+            statsObserver.unobserve(el);
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => statsObserver.observe(el));
+
+    // ─── MAGNETIC BUTTON EFFECT ───────────────────────────────────────────────
+    if (!isTouchDevice && !reducedMotion) {
+        document.querySelectorAll('.btn-solid, .btn-line, .ncta').forEach(btn => {
+            btn.addEventListener('mousemove', e => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.18}px, ${y * 0.24}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+    }
+
+    // ─── HERO TEXT SCRAMBLE ───────────────────────────────────────────────────
+    class Scramble {
+        constructor(el) {
+            this.el = el;
+            this.chars = '▓░▒│!<>-_[]{}=+*^?#';
+        }
+
+        run(text) {
+            const len = text.length;
+            let frame = 0;
+            const queue = Array.from(text).map((char, i) => ({
+                char,
+                start: Math.floor(Math.random() * 8),
+                end: Math.floor(Math.random() * 8) + 10 + i
+            }));
+
+            const tick = () => {
+                let out = '';
+                let done = 0;
+                for (let i = 0; i < queue.length; i++) {
+                    const q = queue[i];
+                    if (frame >= q.end) {
+                        done++;
+                        out += q.char;
+                    } else if (frame >= q.start) {
+                        out += `<span style="color:var(--accent);opacity:.5">${this.chars[Math.floor(Math.random() * this.chars.length)]}</span>`;
+                    } else {
+                        out += q.char;
+                    }
+                }
+                this.el.innerHTML = out;
+                if (done < len) requestAnimationFrame(tick);
+                frame++;
+            };
+            requestAnimationFrame(tick);
+        }
+    }
+
+    // Run scramble on hero title plain text after page loads
+    const runHeroScramble = () => {
+        const h1 = document.querySelector('h1.hname');
+        if (!h1 || reducedMotion) return;
+
+        // Only scramble the text node (not the em)
+        const textNodes = [...h1.childNodes].filter(n => n.nodeType === 3);
+        const emEl = h1.querySelector('em');
+        const emText = emEl ? emEl.textContent : '';
+
+        if (!textNodes.length) return;
+
+        const plainText = textNodes[0].textContent.trim();
+
+        // Replace first text node with a span we can scramble
+        const span = document.createElement('span');
+        span.textContent = plainText;
+        textNodes[0].replaceWith(span);
+
+        const s = new Scramble(span);
+        setTimeout(() => s.run(plainText), 600);
+
+        // Glow pulse on em
+        if (emEl) {
+            setTimeout(() => { emEl.style.opacity = '1'; }, 400);
+        }
+    };
+
+    // ─── CURSOR HOVER UPDATE AFTER DYNAMIC CONTENT ────────────────────────────
+    const refreshCursorTargets = () => {
+        if (isTouchDevice || !cursorRing) return;
+        const hoverTargets = 'a, button, .skitag, .pitem, .proof-card, .svc-card, .clink, .pfbtn, .tcell, .flutter-item';
+        document.querySelectorAll(hoverTargets).forEach(el => {
+            if (el._cursorBound) return;
+            el._cursorBound = true;
+            el.addEventListener('mouseenter', () => body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => body.classList.remove('cursor-hover'));
+        });
+    };
+
+    // ─── INIT ─────────────────────────────────────────────────────────────────
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -371,10 +512,17 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loader?.classList.add('hide');
             body.classList.remove('is-loading');
-        }, reducedMotion ? 100 : 800);
+            runHeroScramble();
+            refreshCursorTargets();
+        }, reducedMotion ? 100 : 900);
     });
 
     scrollTopBtn?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Smooth image fade on flutter modal
+    if (fmodalImg) {
+        fmodalImg.style.transition = 'opacity .15s ease';
+    }
 });
