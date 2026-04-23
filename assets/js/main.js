@@ -536,4 +536,156 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fmodalImg) {
         fmodalImg.style.transition = 'opacity .15s ease';
     }
+
+    // ─── AUDIT STREAM LOGIC ───────────────────────────────────────────────────
+    const auditStream = document.getElementById('audit-stream');
+    const auditLogs = [
+        'INIT_AUDIT...', 'SCANNING_PORTS...', 'OWASP_CHECK: OK', 
+        'ENCRYPTING_DATA...', 'AUTH_LAYER: SECURE', 'NMAP: 0 VOLNS',
+        'GO_BUILD: SUCCESS', 'SEC_SCAN: COMPLETE', 'HARDENING_OS: OK'
+    ];
+    let lastAuditScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const skillsSec = document.getElementById('skills');
+        if (!skillsSec || !auditStream) return;
+        
+        const rect = skillsSec.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const currentScroll = window.scrollY;
+            if (Math.abs(currentScroll - lastAuditScroll) > 50) {
+                const line = document.createElement('div');
+                line.className = 'audit-line';
+                const hex = Math.random().toString(16).slice(2, 8).toUpperCase();
+                const log = auditLogs[Math.floor(Math.random() * auditLogs.length)];
+                line.innerText = `[0x${hex}] ${log}`;
+                auditStream.appendChild(line);
+                if (auditStream.children.length > 5) auditStream.removeChild(auditStream.firstChild);
+                lastAuditScroll = currentScroll;
+            }
+        }
+
+        // Trigger Final Popup at 98% scroll
+        const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrollPercent > 0.98) {
+            triggerTerminalPopup();
+        }
+    });
+
+    // ─── TERMINAL POPUP & THREE.JS CIRCLE ─────────────────────────────────────
+    const tPopup = document.getElementById('terminal-popup');
+    const tClose = document.getElementById('terminalPopupClose');
+    let popupShown = false;
+    let scene, camera, renderer, textGroup;
+
+    const triggerTerminalPopup = () => {
+        if (popupShown) return;
+        popupShown = true;
+        tPopup?.classList.add('active');
+        initCommandCircle();
+    };
+
+    tClose?.addEventListener('click', () => {
+        tPopup?.classList.remove('active');
+    });
+
+    function initCommandCircle() {
+        const container = document.getElementById('command-circle-container');
+        if (!container) return;
+
+        // Detection of current accent color
+        const getAccentColor = () => {
+            const color = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+            return new THREE.Color(color);
+        };
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const group = new THREE.Group();
+        scene.add(group);
+
+        const currentAccent = getAccentColor();
+        const accentHex = `#${currentAccent.getHexString()}`;
+
+        const commands = ['NMAP', 'GO_BUILD', 'OWASP', 'SEC_OPS', 'PYTHON', 'AI_AGENT', 'AUDIT_OK', 'HARDEN', 'DOCKER', 'DJANGO'];
+        const nodes = [];
+        const radius = 3.5;
+
+        // Create Nodes (Text + Points)
+        commands.forEach((cmd, i) => {
+            const phi = Math.acos(-1 + (2 * i) / commands.length);
+            const theta = Math.sqrt(commands.length * Math.PI) * phi;
+
+            const pos = new THREE.Vector3(
+                radius * Math.cos(theta) * Math.sin(phi),
+                radius * Math.sin(theta) * Math.sin(phi),
+                radius * Math.cos(phi)
+            );
+
+            // Text Sprite
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 256; canvas.height = 64;
+            ctx.font = 'Bold 36px DM Mono';
+            ctx.fillStyle = accentHex;
+            ctx.textAlign = 'center';
+            ctx.fillText(cmd, 128, 45);
+
+            const texture = new THREE.CanvasTexture(canvas);
+            const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.8 });
+            const sprite = new THREE.Sprite(material);
+            sprite.position.copy(pos);
+            sprite.scale.set(1.8, 0.45, 1);
+            group.add(sprite);
+
+            nodes.push(pos);
+        });
+
+        // Neural Connections (Lines)
+        const lineMaterial = new THREE.LineBasicMaterial({ color: currentAccent, transparent: true, opacity: 0.2 });
+        const geometry = new THREE.BufferGeometry();
+        const linePositions = [];
+
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                if (nodes[i].distanceTo(nodes[j]) < 4.5) {
+                    linePositions.push(nodes[i].x, nodes[i].y, nodes[i].z);
+                    linePositions.push(nodes[j].x, nodes[j].y, nodes[j].z);
+                }
+            }
+        }
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+        const lines = new THREE.LineSegments(geometry, lineMaterial);
+        group.add(lines);
+
+        // Background Particles
+        const partGeo = new THREE.BufferGeometry();
+        const partPos = [];
+        for(let i=0; i<150; i++) {
+            partPos.push((Math.random()-0.5)*12, (Math.random()-0.5)*12, (Math.random()-0.5)*12);
+        }
+        partGeo.setAttribute('position', new THREE.Float32BufferAttribute(partPos, 3));
+        const partMat = new THREE.PointsMaterial({ color: currentAccent, size: 0.04, transparent: true, opacity: 0.4 });
+        const particles = new THREE.Points(partGeo, partMat);
+        group.add(particles);
+
+        camera.position.z = 8;
+
+        function animate() {
+            if (!tPopup?.classList.contains('active')) return;
+            requestAnimationFrame(animate);
+            group.rotation.y += 0.002;
+            group.rotation.x += 0.001;
+            
+            // Pulse lines
+            lineMaterial.opacity = 0.1 + Math.sin(Date.now() * 0.002) * 0.1;
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+    }
 });

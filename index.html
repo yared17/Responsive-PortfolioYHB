@@ -203,6 +203,8 @@
           <span class="skitag"><i class="bi bi-safe2-fill"></i> Web Security (OWASP)</span>
           <span class="skitag"><i class="bi bi-key-fill"></i> Cryptography & Auth</span>
         </div>
+        <!-- Audit Stream Container -->
+        <div id="audit-stream" class="audit-stream"></div>
       </div>
       <div class="skigroup">
         <div class="skig-title" data-i18n="skills-group-4">Cloud & Tools</div>
@@ -646,6 +648,24 @@
   </div>
 </div>
 
+<div id="terminal-popup" class="terminal-popup" aria-hidden="true">
+  <div class="terminal-popup-content">
+    <button class="terminal-popup-close" id="terminalPopupClose">&times;</button>
+    <div id="command-circle-container" class="command-circle-container">
+      <!-- Three.js will inject canvas here -->
+    </div>
+    <a href="https://wa.me/573015185270" target="_blank" rel="noopener" class="terminal-wa-link">
+      <i class="bi bi-whatsapp"></i>
+      <span class="wa-tooltip">Conectar ahora</span>
+    </a>
+    <div class="terminal-popup-footer">
+      <div class="tp-line">AUDIT_COMPLETE: SUCCESS</div>
+      <div class="tp-line">CONNECTION_STATUS: READY</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

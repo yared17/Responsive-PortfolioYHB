@@ -692,6 +692,37 @@ footer { display: flex; align-items: center; justify-content: space-between; pad
 .fmodal-prev { left: -68px; }
 .fmodal-next { right: -68px; }
 
+/* === AUDIT STREAM & TERMINAL POPUP === */
+.audit-stream { margin-top: 1rem; font-family: var(--fm); font-size: 0.65rem; color: var(--accent); height: 80px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; opacity: 0.6; pointer-events: none; }
+.audit-line { animation: audit-fade-in 0.3s ease both; white-space: nowrap; line-height: 1.4; }
+@keyframes audit-fade-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+.terminal-popup { 
+  display: none; 
+  position: fixed; 
+  inset: 0; 
+  z-index: 20000; 
+  background: var(--nav-bg); 
+  backdrop-filter: blur(25px); 
+  -webkit-backdrop-filter: blur(25px);
+  align-items: center; 
+  justify-content: center; 
+  padding: 2rem; 
+  transition: background 0.5s var(--ease);
+}
+.terminal-popup.active { display: flex; animation: modal-fade-in 0.5s var(--ease) both; }
+.terminal-popup-content { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1/1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.terminal-popup-close { position: absolute; top: -2rem; right: -1rem; background: none; border: none; color: var(--ink); font-size: 2.5rem; cursor: pointer; z-index: 10; transition: transform .3s; }
+.terminal-popup-close:hover { transform: scale(1.2); color: var(--accent); }
+.command-circle-container { position: absolute; inset: 0; z-index: 1; }
+.terminal-wa-link { position: relative; z-index: 2; width: 80px; height: 80px; background: #25D366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; text-decoration: none; box-shadow: 0 0 30px rgba(37,211,102,0.4); transition: transform 0.3s var(--ease), box-shadow 0.3s; }
+.terminal-wa-link:hover { transform: scale(1.1); box-shadow: 0 0 50px rgba(37,211,102,0.6); }
+.wa-tooltip { position: absolute; bottom: -40px; background: var(--accent); color: #000; padding: 0.4rem 0.8rem; border-radius: 4px; font-family: var(--fm); font-size: 0.7rem; font-weight: 800; white-space: nowrap; text-transform: uppercase; opacity: 0; transform: translateY(10px); transition: all 0.3s var(--ease); pointer-events: none; }
+.terminal-wa-link:hover .wa-tooltip { opacity: 1; transform: translateY(0); }
+.terminal-popup-footer { position: absolute; bottom: -4rem; text-align: center; font-family: var(--fm); color: var(--accent); font-size: 0.7rem; letter-spacing: 0.1em; }
+.tp-line { margin-bottom: 0.3rem; }
+@keyframes modal-fade-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
 /* === ANIMATIONS === */
 .reveal { opacity: 0; transform: translateY(32px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
 .reveal.in { opacity: 1; transform: translateY(0); }
