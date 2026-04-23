@@ -537,9 +537,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── AUDIT STREAM LOGIC ───────────────────────────────────────────────────
     const auditStream = document.getElementById('audit-stream');
     const auditLogs = [
-        'INIT_AUDIT...', 'SCANNING_PORTS...', 'OWASP_CHECK: OK', 
-        'ENCRYPTING_DATA...', 'AUTH_LAYER: SECURE', 'NMAP: 0 VOLNS',
-        'GO_BUILD: SUCCESS', 'SEC_SCAN: COMPLETE', 'HARDENING_OS: OK'
+        '[!] Exploit: RemoteThreadInjection -> OK',
+        '[!] Target: Win10_x64_Build_19044',
+        '[!] Status: Beacon Active (C2)',
+        '[+] Bypass: AMSI_PATCHED',
+        '[+] Persistence: LNK_HIJACK',
+        '[!] SCAN: CVE-2024-XXXX FOUND',
+        '[+] AUTH: Kerberoasting SUCCESS'
     ];
     let lastAuditScroll = 0;
 
@@ -553,11 +557,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (Math.abs(currentScroll - lastAuditScroll) > 50) {
                 const line = document.createElement('div');
                 line.className = 'audit-line';
-                const hex = Math.random().toString(16).slice(2, 8).toUpperCase();
                 const log = auditLogs[Math.floor(Math.random() * auditLogs.length)];
-                line.innerText = `[0x${hex}] ${log}`;
+                line.innerText = log;
                 auditStream.appendChild(line);
-                if (auditStream.children.length > 5) auditStream.removeChild(auditStream.firstChild);
+                if (auditStream.children.length > 4) auditStream.removeChild(auditStream.firstChild);
                 lastAuditScroll = currentScroll;
             }
         }
