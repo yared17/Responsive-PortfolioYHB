@@ -140,9 +140,15 @@
     <aside class="about-img reveal">
       <div class="about-photo-wrap card">
         <div class="wrapper">
-          <img src="assets/img/profile-img.jpg" alt="Yared Henriquez" class="cover-image">
+          <picture>
+            <source srcset="assets/img/profile-img.webp" type="image/webp">
+            <img src="assets/img/profile-img.jpg" alt="Yared Henriquez" class="cover-image">
+          </picture>
         </div>
-        <img src="assets/img/profile_img1.png" class="character" alt="Yared Henriquez Character">
+        <picture>
+          <source srcset="assets/img/profile_img1.webp" type="image/webp">
+          <img src="assets/img/profile_img1.png" class="character" alt="Yared Henriquez Character">
+        </picture>
       </div>
     </aside>
     <div class="about-text reveal d1">
@@ -190,7 +196,16 @@
         </div>
       </div>
       <div class="skigroup">
-        <div class="skig-title" data-i18n="skills-group-3">Cloud & Tools</div>
+        <div class="skig-title" data-i18n="skills-group-3">Cybersecurity & SecOps</div>
+        <div class="skitags">
+          <span class="skitag"><i class="devicon-go-original-wordmark colored"></i> Go (Golang)</span>
+          <span class="skitag"><i class="bi bi-shield-lock-fill"></i> Ethical Hacking (Nmap)</span>
+          <span class="skitag"><i class="bi bi-safe2-fill"></i> Web Security (OWASP)</span>
+          <span class="skitag"><i class="bi bi-key-fill"></i> Cryptography & Auth</span>
+        </div>
+      </div>
+      <div class="skigroup">
+        <div class="skig-title" data-i18n="skills-group-4">Cloud & Tools</div>
         <div class="skitags">
           <span class="skitag"><i class="devicon-git-plain"></i> Git / GitHub</span>
           <span class="skitag"><i class="devicon-docker-plain" style="color:#2496ED"></i> Docker</span>
@@ -274,21 +289,95 @@
   </div>
 
   <div class="pgrid reveal" id="cgrid">
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-1.jpg" alt="Responsive Web Design" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Responsive Web Design</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-2.jpg" alt="Cloud Computing" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Cloud Computing</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-3.jpg" alt="JavaScript" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">JavaScript Algorithms</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-4.jpg" alt="Marketing Digital" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Marketing Digital</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-5.jpg" alt="Scrum" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Scrum Foundation</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-6.jpg" alt="HTML" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">HTML Fundamentals</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-7.jpg" alt="Ciberseguridad" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Ciberseguridad Educativa</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-8.jpg" alt="JS Pro" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Programación con JS</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-9.png" alt="AI Fundamentals" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">AI Fundamentals</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-10.png" alt="Claude Code in Action" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Claude Code in Action</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-11.png" alt="MCP Advanced Topics" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">MCP Advanced Topics</div></div></div>
-    <div class="pitem"><img src="assets/img/portfolio/portfolio-12.jpeg" alt="Foundations of Cybersecurity" loading="lazy"><div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Foundations of Cybersecurity</div></div></div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-1.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-1.jpg" alt="Responsive Web Design" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Responsive Web Design</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-2.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-2.jpg" alt="Cloud Computing" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Cloud Computing</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-3.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-3.jpg" alt="JavaScript" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">JavaScript Algorithms</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-4.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-4.jpg" alt="Marketing Digital" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Marketing Digital</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-5.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-5.jpg" alt="Scrum" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Scrum Foundation</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-6.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-6.jpg" alt="HTML" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">HTML Fundamentals</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-7.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-7.jpg" alt="Ciberseguridad" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Ciberseguridad Educativa</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-8.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-8.jpg" alt="JS Pro" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Programación con JS</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-9.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-9.png" alt="AI Fundamentals" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">AI Fundamentals</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-10.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-10.png" alt="Claude Code in Action" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Claude Code in Action</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-11.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-11.png" alt="MCP Advanced Topics" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">MCP Advanced Topics</div></div>
+    </div>
+    <div class="pitem">
+      <picture>
+        <source srcset="assets/img/portfolio/portfolio-12.webp" type="image/webp">
+        <img src="assets/img/portfolio/portfolio-12.jpeg" alt="Foundations of Cybersecurity" loading="lazy">
+      </picture>
+      <div class="pov"><div class="pov-tag" data-i18n="portfolio-filter-cert">Certificación</div><div class="pov-tit">Foundations of Cybersecurity</div></div>
+    </div>
   </div>
 
   <div class="tgrid" id="tgrid">
+    <div class="tcell"><i class="devicon-go-original-wordmark colored"></i><span>Go (Golang)</span></div>
+    <div class="tcell"><i class="bi bi-radar"></i><span>Nmap</span></div>
     <div class="tcell"><i class="devicon-python-plain" style="color:#3776ab"></i><span>Python</span></div>
     <div class="tcell"><i class="devicon-javascript-plain" style="color:#f7df1e"></i><span>JavaScript</span></div>
     <div class="tcell"><i class="devicon-flutter-plain" style="color:#02569B"></i><span>Flutter</span></div>
@@ -394,12 +483,48 @@
       <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Flutter Logo" class="flutter-logo-brand">
     </div>
     <div class="flutter-grid">
-      <div class="flutter-item" onclick="openFlutterModal(0)"><img src="assets/img/flutter/1.jpeg" alt="Preview 1" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
-      <div class="flutter-item" onclick="openFlutterModal(1)"><img src="assets/img/flutter/2.jpeg" alt="Preview 2" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
-      <div class="flutter-item" onclick="openFlutterModal(2)"><img src="assets/img/flutter/3.jpeg" alt="Preview 3" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
-      <div class="flutter-item" onclick="openFlutterModal(3)"><img src="assets/img/flutter/4.jpeg" alt="Preview 4" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
-      <div class="flutter-item" onclick="openFlutterModal(4)"><img src="assets/img/flutter/5.jpeg" alt="Preview 5" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
-      <div class="flutter-item" onclick="openFlutterModal(5)"><img src="assets/img/flutter/6.jpeg" alt="Preview 6" loading="lazy"><div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div></div>
+      <button class="flutter-item" onclick="openFlutterModal(0)" aria-label="Ver captura de pantalla 1 de Flutter">
+        <picture>
+          <source srcset="assets/img/flutter/1.webp" type="image/webp">
+          <img src="assets/img/flutter/1.jpeg" alt="Preview 1" loading="lazy">
+        </picture>
+        <div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div>
+      </button>
+      <button class="flutter-item" onclick="openFlutterModal(1)" aria-label="Ver captura de pantalla 2 de Flutter">
+        <picture>
+          <source srcset="assets/img/flutter/2.webp" type="image/webp">
+          <img src="assets/img/flutter/2.jpeg" alt="Preview 2" loading="lazy">
+        </picture>
+        <div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div>
+      </button>
+      <button class="flutter-item" onclick="openFlutterModal(2)" aria-label="Ver captura de pantalla 3 de Flutter">
+        <picture>
+          <source srcset="assets/img/flutter/3.webp" type="image/webp">
+          <img src="assets/img/flutter/3.jpeg" alt="Preview 3" loading="lazy">
+        </picture>
+        <div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div>
+      </button>
+      <button class="flutter-item" onclick="openFlutterModal(3)" aria-label="Ver captura de pantalla 4 de Flutter">
+        <picture>
+          <source srcset="assets/img/flutter/4.webp" type="image/webp">
+          <img src="assets/img/flutter/4.jpeg" alt="Preview 4" loading="lazy">
+        </picture>
+        <div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div>
+      </button>
+      <button class="flutter-item" onclick="openFlutterModal(4)" aria-label="Ver captura de pantalla 5 de Flutter">
+        <picture>
+          <source srcset="assets/img/flutter/5.webp" type="image/webp">
+          <img src="assets/img/flutter/5.jpeg" alt="Preview 5" loading="lazy">
+        </picture>
+        <div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div>
+      </button>
+      <button class="flutter-item" onclick="openFlutterModal(5)" aria-label="Ver captura de pantalla 6 de Flutter">
+        <picture>
+          <source srcset="assets/img/flutter/6.webp" type="image/webp">
+          <img src="assets/img/flutter/6.jpeg" alt="Preview 6" loading="lazy">
+        </picture>
+        <div class="flutter-overlay"><i class="bi bi-zoom-in"></i></div>
+      </button>
     </div>
   </div>
 
@@ -497,7 +622,7 @@
         <div class="panel-item"><div class="panel-k" data-i18n="contact-status-focus">Enfoque</div><div class="panel-v" data-i18n="contact-status-focus-v">Software & IA</div></div>
         <div class="panel-item"><div class="panel-k" data-i18n="contact-status-mod">Modalidad</div><div class="panel-v" data-i18n="contact-status-mod-v">Freelance / Consultoría</div></div>
       </div>
-      <div class="panel-signal"><i class="bi bi-broadcast"></i><span data-i18n="contact-status-signal">Sistemas listos para nuevas integraciones y despliegues.</span></div>
+      <div class="panel-signal"><i class="bi bi-terminal"></i><span data-i18n="contact-status-signal">Sistemas listos para nuevas integraciones y despliegues.</span></div>
     </div>
   </div>
 </section>

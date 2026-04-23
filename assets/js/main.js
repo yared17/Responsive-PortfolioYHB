@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseleave', () => body.classList.remove('cursor-ready'));
         document.addEventListener('mouseenter', () => body.classList.add('cursor-ready'));
 
-        const hoverTargets = 'a, button, .skitag, .pitem, .proof-card, .svc-card, .clink, .pfbtn, .tcell, .flutter-item';
+        const hoverTargets = 'a, button, .skitag, .pitem, .proof-card, .svc-card, .clink, .pfbtn, .tcell, .flutter-item, .fmodal-close, .fmodal-btn';
         document.querySelectorAll(hoverTargets).forEach(el => {
             el.addEventListener('mouseenter', () => body.classList.add('cursor-hover'));
             el.addEventListener('mouseleave', () => body.classList.remove('cursor-hover'));
@@ -325,15 +325,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const fmodal = document.getElementById('flutterModal');
     const fmodalImg = document.getElementById('fmodal-img');
 
+    let lastFocusedElement;
     window.openFlutterModal = idx => {
+        lastFocusedElement = document.activeElement;
         currentFlutterIdx = idx;
         if (fmodalImg) fmodalImg.src = flutterImages[currentFlutterIdx];
         fmodal?.classList.add('active');
+        fmodal?.setAttribute('aria-hidden', 'false');
         body.style.overflow = 'hidden';
+        
+        // Focus close button for accessibility
+        setTimeout(() => {
+            const closeBtn = fmodal?.querySelector('.fmodal-close');
+            closeBtn?.focus();
+        }, 100);
     };
     window.closeFlutterModal = () => {
         fmodal?.classList.remove('active');
+        fmodal?.setAttribute('aria-hidden', 'true');
         body.style.overflow = '';
+        if (lastFocusedElement) lastFocusedElement.focus();
     };
     fmodal?.addEventListener('click', e => { if (e.target === fmodal) closeFlutterModal(); });
     window.changeFlutterImg = dir => {
@@ -438,8 +449,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let frame = 0;
             const queue = Array.from(text).map((char, i) => ({
                 char,
-                start: Math.floor(Math.random() * 8),
-                end: Math.floor(Math.random() * 8) + 10 + i
+                start: Math.floor(Math.random() * 20),
+                end: Math.floor(Math.random() * 20) + 30 + i * 2
             }));
 
             const tick = () => {
@@ -495,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── CURSOR HOVER UPDATE AFTER DYNAMIC CONTENT ────────────────────────────
     const refreshCursorTargets = () => {
         if (isTouchDevice || !cursorRing) return;
-        const hoverTargets = 'a, button, .skitag, .pitem, .proof-card, .svc-card, .clink, .pfbtn, .tcell, .flutter-item';
+        const hoverTargets = 'a, button, .skitag, .pitem, .proof-card, .svc-card, .clink, .pfbtn, .tcell, .flutter-item, .fmodal-close, .fmodal-btn';
         document.querySelectorAll(hoverTargets).forEach(el => {
             if (el._cursorBound) return;
             el._cursorBound = true;
