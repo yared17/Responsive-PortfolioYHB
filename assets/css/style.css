@@ -232,8 +232,10 @@ nav.scrolled {
 #hero {
   position: relative; min-height: 100vh;
   max-width: 1100px; margin: 0 auto;
-  padding: 12rem 5vw 6rem;
+  padding: 12rem 7vw 6rem;
   display: flex; flex-direction: column; justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
 }
 #hero::before {
   content: ''; position: absolute; inset: 0;
@@ -264,20 +266,62 @@ nav.scrolled {
   50% { opacity: .6; box-shadow: 0 0 14px var(--accent); }
 }
 
+#hero .reveal {
+  display: block;
+}
+
 h1.hname {
   font-size: clamp(3.4rem,8vw,7.5rem);
-  line-height: .92; font-weight: 800; letter-spacing: -.05em;
-  margin-bottom: 2rem; overflow: hidden;
+  line-height: 1; 
+  font-weight: 800; 
+  letter-spacing: -.05em;
+  margin-bottom: 2.5rem;
+  display: block;
+  text-align: left; /* Forzar alineación izquierda */
 }
+
+.scramble-wrapper {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  text-align: left;
+}
+
+.scramble-ghost {
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: var(--fh);
+}
+
+.scramble-target {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--ink); /* Regresa a blanco/negro base */
+  white-space: nowrap;
+  font-family: var(--fh);
+  display: block;
+  text-align: left;
+}
+
 h1.hname em { 
   font-style: normal; 
   color: var(--accent); 
   display: block;
+  margin-top: 0.15em;
 }
 
 .hero-copy {
-  font-size: clamp(1rem,1.4vw,1.18rem); color: var(--ink2);
-  max-width: 680px; margin-bottom: 3rem; line-height: 1.85;
+  font-size: clamp(1rem,1.4vw,1.18rem); 
+  color: var(--ink2);
+  max-width: 680px; 
+  margin-bottom: 3rem; 
+  line-height: 1.85;
+  display: block;
 }
 .hero-copy strong { color: var(--ink); }
 
@@ -698,20 +742,43 @@ footer { display: flex; align-items: center; justify-content: space-between; pad
 @keyframes audit-fade-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
 .terminal-popup { 
-  display: none; 
   position: fixed; 
   inset: 0; 
   z-index: 20000; 
   background: var(--nav-bg); 
-  backdrop-filter: blur(25px); 
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(0px); 
+  -webkit-backdrop-filter: blur(0px);
+  display: flex;
   align-items: center; 
   justify-content: center; 
   padding: 2rem; 
-  transition: background 0.5s var(--ease);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1.2s var(--ease), backdrop-filter 1.2s var(--ease), visibility 1.2s;
 }
-.terminal-popup.active { display: flex; animation: modal-fade-in 0.5s var(--ease) both; }
-.terminal-popup-content { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1/1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.terminal-popup.active { 
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  backdrop-filter: blur(25px); 
+  -webkit-backdrop-filter: blur(25px);
+}
+.terminal-popup-content { 
+  position: relative; 
+  width: 100%; 
+  max-width: 500px; 
+  aspect-ratio: 1/1; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 1.2s var(--ease);
+}
+.terminal-popup.active .terminal-popup-content {
+  transform: scale(1) translateY(0);
+}
 .terminal-popup-close { position: absolute; top: -2rem; right: -1rem; background: none; border: none; color: var(--ink); font-size: 2.5rem; cursor: pointer; z-index: 10; transition: transform .3s; }
 .terminal-popup-close:hover { transform: scale(1.2); color: var(--accent); }
 .command-circle-container { position: absolute; inset: 0; z-index: 1; }
@@ -771,7 +838,13 @@ footer { display: flex; align-items: center; justify-content: space-between; pad
   .tli { grid-template-columns: 76px 1fr; gap: 1.5rem; }
   .tldo { left: 76px; }
   footer { flex-direction: column; gap: 2rem; text-align: center; }
-  h1.hname { font-size: 3rem; }
+  h1.hname { 
+    font-size: clamp(2.2rem, 10vw, 2.8rem); 
+    line-height: 1.1;
+  }
+  .scramble-ghost, .scramble-target {
+    white-space: normal; /* Permitir saltos de línea en móviles muy pequeños */
+  }
   .contact-panel { padding: 2rem; }
   .con-cta { font-size: 2.4rem; }
   #cursor-ring, #cursor-dot { display: none; }

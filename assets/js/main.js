@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav-contact": "Contacto",
             "nav-cta": "Hablemos",
             "hero-tag": "Disponible para proyectos freelance",
-            "hero-title": "Ingeniero de Sistemas <em>orientado a soluciones</em>",
+            "hero-title-main": "Ingeniero de Sistemas",
+            "hero-title-sub": "orientado a soluciones",
             "hero-copy": "Ingeniero en Sistemas con experiencia en <strong>arquitectura de software, automatización de procesos y despliegue de aplicaciones</strong>. Desarrollo soluciones útiles para negocio, operación y producto con foco en ejecución real.",
             "hero-btn-portfolio": "Ver portafolio",
             "hero-stat-exp": "años de experiencia",
@@ -46,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "skills-copy": "Mi conjunto de herramientas se centra en la eficiencia, escalabilidad y automatización inteligente para resolver problemas operativos reales.",
             "skills-group-1": "Core & Backend",
             "skills-group-2": "Frontend & Mobile",
-            "skills-group-3": "Cloud & Tools",
+            "skills-group-3": "Cybersecurity & SecOps",
+            "skills-group-4": "Cloud & Tools",
             "resume-label": "03 - Trayectoria",
             "resume-exp-title": "Experiencia Laboral",
             "resume-exp-1-title": "<span class='text-bold'>Dirección de Infraestructura Digital</span>",
@@ -81,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "portfolio-ai-feature-2-desc": "File System Access API.",
             "portfolio-ai-project-copy": "Orquestación de 8 agentes especializados en un entorno 3D inmersivo con <strong>Three.js</strong> y <strong>Groq Llama 3.3</strong>.",
             "portfolio-ai-project-cta": "Arquitectura en GitHub",
-            "services-label": "05 - Servicios",
+            "services-label": "05 - Services",
             "services-title": "Lo que puedo <em>aportar</em>",
             "services-copy": "Soluciones pensadas para operar mejor, lanzar más rápido y sostener crecimiento con base técnica sólida.",
             "services-1-title": "Transformación Digital",
@@ -90,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "services-2-desc": "Apps, APIs, scripts y soluciones a medida para procesos internos y automatización.",
             "services-3-title": "Integraciones & Arq.",
             "services-3-desc": "Conexión entre sistemas y decisiones de arquitectura pensadas para escalar.",
-            "contact-label": "06 - Contacto",
+            "contact-label": "06 - Contact",
             "contact-title": "¿Listo para <em>ejecutar?</em>",
             "contact-copy": "Si tienes un problema complejo de software o un proceso que necesita IA y automatización, hablemos. Mi enfoque es la entrega de soluciones técnicas reales.",
             "contact-cta-whatsapp": "WhatsApp Directo",
@@ -118,7 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav-contact": "Contact",
             "nav-cta": "Let's Talk",
             "hero-tag": "Available for freelance projects",
-            "hero-title": "Systems Engineer <em>solution-oriented</em>",
+            "hero-title-main": "Systems Engineer",
+            "hero-title-sub": "solution-oriented",
             "hero-copy": "Systems Engineer with experience in <strong>software architecture, process automation, and application deployment</strong>. I develop useful solutions for business, operations, and products with a focus on real execution.",
             "hero-btn-portfolio": "View Portfolio",
             "hero-stat-exp": "years of experience",
@@ -139,7 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "skills-copy": "My toolkit focuses on efficiency, scalability, and intelligent automation to solve real operational problems.",
             "skills-group-1": "Core & Backend",
             "skills-group-2": "Frontend & Mobile",
-            "skills-group-3": "Cloud & Tools",
+            "skills-group-3": "Cybersecurity & SecOps",
+            "skills-group-4": "Cloud & Tools",
             "resume-label": "03 - Resume",
             "resume-exp-title": "Work Experience",
             "resume-exp-1-title": "<span class='text-bold'>Digital Infrastructure Management</span>",
@@ -193,8 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "contact-status-resp": "Response",
             "contact-status-resp-v": "< 24 Hours",
             "contact-status-focus": "Focus",
-            "contact-status-focus-v": "Software & AI",
-            "contact-status-mod": "Modality",
+            "contact-status-focus-v": "Software & IA",
+            "contact-status-mod": "Modalidad",
             "contact-status-mod-v": "Freelance / Consulting",
             "contact-status-signal": "Systems ready for new integrations and deployments.",
             "github-scroll-hint": "Swipe for months",
@@ -209,6 +213,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang][key]) el.innerHTML = translations[lang][key];
         });
+        
+        // Sincronizar capas de texto inmediatamente
+        const ghost = document.getElementById('scramble-ghost');
+        const target = document.getElementById('scramble-target');
+        const text = translations[lang]["hero-title-main"];
+        if (ghost) ghost.textContent = text;
+        if (target) target.textContent = text;
+
         if (langToggle) langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
         root.setAttribute('lang', lang);
         localStorage.setItem('devyhb-lang', lang);
@@ -216,7 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     langToggle?.addEventListener('click', () => {
         const currentLang = localStorage.getItem('devyhb-lang') || 'es';
-        updateLanguage(currentLang === 'es' ? 'en' : 'es');
+        const nextLang = currentLang === 'es' ? 'en' : 'es';
+        updateLanguage(nextLang);
+        runHeroScramble();
     });
 
     const savedLang = localStorage.getItem('devyhb-lang') || 'es';
@@ -334,7 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fmodal?.setAttribute('aria-hidden', 'false');
         body.style.overflow = 'hidden';
         
-        // Focus close button for accessibility
         setTimeout(() => {
             const closeBtn = fmodal?.querySelector('.fmodal-close');
             closeBtn?.focus();
@@ -398,7 +411,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const update = (now) => {
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
             const eased = 1 - Math.pow(1 - progress, 3);
             const current = Math.round(eased * target);
             el.textContent = current + suffix;
@@ -438,104 +450,89 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─── HERO TEXT SCRAMBLE ───────────────────────────────────────────────────
-    class Scramble {
-        constructor(el) {
-            this.el = el;
-            this.chars = '▓░▒│!<>-_[]{}=+*^?#';
-        }
-
-        run(text) {
-            const len = text.length;
-            let frame = 0;
-            const queue = Array.from(text).map((char, i) => ({
-                char,
-                start: Math.floor(Math.random() * 20),
-                end: Math.floor(Math.random() * 20) + 30 + i * 2
-            }));
-
-            const tick = () => {
-                let out = '';
-                let done = 0;
-                for (let i = 0; i < queue.length; i++) {
-                    const q = queue[i];
-                    if (frame >= q.end) {
-                        done++;
-                        out += q.char;
-                    } else if (frame >= q.start) {
-                        out += `<span style="color:var(--accent);opacity:.5">${this.chars[Math.floor(Math.random() * this.chars.length)]}</span>`;
-                    } else {
-                        out += q.char;
-                    }
-                }
-                this.el.innerHTML = out;
-                if (done < len) requestAnimationFrame(tick);
-                frame++;
-            };
-            requestAnimationFrame(tick);
-        }
-    }
-
-    // Run scramble on hero title plain text after page loads
+    let scrambleRAF = null;
     const runHeroScramble = () => {
-        const h1 = document.querySelector('h1.hname');
-        if (!h1 || reducedMotion) return;
+        const target = document.getElementById('scramble-target');
+        if (!target || reducedMotion) return;
 
-        // Only scramble the text node (not the em)
-        const textNodes = [...h1.childNodes].filter(n => n.nodeType === 3);
-        const emEl = h1.querySelector('em');
-        const emText = emEl ? emEl.textContent : '';
+        // Cancelar animación previa si existe
+        if (scrambleRAF) cancelAnimationFrame(scrambleRAF);
 
-        if (!textNodes.length) return;
+        const currentLang = localStorage.getItem('devyhb-lang') || 'es';
+        const originalText = translations[currentLang]["hero-title-main"];
+        const chars = '!@#$%^&*()_+[]{}<>?/';
+        const length = originalText.length;
+        const queue = [];
 
-        const plainText = textNodes[0].textContent.trim();
-
-        // Replace first text node with a span we can scramble
-        const span = document.createElement('span');
-        span.textContent = plainText;
-        textNodes[0].replaceWith(span);
-
-        const s = new Scramble(span);
-        setTimeout(() => s.run(plainText), 600);
-
-        // Glow pulse on em
-        if (emEl) {
-            setTimeout(() => { emEl.style.opacity = '1'; }, 400);
+        for (let i = 0; i < length; i++) {
+            const char = originalText[i];
+            const start = Math.floor(Math.random() * 12);
+            const end = start + Math.floor(Math.random() * 25) + 25;
+            queue.push({ char, start, end });
         }
-    };
 
-    // ─── CURSOR HOVER UPDATE AFTER DYNAMIC CONTENT ────────────────────────────
-    const refreshCursorTargets = () => {
-        if (isTouchDevice || !cursorRing) return;
-        const hoverTargets = 'a, button, .skitag, .pitem, .proof-card, .svc-card, .clink, .pfbtn, .tcell, .flutter-item, .fmodal-close, .fmodal-btn';
-        document.querySelectorAll(hoverTargets).forEach(el => {
-            if (el._cursorBound) return;
-            el._cursorBound = true;
-            el.addEventListener('mouseenter', () => body.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => body.classList.remove('cursor-hover'));
-        });
+        let frame = 0;
+        const tick = () => {
+            let output = '';
+            let complete = 0;
+
+            for (let i = 0; i < length; i++) {
+                const { char, start, end } = queue[i];
+                if (frame >= end) {
+                    complete++;
+                    output += char;
+                } else if (frame >= start) {
+                    // Símbolos con glow verde neón y opacidad variable
+                    const symbol = '▓░▒█!<>-_[]{}=+*^?#'[Math.floor(Math.random() * 20)];
+                    const opacity = Math.random() > 0.5 ? 1 : 0.7;
+                    output += `<span style="color: #00ff41; text-shadow: 0 0 10px #00ff41; opacity: ${opacity}">${symbol}</span>`;
+                } else {
+                    // Estado inicial antes de "despertar" el carácter
+                    const symbol = '░▒'[Math.floor(Math.random() * 2)];
+                    output += `<span style="color: #00ff41; opacity: 0.4">${symbol}</span>`;
+                }
+            }
+
+            target.innerHTML = output;
+
+            if (complete < length) {
+                frame++;
+                scrambleRAF = requestAnimationFrame(tick);
+            } else {
+                target.textContent = originalText;
+            }
+        };
+        tick();
     };
 
     // ─── INIT ─────────────────────────────────────────────────────────────────
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    const initHeroAnimation = () => {
+        if (body.dataset.scrambleRun) return;
+        body.dataset.scrambleRun = "true";
+        
+        const heroReveal = document.querySelector('#hero .reveal');
+        if (heroReveal) heroReveal.classList.add('in');
+        runHeroScramble();
+    };
+
     window.addEventListener('load', () => {
         setTimeout(() => {
             loader?.classList.add('hide');
             body.classList.remove('is-loading');
-            runHeroScramble();
-            refreshCursorTargets();
-        }, reducedMotion ? 100 : 900);
+            setTimeout(initHeroAnimation, 400);
+        }, reducedMotion ? 50 : 700);
     });
+
+    setTimeout(() => {
+        if (!body.dataset.scrambleRun) initHeroAnimation();
+    }, 3000);
 
     scrollTopBtn?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // Smooth image fade on flutter modal
-    if (fmodalImg) {
-        fmodalImg.style.transition = 'opacity .15s ease';
-    }
 
     // ─── AUDIT STREAM LOGIC ───────────────────────────────────────────────────
     const auditStream = document.getElementById('audit-stream');
@@ -565,18 +562,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Trigger Final Popup at 98% scroll
         const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
         if (scrollPercent > 0.98) {
             triggerTerminalPopup();
         }
     });
 
-    // ─── TERMINAL POPUP & THREE.JS CIRCLE ─────────────────────────────────────
+    // ─── TERMINAL POPUP & THREE.JS ────────────────────────────────────────────
     const tPopup = document.getElementById('terminal-popup');
     const tClose = document.getElementById('terminalPopupClose');
     let popupShown = false;
-    let scene, camera, renderer, textGroup;
+    let scene, camera, renderer;
 
     const triggerTerminalPopup = () => {
         if (popupShown) return;
@@ -593,7 +589,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('command-circle-container');
         if (!container) return;
 
-        // Detection of current accent color
         const getAccentColor = () => {
             const color = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
             return new THREE.Color(color);
@@ -610,23 +605,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const currentAccent = getAccentColor();
         const accentHex = `#${currentAccent.getHexString()}`;
-
         const commands = ['NMAP', 'GO_BUILD', 'OWASP', 'SEC_OPS', 'PYTHON', 'AI_AGENT', 'AUDIT_OK', 'HARDEN', 'DOCKER', 'DJANGO'];
         const nodes = [];
         const radius = 3.5;
 
-        // Create Nodes (Text + Points)
         commands.forEach((cmd, i) => {
             const phi = Math.acos(-1 + (2 * i) / commands.length);
             const theta = Math.sqrt(commands.length * Math.PI) * phi;
+            const pos = new THREE.Vector3(radius * Math.cos(theta) * Math.sin(phi), radius * Math.sin(theta) * Math.sin(phi), radius * Math.cos(phi));
 
-            const pos = new THREE.Vector3(
-                radius * Math.cos(theta) * Math.sin(phi),
-                radius * Math.sin(theta) * Math.sin(phi),
-                radius * Math.cos(phi)
-            );
-
-            // Text Sprite
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             canvas.width = 256; canvas.height = 64;
@@ -641,49 +628,43 @@ document.addEventListener('DOMContentLoaded', () => {
             sprite.position.copy(pos);
             sprite.scale.set(1.8, 0.45, 1);
             group.add(sprite);
-
             nodes.push(pos);
         });
 
-        // Neural Connections (Lines)
         const lineMaterial = new THREE.LineBasicMaterial({ color: currentAccent, transparent: true, opacity: 0.2 });
         const geometry = new THREE.BufferGeometry();
         const linePositions = [];
-
         for (let i = 0; i < nodes.length; i++) {
             for (let j = i + 1; j < nodes.length; j++) {
                 if (nodes[i].distanceTo(nodes[j]) < 4.5) {
-                    linePositions.push(nodes[i].x, nodes[i].y, nodes[i].z);
-                    linePositions.push(nodes[j].x, nodes[j].y, nodes[j].z);
+                    linePositions.push(nodes[i].x, nodes[i].y, nodes[i].z, nodes[j].x, nodes[j].y, nodes[j].z);
                 }
             }
         }
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-        const lines = new THREE.LineSegments(geometry, lineMaterial);
-        group.add(lines);
+        group.add(new THREE.LineSegments(geometry, lineMaterial));
 
-        // Background Particles
         const partGeo = new THREE.BufferGeometry();
         const partPos = [];
-        for(let i=0; i<150; i++) {
-            partPos.push((Math.random()-0.5)*12, (Math.random()-0.5)*12, (Math.random()-0.5)*12);
-        }
+        for(let i=0; i<150; i++) partPos.push((Math.random()-0.5)*12, (Math.random()-0.5)*12, (Math.random()-0.5)*12);
         partGeo.setAttribute('position', new THREE.Float32BufferAttribute(partPos, 3));
-        const partMat = new THREE.PointsMaterial({ color: currentAccent, size: 0.04, transparent: true, opacity: 0.4 });
-        const particles = new THREE.Points(partGeo, partMat);
-        group.add(particles);
+        group.add(new THREE.Points(partGeo, new THREE.PointsMaterial({ color: currentAccent, size: 0.04, transparent: true, opacity: 0.4 })));
 
         camera.position.z = 8;
+        group.scale.set(0, 0, 0); // Empezar desde escala cero
 
         function animate() {
-            if (!tPopup?.classList.contains('active')) return;
+            if (!tPopup?.classList.contains('active')) {
+                group.scale.set(0, 0, 0); // Resetear escala al cerrar
+                return;
+            }
             requestAnimationFrame(animate);
-            group.rotation.y += 0.002;
-            group.rotation.x += 0.001;
-            
-            // Pulse lines
+
+            // Interpolación suave (lerp) hacia la escala 1
+            group.scale.lerp(new THREE.Vector3(1, 1, 1), 0.05);
+
+            group.rotation.y += 0.002; group.rotation.x += 0.001;
             lineMaterial.opacity = 0.1 + Math.sin(Date.now() * 0.002) * 0.1;
-            
             renderer.render(scene, camera);
         }
         animate();
